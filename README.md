@@ -1,6 +1,8 @@
 ﻿# operace-hell
 Netradiční využití gitového repozitáře pro organizaci LARPu
 
+[dokumentaci](https://github.com/mroz22/operace-hell/blob/master/dokumentace/casovy_rozpis.md)
+
 # Nápady
 
 ## Vrty 
