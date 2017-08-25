@@ -9,6 +9,5 @@ Spoleèný brífing nebude. Každý zaèíná na pøedem urèeném místì.
 * Stalkeøi - dostaví se nejpozdìji v 20.00 na základnu a budou rozvezeni na místo zaèátku v blízkém okolí základny, nìkteøí v základnì. 
 * Rex ex Machina - dostaví se nejpozdìji ve 20.00 na základnu, zaèínají na základnì.  
 
-![zahájení cholera a bo](https://github.com/mroz22/operace-hell/blob/master/dokumentace/obrazky/frakce_cholera_bo.png =450x)
-
+<img src="https://github.com/mroz22/operace-hell/blob/master/dokumentace/obrazky/frakce_cholera_bo.png"  width="480" >
 ## nedìle 02.00 - konec 
