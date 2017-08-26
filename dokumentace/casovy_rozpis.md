@@ -9,5 +9,5 @@ Spoleèný brífing nebude. Každý zaèíná na pøedem urèeném místì.
 * Stalkeøi - dostaví se nejpozdìji v 20.00 na základnu a budou rozvezeni na místo zaèátku v blízkém okolí základny, nìkteøí v základnì. 
 * Rex ex Machina - dostaví se nejpozdìji ve 20.00 na základnu, zaèínají na základnì.  
 
-<img src="./obrazky/frakce_cholera_bo.png"  width="480" >
+<img src="../img/dokumentace/frakce_cholera_bo.png"  width="480" >
 ## nedìle 02.00 - konec 
