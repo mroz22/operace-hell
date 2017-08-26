@@ -1,15 +1,15 @@
-# Lokace
+ï»¿# Lokace
 
-Tento dokument obsahuje popis hernì dùleitıch lokací 
+Tento dokument obsahuje popis hernÄ› dÅ¯leÅ¾itÃ½ch lokacÃ­ 
 
 ## TODO: 
 
-*:white_large_square: vymyslet jednotné názvy pro bunkry, a to nepojmenováváme poøád "cetrnální nebo taky vìdeckı" 
-*:white_large_square: doplnit další lokace
+*:white_large_square: vymyslet jednotnÃ© nÃ¡zvy pro bunkry, aÅ¥ to nepojmenovÃ¡vÃ¡me poÅ™Ã¡d "cetrnÃ¡lnÃ­ nebo taky vÄ›deckÃ½" 
+*:white_large_square: doplnit dalÅ¡Ã­ lokace
 
-## Centrální bunkr ("vìdeckı")
+## CentrÃ¡lnÃ­ bunkr ("vÄ›deckÃ½")
 
-## Suchı bunkr ("velitelskı")
+## SuchÃ½ bunkr ("velitelskÃ½")
 
-## Jídelna 
+## JÃ­delna 
 

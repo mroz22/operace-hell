@@ -1,16 +1,16 @@
-# Herní strany a postavy
+ï»¿# HernÃ­ strany a postavy
 
-## Valašští partyzáni (Beskydskı odboj)
+## ValaÅ¡Å¡tÃ­ partyzÃ¡ni (BeskydskÃ½ odboj)
 
 ## Cholera
 
-## Svobodní stalkeøi
+## SvobodnÃ­ stalkeÅ™i
 
-## Uctívaèi Rex ex machina 
+## UctÃ­vaÄi Rex ex machina 
 
-Jde o skupinu lidí, která ije v zónì ji delší èas. Uctívají své bostvo "Rex ex Machina" neboli "král (bùh) ze stroje". 
-Obıvají "velitelskı bunkr", mají ho pìknì zaøízenı a ijí celkem pohodlnì, hlavnì díky svému bostvu. Se svım bostvem
-komunikují knìí této frakce. Hlavní chrám bostva je ve "vìdeckém bunkru". Bostvo (stroncnet) své vìrné sluebníky
-odmìòuje zásobami ze skladù. 
+Jde o skupinu lidÃ­, kterÃ¡ Å¾ije v zÃ³nÄ› jiÅ¾ delÅ¡Ã­ Äas. UctÃ­vajÃ­ svÃ© boÅ¾stvo "Rex ex Machina" neboli "krÃ¡l (bÅ¯h) ze stroje". 
+ObÃ½vajÃ­ "velitelskÃ½ bunkr", majÃ­ ho pÄ›knÄ› zaÅ™Ã­zenÃ½ a Å¾ijÃ­ celkem pohodlnÄ›, hlavnÄ› dÃ­ky svÃ©mu boÅ¾stvu. Se svÃ½m boÅ¾stvem
+komunikujÃ­ knÄ›Å¾Ã­ tÃ©to frakce. HlavnÃ­ chrÃ¡m boÅ¾stva je ve "vÄ›deckÃ©m bunkru". BoÅ¾stvo (stroncnet) svÃ© vÄ›rnÃ© sluÅ¾ebnÃ­ky
+odmÄ›Åˆuje zÃ¡sobami ze skladÅ¯. 
 
 

@@ -1,13 +1,13 @@
-# Èasovı rozpis
+ï»¿# ÄŒasovÃ½ rozpis
 
-## pátek 22.00 - Start
+## pÃ¡tek 22.00 - Start
 
-Spoleènı brífing nebude. Kadı zaèíná na pøedem urèeném místì. 
+SpoleÄnÃ½ brÃ­fing nebude. KaÅ¾dÃ½ zaÄÃ­nÃ¡ na pÅ™edem urÄenÃ©m mÃ­stÄ›. 
 
-* Cholera - zaèíná v obci Lukavec ve 22.00
-* Beskydskı odboj - zaèína v obci Gruèovice ve 22.00
-* Stalkeøi - dostaví se nejpozdìji v 20.00 na základnu a budou rozvezeni na místo zaèátku v blízkém okolí základny, nìkteøí v základnì. 
-* Rex ex Machina - dostaví se nejpozdìji ve 20.00 na základnu, zaèínají na základnì.  
+* Cholera - zaÄÃ­nÃ¡ v obci Lukavec ve 22.00
+* BeskydskÃ½ odboj - zaÄÃ­na v obci GruÄovice ve 22.00
+* StalkeÅ™i - dostavÃ­ se nejpozdÄ›ji v 20.00 na zÃ¡kladnu a budou rozvezeni na mÃ­sto zaÄÃ¡tku v blÃ­zkÃ©m okolÃ­ zÃ¡kladny, nÄ›kteÅ™Ã­ v zÃ¡kladnÄ›. 
+* Rex ex Machina - dostavÃ­ se nejpozdÄ›ji ve 20.00 na zÃ¡kladnu, zaÄÃ­najÃ­ na zÃ¡kladnÄ›.  
 
 <img src="../img/dokumentace/frakce_cholera_bo.png"  width="480" >
-## nedìle 02.00 - konec 
+## nedÄ›le 02.00 - konec 

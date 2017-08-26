@@ -1,5 +1,5 @@
-# Nápady
+ï»¿# NÃ¡pady
 
 ## Vrty
-V zemi zakopané petflašky. V nich nìjaká kapalina, mùe mít i frakce. Potom se dá obsah analyzovat. Mùe tam bıt tøeba petrolej 
-potøebnı pro provoz nìjakého generátoru. 
+V zemi zakopanÃ© petflaÅ¡ky. V nich nÄ›jakÃ¡ kapalina, mÅ¯Å¾e mÃ­t i frakce. Potom se dÃ¡ obsah analyzovat. MÅ¯Å¾e tam bÃ½t tÅ™eba petrolej 
+potÅ™ebnÃ½ pro provoz nÄ›jakÃ©ho generÃ¡toru. 
