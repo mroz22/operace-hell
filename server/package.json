@@ -1,0 +1,27 @@
+{
+  "name": "larp",
+  "version": "1.0.0",
+  "description": "this software servers as platform for organizing LARP events",
+  "main": "index.js",
+  "scripts": {
+    "start": "supervisor index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mroz22/operace-hell/tree/master/server"
+  },
+  "keywords": [
+    "larp"
+  ],
+  "author": "mroz",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "pg": "^7.2.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.7.5"
+  }
+}
