@@ -24,7 +24,4 @@ module.exports = (api) => {
     ctx.body = user;
     next();
   });
-
-
-
 };

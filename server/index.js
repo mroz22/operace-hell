@@ -2,9 +2,15 @@
 
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
-
-const app = new Koa();
+const serve = require('koa-static');
+const koaRes = require('koa-res');
+const convert = require('koa-convert');
 const api = require('./api/api');
+let app = new Koa();
+
+app.use(serve(__dirname + '/web/build'));
+
+require('./config/plugin-passport')(app);
 
 app.use(async (ctx, next) => {
   try {
@@ -17,9 +23,9 @@ app.use(async (ctx, next) => {
 });
 
 app.use(bodyParser());
+app.use(convert(koaRes()));
 
 // logger
-
 app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
@@ -30,4 +36,7 @@ app.use(async (ctx, next) => {
 app.use(api.routes());
 app.use(api.allowedMethods());
 
-app.listen(3000);
+app.listen(3001);
+
+
+module.exports = app;
