@@ -1,8 +1,7 @@
-"use strict";
+'use strict';
 
-const passport = require('koa-passport');
-const Strategy = require('passport-facebook').Strategy;
-
+const passport = require('passport');
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -11,15 +10,11 @@ const Strategy = require('passport-facebook').Strategy;
 // behalf, along with the user's profile.  The function must invoke `cb`
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
-
-
-passport.use(new Strategy({
+passport.use(new FacebookStrategy({
   clientID: '1928475274074206',
   clientSecret: '17f4a55a9526e9e22caf3029e331f20b',
-  callbackURL: 'http://localhost:3001/api/auth/facebook/callback'
-},
-
-function(accessToken, refreshToken, profile, cb) {
+  callbackURL: 'http://localhost:3001/login/facebook/return'
+}, function(accessToken, refreshToken, profile, cb) {
   // In this example, the user's Facebook profile is supplied as the user
   // record.  In a production-quality application, the Facebook profile should
   // be associated with a user record in the application's database, which
@@ -45,5 +40,3 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
-
-module.exports = passport;

@@ -1,5 +1,4 @@
 'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -8,7 +7,8 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(`${__dirname}/../config/config.json`)[env];
 const db = {};
 
-let sequelize = new Sequelize(config.database, config.username, config.password, config);
+config.logging = function() {};
+let sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSPORT, config);
 
 sequelize.authenticate().then(() => {
   console.log('Connection has been established successfully.');
