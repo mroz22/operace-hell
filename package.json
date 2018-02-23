@@ -1,0 +1,19 @@
+{
+  "name": "operace-hell",
+  "version": "1.0.0",
+  "description": "Netradiční využití gitového repozitáře pro organizaci LARPu. Organizace LARPu má překvapivě mnohé  shodné prvky s tvorbou softwaru. Od určité velikosti LARPu se věci začínají komplikovat a roste složitost.  V této chvíli je nezbytné mít dokumentaci a schopnost již jednou nachystané věci recyklovat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mroz22/operace-hell.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mroz22/operace-hell/issues"
+  },
+  "homepage": "https://github.com/mroz22/operace-hell#readme"
+}
