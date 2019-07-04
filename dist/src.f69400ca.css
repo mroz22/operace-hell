@@ -1,0 +1,63 @@
+/* Layouts *************/
+.terminal {
+    background-color: black;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+header {
+    padding: 8px;
+    display: flex;
+    border-radius: 3px 3px 0px 0px;
+}
+    
+
+.terminal-button {
+    margin: 0px;
+    margin-right: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.terminal-output {
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.terminal-line {
+    line-height: 1;
+}
+
+.prompt, pre {
+      user-select: none;
+      pointer-events: none;
+}
+
+/* Colors ***************/
+.terminal {
+    background: rgba(0, 0, 0, 0.9)
+}
+
+header {
+    background: linear-gradient(-180deg, #EAEAEA 0%, #D2D2D2 100%)
+}
+
+  .terminal-button.button-close {
+    background: #C85252
+  }
+  .terminal-button.button-minimize {
+    background: #DDB522
+
+  }
+  .terminal-button.button-zoom {
+    background: #1ABF52
+      
+  }
+
+  .terminal-output {
+    color: #20C20E;
+  }
+
+/*# sourceMappingURL=/src.f69400ca.css.map */
