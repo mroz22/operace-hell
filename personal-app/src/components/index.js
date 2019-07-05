@@ -8,11 +8,17 @@ export const H = (props) => (
 );
 
 export const Text = (props) => (
-    <RNText style={{ color: COLOR.TEXT }} {...props}>{props.children}</RNText>
+    <RNText style={{ color: COLOR.TEXT, marginBottom: 3, marginTop: 2 }} {...props}>{props.children}</RNText>
 );
 
 export const Container = (props) => (
-    <View style={{flex: 1, height: '100%', justifyContent: 'center', backgroundColor: COLOR.BACKGROUND, alignItems: 'center' }}>{props.children}</View>
+    <View style={{
+        flex: 1,
+        height: '100%',
+        justifyContent: 'center',
+        backgroundColor: COLOR.BACKGROUND,
+        alignItems: 'center',
+    }}>{props.children}</View>
 );
 
 export const Button = (props) => (

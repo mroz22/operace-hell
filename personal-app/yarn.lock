@@ -968,6 +968,11 @@ acorn@^6.0.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
   integrity sha512-jPTiwtOxaHNaAPg/dmrJ/beuzLRnXtB0kQPQ8JpotKJgTB6rX6c8mlf315941pyjBSaPg8NHXS9fhP4u17DpGA==
 
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
+
 ajv@^6.5.5:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.10.0.tgz#90d0d54439da587cd7e843bfb7045f50bd22bdf1"
@@ -1162,11 +1167,6 @@ asn1@~0.2.3:
   integrity sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg==
   dependencies:
     safer-buffer "~2.1.0"
-
-aspect-js@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/aspect-js/-/aspect-js-1.0.3.tgz#3eb5ab3226f340f89bc1e425fa105eea1450e18d"
-  integrity sha1-PrWrMibzQPibweQl+hBe6hRQ4Y0=
 
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
@@ -4816,7 +4816,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4905,6 +4905,13 @@ react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-native-camera@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.11.0.tgz#480de13f0ac192e950c406d8ca0157cf4bb5f41a"
+  integrity sha512-ay8te4nvL5mGzRjb2QMTOyJX+JfaIW/9oFjFVIkXOB9DzFipfeVTPMdwNx9GMpdmQ0muSXkuF16pa7K/1QLHlQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-firebase@^5.4.0:
   version "5.5.4"
   resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.4.tgz#1c71d2b21a11fdb5177f7e7c05c8bf3130fb88d7"
@@ -4913,13 +4920,12 @@ react-native-firebase@^5.4.0:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.7.2"
 
-react-native-simple-router@^0.12.1:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/react-native-simple-router/-/react-native-simple-router-0.12.1.tgz#ba0b5e9a8610e610010d2116ee9c966bead5e2f6"
-  integrity sha512-xeu3agSeKQfTG/bNPJOlJO09GOUaxkpBHm3U7WCSZ+VLXjGuYndUJCjlfGWo9Cj/ar7uyq+XGqrdNWLUmAHfTA==
+react-native-switch@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-switch/-/react-native-switch-1.5.0.tgz#a5c8e72f87def649d1c9de027c5ae27e2037ea40"
+  integrity sha1-pcjnL4fe9knRyd4CfFrifiA36kA=
   dependencies:
-    aspect-js "^1.0.3"
-    underscore "^1.8.3"
+    prop-types "^15.6.0"
 
 react-native@0.59.3:
   version "0.59.3"
@@ -5933,11 +5939,6 @@ ultron@~1.1.0:
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
   integrity sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og==
 
-underscore@^1.8.3:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
-  integrity sha512-5/4etnCkd9c8gwgowi5/om/mYO5ajCaOgdzj/oW+0eQV9WxKBDZw5+ycmKmeaTXjInS/W0BzpGLo2xR2aBwZdg==
-
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
@@ -6342,3 +6343,8 @@ yargs@^9.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+yarn@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.16.0.tgz#5701b58ac555ff91f7b889b7d791b3dc86f8f999"
+  integrity sha512-cfemyGlnWKA1zopUUgebTPf8C4WkPIZ+TJmklwcEAJ4u6oWPtJeAzrsamaGGh/+b1XWe8W51yzAImC4AWbWR1g==

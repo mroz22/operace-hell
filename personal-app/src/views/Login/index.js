@@ -1,54 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import firebase from 'react-native-firebase';
-import { TextInput } from 'react-native';
+import { TextInput, Text } from 'react-native';
 
-import { Button } from '../../components';
+import { Button, H } from '../../components';
 
-class Login extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {
-                email: '',
-                password: '',
-            }
-        }
-    }
+const Login = () => {
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ error, setError ] = useState('');
+    const [ isPending, setIsPending ] = useState(false);
 
-    signin() {
-        const { email, password } = this.state.user;
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-          // ...
+    const signin = () => {
+        setIsPending(true);
+        setError('');
+        firebase.auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((response) => {
+            setEmail('');
+        }).catch(function(error) {
+            setError(error.message);
+        }).finally(() => {
+            setIsPending(false);
+            setPassword('');
         });
     }
 
-    render() {
         return (
             <>
+            <H>Login</H>
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                onChangeText={(text) => this.setState({newUser: { ...this.state.user, email: text }})}
-                value={this.state.user.email}
+                placeholder={'email'}
+                style={{height: 40, width: '90%', borderColor: 'gray', borderWidth: 1}}
+                onChangeText={(text) => setEmail(text)}
+                value={email}
             />
             <TextInput
-                secureEntry={true}
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                onChangeText={(text) => this.setState({newUser: { ...this.state.user, password: text }})}
-                value={this.state.user.password}
+                secureTextEntry
+                placeholder={'heslo'}
+                style={{height: 40, width: '90%', borderColor: 'gray', borderWidth: 1}}
+                onChangeText={(text) => setPassword(text)}
+                value={password}
             />
             <Button
-                onPress={() => this.signin()}
+                disabled={!email || !password || isPending}
+                onPress={() => signin()}
                 title="Sign in"
                 color="#843"
                 accessibilityLabel="Learn more about this purple button"
             />
+            <Text>
+                { error && error }
+            </Text>
+            <Text>
+                { isPending && 'please wait'}
+            </Text>
             </>
-        )
-    }
-    
+        )    
 }
 
 export default Login;

@@ -13,10 +13,13 @@
   },
   "dependencies": {
     "@react-native-firebase/auth": "^6.0.0-alpha.3",
+    "add": "^2.0.6",
     "react": "16.8.3",
     "react-native": "0.59.3",
+    "react-native-camera": "^2.11.0",
     "react-native-firebase": "^5.4.0",
-    "react-native-simple-router": "^0.12.1"
+    "react-native-switch": "^1.5.0",
+    "yarn": "^1.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

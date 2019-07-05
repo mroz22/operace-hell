@@ -47,23 +47,55 @@ exports.eatPill = functions.https.onCall(async (data, context) => {
     
 });
 
-exports.runInterval = functions.pubsub.topic('interval').onPublish(() => {
+exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
     // set game state in this tick
     console.log('run interval');
 
-    admin.firestore().collection('game').doc('operacexxx').set({
-        timestamp: new Date(),
-        radiation: getRandomInt(0, 100),
-    });
+    const game = await admin.firestore().collection('game').doc('operacexxx').get();
+    
+    const currentRadiation = game.data().radiation;
+    const currentRadiationChangeRate = game.data().radiationChangeRate;
+    const ticksToRadiationChange = game.data().ticksToRadiationChange;
+
+    // updated GAME
+
+    if (ticksToRadiationChange === 0) {
+        const nextRadiationChangeRate = getRadiationRateChange(1, 0.5);
+        await admin.firestore().collection('game').doc('operacexxx').update({
+            ticksToRadiationChange: getRandomInt(3, 6),
+            radiationChangeRate: nextRadiationChangeRate,
+        });    
+    } else {
+        let nextRadiation = currentRadiation + currentRadiationChangeRate;
+        if (nextRadiation < 0) {
+            nextRadiation = 0;
+        }
+        if (nextRadiation > 100) {
+            nextRadiation = 100;
+        }
+        await admin.firestore().collection('game').doc('operacexxx').update({
+            radiation: nextRadiation,
+            ticksToRadiationChange: ticksToRadiationChange - 1,
+        });
+    }
+
+    // updated USERS
 
     admin.firestore().collection('users').get().then((querySnapshot) => {
         return querySnapshot.forEach((doc) => {
             const userRef = admin.firestore().collection('users').doc(doc.id);
-            return userRef.update({
-                'status.radiation': getRandomInt(0, 100)
-            });
+                    
+            const currentUserRadiation = doc.data().status.radiation;
+            const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 1000 : 100;
+            if (currentUserRadiation < currentRadiation) {
+                return userRef.update({
+                    'status.radiation': currentUserRadiation + ((currentRadiation - currentUserRadiation) / DOSE_MODIFIER )
+                });
+            }
         });
     }).catch((err) => console.error(err));
+
+    // updated BUNKERS
 
     return admin.firestore().collection('bunkers').get().then((querySnapshot) => {
         return querySnapshot.forEach((doc) => {
@@ -103,4 +135,12 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRadiationRateChange(max, growthProbability) {
+    const rate = (getRandomInt(0, max) / 100)
+    if (Math.random() > growthProbability) {
+        rate * -1;
+    }
+    return rate;
 }
