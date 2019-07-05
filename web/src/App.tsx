@@ -18,7 +18,6 @@ import Profile from './views/Profile';
 import Zone from './views/Zone';
 import Rules from './views/Rules';
 
-
 const styles = {
     app: {
         height: '100%'
@@ -81,7 +80,6 @@ const Section = (props) => (
     </div>
 );
 
-
 const App = () => {
 
     const [ user, setUser ] = useState(null);
@@ -118,7 +116,7 @@ const App = () => {
                 </pre>                
             </Terminal>
             </Section>
-           
+
             <Section>
             <P>
                 Hráči museli nejen bojovat proti TZ ale také prozkoumávat základnu a odhalovat její tajemství (luštit šifry).
@@ -127,8 +125,7 @@ const App = () => {
                 (luštění šifer) bylo využíváno k těžbě pokročilých technologií (takové strojové učení).
             </P>
             </Section>
-           
-            
+
             <Section>
             <Terminal>
                 <kbd>./players-status.sh --filter is:alive </kbd>
@@ -150,7 +147,11 @@ const App = () => {
                 <P>
                     Na samém konci AI vyhodnotilo, že již nemá smysl simulaci dále spouštět, jelikož situace obránců byla 
                     beznadějná. Simulaci ukončilo a skeny takto přeživších (rozuměj vyselektovaných) hráčů nahrálo do vyšší
-                    úrovně simulace s názvem HELL.
+                    úrovně simulace s názvem HELL. Tato simulace je mnohem efektivnější, co se těžby technologií týče, avšak 
+                    má jednu nevýhodu. Sken, který v ní zahyne, je nadobro ztracena i v reálném světě, jeho tělo 
+                    zemře. Hráči to vědí, a tak,
+                    budou-li chtít někdy nebezpečné AI porazit, musí alespoň někdo přežít, aby nevyhysla naděje, že se alespoň
+                    podaří podat zprávu.
                 </P>
             
                 <P>
@@ -168,7 +169,7 @@ const App = () => {
                     </pre>
                 </Terminal>
             </Section>
- 
+
             <Background image={background2} />
             <Section>
                 <H>Místo</H>
@@ -196,6 +197,31 @@ const App = () => {
             
             <Background image={background3} />
             <Section>
+                <H>Průzkumníci</H>
+            
+                <P>
+                    Průzkumníci tvoří většinu hráčů. Jsou to právě oni, na kterých AI testuje tuto simulaci. Hrají v teamu
+                    a začínají na utajeném místě (dozví se včas před hrou). Svůj team by si měly pečlivě vyladit, jak do složení,
+                    tak vybavení. Každý hráč se v registraci rozhodne, za jaké vybavení utratí přidělené body 
+                    (zbraně, střelivo, geigerův počítač, atombordel...).
+                    Povinné vybavení: smartphone s internetovým připojením a baterií, která vydrží po celou dobu hry. Doporučujeme
+                    powerbanku. 
+                </P>
+
+                <H>Deus ex MAŠINA /nebo/ Agenti Smith</H>
+            
+                <P>
+                    // TODO:: 
+                    Tato strana je vhodná pro hráče, kteří nemají nebo si nechtějí brát požadavaný smartphone. Takoví 
+                    neutrálové, kteří začínají v Zóně, hodně toho o Zóně vědí, takže jsou cenný zdroj informací. Už tam 
+                    totiž pěkně dlouho žijou a vůbec jim nevadí radiace (tedy nemusí mít mobil).
+
+                    Ale nemůžu se rozhodnout, jestli to mají být Agenti na styl Matrixu, nebo Deus ex Machina na style 
+                    knížky zakuti v oceli. Ti první jsou jasní. Druzí byli takoví poloprimitivní lidé, které uctívali 
+                    umělou inteligenci a pomáhali jí získávat zdroje a ona je za to odměňovala.
+                </P>
+
+                
                 {
                     user ? <Profile user={user}/> : <Signup /> 
                 }

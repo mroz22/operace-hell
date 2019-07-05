@@ -25,6 +25,10 @@ target 'operacexxx' do
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
 end
 
 target 'operacexxx-tvOS' do

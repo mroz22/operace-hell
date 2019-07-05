@@ -11,12 +11,9 @@ const Profile = ({ user }) => {
     const [editMode, setEditMode] = useState(false);
     
     const getRole = () => {
-        firebase.firestore().collection("users").doc(user.uid).get().then(function(doc) {
+        firebase.firestore().collection("users").doc(user.uid).onSnapshot(doc => {
             setRole(doc.data());
             setRoleDraft(doc.data());
-            console.log(doc.data());
-        }).catch(function(error) {
-            setError(error.message);
         });
     };
     
@@ -31,11 +28,9 @@ const Profile = ({ user }) => {
     };
     
     const updateRole = () => {
-        firebase.firestore().collection("users").doc(user.uid).set(roleDraft).then(function() {
-        })
+        firebase.firestore().collection("users").doc(user.uid).set(roleDraft)
         .catch(function(error) {
             setError(error.message);
-            console.log("Error getting cached document:", error);
         }).finally(() => setEditMode(false));
     }
 
@@ -67,7 +62,6 @@ const Profile = ({ user }) => {
                     <P>Team:</P>
                     <select     
                         onChange={(event) => {  
-                            console.log(event.target.value);
                             setRoleDraft({ ...roleDraft, TeamId: event.target.value})
                         }}>
                         { 

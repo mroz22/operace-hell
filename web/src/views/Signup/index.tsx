@@ -44,7 +44,7 @@ const Signup = ({ user }) => {
         return (
         <>
             <H>Chci se taky prihlasit </H>
-        <form>
+            <form>
             <label>
             Email:
             <input type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
@@ -56,7 +56,7 @@ const Signup = ({ user }) => {
             <input type="button" value="Zalozit novy ucet" onClick={signUp} disabled={isPending}/>
             <input type="button" value="Prihlasit" onClick={signIn} disabled={isPending}/>
 
-        </form>
+            </form>
         <div>
             {
                 isPending && 'Odesilam'
