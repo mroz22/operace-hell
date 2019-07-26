@@ -179,7 +179,9 @@ const App = () => {
                 </P>
                 <H>Datum</H>
                 <P>
-                    XXX.
+                    Víkend 1. - 3. listopadu 2019. <br />
+                    Hra začíná v pátek večer mezi 20.00 a 22.0, končí nejpozději v sobotu ve 12.00. <br />
+                    
                     Obdobně jako místo, i přesný start hry bude pro hráče individuální a detaily uvidí ve svém profilu.
                 </P>
                 <H>Princip hry</H>
@@ -191,11 +193,13 @@ const App = () => {
                 </P>
                 <H>Podmínky vítězství</H>
                 <P>
-                    Hra končí v momentě, kdy budou na živu hráči pouze z jednoho teamu. Všichni hráči v takovém teamu vyhráli.
+                    Cílem AI je vytřídit ze vstupů kvalitní výstup. Tzn z vstupních dat (teamů) vytřídit jeden team, který
+                    nemusí být nutně ve stejném složení, v jakém začínal. Tento team se na místě, které ve hře snadno zjistí, 
+                    bude moci v určitém časovém okně dostat ze simulace.
                 </P>
             </Section>
             
-            <Background image={background3} />
+            <Background image={background3} />'
             <Section>
                 <H>Průzkumníci</H>
             
