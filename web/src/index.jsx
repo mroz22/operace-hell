@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import * as firebase from 'firebase';
-// import config from '../google-services.json';
 import App from './App';
 
 const firebaseConfig = {
@@ -9,7 +8,6 @@ const firebaseConfig = {
     projectId: 'operacexxx',
 };
 
-  // Initialize Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 render(<App />, document.getElementById('main'));
