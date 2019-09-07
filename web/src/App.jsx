@@ -177,7 +177,7 @@ const App = () => {
                 </P>
                 <H>Datum</H>
                 <P>
-                    Víkend 1. - 3. listopadu 2019. <br />
+                    15. (PÁ) - 16. (SO) listopadu 2019. <br />
                     Hra začíná v pátek večer mezi 20.00 a 22.0, končí nejpozději v sobotu ve 12.00. <br />
                     
                     Obdobně jako místo, i přesný start hry bude pro hráče individuální a detaily uvidí ve svém profilu.
