@@ -5,6 +5,7 @@ script:
   - cd web
   - yarn
   - yarn build
+  - ls -la
   - cd ../
 deploy:
   provider: firebase

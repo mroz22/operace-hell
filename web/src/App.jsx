@@ -109,6 +109,7 @@ const App = () => {
                     found:  {'\n'}
                         └── kuratko (poisoned by allies)   {'\n'}
                         └── glosz (killed by TZ)   {'\n'}
+                        └── pejchovic (malfunctioned)   {'\n'}
                         (25 more)
                 </pre>                
             </Terminal>
