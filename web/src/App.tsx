@@ -70,7 +70,7 @@ const Intro = (props) => (
             padding: '30px',
             fontSize: '4em',
             color: 'white',
-        }}>Operace HELL</div>
+        }}>Operace LAIR JE SUCHTA</div>
     </div>
 );
 
