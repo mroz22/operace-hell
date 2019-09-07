@@ -3,6 +3,7 @@ node_js:
   - "node"
 script:
   - cd web
+  - yarn
   - yarn build
 deploy:
   provider: firebase
