@@ -2,12 +2,12 @@ import React from 'react';
 
 const styles = {
     h: {
-        fontSize: '2em';
-        marginBottom: '5px';
+        fontSize: '2em',
+        marginBottom: '5px',
     },
     p: {
         textAlign: 'justify',
-        marginBottom: '5px';
+        marginBottom: '5px',
     }
 };
 

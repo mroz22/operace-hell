@@ -30,15 +30,13 @@ const styles = {
         height: '100vh',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-    }
+    },
     section: {
         backgroundColor: 'white',
-        // width: '90vw',
-        padding: '30px 15% 30px 15%';
-        // height: '190vh';
+        padding: '30px 15% 30px 15%',
         opacity: 0.85,
         borderRadius: '5px',
-    }
+    },
     image: {
         parallax: {
             backgroundAttachment: 'fixed',
@@ -50,7 +48,6 @@ const styles = {
             width: '100%',
             minHeight: '55%',
         }
-
     }
 }
 

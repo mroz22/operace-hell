@@ -64,7 +64,7 @@ const Zone = () => {
     }, [])
 
     const countConsumption = (bunker) => {
-        if bunker.numberOfUsers === 0) {
+        if (bunker.numberOfUsers === 0) {
             return 0;
         }
         return bunker.numberOfUsers * 0.1;
@@ -128,8 +128,8 @@ const Zone = () => {
                     <P>osoby v bunkru: {bunker.numberOfUsers}</P>
                     <P>---</P>
                     <P>kyslik: {bunker.oxygen.toFixed(2)}/{bunker.oxygenCap.toFixed(2)}</P>
-                    <P>spotreba kysliku: {(countConsumption(bunker).toFixed(2)}/minuta</P>
-                    <P>generator kysliku: {bunker.oxygenGeneration.toFixed(2)}/minuta</P>
+                    <P>spotreba kysliku: { countConsumption(bunker).toFixed(2) } / minuta</P>
+                    <P>generator kysliku: { bunker.oxygenGeneration.toFixed(2) }/minuta</P>
                     <P>
                         {
                             countConsumption(bunker) > bunker.oxygenGeneration ?
