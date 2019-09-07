@@ -225,7 +225,6 @@ const App = () => {
                     umělou inteligenci a pomáhali jí získávat zdroje a ona je za to odměňovala.
                 </P>
 
-                
                 {
                     user ? <Profile user={user}/> : <Signup /> 
                 }
