@@ -67,7 +67,7 @@ const Intro = (props) => (
             padding: '30px',
             fontSize: '4em',
             color: 'white',
-        }}>Operace LAIR JE SUCHTA</div>
+        }}>Operace SCHWARZ JE SUCHTA</div>
     </div>
 );
 
