@@ -38,6 +38,7 @@ const Terminal = (props) => {
         </div>
       );
     }
+    return null;
   });
 
   return (

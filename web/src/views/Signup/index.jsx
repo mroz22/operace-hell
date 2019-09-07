@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
 
-import { H, P } from '../../components';
+import { H } from '../../components';
 
 const Signup = ({ user }) => {
     const [email, setEmail ] = useState('');

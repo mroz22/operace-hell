@@ -209,10 +209,9 @@ const App = () => {
                     powerbanku. 
                 </P>
 
-                <H>Deus ex MAŠINA /nebo/ Agenti Smith</H>
+                <H>Divoci</H>
             
                 <P>
-                    // TODO:: 
                     Tato strana je vhodná pro hráče, kteří nemají nebo si nechtějí brát požadavaný smartphone. Takoví 
                     neutrálové, kteří začínají v Zóně, hodně toho o Zóně vědí, takže jsou cenný zdroj informací. Už tam 
                     totiž pěkně dlouho žijou a vůbec jim nevadí radiace (tedy nemusí mít mobil).

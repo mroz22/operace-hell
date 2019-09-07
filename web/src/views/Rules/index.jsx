@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import * as firebase from 'firebase';
+import React from 'react';
 
 import { H, P } from '../../components';
 

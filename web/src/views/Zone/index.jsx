@@ -21,25 +21,6 @@ const Zone = () => {
     const [bunkers, setBunkers] = useState([]); 
     const db = firebase.firestore();
 
-    const getGame = () => {
-        db
-        .collection("game")
-        .doc("operacexxx")
-        .onSnapshot(function(doc) {
-            setGame(doc.data());
-        });
-    }
-
-    const getBunkers = () => {
-        db.collection("bunkers").onSnapshot(function(querySnapshot) {
-            const newBunkers = [];
-            querySnapshot.forEach(function(doc) {
-                newBunkers.push({ id: doc.id,...doc.data()});
-            });
-            setBunkers(newBunkers);
-        });
-    }
-
     const enterBunker = (bunker) => {
         db.collection('bunkers').doc(bunker.id).set({
             ...bunker,
@@ -59,9 +40,27 @@ const Zone = () => {
     }
 
     useEffect(() => {
+        const getGame = () => {
+            db
+            .collection("game")
+            .doc("operacexxx")
+            .onSnapshot(function(doc) {
+                setGame(doc.data());
+            });
+        }
+    
+        const getBunkers = () => {
+            db.collection("bunkers").onSnapshot(function(querySnapshot) {
+                const newBunkers = [];
+                querySnapshot.forEach(function(doc) {
+                    newBunkers.push({ id: doc.id,...doc.data()});
+                });
+                setBunkers(newBunkers);
+            });
+        }
         getGame();
         getBunkers();
-    }, [])
+    }, [db])
 
     const countConsumption = (bunker) => {
         if (bunker.numberOfUsers === 0) {

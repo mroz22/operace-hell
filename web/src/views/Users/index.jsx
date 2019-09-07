@@ -21,26 +21,6 @@ const Users = () => {
 
     const db = firebase.firestore();
 
-    const getRoles = () => {
-        db.collection('users').onSnapshot(function(querySnapshot) {
-            const updatedRoles = [];
-            querySnapshot.forEach(function(doc) {
-                updatedRoles.push(doc.data());
-            });
-            setRoles(updatedRoles);
-        });
-    }
-
-    const getTeams = () => {
-        const newTeams = [];
-        db.collection("teams").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                newTeams.push({ id: doc.id,...doc.data()});
-            });
-            setTeams(newTeams);
-        });
-    };
-
     const getFormattedData = () => {
         if (!teams.length || !roles.length) {
             return [];
@@ -60,9 +40,28 @@ const Users = () => {
     };
 
     useEffect(() => {
+        const getRoles = () => {
+            db.collection('users').onSnapshot(function(querySnapshot) {
+                const updatedRoles = [];
+                querySnapshot.forEach(function(doc) {
+                    updatedRoles.push(doc.data());
+                });
+                setRoles(updatedRoles);
+            });
+        }
+    
+        const getTeams = () => {
+            const newTeams = [];
+            db.collection("teams").get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    newTeams.push({ id: doc.id,...doc.data()});
+                });
+                setTeams(newTeams);
+            });
+        };
         getRoles();
         getTeams();
-    }, [])
+    }, [db])
 
     return (
         <div>

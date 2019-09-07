@@ -10,23 +10,6 @@ const Profile = ({ user }) => {
     const [roleDraft, setRoleDraft] = useState(null);
     const [editMode, setEditMode] = useState(false);
     
-    const getRole = () => {
-        firebase.firestore().collection("users").doc(user.uid).onSnapshot(doc => {
-            setRole(doc.data());
-            setRoleDraft(doc.data());
-        });
-    };
-    
-    const getTeams = () => {
-        const newTeams = [];
-        firebase.firestore().collection("teams").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                newTeams.push({ id: doc.id,...doc.data()});
-            });
-            setTeams(newTeams);
-        });
-    };
-    
     const updateRole = () => {
         firebase.firestore().collection("users").doc(user.uid).set(roleDraft)
         .catch(function(error) {
@@ -39,9 +22,26 @@ const Profile = ({ user }) => {
     }
 
     useEffect(() => {
+        const getRole = () => {
+            firebase.firestore().collection("users").doc(user.uid).onSnapshot(doc => {
+                setRole(doc.data());
+                setRoleDraft(doc.data());
+            });
+        };
+        
+        const getTeams = () => {
+            const newTeams = [];
+            firebase.firestore().collection("teams").get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    newTeams.push({ id: doc.id,...doc.data()});
+                });
+                setTeams(newTeams);
+            });
+        };
+
         getRole();
         getTeams();
-    }, [editMode])
+    }, [user])
 
     if (error) {
         return <P>Error: {error}</P>
