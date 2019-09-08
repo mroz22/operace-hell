@@ -17,6 +17,7 @@ import Signup from './views/Signup';
 import Profile from './views/Profile';
 import Zone from './views/Zone';
 import Rules from './views/Rules';
+ 
 
 const styles = {
     app: {
@@ -67,7 +68,7 @@ const Intro = (props) => (
             padding: '30px',
             fontSize: '4em',
             color: 'white',
-        }}>Operace LAIR JE SUCHTA</div>
+        }}>Operace SCHWARZ JE SUCHTA</div>
     </div>
 );
 
