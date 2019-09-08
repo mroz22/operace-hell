@@ -67,17 +67,22 @@ const Profile = ({ user }) => {
                     <Input
                         label="Mam mobil s internetem / jsem schopny si poridit"
                         type="checkbox"
-                        checked={roleDraft.hasInternet}
+                        value={roleDraft.hasInternet}
                         onChange={() => setRoleDraft({...roleDraft, hasInternet: !roleDraft.hasInternet})}
                     /> 
 
-                    <Input
-                        label="Mam Android / iPhone"
-                        type="select"
-                        value={role.phoneType}
-                        options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
-                        onChange={(selected) => {console.log(selected); setRoleDraft({...roleDraft, phoneType: selected.value})}}
-                    /> 
+                    {
+                        roleDraft.hasInternet && (
+                            <Input
+                            label="Mam Android / iPhone"
+                            type="select"
+                            value={role.phoneType}
+                            options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
+                            onChange={(selected) => setRoleDraft({...roleDraft, phoneType: selected.value})}
+                        /> 
+                        )
+                    }
+                    
 
                     {/* <P>Team:</P>
                     <select     
@@ -109,8 +114,7 @@ const Profile = ({ user }) => {
                         <P>Jmeno: {role.name}</P>
                         {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
-                        <P>Platforma: {role.phoneType}</P>
-             
+                        { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
                         <br />
                         <button type="button" onClick={() => setEditMode(true)}>editovat</button>
                     </>
