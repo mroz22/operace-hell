@@ -12,7 +12,7 @@ import { H, P } from './components';
 import Terminal from './components/Terminal';
 import Preloader from './components/Preloader';
 
-import Users from './views/Users';
+import Users from './views/UsersPreliminary';
 import Signup from './views/Signup';
 import Profile from './views/Profile';
 import Zone from './views/Zone';
