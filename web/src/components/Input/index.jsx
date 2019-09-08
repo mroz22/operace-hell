@@ -16,7 +16,7 @@ const Input = (props) => {
             <Wrapper>
                 { props.type === 'select' && (
                     <>
-                    <Label>{props.label} {props.value}</Label>
+                    <Label>{props.label}</Label>
                     <Select
                         value={props.options.find(o => o.name === props.value)}
                         onChange={props.onChange}

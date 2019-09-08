@@ -82,7 +82,7 @@ const Zone = () => {
         <H>Zóna</H>
         <P>Hra se odehrává v...</P>
         <P>
-            V Zóně působí radiace, jejíž aktuální úroveň je {game ? `${game.radiation}/100` : '?'}.
+            V Zóně působí radiace, jejíž aktuální úroveň je {game ? `${game.radiation.toFixed(2)}` : '?'}.
             Úroveň radiace je kolísavá. O její aktuální síle bude hráče informovat osobní dozimetr (aplikace do smartfounu).
             Radiace téměř nepůsobí na osoby v ochranném obleku a je zcela odstíněná v bunkrech. Kumulované ozáření způsobuje mutace,
             o nichž bude hráče informovat jejich aplikace.
@@ -94,9 +94,10 @@ const Zone = () => {
             a z nějakého důvodu do něj príliž nelezou TZ (aspoň zatím ne).
         </P>
         <P>
-            Aby bunkr fungoval, musí v něm být hodnota zásob kyslíku větší než 0. Každý bunkr má omezení maximálních zásob 
-            kyslíku a jeho vzduchotechnika kyslík obnovuje určitou rychlostí. No a je pochopitelné, že čím více je v bunkru
-            lidí, tím rychleji kyslík ubývá. V momentě, kdy v bunkru žádný kyslík není, musí všechny osoby bunkr opustit.
+            Aby bunkr fungoval, musí v něm být hodnota zásob energie větší než 0. Každý bunkr má omezení maximálních zásob 
+            energie a jeho generátor obnovuje energii určitou rychlostí. No a je pochopitelné, že čím více je v bunkru
+            lidí, tím rychleji energie ubývá. V momentě, kdy bunkr žádnou energii nemá, přestává platit ochrana proti radiaci
+            a přestává fungovat zámek na dveřích bunkru (bunkr je od této doby stále odemčen).
         </P>
         
         <div className="grid">
@@ -126,15 +127,15 @@ const Zone = () => {
                     <P>---</P>
                     <P>osoby v bunkru: {bunker.numberOfUsers}</P>
                     <P>---</P>
-                    <P>kyslik: {bunker.oxygen.toFixed(2)}/{bunker.oxygenCap.toFixed(2)}</P>
-                    <P>spotreba kysliku: { countConsumption(bunker).toFixed(2) } / minuta</P>
-                    <P>generator kysliku: { bunker.oxygenGeneration.toFixed(2) }/minuta</P>
+                    <P>energie: {bunker.oxygen.toFixed(2)}/{bunker.oxygenCap.toFixed(2)}</P>
+                    <P>spotreba energie: { countConsumption(bunker).toFixed(2) } / minuta</P>
+                    <P>generator energie: { bunker.oxygenGeneration.toFixed(2) }/minuta</P>
                     <P>
                         {
                             countConsumption(bunker) > bunker.oxygenGeneration ?
                                 `zbyvajici cas ${getTimeToZero(bunker).toFixed(0)} minut`
                                 :
-                                `cas do doplneni kysliku ${getTimeToFull(bunker).toFixed(0)} minut` 
+                                `cas do plneho doplneni ${getTimeToFull(bunker).toFixed(0)} minut` 
                         }
                     </P>
                     <P>---</P>
