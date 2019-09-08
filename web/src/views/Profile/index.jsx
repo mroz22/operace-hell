@@ -5,7 +5,7 @@ import { H, P, Input } from '../../components';
 
 const Profile = ({ user }) => {
     const [role, setRole] = useState(null);
-    const [teams, setTeams] = useState([]);
+    // const [teams, setTeams] = useState([]);
     
     const [error, setError] = useState(null);
     const [roleDraft, setRoleDraft] = useState(null);
@@ -31,18 +31,18 @@ const Profile = ({ user }) => {
             });
         };
         
-        const getTeams = () => {
-            const newTeams = [];
-            firebase.firestore().collection("teams").get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    newTeams.push({ id: doc.id,...doc.data()});
-                });
-                setTeams(newTeams);
-            });
-        };
+        // const getTeams = () => {
+        //     const newTeams = [];
+        //     firebase.firestore().collection("teams").get().then(function(querySnapshot) {
+        //         querySnapshot.forEach(function(doc) {
+        //             newTeams.push({ id: doc.id,...doc.data()});
+        //         });
+        //         setTeams(newTeams);
+        //     });
+        // };
 
         getRole();
-        getTeams();
+        // getTeams();
     }, [user])
 
     if (error) {
