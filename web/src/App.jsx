@@ -17,6 +17,7 @@ import Signup from './views/Signup';
 import Profile from './views/Profile';
 import Zone from './views/Zone';
 import Rules from './views/Rules';
+ 
 
 const styles = {
     app: {
