@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 
-import { H, P } from '../../components';
+import { H, P, Input } from '../../components';
 
 const Profile = ({ user }) => {
     const [role, setRole] = useState(null);
     const [teams, setTeams] = useState([]);
+    
     const [error, setError] = useState(null);
     const [roleDraft, setRoleDraft] = useState(null);
     const [editMode, setEditMode] = useState(false);
+
     
     const updateRole = () => {
         firebase.firestore().collection("users").doc(user.uid).set(roleDraft)
@@ -56,10 +58,28 @@ const Profile = ({ user }) => {
             {
                 editMode && role && (
                     <>
-                    <P>Jmeno:</P>
-                    <input type="text" value={roleDraft.name} onChange={(event => setRoleDraft({ ...roleDraft, name: event.target.value}))} />
-                    
-                    <P>Team:</P>
+                    <Input 
+                        label="Jmeno"
+                        type="text"
+                        value={roleDraft.name}
+                        onChange={(event => setRoleDraft({ ...roleDraft, name: event.target.value}))}
+                    />
+                    <Input
+                        label="Mam mobil s internetem / jsem schopny si poridit"
+                        type="checkbox"
+                        checked={roleDraft.hasInternet}
+                        onChange={() => setRoleDraft({...roleDraft, hasInternet: !roleDraft.hasInternet})}
+                    /> 
+
+                    <Input
+                        label="Mam Android / iPhone"
+                        type="select"
+                        value={role.phoneType}
+                        options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
+                        onChange={(selected) => {console.log(selected); setRoleDraft({...roleDraft, phoneType: selected.value})}}
+                    /> 
+
+                    {/* <P>Team:</P>
                     <select     
                         onChange={(event) => {  
                             setRoleDraft({ ...roleDraft, TeamId: event.target.value})
@@ -76,7 +96,7 @@ const Profile = ({ user }) => {
                                 return (<option value={team.id} key={team.id}>{team.name}</option>)
                             })
                         }
-                    </select>
+                    </select> */}
                     <br />
                     <button type="button" onClick={updateRole}>ulozit</button>
                     </>
@@ -87,13 +107,15 @@ const Profile = ({ user }) => {
                 !editMode && role &&  (
                     <>
                         <P>Jmeno: {role.name}</P>
-                        <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P>
-                        
+                        {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
+                        <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
+                        <P>Platforma: {role.phoneType}</P>
+             
+                        <br />
                         <button type="button" onClick={() => setEditMode(true)}>editovat</button>
                     </>
                 )
             }
-            
             <br/>
             <button type="button" onClick={signOut}>odhlasit</button>
         </>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Input from './Input';
+
 const styles = {
     h: {
         fontSize: '2em',
@@ -15,4 +17,4 @@ const H = (props) => (<div style={styles.h}>{props.children}</div>);
 
 const P = (props) => (<div style={styles.p}>{props.children}</div>);
 
-export { H, P }
+export { H, P, Input }
