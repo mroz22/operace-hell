@@ -7,9 +7,10 @@ const Wrapper = styled.div`
     margin-bottom: 15px;
 `
 
-const Label = styled.div`
-
+export const Label = styled.div`
+    font-weight: bold;
 `
+
 const Input = (props) => {
     if (props.type === 'select' || props.type === 'checkbox') {
         return (

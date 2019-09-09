@@ -1,0 +1,13 @@
+[{
+    "id": "major-jasin",
+    "name": "Major Jasin",
+    "description": "Major jasin je fakt tvrdak",
+    "equipment": [
+        "AK-47"
+    ],
+    "ammo": "low"
+}, {
+    "id": "kapitan-brozov",
+    "name": "kapitan brozov",
+    "description": "trochu suchta"
+}]

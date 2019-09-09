@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
+import styled from 'styled-components';
 
 import { H, P, Input } from '../../components';
+import { Label } from '../../components/Input';
 
+const CharacterWrapper = styled.div`
+    cursor: pointer;
+    background-color: ${props => props.isSelected ? 'gray' : 'white'};
+`;
+
+const Character = ({ character, isSelected, onClick }) => {
+    return (
+        <CharacterWrapper isSelected={isSelected} onClick={onClick}>
+            <div>{character.name} </div>
+            <div>{character.description}</div>
+        </CharacterWrapper>
+    )
+
+}
 const Profile = ({ user }) => {
     const [role, setRole] = useState(null);
     // const [teams, setTeams] = useState([]);
+    const [characters, setCharacters] = useState([]);
     
     const [error, setError] = useState(null);
     const [roleDraft, setRoleDraft] = useState(null);
@@ -13,6 +30,7 @@ const Profile = ({ user }) => {
 
     
     const updateRole = () => {
+        console.log('update', roleDraft);
         firebase.firestore().collection("users").doc(user.uid).set(roleDraft)
         .catch(function(error) {
             setError(error.message);
@@ -22,6 +40,24 @@ const Profile = ({ user }) => {
     const signOut = () => {
         firebase.auth().signOut();
     }
+
+    useEffect(() => {
+        const getCharacters = async () => {
+            try {
+                const response = await fetch('./data/characters.json');
+                if (!response.ok) {
+                    // would be nice to handle error but meh..
+                    return
+                }
+                const json = await response.json();
+                setCharacters(json);
+            } catch (err) {
+                // mehh...
+            }
+        }
+        getCharacters();
+
+    }, [])
 
     useEffect(() => {
         const getRole = () => {
@@ -48,6 +84,7 @@ const Profile = ({ user }) => {
     if (error) {
         return <P>Error: {error}</P>
     }
+
 
     return (
         <>
@@ -102,6 +139,17 @@ const Profile = ({ user }) => {
                             })
                         }
                     </select> */}
+                    <Label>Zvol si postavu</Label>
+                    {
+                        characters.map(( char ) => (
+                            <Character
+                                character={char}
+                                isSelected={role && role.characterId === char.id}
+                                key={char.id}
+                                onClick={() => setRoleDraft({...roleDraft, characterId: char.id })}
+                            />
+                        ))
+                    }
                     <br />
                     <button type="button" onClick={updateRole}>ulozit</button>
                     </>
@@ -115,6 +163,7 @@ const Profile = ({ user }) => {
                         {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
+                        { role.characterId && <P>Role: {characters.find(ch => ch.id === role.characterId).name }</P> }
                         <br />
                         <button type="button" onClick={() => setEditMode(true)}>editovat</button>
                     </>
