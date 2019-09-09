@@ -6,7 +6,8 @@
         "AK-47"
     ],
     "ammo": "low",
-    "trivia": "Neco z historie"
+    "trivia": "Neco z historie",
+    "img": "rambo.jpg"
 }, {
     "id": "kapitan-brozov",
     "name": "kapitan brozov",
@@ -15,5 +16,6 @@
         "AK-47"
     ],
     "ammo": "medium",
-    "trivia": "Neco z historie"
+    "trivia": "Neco z historie",
+    "img": "rambo.jpg"
 }]

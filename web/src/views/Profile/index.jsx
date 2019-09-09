@@ -181,7 +181,7 @@ const Profile = ({ user }) => {
                             <P>{getChar().description}</P>
                             <P>Povolene vybaveni: {getChar().equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</P>
                             <P><i>{getChar().trivia}</i></P>
-                            
+                            <img src={`./data/characters/${getChar().img}`} width="300" alt="avatar"/>
                             </>
                         )}
                         {
