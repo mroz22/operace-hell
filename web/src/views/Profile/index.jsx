@@ -173,7 +173,7 @@ const Profile = ({ user }) => {
                         {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
-                        { role.characterId && <P>Role: {characters.find(ch => ch.id === role.characterId).name }</P> }
+                        { getChar() && <P>Role: {getChar().name}</P> }
                         <Label>Role: </Label>
                         { getChar() && (
                             <>
