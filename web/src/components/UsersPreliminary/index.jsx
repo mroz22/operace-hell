@@ -18,11 +18,12 @@ const Users = ({ roles, characters }) => {
                 result[role.characterId]++;
             }
         })
-        return Object.entries(result).sort((n1,n2) => n1[1] - n2[1]);
+        return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
 
     const getMostFavorite = () => {
         const sorted = getSorted();
+        console.log(sorted)
         return characters.find(ch => ch.id === sorted[0][0]).name
     }
 
@@ -33,7 +34,7 @@ const Users = ({ roles, characters }) => {
         <P>Celkem hracu kteri maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
         <P>Celkem hracu kteri maji iphone: { roles.length && roles.filter(r => r.phoneType === 'iphone').length }</P>
         <P>Celkem hracu kteri maji android: { roles.length && roles.filter(r => r.phoneType === 'android').length }</P>
-        <P>Nejoblibenejsi zvoleny charakter: {getMostFavorite()}</P>
+        <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P>
         </div>
     )
 }

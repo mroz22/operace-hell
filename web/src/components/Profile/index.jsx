@@ -8,6 +8,7 @@ import { Label } from '../Input';
 const CharacterWrapper = styled.div`
     cursor: pointer;
     background-color: ${props => props.isSelected ? 'gray' : 'white'};
+    margin: 5px 0 5px 0;
 `;
 
 const Character = ({ character, isSelected, onClick }) => {
