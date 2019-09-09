@@ -7,9 +7,9 @@ import Signin from '../../components/Signin';
 
 const Leave = ({ onClick}) => (
         <div style={{ textAlign: 'center', fontSize: '18pt', cursor: 'pointer'}} onClick={onClick}>
-            @@@@@@@@@@@@@@@@@@@@@@@<br />
-            ======== LEAVE ========<br />
-            @@@@@@@@@@@@@@@@@@@@@@@
+            @@@@@@@@@@@<br />
+            ===LEAVE===br />
+            @@@@@@@@@@@
         </div>
 );
 

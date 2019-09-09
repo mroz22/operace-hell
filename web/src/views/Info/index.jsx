@@ -193,9 +193,9 @@ export default (props) => (
                 </P>
 
                 <div style={{ textAlign: 'center', fontSize: '18pt', cursor: 'pointer'}} onClick={() => props.setIsProfileView(true)}>
-                   @@@@@@@@@@@@@@@@@@@@@@@<br />
-                   ======== ENTER ========<br />
-                   @@@@@@@@@@@@@@@@@@@@@@@
+                   @@@@@@@@@@@<br />
+                   ===ENTER===<br />
+                   @@@@@@@@@@@
 
                 </div>
                 
