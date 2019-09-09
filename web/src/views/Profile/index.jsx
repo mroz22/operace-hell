@@ -30,11 +30,12 @@ const Profile = ({ user }) => {
 
     
     const updateRole = () => {
-        console.log('update', roleDraft);
-        firebase.firestore().collection("users").doc(user.uid).set(roleDraft)
+        return firebase.firestore().collection("users")
+            .doc(user.uid)
+            .set(roleDraft)
         .catch(function(error) {
             setError(error.message);
-        }).finally(() => setEditMode(false));
+        });
     }
 
     const signOut = () => {
@@ -80,6 +81,12 @@ const Profile = ({ user }) => {
         getRole();
         // getTeams();
     }, [user])
+
+    const getChar = () => {
+        if (characters.length && role && role.characterId) {
+            return characters.find(ch => ch.id === role.characterId)
+        }
+    }
 
     if (error) {
         return <P>Error: {error}</P>
@@ -146,12 +153,15 @@ const Profile = ({ user }) => {
                                 character={char}
                                 isSelected={role && role.characterId === char.id}
                                 key={char.id}
-                                onClick={() => setRoleDraft({...roleDraft, characterId: char.id })}
+                                onClick={() => { 
+                                    setRoleDraft({...roleDraft, characterId: char.id });
+                                    updateRole();
+                                }}
                             />
                         ))
                     }
                     <br />
-                    <button type="button" onClick={updateRole}>ulozit</button>
+                    <button type="button" onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</button>
                     </>
                 )
             }
@@ -164,6 +174,19 @@ const Profile = ({ user }) => {
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
                         { role.characterId && <P>Role: {characters.find(ch => ch.id === role.characterId).name }</P> }
+                        <Label>Role: </Label>
+                        { getChar() && (
+                            <>
+                            <P>{getChar().name}</P>
+                            <P>{getChar().description}</P>
+                            <P>Povolene vybaveni: {getChar().equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</P>
+                            <P><i>{getChar().trivia}</i></P>
+                            
+                            </>
+                        )}
+                        {
+                            !getChar() && 'Nezvolena'
+                        }
                         <br />
                         <button type="button" onClick={() => setEditMode(true)}>editovat</button>
                     </>

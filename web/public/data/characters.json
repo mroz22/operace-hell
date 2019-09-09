@@ -5,9 +5,15 @@
     "equipment": [
         "AK-47"
     ],
-    "ammo": "low"
+    "ammo": "low",
+    "trivia": "Neco z historie"
 }, {
     "id": "kapitan-brozov",
     "name": "kapitan brozov",
-    "description": "trochu suchta"
+    "description": "trochu suchta",
+    "equipment": [
+        "AK-47"
+    ],
+    "ammo": "medium",
+    "trivia": "Neco z historie"
 }]
