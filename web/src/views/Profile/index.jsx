@@ -11,7 +11,8 @@ const Leave = ({ onClick}) => (
             ======== LEAVE ========<br />
             @@@@@@@@@@@@@@@@@@@@@@@
         </div>
-)
+);
+
 export default (props) => {
     const [signup, setSignup] = useState(true);
     if (!props.user) {

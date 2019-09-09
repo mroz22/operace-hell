@@ -11,6 +11,8 @@ const App = () => {
     const [ user, setUser ] = useState(null);
 
     const [role, setRole] = useState(null);
+    const [roles, setRoles] = useState([]);
+
     // const [teams, setTeams] = useState([]);
 
     const [characters, setCharacters] = useState([]);
@@ -18,6 +20,8 @@ const App = () => {
     const [isProfileView, setIsProfileView] = useState(false);
     
     useEffect(() => {
+        const db = firebase.firestore();
+
         // set auth;
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
@@ -40,16 +44,29 @@ const App = () => {
                 // mehh...
             }
         }
+
+        const getRoles = () => {
+            db.collection('users').onSnapshot(function(querySnapshot) {
+                const updatedRoles = [];
+                querySnapshot.forEach(function(doc) {
+                    updatedRoles.push(doc.data());
+                });
+                setRoles(updatedRoles);
+            });
+        }
+
+        getRoles();
         getCharacters();
     }, [])
 
     useEffect(() => {
-        console.log(user);
-        if (!user) {
-            return;
-        }
+        const db = firebase.firestore();
+
         const getRole = () => {
-            firebase.firestore().collection("users").doc(user.uid).onSnapshot(doc => {
+            if (!user) {
+                return;
+            }
+            db.collection("users").doc(user.uid).onSnapshot(doc => {
                 setRole(doc.data());
             });
         };
@@ -68,11 +85,14 @@ const App = () => {
         // getTeams();
     }, [user])
 
+
+
+
     
 
     return (
         <Preloader>
-            { !isProfileView && <Info setIsProfileView={setIsProfileView} />}
+            { !isProfileView && <Info setIsProfileView={setIsProfileView} roles={roles} characters={characters} />}
             { isProfileView && <Profile setIsProfileView={setIsProfileView} user={user} role={role} characters={characters} /> }
             
         

@@ -203,7 +203,7 @@ export default (props) => (
             
             <Background image={background4} />
             <Section>
-                <Users />            
+                <Users roles={props.roles} characters={props.characters}/>            
             </Section>
 
             <Background image={background5} />
