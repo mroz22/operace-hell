@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as firebase from 'firebase';
 
-import { H, P } from '../../components';
+import { H, P } from '..';
 
 const Teams = ({children}) => {
     return (<div style={{
