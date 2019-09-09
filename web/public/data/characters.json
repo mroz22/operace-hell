@@ -3,7 +3,7 @@
     "name": "Major Jasin",
     "description": "Major jasin je fakt tvrdak",
     "equipment": [
-        "AK-47"
+        "AK74 nebo MP5PDW + Glock"
     ],
     "ammo": "low",
     "trivia": "Neco z historie",
@@ -17,5 +17,25 @@
     ],
     "ammo": "medium",
     "trivia": "Neco z historie",
+    "img": "rambo.jpg"
+}, {
+    "id": "ppr-kadankov",
+    "name": "podpraporcik Kadankov",
+    "description": "Tichy typ.",
+    "equipment": [
+        "Pistole (idealne Glock)"
+    ],
+    "ammo": "medium",
+    "trivia": "Neco z historie",
+    "img": "rambo.jpg"
+}, {
+    "id": "plk-glabazna",
+    "name": "plk. Glabazna",
+    "description": "",
+    "equipment": [
+        ""
+    ],
+    "ammo": "medium",
+    "trivia": "Byvaly velitel jednotek Beskydskeho odboje",
     "img": "rambo.jpg"
 }]
