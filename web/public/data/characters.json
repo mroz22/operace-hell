@@ -7,7 +7,7 @@
     ],
     "ammo": "low",
     "trivia": "Neco z historie",
-    "img": "rambo.jpg"
+    "img": "jasin.png"
 }, {
     "id": "kapitan-brozov",
     "name": "kapitan brozov",
@@ -33,9 +33,29 @@
     "name": "plk. Glabazna",
     "description": "",
     "equipment": [
-        ""
+        "glabazna.png"
     ],
     "ammo": "medium",
     "trivia": "Byvaly velitel jednotek Beskydskeho odboje",
     "img": "rambo.jpg"
+}, {
+    "id": "des-kuratko",
+    "name": "des. Kuratko",
+    "description": "Vedecky pracovnik vyzkumu ChLDR. Je to typicky pruserar.",
+    "equipment": [
+        "bily laboratorni plast nutnosti"
+    ],
+    "ammo": "medium",
+    "trivia": "Na operaci Luxor byl otraven na primy prikaz veliciho dustojnika majora Jasina.",
+    "img": "kuratko.jpg"
+}, {
+    "id": "pplk-fifinka",
+    "name": "pplk. fifinka",
+    "description": "Vrchni chirurg jednotek ChLDR. Neni vsak prilis loayalni oficialni ideologii",
+    "equipment": [
+        ""
+    ],
+    "ammo": "medium",
+    "trivia": "",
+    "img": "fifinka.jpg"
 }]
