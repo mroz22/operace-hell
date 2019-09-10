@@ -3,7 +3,8 @@
     "name": "Major Jasin",
     "description": "Major jasin je fakt tvrdak",
     "equipment": [
-        "AK74 nebo MP5PDW + Glock"
+        "AK74 nebo MP5PDW + Glock",
+        "maskace vz. 95"
     ],
     "ammo": "low",
     "trivia": "Neco z historie",
@@ -16,7 +17,7 @@
         "AK-47"
     ],
     "ammo": "medium",
-    "trivia": "Neco z historie",
+    "trivia": "Podle nepodlozene pomluvacne kampane vedene ChLDR neumi zasunout zasobnik do kalasnikovu.",
     "img": "rambo.jpg"
 }, {
     "id": "ppr-kadankov",
@@ -33,11 +34,11 @@
     "name": "plk. Glabazna",
     "description": "",
     "equipment": [
-        "glabazna.png"
+        
     ],
     "ammo": "medium",
     "trivia": "Byvaly velitel jednotek Beskydskeho odboje",
-    "img": "rambo.jpg"
+    "img": "glabazna.png"
 }, {
     "id": "des-kuratko",
     "name": "des. Kuratko",

@@ -8,6 +8,13 @@ const CharacterWrapper = styled.div`
     text-align: center;
     background-color: ${props => props.isSelected ? 'gray' : 'white'};
     margin: 5px 0 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    min-height: 330px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
 `;
 
 const Character = ({ character, isSelected, onClick, showName }) => {
@@ -16,11 +23,18 @@ const Character = ({ character, isSelected, onClick, showName }) => {
     }
     return (
         <CharacterWrapper isSelected={isSelected} onClick={onClick}>
-            { showName !== false && <div>{character.name} </div>}
-            <div>{character.description}</div>
-            <div>Povolene vybaveni: {character.equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</div>
-            <img src={`./data/characters/${character.img}`} width="200" alt="avatar"/>
-            <div><i>{character.trivia}</i></div>
+            <div style={{ textAlign: 'left', flex: '2 1 220px' }}>
+                { showName !== false && <div style={{ fontWeight: 'bold' }}>{character.name} </div>}
+                <div>{character.description}</div>
+                <div>Nezbytne vybaveni:</div> 
+                <ul>
+                    {character.equipment.map((eq) => (<li key={eq}>{eq}{', '} </li>))}
+                </ul>
+            </div>
+            <div style={{ flex: '1 1 220px' }}>
+                <img src={`./data/characters/${character.img}`} width="200px" alt="avatar"/>
+                <div style={{ fontSize: '8pt'}}><i>{character.trivia}</i></div>
+            </div>
         </CharacterWrapper>
     )
 }
@@ -97,7 +111,13 @@ const Profile = ({ user, characters, role }) => {
     return (
         <>
             <H>Vitej v systemu</H>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Link onClick={signOut}>odhlasit</Link>
+            { !editMode && <Link onClick={() => setEditMode(true)}>editovat</Link>}
+            { editMode && <Link onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</Link>}
+            </div>
+            
+
             <br />
 
             <P>UID: {user.uid}</P>
@@ -191,7 +211,6 @@ const Profile = ({ user, characters, role }) => {
                     }
 
                     <br />
-                    <Link onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</Link>
                     </>
                 )
             }
@@ -237,7 +256,6 @@ const Profile = ({ user, characters, role }) => {
                         <br />
                         <br />
                         <br />
-                        <Link onClick={() => setEditMode(true)}>editovat</Link>
                     </>
                 )
             }
