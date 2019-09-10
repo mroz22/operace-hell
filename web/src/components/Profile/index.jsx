@@ -27,6 +27,7 @@ const Character = ({ character, isSelected, onClick, showName }) => {
 
 const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     const { characterId } = roleDraft;
+
     const next = () => {
         const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
         if (currentIndex < characters.length -1) {
@@ -49,7 +50,7 @@ const CharacterPicker = ({ characters, onChange, roleDraft }) => {
         <div style={{ textAlign: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Link onClick={next}>predchozi</Link>
-                <div>{characters.find(c => c.id === characterId).name}</div>
+                <div>{char.name}</div>
                 <Link onClick={prev}>dalsi</Link>
             </div>
             
@@ -167,8 +168,14 @@ const Profile = ({ user, characters, role }) => {
                         value={role.roleType}
                         options={[{ value: 'pruzkumnik', label: 'pruzkumnik'}, {value: 'divoky', label: 'divoky'}]}
                         onChange={(selected) => {
-                            setRoleDraft({...roleDraft, roleType: selected.value});
-                            updateRole({...roleDraft, roleType: selected.value});
+                            // setRoleDraft({
+                            //     ...roleDraft,
+                            //     characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
+                            //     roleType: selected.value});
+                            updateRole({
+                                ...roleDraft,
+                                characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
+                                roleType: selected.value});
                         }}
                     />
 
