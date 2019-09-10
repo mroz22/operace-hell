@@ -69,10 +69,10 @@ const Profile = ({ user, characters, role }) => {
         setRoleDraft(role);
     }, [role])
 
-    const updateRole = () => {
+    const updateRole = (override) => {
         return firebase.firestore().collection("users")
             .doc(user.uid)
-            .set(roleDraft)
+            .set(override ? override : roleDraft)
         .catch(function(error) {
             setError(error.message);
         });
@@ -153,11 +153,29 @@ const Profile = ({ user, characters, role }) => {
                         }
                     </select> */}
 
-                    <SectionDivider>Postava</SectionDivider>
-                    <CharacterPicker
-                        onChange={(characterId) => setRoleDraft({ ...roleDraft, characterId })}
-                        characters={characters}
-                        roleDraft={roleDraft} />
+                    <Input
+                        label="Pruzkumnik / Divoky"
+                        type="select"
+                        value={role.roleType}
+                        options={[{ value: 'pruzkumnik', label: 'pruzkumnik'}, {value: 'divoky', label: 'divoky'}]}
+                        onChange={(selected) => {
+                            setRoleDraft({...roleDraft, roleType: selected.value});
+                            updateRole({...roleDraft, roleType: selected.value});
+                        }}
+                    />
+
+                    {
+                        role.roleType === 'pruzkumnik' && (
+                            <>
+                            <SectionDivider>Postava</SectionDivider>
+                            <CharacterPicker
+                                onChange={(characterId) => setRoleDraft({ ...roleDraft, characterId })}
+                                characters={characters}
+                                roleDraft={roleDraft} />
+                            </>
+                        )
+                    }
+
                     <br />
                     <Link onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</Link>
                     </>
@@ -176,8 +194,13 @@ const Profile = ({ user, characters, role }) => {
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
 
+
                         <SectionDivider>Postava</SectionDivider>
-                        <Character character={getChar()} />
+                        {
+                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
+                        }
+                        <br />
+                        <br />
                         <br />
                         <Link onClick={() => setEditMode(true)}>editovat</Link>
                     </>
