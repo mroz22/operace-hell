@@ -8,7 +8,7 @@ import background4 from '../../background/metro4.jpg';
 import background5 from '../../background/stalker4.jpg';
 import background6 from '../../background/metro3.jpg';
 
-import { H, P, Section } from '../../components';
+import { H, P, Section, BigButton } from '../../components';
 import Terminal from '../../components/Terminal';
 
 import Users from '../../components/UsersPreliminary';
@@ -191,14 +191,7 @@ export default (props) => (
                     knížky zakuti v oceli. Ti první jsou jasní. Druzí byli takoví poloprimitivní lidé, které uctívali 
                     umělou inteligenci a pomáhali jí získávat zdroje a ona je za to odměňovala.
                 </P>
-
-                <div style={{ textAlign: 'center', fontSize: '18pt', cursor: 'pointer'}} onClick={() => props.setIsProfileView(true)}>
-                   @@@@@@@@@@@<br />
-                   ===ENTER===<br />
-                   @@@@@@@@@@@
-
-                </div>
-                
+                <BigButton text="ENTER" onClick={() => props.setIsProfileView(true)} />
             </Section>
             
             <Background image={background4} />

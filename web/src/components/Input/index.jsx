@@ -19,7 +19,7 @@ const Input = (props) => {
                     <>
                     <Label>{props.label}</Label>
                     <Select
-                        value={props.options.find(o => o.name === props.value)}
+                        defaultValue={props.options.find(o => o.value === props.value)}
                         onChange={props.onChange}
                         options={props.options}
                     />

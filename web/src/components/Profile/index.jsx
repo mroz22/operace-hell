@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import styled from 'styled-components';
 
-import { H, P, Link, Input } from '..';
-import { Label } from '../Input';
+import { H, P, Link, Input, SectionDivider } from '..';
 
 const CharacterWrapper = styled.div`
     cursor: pointer;
@@ -12,14 +11,53 @@ const CharacterWrapper = styled.div`
 `;
 
 const Character = ({ character, isSelected, onClick }) => {
+    if (!character) {
+        return <div>Character nezvolen</div>
+    }
     return (
         <CharacterWrapper isSelected={isSelected} onClick={onClick}>
             <div>{character.name} </div>
             <div>{character.description}</div>
+            <div>Povolene vybaveni: {character.equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</div>
+            <img src={`./data/characters/${character.img}`} width="200" alt="avatar"/>
+            <div><i>{character.trivia}</i></div>
         </CharacterWrapper>
     )
-
 }
+
+const CharacterPicker = ({ characters, onChange, roleDraft }) => {
+    const { characterId } = roleDraft;
+    const next = () => {
+        const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
+        if (currentIndex < characters.length -1) {
+            return onChange(characters[currentIndex + 1].id)
+        }
+        return onChange(characters[0].id)
+    }
+
+    const prev = () => {
+        const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
+        if (currentIndex > 0) {
+            return onChange(characters[currentIndex - 1].id)
+        }
+        return onChange(characters[characters.length -1].id)
+    }
+
+    const char = characters.find(c => c.id === characterId) || characters[0] 
+
+    return (
+        <div>
+            <div style={{ display: 'flex', width: '70%', justifyContent: 'space-between' }}>
+                <Link onClick={next}>predchozi</Link>
+                <div>{characters.find(c => c.id === characterId).name}</div>
+                <Link onClick={prev}>dalsi</Link>
+            </div>
+            
+            <Character character={char} />    
+        </div>
+    )
+}
+
 const Profile = ({ user, characters, role }) => {
     
     const [editMode, setEditMode] = useState(false);
@@ -67,12 +105,15 @@ const Profile = ({ user, characters, role }) => {
             {
                 editMode && role && (
                     <>
+                    <SectionDivider>Osobni info</SectionDivider>
                     <Input 
-                        label="Jmeno"
+                        label="Skutecne jmeno"
                         type="text"
                         value={roleDraft.name}
                         onChange={(event => setRoleDraft({ ...roleDraft, name: event.target.value}))}
                     />
+                    
+                    <SectionDivider>Dotaznik</SectionDivider>
                     <Input
                         label="Mam mobil s internetem / jsem schopny si poridit"
                         type="checkbox"
@@ -83,12 +124,12 @@ const Profile = ({ user, characters, role }) => {
                     {
                         roleDraft.hasInternet && (
                             <Input
-                            label="Mam Android / iPhone"
-                            type="select"
-                            value={role.phoneType}
-                            options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
-                            onChange={(selected) => setRoleDraft({...roleDraft, phoneType: selected.value})}
-                        /> 
+                                label="Mam Android / iPhone"
+                                type="select"
+                                value={role.phoneType}
+                                options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
+                                onChange={(selected) => setRoleDraft({...roleDraft, phoneType: selected.value})}
+                            /> 
                         )
                     }
                     
@@ -111,20 +152,12 @@ const Profile = ({ user, characters, role }) => {
                             })
                         }
                     </select> */}
-                    <Label>Zvol si postavu</Label>
-                    {
-                        characters.map(( char ) => (
-                            <Character
-                                character={char}
-                                isSelected={role && role.characterId === char.id}
-                                key={char.id}
-                                onClick={() => { 
-                                    setRoleDraft({...roleDraft, characterId: char.id });
-                                    updateRole();
-                                }}
-                            />
-                        ))
-                    }
+
+                    <SectionDivider>Postava</SectionDivider>
+                    <CharacterPicker
+                        onChange={(characterId) => setRoleDraft({ ...roleDraft, characterId })}
+                        characters={characters}
+                        roleDraft={roleDraft} />
                     <br />
                     <Link onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</Link>
                     </>
@@ -134,24 +167,17 @@ const Profile = ({ user, characters, role }) => {
             {
                 !editMode && role &&  (
                     <>
+                        <SectionDivider>Osobni info</SectionDivider>
+
                         <P>Jmeno: {role.name}</P>
                         {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
+                        <SectionDivider>Dotaznik</SectionDivider>
+                        
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
-                        { getChar() && <P>Role: {getChar().name}</P> }
-                        <Label>Role: </Label>
-                        { getChar() && (
-                            <>
-                            <P>{getChar().name}</P>
-                            <P>{getChar().description}</P>
-                            <P>Povolene vybaveni: {getChar().equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</P>
-                            <P><i>{getChar().trivia}</i></P>
-                            <img src={`./data/characters/${getChar().img}`} width="300" alt="avatar"/>
-                            </>
-                        )}
-                        {
-                            !getChar() && 'Nezvolena'
-                        }
+
+                        <SectionDivider>Postava</SectionDivider>
+                        <Character character={getChar()} />
                         <br />
                         <Link onClick={() => setEditMode(true)}>editovat</Link>
                     </>

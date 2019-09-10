@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 
-import { Link, Section } from '../../components';
+import { Link, Section, BigButton } from '../../components';
 import Profile from '../../components/Profile';
 import Signup from '../../components/Signup';
 import Signin from '../../components/Signin';
-
-const Leave = ({ onClick}) => (
-        <div style={{ textAlign: 'center', fontSize: '18pt', cursor: 'pointer'}} onClick={onClick}>
-            @@@@@@@@@@@<br />
-            ===LEAVE===br />
-            @@@@@@@@@@@
-        </div>
-);
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
@@ -27,7 +19,7 @@ export default (props) => {
                 
             </Section>
             <Section>
-                <Leave onClick={() => props.setIsProfileView(false)} />
+                <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
             </Section>
             </>
         ) 
@@ -39,7 +31,7 @@ export default (props) => {
                 <Profile user={props.user} characters={props.characters} role={props.role} />
             </Section>
             <Section>
-                <Leave onClick={() => props.setIsProfileView(false)} />
+                <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
             </Section>
         </div>
     );
