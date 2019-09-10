@@ -5,18 +5,18 @@ import styled from 'styled-components';
 import { H, P, Link, Input, SectionDivider } from '..';
 
 const CharacterWrapper = styled.div`
-    cursor: pointer;
+    text-align: center;
     background-color: ${props => props.isSelected ? 'gray' : 'white'};
     margin: 5px 0 5px 0;
 `;
 
-const Character = ({ character, isSelected, onClick }) => {
+const Character = ({ character, isSelected, onClick, showName }) => {
     if (!character) {
         return <div>Character nezvolen</div>
     }
     return (
         <CharacterWrapper isSelected={isSelected} onClick={onClick}>
-            <div>{character.name} </div>
+            { showName !== false && <div>{character.name} </div>}
             <div>{character.description}</div>
             <div>Povolene vybaveni: {character.equipment.map((eq) => (<span key={eq}>{eq}{', '} </span>))}</div>
             <img src={`./data/characters/${character.img}`} width="200" alt="avatar"/>
@@ -46,14 +46,14 @@ const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     const char = characters.find(c => c.id === characterId) || characters[0] 
 
     return (
-        <div>
-            <div style={{ display: 'flex', width: '70%', justifyContent: 'space-between' }}>
+        <div style={{ textAlign: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Link onClick={next}>predchozi</Link>
                 <div>{characters.find(c => c.id === characterId).name}</div>
                 <Link onClick={prev}>dalsi</Link>
             </div>
             
-            <Character character={char} />    
+            <Character character={char} showName={false} />    
         </div>
     )
 }
@@ -184,6 +184,7 @@ const Profile = ({ user, characters, role }) => {
                 )
             }
             <br/>
+            <i>* tvoje osobni udaje jsou analyzovany pokrocilymi algoritmy a jsou zcela jiste zpracovany v rozporu s nejakym zakonem </i>
         </>
     )
 }
