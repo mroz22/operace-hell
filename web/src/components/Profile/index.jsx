@@ -152,7 +152,8 @@ const Profile = ({ user, characters, role }) => {
                             })
                         }
                     </select> */}
-
+                    <SectionDivider>Postava</SectionDivider>
+                    
                     <Input
                         label="Pruzkumnik / Divoky"
                         type="select"
@@ -167,7 +168,6 @@ const Profile = ({ user, characters, role }) => {
                     {
                         role.roleType === 'pruzkumnik' && (
                             <>
-                            <SectionDivider>Postava</SectionDivider>
                             <CharacterPicker
                                 onChange={(characterId) => setRoleDraft({ ...roleDraft, characterId })}
                                 characters={characters}
