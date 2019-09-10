@@ -56,7 +56,7 @@ const Intro = (props) => (
             padding: '30px',
             fontSize: '4em',
             color: 'white',
-        }}>Operace SCHWARZ JE SUCHTA</div>
+        }}>Operace HELL</div>
     </div>
 );
 
@@ -174,9 +174,12 @@ export default (props) => (
                 <P>
                     Průzkumníci tvoří většinu hráčů. Jsou to právě oni, na kterých AI testuje tuto simulaci. Hrají v teamu
                     a začínají na utajeném místě (dozví se včas před hrou). Svůj team by si měly pečlivě vyladit, jak do složení,
-                    tak vybavení. Každý hráč se v registraci rozhodne, za jaké vybavení utratí přidělené body 
-                    (zbraně, střelivo, geigerův počítač, atombordel...).
-                    Povinné vybavení: smartphone s internetovým připojením a baterií, která vydrží po celou dobu hry. Doporučujeme
+                    tak vybavení. Každý hráč se v registraci rozhodne, za jakou postavu bude hrát a je jeho povinností si obstarat
+                    předepsané vybavení.
+                </P>
+
+                <P>
+                    Povinné vybavení pro všechny průzkumníky: smartphone s internetovým připojením a baterií, která vydrží po celou dobu hry. Doporučujeme
                     powerbanku. 
                 </P>
 
@@ -186,10 +189,14 @@ export default (props) => (
                     Tato strana je vhodná pro hráče, kteří nemají nebo si nechtějí brát požadavaný smartphone. Takoví 
                     neutrálové, kteří začínají v Zóně, hodně toho o Zóně vědí, takže jsou cenný zdroj informací. Už tam 
                     totiž pěkně dlouho žijou a vůbec jim nevadí radiace (tedy nemusí mít mobil).
-
-                    Ale nemůžu se rozhodnout, jestli to mají být Agenti na styl Matrixu, nebo Deus ex Machina na style 
-                    knížky zakuti v oceli. Ti první jsou jasní. Druzí byli takoví poloprimitivní lidé, které uctívali 
-                    umělou inteligenci a pomáhali jí získávat zdroje a ona je za to odměňovala.
+                </P>
+                <P>
+                    Pod jejich táborem se nachází "Svatyně", jejíž útroby velmi pečlivě střeží, sami do její nejposvátěnjší části 
+                    prý nikdy nevstupují a kohokoliv, kdo by se o to pokusil rituálně popraví. Kdo ví, jaká tajemství se vevnitř nacházejí?
+                </P>
+                <P>
+                    Divocí mají postapokalyptické zevzření. Pužívají všemožné hrůzu nahánějící chladné zbraně. Mohou mít i palné zbraně
+                    ale pouze semi.
                 </P>
                 <BigButton text="ENTER" onClick={() => props.setIsProfileView(true)} />
             </Section>

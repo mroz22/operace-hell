@@ -10,7 +10,8 @@ const styles = {
     },
     p: {
         textAlign: 'justify',
-        marginBottom: '5px',
+        marginTop: '2pt',
+        marginBottom: '5pt',
     },
     link: {
         textDecoration: 'underline',

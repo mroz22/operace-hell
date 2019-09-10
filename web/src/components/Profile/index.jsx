@@ -109,8 +109,15 @@ const Profile = ({ user, characters, role }) => {
                     <Input 
                         label="Skutecne jmeno"
                         type="text"
-                        value={roleDraft.name}
+                        value={roleDraft.name || ''}
                         onChange={(event => setRoleDraft({ ...roleDraft, name: event.target.value}))}
+                    />
+
+                    <Input 
+                        label="Telefon"
+                        type="text"
+                        value={roleDraft.tel || ''}
+                        onChange={(event => setRoleDraft({ ...roleDraft, tel: event.target.value}))}
                     />
                     
                     <SectionDivider>Dotaznik</SectionDivider>
@@ -188,6 +195,8 @@ const Profile = ({ user, characters, role }) => {
                         <SectionDivider>Osobni info</SectionDivider>
 
                         <P>Jmeno: {role.name}</P>
+                        <P>Telefon: {role.tel}</P>
+
                         {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
                         <SectionDivider>Dotaznik</SectionDivider>
                         
@@ -199,6 +208,25 @@ const Profile = ({ user, characters, role }) => {
                         {
                             role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
                         }
+
+                        <SectionDivider>Propozice</SectionDivider>
+                        {
+                            role.roleType === 'pruzkumnik' && (
+                                <>
+                                <P>Nyni probiha predbezna registrace. Prirazovani do teamu bude zpristupneno pozdeji.</P>
+                                <P>Propozice, kde budes zacinat se vazi k teamu, takze taky budou zverejneny pozdeji.</P>
+                                </>
+                            )
+                        }
+
+                        {
+                            role.roleType === 'divoky' && (
+                                <>
+                                <P>Na divoke nepusobi radiace, zijou v zone a prahnou po krvi. Zacinaji v tabore divokych v zone.</P>
+                                </>
+                            )
+                        }
+
                         <br />
                         <br />
                         <br />
