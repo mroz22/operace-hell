@@ -159,12 +159,6 @@ export default (props) => (
                     lsti nebo diplomacie. Ve hře se uplatní nejen bojové ale dovednosti ale i důvtip a schopnost řešit 
                     šifry a zapeklité situace. Jde vlastně o takový akční celodenní escape room.
                 </P>
-                <H>Podmínky vítězství</H>
-                <P>
-                    Cílem AI je vytřídit ze vstupů kvalitní výstup. Tzn z vstupních dat (teamů) vytřídit jeden team, který
-                    nemusí být nutně ve stejném složení, v jakém začínal. Tento team se na místě, které ve hře snadno zjistí, 
-                    bude moci v určitém časovém okně dostat ze simulace.
-                </P>
             </Section>
             
             <Background image={background3} />'
@@ -178,10 +172,25 @@ export default (props) => (
                     předepsané vybavení.
                 </P>
 
-                <P>
-                    Povinné vybavení pro všechny průzkumníky: smartphone s internetovým připojením a baterií, která vydrží po celou dobu hry. Doporučujeme
-                    powerbanku. 
-                </P>
+                <P>Povinné vybavení</P>
+                <ul>
+                    <li>smartphone s baterií, která vydrží po celou dobu hry. Doporučujeme
+                    powerbanku. </li>
+                    <li>internetove připojení</li>
+                </ul>
+
+                <P>Podminky vitezstvi</P>
+                <ul>
+                    <li>
+                    Grandiozni uspech: ziska team, ktery jako prvni objevi tajny kod a s jeho pomoci vstoupi do zamceneho
+                    bunkru X
+                    </li>
+                    <li>
+                        Uspech: Prezije do konce hry. <span style={{ color: 'red' }}>Ten nastane kdy? chceme to vubec? mozna klasika ze 
+                        pro zbyvajici teamy se urci jeden bunkr a v nem se muze zachranit jen X lidi?</span>
+                    </li>
+                </ul>
+
 
                 <H>Divoci</H>
             
@@ -194,10 +203,19 @@ export default (props) => (
                     Pod jejich táborem se nachází "Svatyně", jejíž útroby velmi pečlivě střeží, sami do její nejposvátěnjší části 
                     prý nikdy nevstupují a kohokoliv, kdo by se o to pokusil rituálně popraví. Kdo ví, jaká tajemství se vevnitř nacházejí?
                 </P>
+                <P>Podminky vitezstvi</P>
+                <ul>
+                    <li>Grandiozni uspech: zadny hrac (pruzkumnik nebo divoky) nevstoupi do tajne svatyne.</li>
+                    <li>Uspech: Pokud nejaky hrac vstoupi do svatyne, neprezije do konce hry.</li>
+                    <li>Uspech: Pokud maji divoci vice kmenu, vyhrava ten, ktery ovlada pristup do svatyne po kumulovane delsi dobu
+                    <span style={{color: 'red'}}>(nebo k urcitemu casovemu okamziku??? to je mozna lepsi, protoze v prvnim pripade 
+                    jakmile se dostane drzici team na urcitou hodnotu, jiz neni mozne zvratit (za predpokladu fixniho konce))</span> </li>
+                </ul>
                 <P>
                     Divocí mají postapokalyptické zevzření. Pužívají všemožné hrůzu nahánějící chladné zbraně. Mohou mít i palné zbraně
                     ale pouze semi.
                 </P>
+                
                 <BigButton text="ENTER" onClick={() => props.setIsProfileView(true)} />
             </Section>
             

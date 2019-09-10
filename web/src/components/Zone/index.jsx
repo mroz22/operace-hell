@@ -83,15 +83,15 @@ const Zone = () => {
         <P>Hra se odehrává v...</P>
         <P>
             V Zóně působí radiace, jejíž aktuální úroveň je {game ? `${game.radiation.toFixed(2)}` : '?'}.
-            Úroveň radiace je kolísavá. O její aktuální síle bude hráče informovat osobní dozimetr (aplikace do smartfounu).
+            Úroveň radiace je kolísavá. O její aktuální síle bude pruzkumniky informovat osobní dozimetr (aplikace do smartfounu).
             Radiace téměř nepůsobí na osoby v ochranném obleku a je zcela odstíněná v bunkrech. Kumulované ozáření způsobuje mutace,
-            o nichž bude hráče informovat jejich aplikace.
+            o nichž bude pruzkumniky informovat jejich aplikace.
         </P>
 
         <H>Bunkry</H>
         <P>
             V zóně se nachází několik bunkrů. Dokud je bunkr v provozu, je to bezpečné místo. Nepůsobí v něm radiace 
-            a z nějakého důvodu do něj príliž nelezou TZ (aspoň zatím ne).
+            a z nějakého důvodu do něj prílis nelezou TZ (aspoň zatím ne).
         </P>
         <P>
             Aby bunkr fungoval, musí v něm být hodnota zásob energie větší než 0. Každý bunkr má omezení maximálních zásob 
