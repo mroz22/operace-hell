@@ -26,8 +26,10 @@ const App = () => {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 setUser(user);
+                setIsProfileView(true);
             } else {
                 setUser(null);
+                setIsProfileView(false);
             }
         });
 
