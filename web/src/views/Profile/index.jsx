@@ -13,10 +13,8 @@ export default (props) => {
             <Section>
                 <Link onClick={() => setSignup(!signup)}>{signup ? 'Chci se prihlasit': 'Chci se zaregistrovat'}</Link>
                 <br />
-
                 { !signup && <Signin /> }
                 { signup && <Signup /> }
-                
             </Section>
             <Section>
                 <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
