@@ -23,7 +23,8 @@ const Users = ({ roles, characters }) => {
 
     const getMostFavorite = () => {
         const sorted = getSorted();
-        // console.log(sorted)
+        console.log(sorted);
+        console.log(characters);
         return characters.find(ch => ch.id === sorted[0][0]).name
     }
 
@@ -32,8 +33,8 @@ const Users = ({ roles, characters }) => {
         <H>Predbezne prihlaseni hraci</H>
         <P>Celkem: { roles.length && roles.length }</P>
         <P>maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
-        <P>maji iphone: { roles.length && roles.filter(r => r.phoneType === 'iphone').length }</P>
-        <P>maji android: { roles.length && roles.filter(r => r.phoneType === 'android').length }</P>
+        {/* <P>maji iphone: { roles.length && roles.filter(r => r.phoneType === 'iphone').length }</P>
+        <P>maji android: { roles.length && roles.filter(r => r.phoneType === 'android').length }</P> */}
         <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P>
         </div>
     )
