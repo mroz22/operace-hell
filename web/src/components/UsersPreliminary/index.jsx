@@ -4,7 +4,7 @@ import { H, P } from '../../components';
 
 const Users = ({ roles, characters }) => {
     
-    if (!roles || !roles.length) {
+    if (!roles.length || !characters.length) {
         return null;
     }
 
@@ -23,7 +23,7 @@ const Users = ({ roles, characters }) => {
 
     const getMostFavorite = () => {
         const sorted = getSorted();
-        console.log(sorted)
+        // console.log(sorted)
         return characters.find(ch => ch.id === sorted[0][0]).name
     }
 
