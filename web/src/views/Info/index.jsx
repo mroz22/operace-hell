@@ -66,10 +66,10 @@ export default (props) => (
             <Section>
             <H>Intro</H>
             <P>
-                Operace Hell navazuje na operaci Luxor. Na této akci jednotky ChLDR obsadily základnu Beskydského odboje
-                a měly za úkol ji udržet. Po zajištění základny se však "vzbudil" autonomní obranný systém, který se pokoušel
-                obránce zlikvidovat. Například tím, že postupně odemykal zámky na skladech TZ (techniční zaměstnanci, lidově
-                technozombie) a vypouštěl je do prostoru.
+            Stojíte na kopci uprostřed menšího háje. Slunce právě zapadá a ty přes pahýly okolních stromů sleduješ, jak zbytky světla ozařují, co kdysi bylo raketovou základnou protivníků. Ty časy jsou už ale dávno pryč a ze základny Ašraf jsou dnes jen ruiny. Když si uvědomíš, že všechno vidíš tak dobře díky všudypřítomnému slabému záření, ucítíš, jak ti kapka studeného potu sklouzne za límec neprůstřelné vesty. Zkontroluješ svůj Geiger. Hlavou ti proletí myšlenka, jestli listí z okolních stromů opadalo, protože zima je na spadnutí, nebo to má co dělat s roztaveným stronciovým jádrem tam dole. Nemůžeš si pomoct, ale nervózně ho zkontroluješ ještě jednou. A později snad ještě tisíckrát.
+            </P>
+            <P>
+            Kusy drátů a betonu pod vašimi botami dávají tušit, že tu kdysi něco stálo. Možná tu měli protivníci připraveno automatické kulometné hnízdo, které chránilo vnější perimetr základny. Dnes už na tom ale nesejde. Protivníci jsou pryč a s nimi i kulomety a celá základna. Nikdo neví, k čemu základna sloužila, ani co se tehdy přesně stalo. Jedno je ale jisté, stronciové reaktory rozhodně nejsou běžnou výbavou raketových základen a v získaném biologickém vzorku se našly fragmenty DNA zcela neznámého původu. Buď, jak buď, naše bombardéry to tu srovnaly se zemí tak důkladně, že to nemohl nikdo přežít a ze základny se stala trvale neobyvatelná Zóna.
             </P>
             </Section>
             <Section>
@@ -86,11 +86,9 @@ export default (props) => (
             </Section>
 
             <Section>
+            <P>OPERACE LUXOR</P>
             <P>
-                Hráči museli nejen bojovat proti TZ ale také prozkoumávat základnu a odhalovat její tajemství (luštit šifry).
-                V průběhu hry mohli někteří z hráčů z nachystaných indicií zjistit (nezjistili), že to vše okolo je jen iluze.
-                Ve skutečnosti to byla počítačová simulace, do níž byly nahrány skeny mozků skutečných bytostí, a jejichž úsilí
-                (luštění šifer) bylo využíváno k těžbě pokročilých technologií (takové strojové učení).
+            Podle vědců nešlo kvůli radioaktivitě, chemickému a biologickému znečištění na nějaký výsadek dlouhé roky ani pomyslet. V minulosti byl učiněn jediný pokus o extrakci technologií ze základny, který však skončil totálním nezdarem. Většina účastníků operace Luxor se ze základny nikdy nevrátila. Všichni přeživší navíc trpěli silnou post-traumatickou poruchou a kolektivními halucinacemi. Aby byli nadále schopni služby, musela jim být selektivně vymazána paměť. 
             </P>
             </Section>
 
@@ -111,19 +109,14 @@ export default (props) => (
             </Terminal>
             </Section>
             <Section>
-                
+                <P>NOT GREAT NOT TERRIBLE</P>
                 <P>
-                    Na samém konci AI vyhodnotilo, že již nemá smysl simulaci dále spouštět, jelikož situace obránců byla 
-                    beznadějná. Simulaci ukončilo a skeny takto přeživších (rozuměj vyselektovaných) hráčů nahrálo do vyšší
-                    úrovně simulace s názvem HELL. Tato simulace je mnohem efektivnější, co se těžby technologií týče, avšak 
-                    má jednu nevýhodu. Sken, který v ní zahyne, je nadobro ztracena i v reálném světě, jeho tělo 
-                    zemře. Hráči to vědí, a tak,
-                    budou-li chtít někdy nebezpečné AI porazit, musí alespoň někdo přežít, aby nevyhysla naděje, že se alespoň
-                    podaří podat zprávu.
+                Nikdo neví proč, ale naše senzory v nedávné době zaznamenaly prudký pokles zamoření Zóny ve všech sledovaných parametrech. Něco se děje a vedení rozhodlo, že budeme u toho. Nedá se říci, že by snad Zóna byla nyní bezpečná, ale bude-li výsadek proveden v řádu hodin, riziko bylo označeno za přijatelné. Desátník Kadaňkov blábolil něco o ekvivalentech rentgenů plic…
                 </P>
             
                 <P>
-                    Podaří se hráčům přežít i tuto simulaci? Podaří se jim přijít na to, jak ze simulace uniknout?
+                Z dobrovolníků, kteří přežili minulou operaci, byl proto sestaven nový extrakční tým, který má za úkol proniknout do Zóny a vytěžit zde vše, co by mohlo mít nějaký taktický užitek. Zvláštní pozornost je třeba věnovat nejrůznějším technologiím a biologickým anomáliím. Nepřátelská             
+                přítomnost se nepředpokládá. V případě nutnosti bude jakýkoliv odpor eliminován. Po splnění mise se přeživší přesunou na shromaždiště, odkud budou převezeni zpět na mateřskou základnu.
                 </P>
             </Section>
             <Section>
@@ -137,7 +130,11 @@ export default (props) => (
                     </pre>
                 </Terminal>
             </Section>
-
+            <Section>
+                <P>
+                A tak jsi tady. Chlad i adrenalin se ti vtírají pod kůži a tak trochu křečovitě svíráš svou zbraň a očekáváš své rozkazy. Přejíždíš pohledem z jednoho člena týmu na druhého a vidíš, že jsou na tom úplně stejně.  Přemýšlíš, jestli za pár hodin bude tým stále kompletní… nebo jestli vůbec bude nějaký tým. Sám sebe se ptáš, proč ses vlastně dobrovolně přihlásil, když jsi přísahal, že už se sem nikdy nevrátíš. Jaké že to vzpomínky ti vlastně v zájmu zachování tvého psychického zdraví vymazali?! A nepřidali náhodou taky nějaké? Máš spoustu otázek a žádné odpovědi. V tom se ale ve vysílačce ozve rozkaz a celý tým se dá jako jeden muž do pohybu. Pro otázky už nezbývá místo a zůstávají nezodpovězeny. Možná, že odpovědi tentokrát nalezneš v Zóně.
+                </P>
+            </Section>
             <Background image={background2} />
             <Section>
                 <H>Místo</H>
@@ -147,17 +144,14 @@ export default (props) => (
                 </P>
                 <H>Datum</H>
                 <P>
-                    15. (PÁ) - 16. (SO) listopadu 2019. <br />
+                    Hra se odehraje od 20. (pá) do 21. (so) listopadu 2019.<br />
                     Hra začíná v pátek večer mezi 20.00 a 22.0, končí nejpozději v sobotu ve 12.00. <br />
                     
                     Obdobně jako místo, i přesný start hry bude pro hráče individuální a detaily uvidí ve svém profilu.
                 </P>
                 <H>Princip hry</H>
                 <P>
-                    Operace Hell je koncipována jako team survival. Jednotlivé teamy budou zápasit s nástrahami, které 
-                    jim nachystá hra, ale také budou muset soupeřit o omezené zdroje mezi sebou, ať už pomocí hrubé síly,
-                    lsti nebo diplomacie. Ve hře se uplatní nejen bojové ale dovednosti ale i důvtip a schopnost řešit 
-                    šifry a zapeklité situace. Jde vlastně o takový akční celodenní escape room.
+                Operace Hell je koncipována jako týmový survival. Jednotlivé teamy budou zápasit s nástrahami, které jim hra nachystá, ale také soupeřit o omezené zdroje mezi sebou. Neexistuje jediná cesta ke splnění mise – využít lze nejen hrubé síly, ale také lsti a diplomacie. Ve hře se uplatní nejen bojové dovednosti ale i důvtip a schopnost řešit různé hádanky a zapeklité situace. Vlastně se dá Operace Hell přirovnat k mnohahodinové únikové hře.
                 </P>
             </Section>
             

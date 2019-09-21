@@ -87,17 +87,10 @@ const App = () => {
         // getTeams();
     }, [user])
 
-
-
-
-    
-
     return (
         <Preloader>
             { !isProfileView && <Info setIsProfileView={setIsProfileView} roles={roles} characters={characters} />}
             { isProfileView && <Profile setIsProfileView={setIsProfileView} user={user} role={role} characters={characters} /> }
-            
-        
         </Preloader>
     )
 }
