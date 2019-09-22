@@ -26,7 +26,7 @@ export default (props) => {
     return (
         <div>
             <Section>
-                <Profile user={props.user} characters={props.characters} role={props.role} />
+                <Profile user={props.user} characters={props.characters} roles={props.roles} role={props.role} teams={props.teams} />
             </Section>
             <Section>
                 <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />

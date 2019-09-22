@@ -22,6 +22,7 @@ const Input = (props) => {
                         defaultValue={props.options.find(o => o.value === props.value)}
                         onChange={props.onChange}
                         options={props.options}
+                        isOptionDisabled={props.isOptionDisabled}
                     />
                     </>
                 )}

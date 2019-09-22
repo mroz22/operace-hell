@@ -23,8 +23,6 @@ const Users = ({ roles, characters }) => {
 
     const getMostFavorite = () => {
         const sorted = getSorted();
-        console.log(sorted);
-        console.log(characters);
         return characters.find(ch => ch.id === sorted[0][0]).name
     }
 

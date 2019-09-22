@@ -4,6 +4,11 @@ import styled from 'styled-components';
 
 import { H, P, Link, Input, SectionDivider } from '..';
 
+const Team = styled.div`
+    display: flex;
+    flex-direction: row;    
+`;
+
 const CharacterWrapper = styled.div`
     text-align: center;
     background-color: ${props => props.isSelected ? 'gray' : 'white'};
@@ -14,10 +19,9 @@ const CharacterWrapper = styled.div`
     min-height: 330px;
     flex-wrap: wrap;
     justify-content: space-between;
-
 `;
 
-const Character = ({ character, isSelected, onClick, showName }) => {
+const Character = ({ character, isSelected, onClick, showName, teams }) => {
     if (!character) {
         return <div>Character nezvolen</div>
     }
@@ -73,13 +77,12 @@ const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     )
 }
 
-const Profile = ({ user, characters, role }) => {
+const Profile = ({ user, characters, role, roles, teams }) => {
     
     const [editMode, setEditMode] = useState(false);
     const [roleDraft, setRoleDraft] = useState(null);
     const [error, setError] = useState(null);
 
-    
     useEffect(() => {
         setRoleDraft(role);
     }, [role])
@@ -101,6 +104,17 @@ const Profile = ({ user, characters, role }) => {
         if (characters.length && role && role.characterId) {
             return characters.find(ch => ch.id === role.characterId)
         }
+    }
+
+    const getTeam = () => {
+        if (teams.length && role && role.TeamId) {
+            return teams.find(t => t.id === role.TeamId);
+        }
+    }
+
+    const getTeamOptionLabel = (team) => {
+        const members = roles.filter(r => r.TeamId === team.id);
+        return `(${members.length}) ${team.name} ${team.note ? '('+team.note+')' : ''}`
     }
 
     if (error) {
@@ -161,25 +175,17 @@ const Profile = ({ user, characters, role }) => {
                         )
                     }
                     
+                    <SectionDivider>Team</SectionDivider>
 
-                    {/* <P>Team:</P>
-                    <select     
-                        onChange={(event) => {  
-                            setRoleDraft({ ...roleDraft, TeamId: event.target.value})
-                        }}>
-                        { 
-                            teams.sort((a, b) => {
-                                if (role.TeamId) {
-                                    if(role.TeamId > b.id) { return -1; }
-                                    if(role.TeamId < a.id) { return 1; }
-                                    return 0; 
-                                }
-                                return 0;
-                            }).map((team) => {
-                                return (<option value={team.id} key={team.id}>{team.name}</option>)
-                            })
-                        }
-                    </select> */}
+                    <Input 
+                        label="Team"
+                        type="select"
+                        options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id, isOptionDisabled: true }))}
+                        value={getTeam()? getTeam().id : 'Nezvolen'}
+                        isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > 8}
+                        onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
+                    />
+
                     <SectionDivider>Postava</SectionDivider>
                     
                     <Input
@@ -188,10 +194,6 @@ const Profile = ({ user, characters, role }) => {
                         value={role.roleType}
                         options={[{ value: 'pruzkumnik', label: 'pruzkumnik'}, {value: 'divoky', label: 'divoky'}]}
                         onChange={(selected) => {
-                            // setRoleDraft({
-                            //     ...roleDraft,
-                            //     characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
-                            //     roleType: selected.value});
                             updateRole({
                                 ...roleDraft,
                                 characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
@@ -210,6 +212,7 @@ const Profile = ({ user, characters, role }) => {
                         )
                     }
 
+                    
                     <br />
                     </>
                 )
@@ -223,23 +226,46 @@ const Profile = ({ user, characters, role }) => {
                         <P>Jmeno: {role.name}</P>
                         <P>Telefon: {role.tel}</P>
 
-                        {/* <P>Team: {role.TeamId && teams.length ? teams.find(team => team.id === role.TeamId).name : 'team neprirazen'}</P> */}
                         <SectionDivider>Dotaznik</SectionDivider>
                         
                         <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
 
 
+                        <SectionDivider>Team</SectionDivider>
+
+                        {
+                            role.roleType === 'pruzkumnik' && getTeam() && (
+                                <Team>
+                                <P style={{ flex: 1}}>{getTeam().name}</P>
+                                <div style={{ flex: 1}}>
+                                <P>Clenove:</P>
+                                <ul>
+                                { roles.filter(r => r.TeamId === role.TeamId).map(r => (
+                                    <li key={r.id}>{r.name}</li>
+                                ))}
+                                </ul>
+                                </div>
+                                </Team>
+                            ) 
+                        }
+
+                        {
+                            role.roleType === 'pruzkumnik' && !getTeam() && (
+                                <P>Team nezvolen</P>
+                            ) 
+                        }
+
                         <SectionDivider>Postava</SectionDivider>
                         {
                             role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
                         }
 
+
                         <SectionDivider>Propozice</SectionDivider>
                         {
                             role.roleType === 'pruzkumnik' && (
                                 <>
-                                <P>Nyni probiha predbezna registrace. Prirazovani do teamu bude zpristupneno pozdeji.</P>
                                 <P>Propozice, kde budes zacinat se vazi k teamu, takze taky budou zverejneny pozdeji.</P>
                                 </>
                             )

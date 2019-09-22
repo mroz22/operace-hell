@@ -13,7 +13,7 @@ const App = () => {
     const [role, setRole] = useState(null);
     const [roles, setRoles] = useState([]);
 
-    // const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState([]);
 
     const [characters, setCharacters] = useState([]);
 
@@ -51,7 +51,7 @@ const App = () => {
             db.collection('users').onSnapshot(function(querySnapshot) {
                 const updatedRoles = [];
                 querySnapshot.forEach(function(doc) {
-                    updatedRoles.push(doc.data());
+                    updatedRoles.push({ id: doc.id, ...doc.data()});
                 });
                 setRoles(updatedRoles);
             });
@@ -73,24 +73,24 @@ const App = () => {
             });
         };
         
-        // const getTeams = () => {
-        //     const newTeams = [];
-        //     firebase.firestore().collection("teams").get().then(function(querySnapshot) {
-        //         querySnapshot.forEach(function(doc) {
-        //             newTeams.push({ id: doc.id,...doc.data()});
-        //         });
-        //         setTeams(newTeams);
-        //     });
-        // };
+        const getTeams = () => {
+            const newTeams = [];
+            firebase.firestore().collection("teams").get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    newTeams.push({ id: doc.id,...doc.data()});
+                });
+                setTeams(newTeams);
+            });
+        };
 
         getRole();
-        // getTeams();
+        getTeams();
     }, [user])
 
     return (
         <Preloader>
             { !isProfileView && <Info setIsProfileView={setIsProfileView} roles={roles} characters={characters} />}
-            { isProfileView && <Profile setIsProfileView={setIsProfileView} user={user} role={role} characters={characters} /> }
+            { isProfileView && <Profile setIsProfileView={setIsProfileView} roles={roles} user={user} role={role} characters={characters} teams={teams} /> }
         </Preloader>
     )
 }
