@@ -100,9 +100,13 @@ const Profile = ({ user, characters, role, roles, teams }) => {
         firebase.auth().signOut();
     }
 
-    const getChar = () => {
+    const getChar = (roleId) => {
         if (characters.length && role && role.characterId) {
+            if (roleId) {
+                return characters.find(ch => ch.id === roleId)
+            }
             return characters.find(ch => ch.id === role.characterId)
+
         }
     }
 
@@ -114,7 +118,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
 
     const getTeamOptionLabel = (team) => {
         const members = roles.filter(r => r.TeamId === team.id);
-        return `(${members.length}) ${team.name} ${team.note ? '('+team.note+')' : ''}`
+        return `(${members.length}) ${team.name} ${team.note ? '('+teams.note+')' : ''}`
     }
 
     if (error) {
@@ -242,7 +246,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 <P>Clenove:</P>
                                 <ul>
                                 { roles.filter(r => r.TeamId === role.TeamId).map(r => (
-                                    <li key={r.id}>{r.name}</li>
+                                    <li key={r.id}>{r.name} ({getChar().name})</li>
                                 ))}
                                 </ul>
                                 </div>
