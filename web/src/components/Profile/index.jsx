@@ -118,7 +118,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
 
     const getTeamOptionLabel = (team) => {
         const members = roles.filter(r => r.TeamId === team.id);
-        return `(${members.length}) ${team.name} ${team.note ? '('+teams.note+')' : ''}`
+        return `(${members.length}) ${team.name} ${team.note ? '('+team.note+')' : ''}`
     }
 
     if (error) {
