@@ -144,7 +144,7 @@ export default (props) => (
                 </P>
                 <H>Datum</H>
                 <P>
-                    Hra se odehraje od 20. (pá) do 21. (so) listopadu 2019.<br />
+                    Hra se odehraje od 22. (pá) do 23. (so) listopadu 2019.<br />
                     Hra začíná v pátek večer mezi 20.00 a 22.0, končí nejpozději v sobotu ve 12.00. <br />
                     
                     Obdobně jako místo, i přesný start hry bude pro hráče individuální a detaily uvidí ve svém profilu.
