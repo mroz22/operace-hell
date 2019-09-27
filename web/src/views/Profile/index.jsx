@@ -25,9 +25,12 @@ export default (props) => {
 
     return (
         <div>
-            <Section>
+            <div style={{
+                backgroundColor: 'white',
+                padding: '30px 15% 130px 15%',
+            }}>
                 <Profile user={props.user} characters={props.characters} roles={props.roles} role={props.role} teams={props.teams} />
-            </Section>
+            </div>
             <Section>
                 <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
             </Section>

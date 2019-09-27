@@ -180,8 +180,7 @@ export default (props) => (
                     bunkru X
                     </li>
                     <li>
-                        Uspech: Prezije do konce hry. <span style={{ color: 'red' }}>Ten nastane kdy? chceme to vubec? mozna klasika ze 
-                        pro zbyvajici teamy se urci jeden bunkr a v nem se muze zachranit jen X lidi?</span>
+                        Uspech: Prezije do konce hry.
                     </li>
                 </ul>
 
@@ -201,9 +200,10 @@ export default (props) => (
                 <ul>
                     <li>Grandiozni uspech: zadny hrac (pruzkumnik nebo divoky) nevstoupi do tajne svatyne.</li>
                     <li>Uspech: Pokud nejaky hrac vstoupi do svatyne, neprezije do konce hry.</li>
-                    <li>Uspech: Pokud maji divoci vice kmenu, vyhrava ten, ktery ovlada pristup do svatyne po kumulovane delsi dobu
-                    <span style={{color: 'red'}}>(nebo k urcitemu casovemu okamziku??? to je mozna lepsi, protoze v prvnim pripade 
-                    jakmile se dostane drzici team na urcitou hodnotu, jiz neni mozne zvratit (za predpokladu fixniho konce))</span> </li>
+                    <li>Uspech: Pokud maji divoci vice kmenu, vyhrava ten, ktery ovlada pristup do svatyne po kumulovane delsi dobu </li>
+                    
+                    {/* <span style={{color: 'red'}}>(nebo k urcitemu casovemu okamziku??? to je mozna lepsi, protoze v prvnim pripade 
+                    jakmile se dostane drzici team na urcitou hodnotu, jiz neni mozne zvratit (za predpokladu fixniho konce))</span> </li> */}
                 </ul>
                 <P>
                     Divocí mají postapokalyptické zevzření. Pužívají všemožné hrůzu nahánějící chladné zbraně. Mohou mít i palné zbraně

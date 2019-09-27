@@ -4,6 +4,10 @@ import styled from 'styled-components';
 
 import { H, P, Link, Input, SectionDivider } from '..';
 
+const DIVOCI_MAX_COUNT = 5;
+const PRUZKUMNICI_MAX_COUNT = 30;
+
+
 const Team = styled.div`
     display: flex;
     flex-direction: row;    
@@ -43,6 +47,7 @@ const Character = ({ character, isSelected, onClick, showName, teams }) => {
     )
 }
 
+ // eslint-disable-next-line
 const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     const { characterId } = roleDraft;
 
@@ -80,7 +85,7 @@ const CharacterPicker = ({ characters, onChange, roleDraft }) => {
 const Profile = ({ user, characters, role, roles, teams }) => {
     
     const [editMode, setEditMode] = useState(false);
-    const [roleDraft, setRoleDraft] = useState(null);
+    const [roleDraft, setRoleDraft] = useState({});
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -121,6 +126,27 @@ const Profile = ({ user, characters, role, roles, teams }) => {
         return `(${members.length}) ${team.name} ${team.note ? '('+team.note+')' : ''}`
     }
 
+    const getRoleTypeCount = (roleType) => {
+        return roles.filter(r => r.roleType === roleType).length
+    }
+
+    const getRemainingRoleTypeCount = (roleType) => {
+        const count = getRoleTypeCount(roleType);
+        if (roleType === 'divoky') {
+            return DIVOCI_MAX_COUNT - count;
+        }
+        if (roleType === 'pruzkumnik') {
+            return PRUZKUMNICI_MAX_COUNT - count;
+        }
+    }
+
+    const isRoleTypeOptionDisabled = (roleType) => {
+        return getRoleTypeCount('divoky') > DIVOCI_MAX_COUNT && roleType === 'divoky'
+    }
+
+
+
+    
     if (error) {
         return <P>Error: {error}</P>
     }
@@ -179,24 +205,19 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         )
                     }
                     
-                    <SectionDivider>Team</SectionDivider>
-
-                    <Input 
-                        label="Team"
-                        type="select"
-                        options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id, isOptionDisabled: true }))}
-                        value={getTeam()? getTeam().id : 'Nezvolen'}
-                        isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > 8}
-                        onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
-                    />
-
+                   
                     <SectionDivider>Postava</SectionDivider>
                     
                     <Input
                         label="Pruzkumnik / Divoky"
                         type="select"
                         value={role.roleType}
-                        options={[{ value: 'pruzkumnik', label: 'pruzkumnik'}, {value: 'divoky', label: 'divoky'}]}
+                        options={[
+                            { value: 'pruzkumnik', label: `pruzkumnik (zbyva ${getRemainingRoleTypeCount('pruzkumnik')})`},
+                            {value: 'divoky', label: `divoky (zbyva ${getRemainingRoleTypeCount('divoky')})`}
+                        ]}
+                        isOptionDisabled={option => isRoleTypeOptionDisabled(option.value)}
+                        
                         onChange={(selected) => {
                             updateRole({
                                 ...roleDraft,
@@ -205,7 +226,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         }}
                     />
 
-                    {
+                    {/* {
                         role.roleType === 'pruzkumnik' && (
                             <>
                             <CharacterPicker
@@ -214,7 +235,26 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 roleDraft={roleDraft} />
                             </>
                         )
+                    } */}
+
+                    {
+                        role.roleType === 'pruzkumnik' && (
+                            <>
+                            <SectionDivider>Team</SectionDivider>
+
+                            <Input 
+                                label="Team"
+                                type="select"
+                                options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id }))}
+                                value={getTeam()? getTeam().id : 'Nezvolen'}
+                                isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > 8}
+                                onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
+                            />
+                            </>
+                        )
                     }
+                    
+
 
                     
                     <br />
@@ -236,7 +276,11 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
 
 
-                        <SectionDivider>Team</SectionDivider>
+                        {
+                            role.roleType === 'pruzkumnik' && (
+                                <SectionDivider>Team</SectionDivider>
+                            )
+                        }
 
                         {
                             role.roleType === 'pruzkumnik' && getTeam() && (
@@ -260,10 +304,11 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             ) 
                         }
 
-                        <SectionDivider>Postava</SectionDivider>
+                        <SectionDivider>Pruzkumnik / divoky</SectionDivider>
                         {
-                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
+                            role.roleType ? role.roleType : 'Nezvoleno'
                         }
+                            {/* role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky'  */}
 
 
                         <SectionDivider>Propozice</SectionDivider>

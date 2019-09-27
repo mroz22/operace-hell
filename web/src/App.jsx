@@ -10,7 +10,7 @@ const App = () => {
 
     const [ user, setUser ] = useState(null);
 
-    const [role, setRole] = useState(null);
+    const [role, setRole] = useState({});
     const [roles, setRoles] = useState([]);
 
     const [teams, setTeams] = useState([]);

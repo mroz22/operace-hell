@@ -20,7 +20,8 @@ const Users = ({ roles, characters }) => {
         })
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
-
+    
+    // eslint-disable-next-line
     const getMostFavorite = () => {
         const sorted = getSorted();
         return characters.find(ch => ch.id === sorted[0][0]).name
@@ -33,7 +34,7 @@ const Users = ({ roles, characters }) => {
         <P>maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
         {/* <P>maji iphone: { roles.length && roles.filter(r => r.phoneType === 'iphone').length }</P>
         <P>maji android: { roles.length && roles.filter(r => r.phoneType === 'android').length }</P> */}
-        <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P>
+        {/* <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P> */}
         </div>
     )
 }
