@@ -16,7 +16,7 @@ const BunkerCard = ({ children, style }) => {
     </div>)
 }
 
-const Zone = () => {
+const Zone = ({ user }) => {
     const [game, setGame] = useState(null);
     const [bunkers, setBunkers] = useState([]); 
     const db = firebase.firestore();
@@ -139,6 +139,7 @@ const Zone = () => {
                         }
                     </P>
                     <P>---</P>
+                    
                     <button type="button" onClick={() => enterBunker(bunker)}>vstoupit</button>
                     {
                         bunker.numberOfUsers > 0 && <button type="button" onClick={() => leaveBunker(bunker)}>odejit</button>

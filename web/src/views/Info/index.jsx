@@ -221,7 +221,7 @@ export default (props) => (
             <Background image={background5} />
             
             <Section>
-                <Zone />
+                <Zone user={props.user} />
             </Section>
 
             <Background image={background6} />

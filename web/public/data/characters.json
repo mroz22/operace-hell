@@ -1,13 +1,23 @@
 [{
     "id": "major-jasin",
     "name": "Major Jasin",
-    "description": "Major jasin je fakt tvrdak",
+    "description": "Vrchní velitel jednotek CHoLeRA Pragmatickým přístupem se mu daří vítězně vést jednotky skrz. Vždy se snaží splnit úkol. Není ale ochoten obětovat život ( ani svůj, ani podřízených ) za misi, ale klidně pro úspěch CHLDR obětuje životy protivníků.",
     "equipment": [
-        "AK74 nebo MP5PDW + Glock",
-        "maskace vz. 95"
+        "maskáčový komplet vz.95",
+        "2 čutory",
+        "křesadlo",
+        "lano",
+        "vysílačka",
+        "zápisník, tužka",
+        "útočná puška ( AK74S ) nebo PDW ( MP5PDW ) + pistole ( Glock )",
+        "mačeta"
     ],
     "ammo": "low",
-    "trivia": "Neco z historie",
+    "trivia": "Luxor: Velel četě, která dostala za úkol obsadit a vytěžit vybombardovanou základnu BO. Měl to být primitivní úkol. Jenom blázen by tomu věřil, když poslali Jašina osobně. Po urputném nahánění se s TZ , mjr.Jašin přežil v protiradiačním obleku v rohu perimetru s četařem Oharkem.",
+    "skills": [{
+        "name": "brain power",
+        "description": "v pripade, ze je vuci nemu uplatnovana herni mechanika, u niz se haze kostkou, muze se rozhodnout, ze vysledek prvniho hodu neprijma a nechat hodit jeste jednou"
+    }],
     "img": "jasin.png"
 }, {
     "id": "kapitan-brozov",
@@ -18,36 +28,60 @@
     ],
     "ammo": "medium",
     "trivia": "Podle nepodlozene pomluvacne kampane vedene ChLDR neumi zasunout zasobnik do kalasnikovu.",
+    "skills": [{
+        "name": "krysa",
+        "description": "dokaze byt nenapadny a pomoci teto sve dovednosti presvedcit jednu osobu, aby si jej prestala na 1 minutu vsimat."
+    }],
     "img": "rambo.jpg"
 }, {
     "id": "ppr-kadankov",
     "name": "podpraporcik Kadankov",
-    "description": "Tichy typ.",
+    "description": "Vyssi postavy. Proslavil se jako clen Beskydskych partyzanu pri jejich boji proti ChLDR. Zastaval zejmena vedecko-vyzkumne pozice.",
     "equipment": [
-        "Pistole (idealne Glock)"
+        "Pistole (idealne Glock)",
+        "Polovojensky ubor",
+        "tmavy satek na hlave",
+        "rucnik zaveseny na batohu"
     ],
     "ammo": "medium",
-    "trivia": "Neco z historie",
+    "trivia": "Pri operaci vysadek na nej uz ve vystrojnim skladu nezbyla zbran - nafasoval pouze plnou tasku granatu.",
+    "skills": [{
+        "name": "metodicky pristup",
+        "description": "2x za hru muze zatelefonovat organizatorum a pozadat o napovedu k sifre"
+    }],
     "img": "rambo.jpg"
 }, {
     "id": "plk-glabazna",
     "name": "plk. Glabazna",
-    "description": "",
+    "description": "Vudce odporu proti okupaci Beskyd ze strany ChlDR. Opranu vedl nekdy tu vetsimy, jindy s mensimy uspechy. ",
     "equipment": [
-        
+        "Polovojensky ubor",
+        "1x neprilis kvalitni a ucinna palna zbran",
+        "poddimenzovane zasoby jidla a vody"
     ],
-    "ammo": "medium",
-    "trivia": "Byvaly velitel jednotek Beskydskeho odboje",
+    "ammo": "low",
+    "trivia": "Na operaci vysadek jej pri jednom z ukolu postrelil vlastni spatne vycviceny partyzan do zad.",
+    "skills": [{
+        "name": "Tajne dokumenty",
+        "description": "Zna toho nejvic z pozadi technologickeho vyvoje tajnych zbrani BO. V pripade volby teto postavy se hraci pred hrou v jeho profilu odemknou tajne informace."
+    }, {
+        "name": "At zije revoluce",
+        "description": "Dokazal mnoho prostych vesnicanu nadchnout k myslence aktivniho odboje proti CHLDR. Jednou za hru muze presvedcit skupinu max 4 divokych, aby se pridali na jeho stranu."
+    }],
     "img": "glabazna.png"
 }, {
     "id": "des-kuratko",
     "name": "des. Kuratko",
-    "description": "Vedecky pracovnik vyzkumu ChLDR. Je to typicky pruserar.",
+    "description": "Vedecky pracovnik vyzkumu ChLDR.",
     "equipment": [
-        "bily laboratorni plast nutnosti"
+        "bily laboratorni plast"
     ],
-    "ammo": "medium",
-    "trivia": "Na operaci Luxor byl otraven na primy prikaz veliciho dustojnika majora Jasina.",
+    "ammo": null,
+    "trivia": "Proslycha se, ze na operaci Luxor byl vyslan po jistem nezdarem experimentu na svem puvodnim pracovisti.",
+    "skills": [{
+        "name": "psotka",
+        "description": "Kuratko zacne mluvit podivne smesice slov a vet na jednu osobu. Po zhruba jedne minute zacne tuto osobu bolet hlava a neni schopna po dobu asi 10 minut bojovat ani vykonavat zadne cinnosti."
+    }],
     "img": "kuratko.jpg"
 }, {
     "id": "pplk-fifinka",
@@ -57,6 +91,6 @@
         ""
     ],
     "ammo": "medium",
-    "trivia": "",
+    "trivia": "Jeho oblibenou pisni je Beskyde Beskyde a rad si ji casto pobrukuje.",
     "img": "fifinka.jpg"
 }]

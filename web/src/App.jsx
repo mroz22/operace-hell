@@ -89,7 +89,13 @@ const App = () => {
 
     return (
         <Preloader>
-            { !isProfileView && <Info setIsProfileView={setIsProfileView} roles={roles} characters={characters} />}
+            { !isProfileView && (
+                <Info 
+                    setIsProfileView={setIsProfileView}
+                    roles={roles}
+                    characters={characters}
+                    user={user} />
+            )}
             { isProfileView && <Profile setIsProfileView={setIsProfileView} roles={roles} user={user} role={role} characters={characters} teams={teams} /> }
         </Preloader>
     )
