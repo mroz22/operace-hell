@@ -315,7 +315,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             role.roleType ? role.roleType : 'Nezvoleno'
                         }
                         {
-                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
+                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: '' 
                         }
 
                         <SectionDivider>Propozice</SectionDivider>
