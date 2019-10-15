@@ -221,7 +221,7 @@ export default (props) => (
             <Background image={background5} />
             
             <Section>
-                <Zone user={props.user} />
+                <Zone user={props.user} role={props.role} roles={props.roles} game={props.game} bunkers={props.bunkers} />
             </Section>
 
             <Background image={background6} />

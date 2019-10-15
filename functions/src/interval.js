@@ -33,11 +33,15 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         }
     
         // updated USERS
-    
-        admin.firestore().collection('users').get().then((querySnapshot) => {
+        let users = [];
+        console.log('loading users');
+        await admin.firestore().collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = admin.firestore().collection('users').doc(doc.id);
-                        
+                users.push({
+                    ...doc.data(),
+                    id: doc.id,
+                })
                 const currentUserRadiation = doc.data().status.radiation;
                 const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 1000 : 100;
                 if (currentUserRadiation < currentRadiation) {
@@ -49,12 +53,24 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         }).catch((err) => console.error(err));
     
         // updated BUNKERS
+        console.log('loading bunkers');
     
         return admin.firestore().collection('bunkers').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const bunkerRef = admin.firestore().collection('bunkers').doc(doc.id);
     
-                const bunker = doc.data();
+                const bunker = {
+                    ...doc.data(),
+                    id: doc.id,
+                    numberOfUsers: users.filter(u => u.BunkerId === doc.id).length,
+                };
+                
+                console.log('bunker', bunker);
+
+                if (typeof bunker.numberOfUsers !== 'number') {
+                    console.error('number of users not defined in bunker, this looks like error')
+                    return;
+                }
                 if ((bunker.numberOfUsers === 0 && bunker.oxygenGeneration === 0) || bunker.isDestroyed) {
                     return;
                 }
@@ -71,6 +87,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 bunkerRef.update({
                     'oxygen': updatedOxygen,
                 });
+
             });
         }).catch((err) => console.error(err));
     });

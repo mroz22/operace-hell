@@ -226,7 +226,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         }}
                     />
 
-                    {/* {
+                    {
                         role.roleType === 'pruzkumnik' && (
                             <>
                             <CharacterPicker
@@ -235,7 +235,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 roleDraft={roleDraft} />
                             </>
                         )
-                    } */}
+                    }
 
                     {
                         role.roleType === 'pruzkumnik' && (
@@ -253,8 +253,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             </>
                         )
                     }
-                    
-
 
                     
                     <br />
@@ -308,8 +306,9 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         {
                             role.roleType ? role.roleType : 'Nezvoleno'
                         }
-                            {/* role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky'  */}
-
+                        {
+                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: 'Divoky' 
+                        }
 
                         <SectionDivider>Propozice</SectionDivider>
                         {

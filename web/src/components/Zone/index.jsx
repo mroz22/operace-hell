@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as firebase from 'firebase';
 
 import { H, P } from '../../components';
@@ -16,51 +16,27 @@ const BunkerCard = ({ children, style }) => {
     </div>)
 }
 
-const Zone = ({ user }) => {
-    const [game, setGame] = useState(null);
-    const [bunkers, setBunkers] = useState([]); 
+const Zone = ({ user, role, roles, game, bunkers }) => {
     const db = firebase.firestore();
 
     const enterBunker = (bunker) => {
-        db.collection('bunkers').doc(bunker.id).set({
-            ...bunker,
-            numberOfUsers: bunker.numberOfUsers + 1,
-        })
+        db.collection("users")
+            .doc(user.uid)
+            .set({
+                ...role,
+                BunkerId: bunker.id,
+            });
     }
+
 
     const leaveBunker = (bunker) => {
-        if (bunker.numberOfUsers > 0) {
-            return db.collection('bunkers').doc(bunker.id).set({
-                ...bunker,
-                numberOfUsers: bunker.numberOfUsers - 1,
-            })
-        }
-        throw new Error('cant leave if nobodys inside');
-        
+        db.collection("users")
+            .doc(user.uid)
+            .set({
+                ...role,
+                BunkerId: '',
+            });
     }
-
-    useEffect(() => {
-        const getGame = () => {
-            db
-            .collection("game")
-            .doc("operacexxx")
-            .onSnapshot(function(doc) {
-                setGame(doc.data());
-            });
-        }
-    
-        const getBunkers = () => {
-            db.collection("bunkers").onSnapshot(function(querySnapshot) {
-                const newBunkers = [];
-                querySnapshot.forEach(function(doc) {
-                    newBunkers.push({ id: doc.id,...doc.data()});
-                });
-                setBunkers(newBunkers);
-            });
-        }
-        getGame();
-        getBunkers();
-    }, [db])
 
     const countConsumption = (bunker) => {
         if (bunker.numberOfUsers === 0) {
@@ -129,7 +105,7 @@ const Zone = ({ user }) => {
                     <P>---</P>
                     <P>energie: {bunker.oxygen.toFixed(2)}/{bunker.oxygenCap.toFixed(2)}</P>
                     <P>spotreba energie: { countConsumption(bunker).toFixed(2) } / minuta</P>
-                    <P>generator energie: { bunker.oxygenGeneration.toFixed(2) }/minuta</P>
+                    <P>generator energie: { bunker.oxygenGeneration.toFixed(2) } / minuta</P>
                     <P>
                         {
                             countConsumption(bunker) > bunker.oxygenGeneration ?
@@ -140,10 +116,22 @@ const Zone = ({ user }) => {
                     </P>
                     <P>---</P>
                     
-                    <button type="button" onClick={() => enterBunker(bunker)}>vstoupit</button>
                     {
-                        bunker.numberOfUsers > 0 && <button type="button" onClick={() => leaveBunker(bunker)}>odejit</button>
+                        role && (
+                            <>
+                                {
+                                    !role.BunkerId && (
+                                        <button type="button" onClick={() => enterBunker(bunker)}>vstoupit</button>
+                                    )
+                                }
 
+                                {
+                                    role.BunkerId && bunker.id === role.BunkerId && (
+                                        <button type="button" onClick={() => leaveBunker(bunker)}>odejit</button>
+                                    )
+                                }
+                            </>
+                        )
                     }
                     
                 </BunkerCard>

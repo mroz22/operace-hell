@@ -12,13 +12,14 @@ const App = () => {
 
     const [role, setRole] = useState({});
     const [roles, setRoles] = useState([]);
-
     const [teams, setTeams] = useState([]);
+    const [game, setGame] = useState(null);
+    const [bunkers, setBunkers] = useState([]); 
 
     const [characters, setCharacters] = useState([]);
 
     const [isProfileView, setIsProfileView] = useState(false);
-    
+  
     useEffect(() => {
         const db = firebase.firestore();
 
@@ -47,16 +48,42 @@ const App = () => {
             }
         }
 
+
         const getRoles = () => {
             db.collection('users').onSnapshot(function(querySnapshot) {
                 const updatedRoles = [];
                 querySnapshot.forEach(function(doc) {
+
+                    console.log('roles,snapshot', doc.data())
                     updatedRoles.push({ id: doc.id, ...doc.data()});
                 });
                 setRoles(updatedRoles);
             });
         }
 
+        const getGame = () => {
+            db
+            .collection("game")
+            .doc("operacexxx")
+            .onSnapshot(function(doc) {
+                setGame(doc.data());
+            });
+        }
+    
+        const getBunkers = () => {
+            db.collection("bunkers").onSnapshot(function(querySnapshot) {
+                const newBunkers = [];
+                querySnapshot.forEach(function(doc) {
+                    newBunkers.push({
+                        id: doc.id,
+                        ...doc.data(),
+                    });
+                });
+                setBunkers(newBunkers);
+            });
+        }
+        getGame();
+        getBunkers();
         getRoles();
         getCharacters();
     }, [])
@@ -87,6 +114,26 @@ const App = () => {
         getTeams();
     }, [user])
 
+    const getNumberOfUsersInBunker = (bunkerId) => {
+        return roles.filter(r => {
+            return r.BunkerId === bunkerId;
+        }).length;
+    }
+
+    const getJoinedBunkers = () => {
+        if (bunkers.length === 0) {
+            return [];
+        }
+        const formatted = bunkers.map(b => {
+            return {
+                ...b,
+                numberOfUsers: getNumberOfUsersInBunker(b.id),
+            }
+        })
+        return formatted;
+    }
+
+    console.warn('getJoinedBunkers', getJoinedBunkers())
     return (
         <Preloader>
             { !isProfileView && (
@@ -94,7 +141,10 @@ const App = () => {
                     setIsProfileView={setIsProfileView}
                     roles={roles}
                     characters={characters}
-                    user={user} />
+                    user={user}
+                    role={role}
+                    game={game}
+                    bunkers={getJoinedBunkers()} />
             )}
             { isProfileView && <Profile setIsProfileView={setIsProfileView} roles={roles} user={user} role={role} characters={characters} teams={teams} /> }
         </Preloader>
