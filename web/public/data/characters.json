@@ -104,17 +104,46 @@
     }],
     "img": "fifinka.jpg"
 }, {
-    "id": "tomas-petrak",
-    "name": "---",
-    "description": "===",
+    "id": "tomas_petrak",
+    "name": "Cooper Judaski, USA",
+    "description": "Ex military, contactor Whiterock corp, jeden z žoldáků CHLDR, celý svůj život prožil jako žolák v různých operacích",
     "equipment": [
-        "---"
+        "libovolná útočná puška s 20 náboji",
+        "Pistole bez nábojů",
+        "Mačeta",
+        "půl MRE",
+        "Grabpack! Krabička poslední záchrany",
+        "Svíčka, izofolie, provázek, prostředky signalizace, pár cigaret"
     ],
     "ammo": "high",
-    "trivia": "---.",
+    "trivia": "až to zkončí zbytek života stráví chováním oveček a koní na farmě",
     "skills": [{
         "name": "==",
         "description": "--"
+    }],
+    "img": "rambo.png"
+}, {
+    "id": "strapina",
+    "name": "Mike Wazowski",
+    "description": "velitel jednotky Whiterock inc. vyslané na operaci Luxor, žoldáci jednotek CHLDR",
+    "equipment": [
+        "vysílačka",
+        "kompas",
+        "maskáče - jiný vzor než 95, taktická vesta",
+        "AK - 47",
+        "silná svítilna",
+        "píšťalka",
+        "dýmovnice pěchotní ráže"
+        
+    
+        
+    
+    ],
+    "ammo": "high",
+    "trivia": "během operace Luxor ho pojebal major Jašín, ukořistil všechny jejich atombordely",
+    "skills": [{
+        "name": "domácí pyrotechnik",
+        "description": "v případě zranění výbuchem, nenastává zranění, ale není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
     }],
     "img": "rambo.png"
 }]
