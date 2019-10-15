@@ -6,7 +6,9 @@ import { H, P, Link, Input, SectionDivider } from '..';
 
 const DIVOCI_MAX_COUNT = 5;
 const PRUZKUMNICI_MAX_COUNT = 30;
-
+const LOW_AMMO = '30';
+const MEDIUM_AMMO = '60';
+const HIGH_AMMO = '120';
 
 const Team = styled.div`
     display: flex;
@@ -42,6 +44,13 @@ const Character = ({ character, isSelected, onClick, showName, teams }) => {
                 <ul>
                     {character.skills.map((sk) => (<li key={sk.name}>{sk.name}: {sk.description}{', '} </li>))}
                 </ul>
+                <div>
+                    Munice: 
+                    { character.ammo === 'no' && '0' }
+                    { character.ammo === 'low' && LOW_AMMO }
+                    { character.ammo === 'medium' && MEDIUM_AMMO }
+                    { character.ammo === 'high' && HIGH_AMMO }
+                </div>
             </div>
             <div style={{ flex: '1 1 220px' }}>
                 <img src={`./data/characters/${character.img}`} width="200px" alt="avatar"/>

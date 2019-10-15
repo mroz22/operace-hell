@@ -77,7 +77,7 @@
     "equipment": [
         "bily laboratorni plast"
     ],
-    "ammo": null,
+    "ammo": "no",
     "trivia": "Proslycha se, ze na operaci Luxor byl vyslan po jistem nezdarem experimentu na svem puvodnim pracovisti.",
     "skills": [{
         "name": "psotka",
@@ -108,14 +108,14 @@
     "name": "Cooper Judaski, USA",
     "description": "Ex military, contactor Whiterock corp, jeden z žoldáků CHLDR, celý svůj život prožil jako žolák v různých operacích",
     "equipment": [
-        "libovolná útočná puška s 20 náboji",
+        "libovolná útočná puška",
         "Pistole bez nábojů",
         "Mačeta",
         "půl MRE",
         "Grabpack! Krabička poslední záchrany",
         "Svíčka, izofolie, provázek, prostředky signalizace, pár cigaret"
     ],
-    "ammo": "high",
+    "ammo": "low",
     "trivia": "až to zkončí zbytek života stráví chováním oveček a koní na farmě",
     "skills": [{
         "name": "==",
