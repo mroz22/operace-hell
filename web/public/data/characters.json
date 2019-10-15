@@ -121,7 +121,7 @@
         "name": "==",
         "description": "--"
     }],
-    "img": "rambo.png"
+    "img": "rambo.jpg"
 }, {
     "id": "strapina",
     "name": "Mike Wazowski",
@@ -134,10 +134,6 @@
         "silná svítilna",
         "píšťalka",
         "dýmovnice pěchotní ráže"
-        
-    
-        
-    
     ],
     "ammo": "high",
     "trivia": "během operace Luxor ho pojebal major Jašín, ukořistil všechny jejich atombordely",
@@ -145,5 +141,5 @@
         "name": "domácí pyrotechnik",
         "description": "v případě zranění výbuchem, nenastává zranění, ale není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
     }],
-    "img": "rambo.png"
+    "img": "rambo.jpg"
 }]
