@@ -62,20 +62,21 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 const bunker = {
                     ...doc.data(),
                     id: doc.id,
-                    numberOfUsers: users.filter(u => u.BunkerId === doc.id).length,
                 };
+                const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length,
+                     
                 
                 console.log('bunker', bunker);
 
-                if (typeof bunker.numberOfUsers !== 'number') {
+                if (typeof numberOfUsers !== 'number') {
                     console.error('number of users not defined in bunker, this looks like error')
                     return;
                 }
-                if ((bunker.numberOfUsers === 0 && bunker.oxygenGeneration === 0) || bunker.isDestroyed) {
+                if ((numberOfUsers === 0 && bunker.oxygenGeneration === 0) || bunker.isDestroyed) {
                     return;
                 }
     
-                let updatedOxygen = bunker.oxygen - (bunker.numberOfUsers * 0.1) + bunker.oxygenGeneration;
+                let updatedOxygen = bunker.oxygen - (numberOfUsers * 0.1) + bunker.oxygenGeneration;
                 if (updatedOxygen < 0) {
                     bunkerRef.update({
                         isDestroyed: true,
