@@ -20,22 +20,6 @@
     }],
     "img": "jasin.png"
 }, {
-    "id": "kapitan-brozov",
-    "name": "kapitan brozov",
-    "description": "trochu suchta",
-    "equipment": [
-        "puska typu AK / Kalashnikov",
-        "Polovojensky ubor",
-        "svitilna"
-    ],
-    "ammo": "medium",
-    "trivia": "Podle nepodlozene pomluvacne kampane vedene ChLDR neumi zasunout zasobnik do kalasnikovu.",
-    "skills": [{
-        "name": "krysa",
-        "description": "dokaze byt nenapadny a pomoci teto sve dovednosti presvedcit jednu osobu, aby si jej prestala na 1 minutu vsimat."
-    }],
-    "img": "rambo.jpg"
-}, {
     "id": "ppr-kadankov",
     "name": "podpraporcik Kadankov",
     "description": "Vyssi postavy. Proslavil se jako clen Beskydskych partyzanu pri jejich boji proti ChLDR. Zastaval zejmena vedecko-vyzkumne pozice.",
