@@ -112,6 +112,7 @@
     "name": "Cooper Judaski, USA",
     "description": "Ex military, contactor Whiterock corp, jeden z žoldáků CHLDR, celý svůj život prožil jako žolák v různých operacích",
     "equipment": [
+        "kozena bunda",
         "libovolná útočná puška",
         "Pistole bez nábojů",
         "Mačeta",
@@ -141,6 +142,7 @@
     ],
     "ammo": "high",
     "trivia": "během operace Luxor ho pojebal major Jašín, ukořistil všechny jejich atombordely",
+    "skills": [],
     "img": "rambo.jpg"
 }, {
     "id": "miss-listopad",
