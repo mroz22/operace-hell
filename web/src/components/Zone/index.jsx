@@ -56,12 +56,10 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
     return (
         <div>
         <H>Zóna</H>
-        <P>Hra se odehrává v...</P>
         <P>
             V Zóně působí radiace, jejíž aktuální úroveň je {game ? `${game.radiation.toFixed(2)}` : '?'}.
             Úroveň radiace je kolísavá. O její aktuální síle bude pruzkumniky informovat osobní dozimetr (aplikace do smartfounu).
-            Radiace téměř nepůsobí na osoby v ochranném obleku a je zcela odstíněná v bunkrech. Kumulované ozáření způsobuje mutace,
-            o nichž bude pruzkumniky informovat jejich aplikace.
+            Radiace téměř nepůsobí na osoby v ochranném obleku a je zcela odstíněná v bunkrech. Kumulované ozáření způsobuje mutace, o nichž bude pruzkumniky informovat jejich aplikace.
         </P>
 
         <H>Bunkry</H>

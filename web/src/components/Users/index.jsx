@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { H, P } from '../../components';
-
+import { H, P } from '..';
+import * as CONF from '../../config';
 
 const Teams = ({children}) => {
     return (<div style={{
@@ -39,6 +39,7 @@ const Users = ({ roles, characters, teams }) => {
             });
             data.push(teamWithRoles);
         });
+
         return data;
     };
 
@@ -56,6 +57,11 @@ const Users = ({ roles, characters, teams }) => {
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
     
+    const getEmpty = (n) => {
+        const arr = [];
+        return new Array(n).fill('');
+    }
+
     // eslint-disable-next-line
     const getMostFavorite = () => {
         const sorted = getSorted();
@@ -79,11 +85,19 @@ const Users = ({ roles, characters, teams }) => {
                         { record.roles.map(role => {
                             return (<P key={role.name}>{role.name}</P>)
                         })}
+                        { getEmpty(CONF.TEAM_MAX_COUNT - record.roles.length).map((empty, index) => {
+                            return (<P key={index}>.........</P>)
+                        })}
                     </Team>
                 )
             })
+            
         }
+            <Team>
+                Na pozadani muzem otevrit novy. Kdyztak se ozvete hlavnimu organizatorovi. Kontakt v pravidlech.
+            </Team>
         </Teams>
+        
         </div>
     )
 }

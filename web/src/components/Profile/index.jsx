@@ -3,12 +3,7 @@ import firebase from 'firebase';
 import styled from 'styled-components';
 
 import { H, P, Link, Input, SectionDivider } from '..';
-
-const DIVOCI_MAX_COUNT = 5;
-const PRUZKUMNICI_MAX_COUNT = 30;
-const LOW_AMMO = '30';
-const MEDIUM_AMMO = '60';
-const HIGH_AMMO = '120';
+import * as CONF from '../../config';
 
 const Team = styled.div`
     display: flex;
@@ -47,9 +42,9 @@ const Character = ({ character, isSelected, onClick, showName, teams }) => {
                 <div>
                     Munice: 
                     { character.ammo === 'no' && '0' }
-                    { character.ammo === 'low' && LOW_AMMO }
-                    { character.ammo === 'medium' && MEDIUM_AMMO }
-                    { character.ammo === 'high' && HIGH_AMMO }
+                    { character.ammo === 'low' && CONF.LOW_AMMO }
+                    { character.ammo === 'medium' && CONF.MEDIUM_AMMO }
+                    { character.ammo === 'high' && CONF.HIGH_AMMO }
                 </div>
             </div>
             <div style={{ flex: '1 1 220px' }}>
@@ -146,15 +141,15 @@ const Profile = ({ user, characters, role, roles, teams }) => {
     const getRemainingRoleTypeCount = (roleType) => {
         const count = getRoleTypeCount(roleType);
         if (roleType === 'divoky') {
-            return DIVOCI_MAX_COUNT - count;
+            return CONF.DIVOCI_MAX_COUNT - count;
         }
         if (roleType === 'pruzkumnik') {
-            return PRUZKUMNICI_MAX_COUNT - count;
+            return CONF.PRUZKUMNICI_MAX_COUNT - count;
         }
     }
 
     const isRoleTypeOptionDisabled = (roleType) => {
-        return getRoleTypeCount('divoky') > DIVOCI_MAX_COUNT && roleType === 'divoky'
+        return getRoleTypeCount('divoky') > CONF.DIVOCI_MAX_COUNT && roleType === 'divoky'
     }
 
 
@@ -260,7 +255,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 type="select"
                                 options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id }))}
                                 value={getTeam()? getTeam().id : 'Nezvolen'}
-                                isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > 8}
+                                isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > CONF.TEAM_MAX_COUNT}
                                 onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
                             />
                             </>

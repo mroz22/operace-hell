@@ -11,7 +11,7 @@ import background6 from '../../background/metro3.jpg';
 import { H, P, Section, BigButton } from '../../components';
 import Terminal from '../../components/Terminal';
 
-import Users from '../../components/UsersPreliminary';
+import Users from '../../components/Users';
 import Zone from '../../components/Zone';
 import Rules from '../../components/Rules';
 
