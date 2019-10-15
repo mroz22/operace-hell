@@ -10,7 +10,7 @@
         "vysílačka",
         "zápisník, tužka",
         "útočná puška ( AK74S ) nebo PDW ( MP5PDW ) + pistole ( Glock )",
-        "mačeta"
+        "mačeta"    
     ],
     "ammo": "low",
     "trivia": "Luxor: Velel četě, která dostala za úkol obsadit a vytěžit vybombardovanou základnu BO. Měl to být primitivní úkol. Jenom blázen by tomu věřil, když poslali Jašina osobně. Po urputném nahánění se s TZ , mjr.Jašin přežil v protiradiačním obleku v rohu perimetru s četařem Oharkem.",
@@ -24,7 +24,8 @@
     "name": "kapitan brozov",
     "description": "trochu suchta",
     "equipment": [
-        "AK-47"
+        "puska typu AK / Kalashnikov",
+        "Polovojensky ubor"
     ],
     "ammo": "medium",
     "trivia": "Podle nepodlozene pomluvacne kampane vedene ChLDR neumi zasunout zasobnik do kalasnikovu.",
@@ -81,6 +82,9 @@
     "skills": [{
         "name": "psotka",
         "description": "Kuratko zacne mluvit podivne smesice slov a vet na jednu osobu. Po zhruba jedne minute zacne tuto osobu bolet hlava a neni schopna po dobu asi 10 minut bojovat ani vykonavat zadne cinnosti."
+    }, {
+        "name": "operace v nouzovych podminkach",
+        "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3,2,1 zdarila s trvalymi nasledky"
     }],
     "img": "kuratko.jpg"
 }, {
@@ -88,9 +92,29 @@
     "name": "pplk. fifinka",
     "description": "Vrchni chirurg jednotek ChLDR. Neni vsak prilis loayalni oficialni ideologii",
     "equipment": [
-        ""
+        "Lekarnicka, obvazy",
+        "Bila paska s cervenym krizem na rameni",
+        "sestistena hraci kostka"
     ],
     "ammo": "medium",
     "trivia": "Jeho oblibenou pisni je Beskyde Beskyde a rad si ji casto pobrukuje.",
+    "skills": [{
+        "name": "operace",
+        "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3 zdarila bez nasledku; 2 zdarila s trvalymi nasledky, 1 smrt."
+    }],
     "img": "fifinka.jpg"
+}, {
+    "id": "tomas-petrak",
+    "name": "---",
+    "description": "===",
+    "equipment": [
+        "---"
+    ],
+    "ammo": "high",
+    "trivia": "---.",
+    "skills": [{
+        "name": "==",
+        "description": "--"
+    }],
+    "img": "rambo.png"
 }]
