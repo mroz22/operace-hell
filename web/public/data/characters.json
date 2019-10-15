@@ -142,4 +142,19 @@
         "description": "v případě zranění výbuchem, nenastává zranění. namisto toho není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
     }],
     "img": "rambo.jpg"
+}, {
+    "id": "miss-listopad",
+    "name": "Miss listopad",
+    "description": "Modelka, casto se pohybuje ve vysokych kruzich ChLDr",
+    "equipment": [
+        "nevojenske, zenske obleceni, neco fancy, klouboucek nebo baretik",
+        "muze a nemusi mit pistoli, idealne deringer do podvazku"
+    ],
+    "ammo": "low",
+    "trivia": "pri golfu na jeleni loucce ji major jasin eskortoval do bezpeci",
+    "skills": [{
+        "name": "matfyz",
+        "description": "miss listopad muze 1x za hru zavolat organizatorum a nechat si vysvetlit princip 1 sifry"
+    }],
+    "img": "miss-listopad.jpeg"
 }]
