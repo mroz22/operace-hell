@@ -90,7 +90,7 @@
         "name": "operace v nouzovych podminkach",
         "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3,2,1 zdarila s trvalymi nasledky"
     }],
-    "img": "kuratko.jpg"
+    "img": "kuratko.png"
 }, {
     "id": "pplk-fifinka",
     "name": "doktor Fifinka",
@@ -106,7 +106,7 @@
         "name": "operace",
         "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3 zdarila bez nasledku; 2 zdarila s trvalymi nasledky, 1 smrt."
     }],
-    "img": "fifinka.jpg"
+    "img": "fifinka.png"
 }, {
     "id": "tomas_petrak",
     "name": "Cooper Judaski, USA",
@@ -126,7 +126,7 @@
         "name": "domácí pyrotechnik",
         "description": "v případě zranění výbuchem, nenastává zranění. namisto toho není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
     }],
-    "img": "rambo.jpg"
+    "img": "cooper.png"
 }, {
     "id": "strapina",
     "name": "Mike Wazowski",
@@ -160,5 +160,5 @@
         "name": "matfyz",
         "description": "miss listopad muze 1x za hru zavolat organizatorum a nechat si vysvetlit princip 1 sifry"
     }],
-    "img": "miss-listopad.jpeg"
+    "img": "listopad.png"
 }]

@@ -58,7 +58,6 @@ const Users = ({ roles, characters, teams }) => {
     }
     
     const getEmpty = (n) => {
-        const arr = [];
         return new Array(n).fill('');
     }
 
