@@ -10,6 +10,7 @@ const BunkerCard = ({ children, style }) => {
         backgroundColor: '#000000e0',
         borderRadius: '3px',
         color: 'white',
+        minWidth: '200px',
         ...style,
     }}>
         {children}
@@ -74,7 +75,7 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
             a přestává fungovat zámek na dveřích bunkru (bunkr je od této doby stále odemčen).
         </P>
         
-        <div className="grid">
+        <div className="grid" style={{ flexWrap: 'wrap' }}>
         { bunkers.map(bunker => {
             if (bunker.isDestroyed) {
                 return (
