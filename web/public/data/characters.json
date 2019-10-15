@@ -139,7 +139,7 @@
     "trivia": "během operace Luxor ho pojebal major Jašín, ukořistil všechny jejich atombordely",
     "skills": [{
         "name": "domácí pyrotechnik",
-        "description": "v případě zranění výbuchem, nenastává zranění, ale není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
+        "description": "v případě zranění výbuchem, nenastává zranění. namisto toho není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
     }],
     "img": "rambo.jpg"
 }]

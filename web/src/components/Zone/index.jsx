@@ -117,7 +117,7 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
                     <P>---</P>
                     
                     {
-                        role && (
+                        user && user.uid && role && (
                             <>
                                 {
                                     !role.BunkerId && (
