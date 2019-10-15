@@ -230,6 +230,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             updateRole({
                                 ...roleDraft,
                                 characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
+                                TeamId: selected.value === 'pruzkumnik' ? roleDraft.TeamId : '',
                                 roleType: selected.value});
                         }}
                     />
