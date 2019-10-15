@@ -63,8 +63,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     ...doc.data(),
                     id: doc.id,
                 };
-                const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length,
-                     
+                const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length;
                 
                 console.log('bunker', bunker);
 

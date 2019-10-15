@@ -38,6 +38,10 @@ const Character = ({ character, isSelected, onClick, showName, teams }) => {
                 <ul>
                     {character.equipment.map((eq) => (<li key={eq}>{eq}{', '} </li>))}
                 </ul>
+                <div>Zvlastni dovednosti:</div>
+                <ul>
+                    {character.skills.map((sk) => (<li key={sk.name}>{sk.name}: {sk.description}{', '} </li>))}
+                </ul>
             </div>
             <div style={{ flex: '1 1 220px' }}>
                 <img src={`./data/characters/${character.img}`} width="200px" alt="avatar"/>
