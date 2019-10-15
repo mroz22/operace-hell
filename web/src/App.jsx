@@ -53,8 +53,6 @@ const App = () => {
             db.collection('users').onSnapshot(function(querySnapshot) {
                 const updatedRoles = [];
                 querySnapshot.forEach(function(doc) {
-
-                    console.log('roles,snapshot', doc.data())
                     updatedRoles.push({ id: doc.id, ...doc.data()});
                 });
                 setRoles(updatedRoles);
@@ -133,7 +131,6 @@ const App = () => {
         return formatted;
     }
 
-    console.warn('getJoinedBunkers', getJoinedBunkers())
     return (
         <Preloader>
             { !isProfileView && (
@@ -144,6 +141,7 @@ const App = () => {
                     user={user}
                     role={role}
                     game={game}
+                    teams={teams}
                     bunkers={getJoinedBunkers()} />
             )}
             { isProfileView && <Profile setIsProfileView={setIsProfileView} roles={roles} user={user} role={role} characters={characters} teams={teams} /> }

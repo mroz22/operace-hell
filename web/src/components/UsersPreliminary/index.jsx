@@ -1,12 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { H, P } from '../../components';
 
-const Users = ({ roles, characters }) => {
+
+const Teams = ({children}) => {
+    return (<div style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    }}>{children}</div>)
+}
+
+const Team = ({children}) => {
+    return (<div style={{
+        margin: '20px',
+        minWidth: '200px'
+    }}>{children}</div>)
+}
+
+const Users = ({ roles, characters, teams }) => {
     
     if (!roles.length || !characters.length) {
         return null;
     }
+
+    const getFormattedData = () => {
+        if (!teams.length || !roles.length) {
+            return [];
+        }
+        const data = [];
+        teams.forEach(team => {
+            const teamWithRoles = team;
+            teamWithRoles.roles = [];
+            roles.forEach(role => {
+                if (role.TeamId === team.id) {
+                    teamWithRoles.roles.push(role);
+                }
+            });
+            data.push(teamWithRoles);
+        });
+        return data;
+    };
+
 
     const getSorted = () => {
         const result = {}
@@ -29,12 +64,26 @@ const Users = ({ roles, characters }) => {
 
     return (
         <div>
-        <H>Predbezne prihlaseni hraci</H>
+        <H>Prihlaseni hraci (pruzkumnici)</H>
         <P>Celkem: { roles.length && roles.length }</P>
         <P>maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
-        {/* <P>maji iphone: { roles.length && roles.filter(r => r.phoneType === 'iphone').length }</P>
-        <P>maji android: { roles.length && roles.filter(r => r.phoneType === 'android').length }</P> */}
-        {/* <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P> */}
+        <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P>
+        <Teams>
+        {
+            getFormattedData().map((record) => {
+                return (
+                    <Team key={record.name}>
+                        <div style={{ fontWeight: 'bold'}}>
+                            {record.name} ({record.roles.length})
+                        </div>
+                        { record.roles.map(role => {
+                            return (<P key={role.name}>{role.name}</P>)
+                        })}
+                    </Team>
+                )
+            })
+        }
+        </Teams>
         </div>
     )
 }
