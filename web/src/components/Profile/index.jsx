@@ -22,12 +22,12 @@ const CharacterWrapper = styled.div`
     justify-content: space-between;
 `;
 
-const Character = ({ character, isSelected, onClick, showName, teams }) => {
+const Character = ({ character, isSelected, showName, teams }) => {
     if (!character) {
         return <div>Character nezvolen</div>
     }
     return (
-        <CharacterWrapper isSelected={isSelected} onClick={onClick}>
+        <CharacterWrapper isSelected={isSelected}>
             <div style={{ textAlign: 'left', flex: '2 1 220px' }}>
                 { showName !== false && <div style={{ fontWeight: 'bold' }}>{character.name} </div>}
                 <div>{character.description}</div>
@@ -101,6 +101,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
     }, [role])
 
     const updateRole = (override) => {
+        console.warn('update role called', override, roleDraft);
         return firebase.firestore().collection("users")
             .doc(user.uid)
             .set(override ? override : roleDraft)
@@ -119,7 +120,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                 return characters.find(ch => ch.id === roleId)
             }
             return characters.find(ch => ch.id === role.characterId)
-
         }
     }
 
@@ -214,7 +214,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                     }
                     
                    
-                    <SectionDivider>Postava</SectionDivider>
+                    <SectionDivider>Strana</SectionDivider>
                     
                     <Input
                         label="Pruzkumnik / Divoky"
@@ -235,9 +235,12 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         }}
                     />
 
+
                     {
                         role.roleType === 'pruzkumnik' && (
                             <>
+                            <SectionDivider>Postava</SectionDivider>
+
                             <CharacterPicker
                                 onChange={(characterId) => setRoleDraft({ ...roleDraft, characterId })}
                                 characters={characters}
@@ -292,14 +295,20 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         {
                             role.roleType === 'pruzkumnik' && getTeam() && (
                                 <Team>
-                                <P style={{ flex: 1}}>{getTeam().name}</P>
                                 <div style={{ flex: 1}}>
+                                    <P>{getTeam().name.toUpperCase()}</P>
+                                </div>
+                                <div style={{ flex: 2}}>
                                 <P>Clenove:</P>
-                                <ul>
                                 { roles.filter(r => r.TeamId === role.TeamId).map(r => (
-                                    <li key={r.id}>{r.name} ({getChar().name})</li>
+                                    <div key={r.id}>{r.name}</div>
                                 ))}
-                                </ul>
+                                </div>
+                                <div style={{ flex: 2 }}>
+                                <P>Role:</P>
+                                    { roles.filter(r => r.TeamId === role.TeamId).map(r => (
+                                        <div key={`${r.id}-character`}>{getChar(r.characterId) ? getChar(r.characterId).name : '---'}</div>
+                                    ))}
                                 </div>
                                 </Team>
                             ) 
@@ -311,12 +320,17 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             ) 
                         }
 
-                        <SectionDivider>Pruzkumnik / divoky</SectionDivider>
+                        <SectionDivider>Strana</SectionDivider>
                         {
                             role.roleType ? role.roleType : 'Nezvoleno'
                         }
                         {
-                            role.roleType === 'pruzkumnik' ? <Character character={getChar()} />: '' 
+                            role.roleType === 'pruzkumnik' && (
+                                <>
+                                <SectionDivider>Postava</SectionDivider>
+                                <Character character={getChar()} />
+                                </>
+                            )
                         }
 
                         <SectionDivider>Propozice</SectionDivider>
