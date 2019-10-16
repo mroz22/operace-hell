@@ -54,6 +54,7 @@ const Users = ({ roles, characters, teams }) => {
                 result[role.characterId]++;
             }
         })
+        console.warn('result', result);
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
     
@@ -62,17 +63,16 @@ const Users = ({ roles, characters, teams }) => {
     }
 
     // eslint-disable-next-line
-    const getMostFavorite = () => {
-        const sorted = getSorted();
-        return characters.find(ch => ch.id === sorted[0][0]).name
-    }
+    // const getMostFavorite = () => {
+    //     const sorted = getSorted();
+    //     return characters.find(ch => ch.id === sorted[0][0]).name
+    // }
 
     return (
         <div>
         <H>Prihlaseni hraci (pruzkumnici)</H>
         <P>Celkem: { roles.length && roles.length }</P>
         <P>maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
-        <P>Nejcasteji zvoleny charakter: {getMostFavorite()}</P>
         <Teams>
         {
             getFormattedData().map((record) => {
@@ -96,6 +96,18 @@ const Users = ({ roles, characters, teams }) => {
                 Na pozadani muzem otevrit novy. Kdyztak se ozvete hlavnimu organizatorovi. Kontakt v pravidlech.
             </Team>
         </Teams>
+
+        <H>Top ranking characters</H>
+        {
+            getSorted().map((record, index) => {
+                const [charId] = record
+                return (
+                    <div key={charId}>
+                        {index+1}. {characters && characters.find(ch => ch.id === charId).name}
+                    </div>
+                )
+            })
+        }
         
         </div>
     )
