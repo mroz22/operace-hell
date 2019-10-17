@@ -115,7 +115,9 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
                         }
                     </P>
                     <P>---</P>
-                    <QRCode value={bunker.id} />
+                    <div style={{ backgroundColor: 'white', padding: '5px', maxWidth: '130px' }}>
+                        <QRCode value={`bunker:${bunker.id}`} />
+                    </div>
                     <P>---</P>
 
                     {

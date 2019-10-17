@@ -56,7 +56,7 @@ const Dozimeter = (props) => {
         return  hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
     }
 
-    switch (qr.id) {
+    switch (qr.type) {
         case 'bunker':
             return <ResolveBunker />
             // no default
