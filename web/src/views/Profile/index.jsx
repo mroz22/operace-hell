@@ -65,6 +65,7 @@ export default (props) => {
         game={props.game}
         role={props.role}
         bunkers={props.bunkers}
+        user={props.user}
         setIsGameView={setIsGameView} />
     )
 

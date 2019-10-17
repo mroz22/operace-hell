@@ -1,5 +1,6 @@
 import React from 'react';
 import * as firebase from 'firebase';
+import QRCode from 'qrcode.react';
 
 import { H, P } from '../../components';
 
@@ -114,13 +115,17 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
                         }
                     </P>
                     <P>---</P>
-                    
+                    <QRCode value={bunker.id} />
+                    <P>---</P>
+
                     {
                         user && user.uid && role && (
                             <>
                                 {
                                     !role.BunkerId && (
+                                        <>
                                         <button type="button" onClick={() => enterBunker(bunker)}>vstoupit</button>
+                                        </>
                                     )
                                 }
 
