@@ -25,12 +25,31 @@ const Signin = ({ user }) => {
         });
     }
 
+    const resetPassword = () => {
+        setIsPending(true);
+        setIsSuccess(false);
+        setError('');
+        firebase.auth().sendPasswordResetEmail(email).then(function() {
+            // Email sent.
+        }).catch(function(error) {
+            setError(error.message);
+        }).finally(() => {
+            setIsPending(false);
+            setEmail('');
+        });
+    }
+
         return (
         <>
             <H>Prihlasit</H>
             <Input label="email" type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
             <Input label="heslo" type="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} />
             <input type="button" value="Prihlasit" onClick={signIn} disabled={isPending}/>
+            <br />
+            --- nebo --- <br />
+            <input type="button" value="Reset password" onClick={resetPassword} disabled={isPending}/>
+            <br />
+            
             <div>
                 {
                     isPending && 'Odesilam'
