@@ -13,28 +13,31 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         const ticksToRadiationChange = game.data().ticksToRadiationChange;
     
         // updated GAME
-    
-        if (ticksToRadiationChange === 0) {
-            const nextRadiationChangeRate = utils.getRadiationRateChange(1, 0.5);
-            await admin.firestore().collection('game').doc('operacexxx').update({
-                ticksToRadiationChange: utils.getRandomInt(3, 6),
-                radiationChangeRate: nextRadiationChangeRate,
-            });    
-        } else {
-            let nextRadiation = currentRadiation + currentRadiationChangeRate;
-            if (nextRadiation < 0) {
-                nextRadiation = 0;
-            }
+        const timestamp = Date.now();
         
-            await admin.firestore().collection('game').doc('operacexxx').update({
-                radiation: nextRadiation,
-                ticksToRadiationChange: ticksToRadiationChange - 1,
-            });
+        // if (ticksToRadiationChange === 0) {
+        //     const nextRadiationChangeRate = utils.getRadiationRateChange(1, 0.5);
+        //     await admin.firestore().collection('game').doc('operacexxx').update({
+        //         ticksToRadiationChange: utils.getRandomInt(3, 6),
+        //         radiationChangeRate: nextRadiationChangeRate,
+        //         timestamp,
+        //     });    
+        // } else {
+         
+        let nextRadiation = currentRadiation + currentRadiationChangeRate;
+        if (nextRadiation < 0) {
+            nextRadiation = 0;
         }
+        
+        await admin.firestore().collection('game').doc('operacexxx').update({
+            radiation: nextRadiation,
+                // ticksToRadiationChange: ticksToRadiationChange - 1,
+            timestamp,
+        });
+        // }
     
         // updated USERS
         let users = [];
-        console.log('loading users');
         await admin.firestore().collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = admin.firestore().collection('users').doc(doc.id);
@@ -53,7 +56,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         }).catch((err) => console.error(err));
     
         // updated BUNKERS
-        console.log('loading bunkers');
     
         return admin.firestore().collection('bunkers').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {

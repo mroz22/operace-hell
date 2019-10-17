@@ -165,6 +165,9 @@ const Profile = ({ user, characters, role, roles, teams }) => {
             <H>Vitej v systemu</H>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Link onClick={signOut}>odhlasit</Link>
+            
+            {/* <Link onClick={() => setIsGameView(true)}>osobni dozimetr</Link> */}
+
             { !editMode && <Link onClick={() => setEditMode(true)}>editovat</Link>}
             { editMode && <Link onClick={() => updateRole().then(() => setEditMode(false))}>ulozit</Link>}
             </div>

@@ -94,7 +94,10 @@ const App = () => {
                 return;
             }
             db.collection("users").doc(user.uid).onSnapshot(doc => {
-                setRole(doc.data());
+                setRole({
+                    uid: user.uid,
+                    ...doc.data()
+                });
             });
         };
         
@@ -144,7 +147,18 @@ const App = () => {
                     teams={teams}
                     bunkers={getJoinedBunkers()} />
             )}
-            { isProfileView && <Profile setIsProfileView={setIsProfileView} roles={roles} user={user} role={role} characters={characters} teams={teams} /> }
+            { isProfileView && (
+                <Profile 
+                    game={game}
+                    setIsProfileView={setIsProfileView}
+                    roles={roles}
+                    user={user}
+                    role={role}
+                    characters={characters}
+                    teams={teams} 
+                    bunkers={getJoinedBunkers()} />
+                )
+            }
         </Preloader>
     )
 }

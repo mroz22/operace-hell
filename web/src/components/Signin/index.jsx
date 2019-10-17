@@ -30,12 +30,12 @@ const Signin = ({ user }) => {
         setIsSuccess(false);
         setError('');
         firebase.auth().sendPasswordResetEmail(email).then(function() {
+            setEmail('');
             // Email sent.
         }).catch(function(error) {
             setError(error.message);
         }).finally(() => {
             setIsPending(false);
-            setEmail('');
         });
     }
 
