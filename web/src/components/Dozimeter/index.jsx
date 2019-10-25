@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 
 import { Link } from '../../components';
@@ -6,7 +6,8 @@ import QRCode from 'qrcode.react';
 import QrReader from 'react-qr-reader'
 
 import { Wrapper, Option, Options, Heading } from './components';
-import { Bunker } from '../Situation';
+import { Bunker as BunkerSituation } from '../Situation';
+import Bunker from '../Zone/bunker';
 
 const Dozimeter = (props) => {
     const { game, role, bunkers, user, setIsGameView } = props;
@@ -15,6 +16,48 @@ const Dozimeter = (props) => {
     const [view, setView] = useState('world');
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
+
+    useEffect(() => {
+        const notifyMe = (title) => {
+            // Let's check if the browser supports notifications
+            if (!("Notification" in window)) {
+              alert("This browser does not support desktop notification");
+            }
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+              // If it's okay let's create a notification
+                new Notification(title);
+            }
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== "denied") {
+              Notification.requestPermission().then(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                 new Notification(title);
+                }
+              });
+            }
+        }
+
+        if (navigator.geolocation) {
+            setInterval(() => {
+                console.log('checking geo');
+
+                const onSuccess = (pos) => {
+                    console.log(pos);
+                    notifyMe("pozice zjistena")
+                }
+                const onError = (err) => {
+                    console.log(err)
+                }
+                // todo: write to fb
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            }, 1000 * 10);
+            
+        } 
+
+        return () => {}
+    }, [])
 
     if (!game || !role || !bunkers || !user) {
         return 'loading...'
@@ -66,35 +109,12 @@ const Dozimeter = (props) => {
         onSituationCancel();
     }
 
-    const notifyMe = () => {
-        // Let's check if the browser supports notifications
-        if (!("Notification" in window)) {
-          alert("This browser does not support desktop notification");
-        }
-      
-        // Let's check whether notification permissions have already been granted
-        else if (Notification.permission === "granted") {
-          // If it's okay let's create a notification
-          new Notification("Hi there!");
-        }
-      
-        // Otherwise, we need to ask the user for permission
-        else if (Notification.permission !== "denied") {
-          Notification.requestPermission().then(function (permission) {
-            // If the user accepts, let's create a notification
-            if (permission === "granted") {
-             new Notification("Hi there!");
-            }
-          });
-        }
-    }
-
-      
+    
 
     switch (qr.type) {
         case 'bunker':
             return (
-                <Bunker
+                <BunkerSituation
                     role={role}
                     bunker={bunkers.find(b => b.id === qr.id)}
                     onEnterBunker={onEnterBunker}
@@ -135,7 +155,8 @@ const Dozimeter = (props) => {
                         {
                             currentBunker && (
                                 <>
-                                    <div>V bunkru {currentBunker.name}</div>
+                                    <div>V bunkru</div>
+                                    <Bunker role={role} bunker={currentBunker} />
                                     <Options>
                                         <Option onClick={()=>enterBunker("")}>Odejit</Option>
                                     </Options>
@@ -148,9 +169,6 @@ const Dozimeter = (props) => {
                                 <>
                                 <div>Pod sirym nebem</div>
                                 <div style={{ fontSize: '3em', textAlign: 'center' }}>{game.radiation.toFixed(2)} mSv/H</div>
-                                <Options>
-                                    <Option onClick={()=>notifyMe()}>Notifikace</Option>
-                                </Options>
                                 </>
                             )
                         }

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { GREEN } from '../../config';
 
-const green = "#20C20E" 
 const Wrapper = styled.div`
     background-color: black;
-    color: ${green};
+    color: ${GREEN};
     height: 100%;
     padding: 4%;
 `

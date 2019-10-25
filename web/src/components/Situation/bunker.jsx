@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper, Options, Option, Description }  from '../Dozimeter/components';
-
+// import Bunker from '../../components/Zone/bunker';
 
 export default ({ bunker, role, onEnterBunker, onSituationCancel }) => {
     if (role.BunkerId && role.BunkerId !== bunker.id) {
@@ -19,7 +19,7 @@ export default ({ bunker, role, onEnterBunker, onSituationCancel }) => {
         return (
             <Wrapper>
             <Description>
-                V tomto bunkru uz jsi. 
+                V tomto bunkru ({ bunker.name }). uz jsi. 
             </Description>
             <Options>
             <Option onClick={() => onEnterBunker('')}>Odejit</Option>
@@ -31,12 +31,32 @@ export default ({ bunker, role, onEnterBunker, onSituationCancel }) => {
     }
     return (
         <Wrapper>
-            <Description>Stojis pred bunkrem { bunker.name }. Co chces udelat?</Description>
-            {/* <div>{JSON.stringify(bunker)}</div> */}
-            <Options>
-            <Option onClick={() => onEnterBunker(bunker.id)}>Vstoupit</Option>
-            <Option onClick={() => onSituationCancel()}>Zrusit</Option>
-            </Options>
+            {
+                !bunker.isDestroyed && (
+                    <>
+                    <Description>Stojis pred bunkrem "{ bunker.name }". Co chces udelat?. </Description>
+                    <Options>
+                    <Option onClick={() => onEnterBunker(bunker.id)}>Vstoupit</Option>
+                    <Option onClick={() => onSituationCancel()}>Zrusit</Option>
+                    </Options>
+                    </>
+                )
+            }
+
+            {
+                bunker.isDestroyed && (
+                    <>
+                    <Description>Stojis pred bunkrem "{ bunker.name }". Jenze je zniceny, vytavil se jeho reaktor.
+                    Dvere jsou dokoran a z jeho hlubin to zlovestne huci.
+                    Muzes se na nej tak nanejvys smutne divat. Do vnitr vstoupit smis, ale jiz neziskas ochranu 
+                    proti radiaci </Description>
+                    <Options>
+                    <Option onClick={() => onSituationCancel()}>Zrusit</Option>
+                    </Options>
+                    </>
+                )
+            }
+            
 
         </Wrapper>
     )
