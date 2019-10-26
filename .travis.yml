@@ -6,9 +6,6 @@ script:
   - yarn
   - yarn build
   - cd ../
-  - cd functions
-  - yarn
-  - cd ../
 deploy:
   skip_cleanup: true
   provider: firebase
