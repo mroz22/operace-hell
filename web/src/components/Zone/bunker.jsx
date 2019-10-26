@@ -33,7 +33,7 @@ const Bunker = ({ bunker, role, showQr }) => {
     }
     return (
         <BunkerCard key={bunker.name}>
-            <P>{bunker.name} ({bunker.id})</P>
+            <P>{bunker.name}</P>
             <P>Stav:</P>
             {
                 getTimeToZero(bunker) > 10

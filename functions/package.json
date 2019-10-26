@@ -10,7 +10,7 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "10.13.0"
+    "node": "10.17.0"
   },
   "dependencies": {
     "firebase-admin": "^8.0.0",

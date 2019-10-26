@@ -54,19 +54,12 @@ const Users = ({ roles, characters, teams }) => {
                 result[role.characterId]++;
             }
         })
-        console.warn('result', result);
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
     
     const getEmpty = (n) => {
         return new Array(n).fill('');
     }
-
-    // eslint-disable-next-line
-    // const getMostFavorite = () => {
-    //     const sorted = getSorted();
-    //     return characters.find(ch => ch.id === sorted[0][0]).name
-    // }
 
     return (
         <div>
@@ -92,9 +85,9 @@ const Users = ({ roles, characters, teams }) => {
             })
             
         }
-            <Team>
+            {/* <Team>
                 Na pozadani muzem otevrit novy. Kdyztak se ozvete hlavnimu organizatorovi. Kontakt v pravidlech.
-            </Team>
+            </Team> */}
         </Teams>
 
         <H>Top ranking characters</H>

@@ -5,7 +5,7 @@ import { Link } from '../../components';
 import QRCode from 'qrcode.react';
 import QrReader from 'react-qr-reader'
 
-import { Wrapper, Option, Options, Heading } from './components';
+import { Wrapper, Option, Options, Heading, Section } from './components';
 import { Bunker as BunkerSituation } from '../Situation';
 import Bunker from '../Zone/bunker';
 
@@ -18,26 +18,34 @@ const Dozimeter = (props) => {
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
 
     useEffect(() => {
-        const notifyMe = (title) => {
-            // Let's check if the browser supports notifications
-            if (!("Notification" in window)) {
-              alert("This browser does not support desktop notification");
+        // const notifyMe = (title) => {
+        //     // Let's check if the browser supports notifications
+        //     if (!("Notification" in window)) {
+        //       alert("This browser does not support desktop notification");
+        //     }
+        //     // Let's check whether notification permissions have already been granted
+        //     else if (Notification.permission === "granted") {
+        //       // If it's okay let's create a notification
+        //         new Notification(title);
+        //     }
+        //     // Otherwise, we need to ask the user for permission
+        //     else if (Notification.permission !== "denied") {
+        //       Notification.requestPermission().then(function (permission) {
+        //         // If the user accepts, let's create a notification
+        //         if (permission === "granted") {
+        //          new Notification(title);
+        //         }
+        //       });
+        //     }
+        // }
+        navigator.serviceWorker.register('sw.js');
+        Notification.requestPermission(function(result) {
+            if (result === 'granted') {
+                navigator.serviceWorker.ready.then(function(registration) {
+                    registration.showNotification('Notification with ServiceWorker');
+                });
             }
-            // Let's check whether notification permissions have already been granted
-            else if (Notification.permission === "granted") {
-              // If it's okay let's create a notification
-                new Notification(title);
-            }
-            // Otherwise, we need to ask the user for permission
-            else if (Notification.permission !== "denied") {
-              Notification.requestPermission().then(function (permission) {
-                // If the user accepts, let's create a notification
-                if (permission === "granted") {
-                 new Notification(title);
-                }
-              });
-            }
-        }
+        });
 
         if (navigator.geolocation) {
             setInterval(() => {
@@ -45,7 +53,7 @@ const Dozimeter = (props) => {
 
                 const onSuccess = (pos) => {
                     console.log(pos);
-                    notifyMe("pozice zjistena")
+                    // notifyMe("pozice zjistena")
                 }
                 const onError = (err) => {
                     console.log(err)
@@ -168,7 +176,7 @@ const Dozimeter = (props) => {
                             !currentBunker && (
                                 <>
                                 <div>Pod sirym nebem</div>
-                                <div style={{ fontSize: '3em', textAlign: 'center' }}>{game.radiation.toFixed(2)} mSv/H</div>
+                                <div style={{ fontSize: '3em', textAlign: 'center' }}>☢{game.radiation.toFixed(2)} mSv/H</div>
                                 </>
                             )
                         }
@@ -181,14 +189,13 @@ const Dozimeter = (props) => {
             {
                 view === 'me' && (
                     <>
-                    <Heading>
-                    Mutace
-                    </Heading>
+                    <Section title="Mutace 🐙 ☣ ☠ 💀">
+                        obsah section
+                    </Section>
 
-                    <Heading>
-                        Osobni ID
-                    </Heading>
-                    { role.uid && <QRCode value={role.uid} /> }
+                    <Section title="Osobni ID">
+                        { role.uid && <QRCode value={role.uid} /> }
+                    </Section>
                     </>
                 )
             }
