@@ -11,7 +11,7 @@ const Teams = ({children}) => {
     }}>{children}</div>)
 }
 
-const Team = ({name, roles = [], maxCount}) => {
+const Team = ({name, color, roles = [], maxCount}) => {
     const getEmpty = (n) => {
         if (n > 0) {
             return new Array(n).fill('');
@@ -23,8 +23,8 @@ const Team = ({name, roles = [], maxCount}) => {
         margin: '20px',
         minWidth: '200px'
     }}>
-        <div style={{ fontWeight: 'bold'}}>
-            {name} ({roles.length})
+        <div style={{ fontWeight: 'bold', backgroundColor: color }}>
+            {color} ({roles.length})
         </div>
         { roles.map((role, index) => {
             return (<P key={role.id}>{role.name}</P>)
@@ -97,7 +97,7 @@ const Users = ({ roles, characters, teams }) => {
         {
             getFormattedData().map((record) => {
                 return (
-                    <Team key={record.name} name={record.name} roles={record.roles} maxCount={CONF.TEAM_MAX_COUNT} />
+                    <Team key={record.name} color={record.color} name={record.name} roles={record.roles} maxCount={CONF.TEAM_MAX_COUNT} />
                 )
             })
             
