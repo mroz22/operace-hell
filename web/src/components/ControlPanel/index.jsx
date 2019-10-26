@@ -6,7 +6,7 @@ import * as CONF from '../../config';
 
 const Point = ({ role, team }) => {
     if (role.roleType === 'pruzkumnik') {
-        const color = team && team.color || CONF.GREEN;
+        const color = (team && team.color) || CONF.GREEN;
         return (
             <div style={{ color }}>
                 <div>{role.name}</div>
@@ -31,7 +31,6 @@ const Point = ({ role, team }) => {
 const ControlPanel = (props) => {
     const { game, role, bunkers, user, roles, teams } = props;
     // const db = firebase.firestore();
-    console.log(roles)
     const [view, setView] = useState('world');
 
     if (!game || !role || !bunkers || !user || !teams) {
