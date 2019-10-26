@@ -4,6 +4,7 @@ import Profile from '../../components/Profile';
 import Signup from '../../components/Signup';
 import Signin from '../../components/Signin';
 import Dozimeter from '../../components/Dozimeter';
+import ControlPanel from '../../components/ControlPanel';
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
@@ -61,17 +62,29 @@ export default (props) => {
         );
     }
 
-    return (<Dozimeter
-        game={props.game}
-        role={props.role}
-        bunkers={props.bunkers}
-        user={props.user}
-        setIsGameView={setIsGameView} />
-    )
+    if (props.role && props.role.roleType === 'pruzkumnik') {
+        return (
+            <Dozimeter
+                game={props.game}
+                role={props.role}
+                bunkers={props.bunkers}
+                user={props.user}
+                setIsGameView={setIsGameView} />
+        )
+    }
 
-    
+    if (props.role && props.role.roleType === 'org') {
+        return (
+            <ControlPanel
+                game={props.game}
+                role={props.role}
+                roles={props.roles}
+                bunkers={props.bunkers}
+                user={props.user}
+                setIsGameView={setIsGameView} />
+        )
+    }
 
-    
-    
+    return null;
 }
 

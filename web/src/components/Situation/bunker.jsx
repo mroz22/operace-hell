@@ -1,6 +1,5 @@
 import React from 'react';
-import { Wrapper, Options, Option, Description }  from '../Dozimeter/components';
-// import Bunker from '../../components/Zone/bunker';
+import { Wrapper, Options, Option, Description }  from '../index';
 
 export default ({ bunker, role, onEnterBunker, onSituationCancel }) => {
     if (role.BunkerId && role.BunkerId !== bunker.id) {

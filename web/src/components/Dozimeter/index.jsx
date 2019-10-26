@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 
-import { Link } from '../../components';
+import { Link, Wrapper, Option, Options, SectionDropwdown } from '../../components';
 import QRCode from 'qrcode.react';
 import QrReader from 'react-qr-reader'
-
-import { Wrapper, Option, Options, Section } from './components';
 import { Bunker as BunkerSituation } from '../Situation';
 import Bunker from '../Zone/bunker';
 
@@ -18,54 +16,30 @@ const Dozimeter = (props) => {
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
 
     useEffect(() => {
-        // const notifyMe = (title) => {
-        //     // Let's check if the browser supports notifications
-        //     if (!("Notification" in window)) {
-        //       alert("This browser does not support desktop notification");
-        //     }
-        //     // Let's check whether notification permissions have already been granted
-        //     else if (Notification.permission === "granted") {
-        //       // If it's okay let's create a notification
-        //         new Notification(title);
-        //     }
-        //     // Otherwise, we need to ask the user for permission
-        //     else if (Notification.permission !== "denied") {
-        //       Notification.requestPermission().then(function (permission) {
-        //         // If the user accepts, let's create a notification
-        //         if (permission === "granted") {
-        //          new Notification(title);
-        //         }
-        //       });
-        //     }
-        // }
-        navigator.serviceWorker.register('sw.js');
-        Notification.requestPermission(function(result) {
-            if (result === 'granted') {
-                navigator.serviceWorker.ready.then(function(registration) {
-                    registration.showNotification('Notification with ServiceWorker');
-                });
-            }
-        });
-
+        console.log('useeffect called madafaka')
+        const updateGeo = (uid, lat, lng) => {
+            if (!uid || !lat || !lng) return;
+            db.collection('users').doc(uid).update({
+                "geo.lat": lat,
+                "geo.lng": lng,
+            });
+        }
         if (navigator.geolocation) {
             setInterval(() => {
-                console.log('checking geo');
-
                 const onSuccess = (pos) => {
                     console.log(pos);
-                    // notifyMe("pozice zjistena")
+                    updateGeo(role.uid, pos.coords.latitude, pos.coords.longitude)
                 }
                 const onError = (err) => {
                     console.log(err)
                 }
-                // todo: write to fb
                 navigator.geolocation.getCurrentPosition(onSuccess, onError);
             }, 1000 * 10);
             
         } 
 
         return () => {}
-    }, [])
+    }, [db, role.uid])
 
     if (!game || !role || !bunkers || !user) {
         return 'loading...'
@@ -189,13 +163,13 @@ const Dozimeter = (props) => {
             {
                 view === 'me' && (
                     <>
-                    <Section title="Mutace 🐙 ☣ ☠ 💀">
+                    <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀">
                         obsah section
-                    </Section>
+                    </SectionDropwdown>
 
-                    <Section title="Osobni ID">
+                    <SectionDropwdown title="Osobni ID">
                         { role.uid && <QRCode value={role.uid} /> }
-                    </Section>
+                    </SectionDropwdown>
                     </>
                 )
             }
