@@ -108,7 +108,7 @@ const Users = ({ roles, characters, teams }) => {
         </Teams>
 
         <H>Top ranking characters</H>
-        <div style={{marginBottom: '15px', marginTop: '15px'}}>
+        <div style={{margin: '15px 0 15px 15px'}}>
         {
             getSorted().map((record, index) => {
                 const [charId] = record
@@ -121,10 +121,12 @@ const Users = ({ roles, characters, teams }) => {
         }
         </div>
 
-        <H>Divoci</H>
-        <Team name="Divoci" roles={getWildlings()} maxCount={CONF.DIVOCI_MAX_COUNT} />
-        <H>Orgove</H>
-        <Team name="Orgove" roles={getOrgs()} maxCount={CONF.ORGS_MAX_COUNT} />
+        <H>Divoci a orgove</H>
+        <Teams>
+            <Team name="Divoci" roles={getWildlings()} maxCount={CONF.DIVOCI_MAX_COUNT} />
+            <Team name="Orgove" roles={getOrgs()} maxCount={CONF.ORGS_MAX_COUNT} />
+        </Teams>
+        
         </div>
     )
 }
