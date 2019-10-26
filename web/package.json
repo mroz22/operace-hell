@@ -11,7 +11,7 @@
     "react-in-viewport": "^0.0.38",
     "react-motion": "^0.5.2",
     "react-qr-reader": "^2.2.1",
-    "react-scripts": "3.1.1",
+    "react-scripts": "latest",
     "react-select": "^3.0.4",
     "styled-components": "^4.3.2"
   },
@@ -35,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-import": "^2.18.2"
   }
 }

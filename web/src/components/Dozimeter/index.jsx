@@ -5,7 +5,7 @@ import { Link } from '../../components';
 import QRCode from 'qrcode.react';
 import QrReader from 'react-qr-reader'
 
-import { Wrapper, Option, Options, Heading, Section } from './components';
+import { Wrapper, Option, Options, Section } from './components';
 import { Bunker as BunkerSituation } from '../Situation';
 import Bunker from '../Zone/bunker';
 

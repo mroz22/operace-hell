@@ -196,27 +196,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         onChange={(event => setRoleDraft({ ...roleDraft, tel: event.target.value}))}
                     />
                     
-                    <SectionDivider>Dotaznik</SectionDivider>
-                    <Input
-                        label="Mam mobil s internetem / jsem schopny si poridit"
-                        type="checkbox"
-                        value={roleDraft.hasInternet}
-                        onChange={() => setRoleDraft({...roleDraft, hasInternet: !roleDraft.hasInternet})}
-                    /> 
-
-                    {
-                        roleDraft.hasInternet && (
-                            <Input
-                                label="Mam Android / iPhone"
-                                type="select"
-                                value={role.phoneType}
-                                options={[{ value: 'iphone', label: 'iPhone'}, {value: 'android', label: 'android'}]}
-                                onChange={(selected) => setRoleDraft({...roleDraft, phoneType: selected.value})}
-                            /> 
-                        )
-                    }
-                    
-                   
                     <SectionDivider>Strana</SectionDivider>
                     
                     <Input
@@ -282,12 +261,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
 
                         <P>Jmeno: {role.name}</P>
                         <P>Telefon: {role.tel}</P>
-
-                        <SectionDivider>Dotaznik</SectionDivider>
-                        
-                        <P>Mobil s internetem: {role.hasInternet ? 'Ano': 'Ne'}</P>
-                        { role.hasInternet && <P>Platforma: {role.phoneType}</P> }
-
 
                         {
                             role.roleType === 'pruzkumnik' && (

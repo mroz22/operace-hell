@@ -5,17 +5,16 @@ import Preloader from './components/Preloader';
 import Info from './views/Info'
 import Profile from './views/Profile';
 
-
 const App = () => {
-
     const [ user, setUser ] = useState(null);
 
     const [role, setRole] = useState({});
     const [roles, setRoles] = useState([]);
-    const [teams, setTeams] = useState([]);
+     const [teams, setTeams] = useState([]);
     const [game, setGame] = useState(null);
     const [bunkers, setBunkers] = useState([]); 
 
+       
     const [characters, setCharacters] = useState([]);
 
     const [isProfileView, setIsProfileView] = useState(false);
@@ -82,7 +81,7 @@ const App = () => {
         }
         getGame();
         getBunkers();
-        getRoles();
+        getRoles();   
         getCharacters();
     }, [])
 
