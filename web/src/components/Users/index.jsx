@@ -11,11 +11,28 @@ const Teams = ({children}) => {
     }}>{children}</div>)
 }
 
-const Team = ({children}) => {
+const Team = ({name, roles = [], maxCount}) => {
+    const getEmpty = (n) => {
+        if (n > 0) {
+            return new Array(n).fill('');
+        }
+        return [];
+    }
+
     return (<div style={{
         margin: '20px',
         minWidth: '200px'
-    }}>{children}</div>)
+    }}>
+        <div style={{ fontWeight: 'bold'}}>
+            {name} ({roles.length})
+        </div>
+        { roles.map((role, index) => {
+            return (<P key={role.id}>{role.name}</P>)
+        })}
+        { getEmpty(maxCount - roles.length).map((empty, index) => {
+            return (<P key={index}>.........</P>)
+        })}
+    </div>)
 }
 
 const Users = ({ roles, characters, teams }) => {
@@ -43,6 +60,19 @@ const Users = ({ roles, characters, teams }) => {
         return data;
     };
 
+    const getWildlings = () => {
+        if (!roles.length) {
+            return [];
+        }
+        return roles.filter(r => r.roleType === 'divoky');
+    }
+
+    const getOrgs = () => {
+        if (!roles.length) {
+            return [];
+        }
+        return roles.filter(r => r.roleType === 'org');
+    }
 
     const getSorted = () => {
         const result = {}
@@ -57,30 +87,17 @@ const Users = ({ roles, characters, teams }) => {
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
     
-    const getEmpty = (n) => {
-        return new Array(n).fill('');
-    }
+    
 
     return (
         <div>
         <H>Prihlaseni hraci (pruzkumnici)</H>
         <P>Celkem: { roles.length && roles.length }</P>
-        <P>maji internet: { roles.length && roles.filter(r => r.hasInternet).length }</P>
         <Teams>
         {
             getFormattedData().map((record) => {
                 return (
-                    <Team key={record.name}>
-                        <div style={{ fontWeight: 'bold'}}>
-                            {record.name} ({record.roles.length})
-                        </div>
-                        { record.roles.map(role => {
-                            return (<P key={role.name}>{role.name}</P>)
-                        })}
-                        { getEmpty(CONF.TEAM_MAX_COUNT - record.roles.length).map((empty, index) => {
-                            return (<P key={index}>.........</P>)
-                        })}
-                    </Team>
+                    <Team key={record.name} name={record.name} roles={record.roles} maxCount={CONF.TEAM_MAX_COUNT} />
                 )
             })
             
@@ -91,6 +108,7 @@ const Users = ({ roles, characters, teams }) => {
         </Teams>
 
         <H>Top ranking characters</H>
+        <div style={{marginBottom: '15px', marginTop: '15px'}}>
         {
             getSorted().map((record, index) => {
                 const [charId] = record
@@ -101,7 +119,12 @@ const Users = ({ roles, characters, teams }) => {
                 )
             })
         }
-        
+        </div>
+
+        <H>Divoci</H>
+        <Team name="Divoci" roles={getWildlings()} maxCount={CONF.DIVOCI_MAX_COUNT} />
+        <H>Orgove</H>
+        <Team name="Orgove" roles={getOrgs()} maxCount={CONF.ORGS_MAX_COUNT} />
         </div>
     )
 }

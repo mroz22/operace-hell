@@ -101,7 +101,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
     }, [role])
 
     const updateRole = (override) => {
-        console.warn('update role called', override, roleDraft);
         return firebase.firestore().collection("users")
             .doc(user.uid)
             .set(override ? override : roleDraft)
@@ -146,6 +145,9 @@ const Profile = ({ user, characters, role, roles, teams }) => {
         if (roleType === 'pruzkumnik') {
             return CONF.PRUZKUMNICI_MAX_COUNT - count;
         }
+        if (roleType === 'org') {
+            return CONF.ORGS_MAX_COUNT - count;
+        }
     }
 
     const isRoleTypeOptionDisabled = (roleType) => {
@@ -158,7 +160,6 @@ const Profile = ({ user, characters, role, roles, teams }) => {
     if (error) {
         return <P>Error: {error}</P>
     }
-
 
     return (
         <>
@@ -199,21 +200,23 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                     <SectionDivider>Strana</SectionDivider>
                     
                     <Input
-                        label="Pruzkumnik / Divoky"
+                        label="Pruzkumnik / Divoky / Org"
                         type="select"
                         value={role.roleType}
                         options={[
-                            { value: 'pruzkumnik', label: `pruzkumnik (zbyva ${getRemainingRoleTypeCount('pruzkumnik')})`},
-                            {value: 'divoky', label: `divoky (zbyva ${getRemainingRoleTypeCount('divoky')})`}
+                            {value: 'pruzkumnik', label: `pruzkumnik (zbyva ${getRemainingRoleTypeCount('pruzkumnik')})`},
+                            {value: 'divoky', label: `divoky (zbyva ${getRemainingRoleTypeCount('divoky')})`},
+                            {value: 'org', label: `org (zbyva ${getRemainingRoleTypeCount('org')})`}
+
                         ]}
                         isOptionDisabled={option => isRoleTypeOptionDisabled(option.value)}
-                        
                         onChange={(selected) => {
                             updateRole({
                                 ...roleDraft,
                                 characterId: selected.value === 'pruzkumnik' ? characters[0].id: '',
                                 TeamId: selected.value === 'pruzkumnik' ? roleDraft.TeamId : '',
-                                roleType: selected.value});
+                                roleType: selected.value
+                            });
                         }}
                     />
 

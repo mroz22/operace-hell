@@ -1,5 +1,6 @@
-export const PRUZKUMNICI_MAX_COUNT = 30;
-export const DIVOCI_MAX_COUNT = 5;
+export const PRUZKUMNICI_MAX_COUNT = 48;
+export const DIVOCI_MAX_COUNT = 8;
+export const ORGS_MAX_COUNT = 8;
 
 export const TEAM_MAX_COUNT = 8;
 export const LOW_AMMO = '30';
