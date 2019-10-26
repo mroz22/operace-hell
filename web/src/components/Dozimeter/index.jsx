@@ -125,7 +125,7 @@ const Dozimeter = (props) => {
         <Wrapper>
             <div style={{ display: 'flex', flexDirection: 'row', 'justifyContent': 'space-between', marginBottom: '30px'}}>
             <Link onClick={() => setView('world')}>Svet</Link>
-            <Link onClick={() => setView('me')}>{ role.characterId }</Link>
+            <Link onClick={() => setView('me')}>Ja</Link>
             <Link onClick={() => setQrReaderOpened(!qrReaderOpened)}>Precist qr</Link>
 
             <Link onClick={() => setIsGameView(false)}>osobni udaje</Link>

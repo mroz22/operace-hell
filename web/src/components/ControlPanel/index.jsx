@@ -4,21 +4,42 @@ import Map from 'google-map-react';
 import { Link, Wrapper, SectionDropwdown } from '../../components';
 import * as CONF from '../../config';
 
-const Point = ({ color }) => {
+const Point = ({ role, team }) => {
+    if (role.roleType === 'pruzkumnik') {
+        const color = team && team.color || CONF.GREEN;
+        return (
+            <div style={{ color }}>
+                <div>{role.name}</div>
+                <div style={{ fontSize: '4em'}}>
+                { role.roleType === 'pruzkumnik' && '😋'}
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <div style={{ height: '50px', width: '50px', backgroundColor: 'yellow' }}>
+        <div style={{ color: 'violet' }}>
+            <div>{role.name}</div>
+            <div style={{ fontSize: '4em'}}>
+            { role.roleType === 'divoky' && '🎃'}
+            { role.roleType === 'org' && '🎬'}
+            </div>
         </div>
-    );
+    )
 }
 
 const ControlPanel = (props) => {
-    const { game, role, bunkers, user, roles } = props;
+    const { game, role, bunkers, user, roles, teams } = props;
     // const db = firebase.firestore();
-    
+    console.log(roles)
     const [view, setView] = useState('world');
 
-    if (!game || !role || !bunkers || !user) {
+    if (!game || !role || !bunkers || !user || !teams) {
         return 'loading...'
+    }
+
+    const getTeam = (r) => {
+        return teams.find(t => t.id === r.TeamId);
     }
 
     return (
@@ -44,7 +65,16 @@ const ControlPanel = (props) => {
                         }}
                     >
                         {
-                            roles.filter(r => !!r.geo).map(r => <Point />)
+                            roles.filter(r => !!r.geo).map(r => (
+                                <Point
+                                    key={r.name}
+                                    lat={r.geo.lat}
+                                    lng={r.geo.lng}
+                                    role={r}
+                                    team={getTeam(r)}
+                                    />
+                                )
+                            )
                         }
                     </Map>
                     </>

@@ -81,7 +81,8 @@ export default (props) => {
                 roles={props.roles}
                 bunkers={props.bunkers}
                 user={props.user}
-                setIsGameView={setIsGameView} />
+                teams={props.teams}
+                />
         )
     }
 
