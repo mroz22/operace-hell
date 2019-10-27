@@ -35,7 +35,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 // only 5% of regular radiation affects player in protectiveSuite;
                 const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
                 return userRef.update({
-                    'status.radiation': currentUserRadiation + ((currentRadiation / 60 ) * DOSE_MODIFIER)
+                    'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * DOSE_MODIFIER)
                 });
             });
         }).catch((err) => console.error(err));
