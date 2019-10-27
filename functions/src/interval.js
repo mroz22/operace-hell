@@ -17,7 +17,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
         console.log('======run interval======');
     
-        const gameRef = await admin.firestore().collection('game').doc('operacexxx').get();
+        const gameRef = await admin.firestore().collection('game').doc('operacexxx');
         const game = gameRef.data();
         const timestamp = Date.now();
         console.log(`EPOCH ${game.epoch}`)
