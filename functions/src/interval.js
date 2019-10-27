@@ -16,9 +16,12 @@ const getRadiationForEpoch = (epoch) => {
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
         console.log('======run interval======');
-    
-        const gameRef = await admin.firestore().collection('game').doc('operacexxx');
-        const game = gameRef.data();
+        const db = admin.firestore();
+        const gameRef = db.collection('game').doc('operacexxx');
+        const game = await gameRef.get().then((doc) => {
+            return doc.data();
+        });
+
         const timestamp = Date.now();
         console.log(`EPOCH ${game.epoch}`)
         
@@ -32,9 +35,9 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
     
         // update USERS
         let users = [];
-        await admin.firestore().collection('users').get().then((querySnapshot) => {
+        await db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
-                const userRef = admin.firestore().collection('users').doc(doc.id);
+                const userRef = db.collection('users').doc(doc.id);
                 users.push({
                     ...doc.data(),
                     id: doc.id,
@@ -50,9 +53,9 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
     
         // updated BUNKERS
     
-        return admin.firestore().collection('bunkers').get().then((querySnapshot) => {
+        return db.collection('bunkers').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
-                const bunkerRef = admin.firestore().collection('bunkers').doc(doc.id);
+                const bunkerRef = db.collection('bunkers').doc(doc.id);
     
                 const bunker = {
                     ...doc.data(),
