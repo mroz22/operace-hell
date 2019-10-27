@@ -50,7 +50,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     ...doc.data(),
                     id: doc.id,
                 };
-                console.log(users, 'users');
                 const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length;
                 console.log('numberOfUsers', numberOfUsers);
                 if (typeof numberOfUsers !== 'number' || isNaN(numberOfUsers)) {
