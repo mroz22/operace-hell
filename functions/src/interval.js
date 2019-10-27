@@ -4,7 +4,7 @@ const utils = require('./utils');
 const radiation = require('./config/radiation');
 
 const getRadiationForEpoch = (epoch) => {
-    console.log(epoch);
+    console.log('epoch', epoch);
     const key = Object.keys(radiation).reverse().find(k => k <= epoch);
     console.log('key', key);
     console.log('radiation[key]', radiation[key])
@@ -15,12 +15,12 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
         console.log('run interval');
     
-        const game = await admin.firestore().collection('game').doc('operacexxx').get();
-
-        // update GAME
+        const gameRef = await admin.firestore().collection('game').doc('operacexxx').get();
+        const game = gameRef.data();
         const timestamp = Date.now();
-
-        await admin.firestore().collection('game').doc('operacexxx').update({
+        
+        // update GAME
+        await gameRef.update({
             radiation: getRadiationForEpoch(game.epoch),
             timestamp,
             epoch: game.epoch++,
