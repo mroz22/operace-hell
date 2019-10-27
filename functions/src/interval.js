@@ -4,23 +4,17 @@ const { getRadiationForEpoch } = require('./utils');
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
-        console.log('======run interval======');
         const db = admin.firestore();
         const gameRef = db.collection('game').doc('operacexxx');
-        const game = await gameRef.get().then((doc) => {
-            return doc.data();
-        });
-
+        const game = await gameRef.get().data();
+        console.log(`======evaulate epoch ${game.epoch} ======`);
         const timestamp = Date.now();
-        console.log(`EPOCH ${game.epoch}`)
-        
         // update GAME
         await gameRef.update({
             radiation: getRadiationForEpoch(game.epoch),
             timestamp,
             epoch: game.epoch + 1,
         });
-        
     
         // update USERS
         let users = [];
@@ -30,7 +24,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 users.push({
                     ...doc.data(),
                     id: doc.id,
-                })
+                });
                 const currentUserRadiation = doc.data().status.radiation;
                 // only 5% of regular radiation affects player in protectiveSuite;
                 const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 0.05 : 1;

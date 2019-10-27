@@ -2,7 +2,7 @@ export const countConsumption = (bunker) => {
     if (bunker.numberOfUsers === 0) {
         return 0;
     }
-    return bunker.numberOfUsers * 0.1;
+    return bunker.numberOfUsers * 1;
 }
 
 export const getTimeToZero = (bunker) => {
