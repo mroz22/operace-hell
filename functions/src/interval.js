@@ -18,7 +18,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         await gameRef.update({
             radiation: getRadiationForEpoch(game.epoch),
             timestamp,
-            epoch: game.epoch++,
+            epoch: game.epoch + 1,
         });
         
     
