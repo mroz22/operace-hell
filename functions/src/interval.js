@@ -41,6 +41,8 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             }).catch((err) => console.error(err))
         ])
         
+        console.log('data loaded');
+        
         // UPDATE DATA SECTION
         db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
@@ -73,7 +75,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     bunkerRef.update({
                         isDestroyed: true,
                     });
-                } else if (updatedOxygen > bunker.oxygenCap) {
+                } else if (updatedOxygen > doc.data().oxygenCap) {
                     updatedOxygen = doc.data().oxygenCap;
                 }
     
