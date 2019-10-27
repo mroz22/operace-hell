@@ -1,16 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const utils = require('./utils');
-const { radiation } = require('./config/radiation');
-
-const getRadiationForEpoch = (epoch) => {
-    console.log('epoch', epoch);
-    console.log('radiation', radiation);
-    const key = Object.keys(radiation).reverse().find(k => Number(k) <= epoch);
-    console.log('key', key);
-    console.log('radiation[key]', radiation[key])
-    return radiation[key];
-};
+const { getRadiationForEpoch } = require('./utils');
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
