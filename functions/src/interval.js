@@ -6,7 +6,9 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
         const db = admin.firestore();
         const gameRef = db.collection('game').doc('operacexxx');
-        const game = await gameRef.get().data();
+        const game = await gameRef.get().then((doc) => {
+            return doc.data();
+        });
         console.log(`======evaulate epoch ${game.epoch} ======`);
         const timestamp = Date.now();
         // update GAME
@@ -16,15 +18,33 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             epoch: game.epoch + 1,
         });
     
-        // update USERS
+        // LOAD DATA SECTION
         let users = [];
-        await db.collection('users').get().then((querySnapshot) => {
+        let bunkers = [];
+        await Promise.all([
+            db.collection('users').get().then((querySnapshot) => {
+                return querySnapshot.forEach((doc) => {
+                    users.push({
+                        ...doc.data(),
+                        id: doc.id,
+                    });
+                });
+            }).catch((err) => console.error(err)),
+            
+            db.collection('bunkers').get().then((querySnapshot) => {
+                return querySnapshot.forEach((doc) => {
+                    bunkers.push({
+                        ...doc.data(),
+                        id: doc.id,
+                    });
+                });
+            }).catch((err) => console.error(err))
+        ])
+        
+        // UPDATE DATA SECTION
+        db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
-                users.push({
-                    ...doc.data(),
-                    id: doc.id,
-                });
                 const currentUserRadiation = doc.data().status.radiation;
                 // only 5% of regular radiation affects player in protectiveSuite;
                 const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
@@ -32,18 +52,11 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * DOSE_MODIFIER)
                 });
             });
-        }).catch((err) => console.error(err));
+        }).catch((err) => console.error(err)),
     
-        // updated BUNKERS
-    
-        return db.collection('bunkers').get().then((querySnapshot) => {
+        db.collection('bunkers').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const bunkerRef = db.collection('bunkers').doc(doc.id);
-    
-                const bunker = {
-                    ...doc.data(),
-                    id: doc.id,
-                };
                 const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length;
                 console.log('numberOfUsers', numberOfUsers);
                 if (typeof numberOfUsers !== 'number' || isNaN(numberOfUsers)) {
@@ -51,23 +64,22 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     return;
                 }
                 // nothing needs to change
-                if ((numberOfUsers === 0 && bunker.oxygenGeneration === 0) || bunker.isDestroyed) {
+                if ((numberOfUsers === 0 && doc.data().oxygenGeneration === 0) || doc.data().isDestroyed) {
                     return;
                 }
     
-                let updatedOxygen = bunker.oxygen - (numberOfUsers * 1) + bunker.oxygenGeneration;
+                let updatedOxygen = doc.data().oxygen - (numberOfUsers * 1) + doc.data().oxygenGeneration;
                 if (updatedOxygen < 0) {
                     bunkerRef.update({
                         isDestroyed: true,
                     });
                 } else if (updatedOxygen > bunker.oxygenCap) {
-                    updatedOxygen = bunker.oxygenCap;
+                    updatedOxygen = doc.data().oxygenCap;
                 }
     
                 bunkerRef.update({
                     'oxygen': updatedOxygen,
                 });
-
             });
         }).catch((err) => console.error(err));
     });
