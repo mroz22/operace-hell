@@ -24,7 +24,6 @@ export default ({ bunker, role, onEnterBunker, onSituationCancel }) => {
             <Option onClick={() => onEnterBunker('')}>Odejit</Option>
             <Option onClick={() => onSituationCancel()}>Zrusit</Option>
             </Options>
-
             </Wrapper>
         )
     }

@@ -52,5 +52,3 @@ exports.eatPill = functions.https.onCall(async (data, context) => {
 
 exports.runInterval = intervals.runInterval;
 exports.resolveGameSituation = situations.resolveGameSituation;
-// utils
-
