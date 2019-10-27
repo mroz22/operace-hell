@@ -20,7 +20,7 @@ export default (props) => {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
     
-    const [isGameView, setIsGameView] = useState(getParameterByName('experimental') === 'true');
+    const roleParam = getParameterByName('role');
 
     if (!props.user) {
         return (
@@ -38,42 +38,18 @@ export default (props) => {
         ) 
     }
 
-    if (!isGameView) {
-        return (
-            <div>
-                <div style={{
-                    backgroundColor: 'white',
-                    padding: '30px 15% 130px 15%',
-                }}>
-                    <Profile
-                        user={props.user}
-                        characters={props.characters}
-                        roles={props.roles}
-                        role={props.role}
-                        teams={props.teams}
-                        isGameView={isGameView}
-                        setIsGameView={setIsGameView}
-                    />
-                </div>
-                <Section>
-                    <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
-                </Section>
-            </div>
-        );
-    }
-
-    if (props.role && props.role.roleType === 'pruzkumnik') {
+    if (roleParam === 'pruzkumnik') {
         return (
             <Dozimeter
                 game={props.game}
                 role={props.role}
                 bunkers={props.bunkers}
                 user={props.user}
-                setIsGameView={setIsGameView} />
+                />
         )
     }
 
-    if (props.role && props.role.roleType === 'org') {
+    if (roleParam === 'org') {
         return (
             <ControlPanel
                 game={props.game}
@@ -86,6 +62,24 @@ export default (props) => {
         )
     }
 
-    return null;
+    return (
+        <div>
+            <div style={{
+                backgroundColor: 'white',
+                padding: '30px 15% 130px 15%',
+            }}>
+                <Profile
+                    user={props.user}
+                    characters={props.characters}
+                    roles={props.roles}
+                    role={props.role}
+                    teams={props.teams}
+                />
+            </div>
+            <Section>
+                <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
+            </Section>
+        </div>
+    );
 }
 

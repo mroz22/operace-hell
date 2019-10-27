@@ -8,7 +8,7 @@ import { Bunker as BunkerSituation } from '../Situation';
 import Bunker from '../Zone/bunker';
 
 const Dozimeter = (props) => {
-    const { game, role, bunkers, user, setIsGameView } = props;
+    const { game, role, bunkers, user } = props;
     const db = firebase.firestore();
     
     const [view, setView] = useState('world');
@@ -127,8 +127,6 @@ const Dozimeter = (props) => {
             <Link onClick={() => setView('world')}>Svet</Link>
             <Link onClick={() => setView('me')}>Ja</Link>
             <Link onClick={() => setQrReaderOpened(!qrReaderOpened)}>Precist qr</Link>
-
-            <Link onClick={() => setIsGameView(false)}>osobni udaje</Link>
             </div>
             {
                 view === 'world' && (
