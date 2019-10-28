@@ -9,16 +9,30 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         const game = await gameRef.get().then((doc) => {
             return doc.data();
         });
+        
         console.log(`======evaulate epoch ${game.epoch} ======`);
-        const timestamp = Date.now();
+
+        if (game.epoch === 0) {
+            console.log('epoch is 0, restarting game data');
+            return db.collection('users').get().then((querySnapshot) => {
+                return querySnapshot.forEach((doc) => {
+                    const userRef = db.collection('users').doc(doc.id);
+                    return userRef.update({
+                        'BunkerId': '',
+                        'status.radiation': 0,
+                        'status.protectiveSuiteOn': false,
+                    });
+                });
+            }).catch((err) => console.error(err));
+        }
+
         // update GAME
         await gameRef.update({
             radiation: getRadiationForEpoch(game.epoch),
-            timestamp,
             epoch: game.epoch + 1,
         });
     
-        // LOAD DATA SECTION
+        // === LOAD DATA SECTION ===
         let users = [];
         let bunkers = [];
         await Promise.all([
@@ -42,17 +56,21 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         ])
         
         console.log('data loaded');
-        
-        // UPDATE DATA SECTION
+
+        /* === UPDATE DATA SECTION === */
+
         db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
                 const currentUserRadiation = doc.data().status.radiation;
-                // only 5% of regular radiation affects player in protectiveSuite;
-                const DOSE_MODIFIER = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
-                return userRef.update({
-                    'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * DOSE_MODIFIER)
-                });
+                
+                if (!doc.data().BunkerId || (doc.data().BunkerId && !bunkers.find(b => b.id === doc.data().BunkerId).isDestroyed)) {
+                    // only 5% of regular radiation affects player in protectiveSuite;
+                    doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
+                    return userRef.update({
+                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * DOSE_MODIFIER)
+                    });
+                }
             });
         }).catch((err) => console.error(err)),
     
@@ -78,7 +96,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 } else if (updatedOxygen > doc.data().oxygenCap) {
                     updatedOxygen = doc.data().oxygenCap;
                 }
-    
                 bunkerRef.update({
                     'oxygen': updatedOxygen,
                 });
