@@ -14,7 +14,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
 
         if (game.epoch === 0) {
             console.log('epoch is 0, restarting game data');
-            return db.collection('users').get().then((querySnapshot) => {
+            await db.collection('users').get().then((querySnapshot) => {
                 return querySnapshot.forEach((doc) => {
                     const userRef = db.collection('users').doc(doc.id);
                     return userRef.update({
@@ -24,6 +24,10 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     });
                 });
             }).catch((err) => console.error(err));
+
+            return gameRef.update({
+                epoch: 1,
+            });
         }
 
         // update GAME
