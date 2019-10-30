@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { getRadiationForEpoch } = require('./utils');
 
-// const { mutations } = require('./data/')
+const { mutations } = require('./data/mutations')
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick

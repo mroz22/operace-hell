@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --testPathPattern functions",
-    "delete-data": "rimfraf ./functions/data && rimraf ./web/public/data",
-    "copy-data": "cp -R data ./functions/src/data && cp -R data ./web/public/data"
+    "delete-data": "rimraf ./functions/data && rimraf ./web/public/data",
+    "copy-data": "rsync -r ./data/ ./functions/src/data && rsync -r ./data/ ./web/public/data"
   },
   "repository": {
     "type": "git",
