@@ -27,7 +27,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
 
             await db.collection('bunkers').get().then((querySnapshot) => {
                 return querySnapshot.forEach((doc) => {
-                    const bunkerRef = db.collection('users').doc(doc.id);
+                    const bunkerRef = db.collection('bunkers').doc(doc.id);
                     return bunkerRef.update({
                         'isDestroyed': false,
                         'oxygen': doc.getData().oxygenCap,
