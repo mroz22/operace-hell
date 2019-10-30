@@ -25,6 +25,16 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 });
             }).catch((err) => console.error(err));
 
+            await db.collection('bunkers').get().then((querySnapshot) => {
+                return querySnapshot.forEach((doc) => {
+                    const bunkerRef = db.collection('users').doc(doc.id);
+                    return bunkerRef.update({
+                        'isDestroyed': false,
+                        'oxygen': doc.getData().oxygenCap,
+                    });
+                });
+            }).catch((err) => console.error(err));
+
             return gameRef.update({
                 epoch: 1,
             });
@@ -72,7 +82,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     // only 5% of regular radiation affects player in protectiveSuite;
                     doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
                     return userRef.update({
-                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * DOSE_MODIFIER)
+                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
                     });
                 }
             });
