@@ -30,7 +30,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     const bunkerRef = db.collection('bunkers').doc(doc.id);
                     return bunkerRef.update({
                         'isDestroyed': false,
-                        'oxygen': doc.getData().oxygenCap,
+                        'oxygen': doc.data().oxygenCap,
                     });
                 });
             }).catch((err) => console.error(err));
