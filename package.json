@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --testPathPattern functions"
+    "test": "jest --testPathPattern functions",
+    "delete-data": "yarn rimfraf ./functions/data && yarn rimraf ./web/public/data",
+    "copy-data": "mv "
   },
   "repository": {
     "type": "git",
