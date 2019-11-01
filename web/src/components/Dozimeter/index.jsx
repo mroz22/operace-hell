@@ -67,6 +67,9 @@ const Dozimeter = (props) => {
 
     const parseQr = (value) => {
         const delimiterIndex = value.indexOf(':');
+        if (!delimiterIndex) {
+            return {type: value};
+        }
         const type = value.substr(0, delimiterIndex);
         const id = value.substr(delimiterIndex+1);
         return {type, id};
@@ -179,15 +182,16 @@ const Dozimeter = (props) => {
                         }} />
                     </SectionDropwdown>
                     <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀">
-                        obsah section
+                        Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.
                     </SectionDropwdown>
 
                     <SectionDropwdown title="Osobni ID">
                         { role.uid && <QRCode value={role.uid} /> }
                     </SectionDropwdown>
 
-                    <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>Epoch do preziti: {game.endEpoch - game.epoch}</Description>
-
+                    <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
+                        Epoch do preziti: {game.endEpoch - game.epoch}
+                    </Description>
         </Wrapper>
     )    
 }
