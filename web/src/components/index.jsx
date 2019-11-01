@@ -55,7 +55,9 @@ const Wrapper = styled.div`
     background-color: black;
     color: ${GREEN};
     height: 100%;
-    padding: 4%;
+    padding: 0 4% 0 4%;
+    display: flex;
+    flex-direction: column;
 `
 
 const Description = styled.div`
@@ -71,8 +73,8 @@ const Options = styled.div`
 const Option = styled.div`
     widht: 100%;
     border: ${GREEN} dashed 1px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     padding: 10px;
 `
 

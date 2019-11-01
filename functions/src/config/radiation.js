@@ -7,6 +7,8 @@ const radiation = {
     180: 300,
     240: 400,
     300: 500,
+    400: 0,
+    740: 1000,
 };
 
 module.exports = {

@@ -39,6 +39,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
 
             return gameRef.update({
                 epoch: 1,
+                endEpoch: 840,
             });
         }
 
