@@ -9,6 +9,8 @@ const situations = require('./src/gameSituation');
 admin.initializeApp();
 const MAX_CORRECT_PASSWORDS = 8;
 
+const db = admin.firestore();
+
 exports.addUserRole = functions.auth.user().onCreate(async (user) => {
     const snapshot = await admin.firestore().collection("users").doc(user.uid).set({
         name: "Unknown soldier",
@@ -56,9 +58,9 @@ exports.enterPassword = functions.https.onCall(async (data, context) => {
    
     if (data.pass1 === 'a' && data.pass2 === 'a') {
         const uid = context.auth.uid;
-        const userRef = await admin.firestore().collection('users').doc(uid);
+        const userRef = await db.collection('users').doc(uid);
         let numberOfUsersWithCorrectPass = 0;
-        await admin.firestore().collection('users').get().then((querySnapshot) => {
+        await db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
                 if (doc.data().status.enteredCorrectPassword) {
