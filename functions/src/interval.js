@@ -4,12 +4,21 @@ const { getRadiationForEpoch } = require('./utils');
 
 const { mutations } = require('./data/mutations')
 
+const initialStatus = {
+    BunkerId: '',
+    radiation: 0,
+    protectiveSuiteOn: false,
+    enteredCorrectPassword: false,
+    hasEnteredSecredChamber: false,
+    protectiveSuiteOn: false,
+};
+
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
         const db = admin.firestore();
         const gameRef = db.collection('game').doc('operacexxx');
         const game = await gameRef.get().then((doc) => {
-            return doc.data();
+            return doc.data(initialStatus);
         });
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
@@ -19,16 +28,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             await db.collection('users').get().then((querySnapshot) => {
                 return querySnapshot.forEach((doc) => {
                     const userRef = db.collection('users').doc(doc.id);
-                    return userRef.update({
-                        'BunkerId': '',
-                        // todo remove status
-                        'status.radiation': 0,
-                        'status.protectiveSuiteOn': false,
-                        'enteredCorrectPassword': false,
-                        'hasEnteredSecredChamber': false,
-                        'protectiveSuiteOn': false,
-                        'radiation': 0,
-                    });
+                    return userRef.update({ status: initialStatus});
                 });
             }).catch((err) => console.error(err));
 
@@ -84,13 +84,13 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
-                const currentUserRadiation = doc.data().radiation;
+                const currentUserRadiation = doc.data().status.radiation;
                 
                 if (!doc.data().BunkerId || (doc.data().BunkerId && !bunkers.find(b => b.id === doc.data().BunkerId).isDestroyed)) {
                     // only 5% of regular radiation affects player in protectiveSuite;
                     doseModifier = doc.data().protectiveSuiteOn ? 0.05 : 1;
                     return userRef.update({
-                        'radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
+                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
                     });
                 }
             });
@@ -99,7 +99,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         db.collection('bunkers').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const bunkerRef = db.collection('bunkers').doc(doc.id);
-                const numberOfUsers = users.filter(u => u.BunkerId === doc.id).length;
+                const numberOfUsers = users.filter(u => u.status && u.status.BunkerId === doc.id).length;
                 console.log('numberOfUsers', numberOfUsers);
                 if (typeof numberOfUsers !== 'number' || isNaN(numberOfUsers)) {
                     console.error('number of users not defined in bunker, this looks like error')

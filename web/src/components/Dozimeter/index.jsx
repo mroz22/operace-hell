@@ -43,26 +43,25 @@ const Dozimeter = (props) => {
         return () => {}
     }, [db, role.uid])
 
-    if (!game || !role || !bunkers || !user) {
+    if (!game || !role || !role.status || !bunkers || !user) {
         return 'loading...'
     }
 
-    const currentBunker = bunkers.find(b => b.id === role.BunkerId);
+    const currentBunker = bunkers.find(b => b.id === role.status && role.status.BunkerId);
 
     const updateUser = (data) => {
         return db.collection("users")
             .doc(user.uid)
-            .set({
-                ...role,
+            .update({
                 ...data,
             });
     }
     const enterBunker = (BunkerId) => {
-        return updateUser({ BunkerId })
+        return updateUser({ 'status.BunkerId': BunkerId })
     }
 
     const enterSecretChamber = () => {
-        return updateUser({ hasEnteredSecretChamber: true })
+        return updateUser({ 'status.hasEnteredSecretChamber': true })
     }
 
     const parseQr = (value) => {
@@ -178,8 +177,8 @@ const Dozimeter = (props) => {
                     </SectionDropwdown>
 
                     <SectionDropwdown title="Vybaveni">
-                        <Input type="checkbox" label="radiacni oblek" value={role.protectiveSuiteOn} onChange={() => {
-                            updateUser({ protectiveSuiteOn: !role.protectiveSuiteOn })
+                        <Input type="checkbox" label="radiacni oblek" value={role.status.protectiveSuiteOn} onChange={() => {
+                            updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
                     <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀">

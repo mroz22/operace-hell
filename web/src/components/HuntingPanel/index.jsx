@@ -19,7 +19,7 @@ const HuntingPanel = (props) => {
     if (!roles) {
         return 'loading...'
     }
-console.log(roles);
+
     return (
         <Wrapper>
                     <Map
@@ -36,7 +36,7 @@ console.log(roles);
                         }}
                     >
                         {
-                            roles.filter(r => !!r.geo && r.hasEnteredSecretChamber).map(r => (
+                            roles.filter(r => !!r.geo && r.status && r.status.hasEnteredSecretChamber).map(r => (
                                 <Point
                                     key={r.name}
                                     lat={r.geo.lat}

@@ -11,15 +11,12 @@ const App = () => {
 
     const [role, setRole] = useState({});
     const [roles, setRoles] = useState([]);
-     const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState([]);
     const [game, setGame] = useState(null);
     const [bunkers, setBunkers] = useState([]); 
-
-       
     const [characters, setCharacters] = useState([]);
-
     const [isProfileView, setIsProfileView] = useState(false);
-  
+
     useEffect(() => {
         const db = firebase.firestore();
 
@@ -121,7 +118,7 @@ const App = () => {
 
     const getNumberOfUsersInBunker = (bunkerId) => {
         return roles.filter(r => {
-            return r.BunkerId === bunkerId;
+            return r.status && r.status.BunkerId === bunkerId;
         }).length;
     }
 
