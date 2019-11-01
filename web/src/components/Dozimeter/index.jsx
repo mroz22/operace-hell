@@ -67,7 +67,7 @@ const Dozimeter = (props) => {
 
     const parseQr = (value) => {
         const delimiterIndex = value.indexOf(':');
-        if (!delimiterIndex) {
+        if (delimiterIndex === -1) {
             return {type: value};
         }
         const type = value.substr(0, delimiterIndex);
@@ -118,6 +118,7 @@ const Dozimeter = (props) => {
         )
 
     }
+    console.log(qr);
     switch (qr.type) {
         case 'bunker':
             return (

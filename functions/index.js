@@ -50,5 +50,14 @@ exports.eatPill = functions.https.onCall(async (data, context) => {
     
 });
 
+exports.enterPassword = functions.https.onCall(async (data, context) => {
+    // const uid = context.auth.uid;
+    // const userRef = await admin.firestore().collection('users').doc(uid);
+    if (data.pass1 === 'a' && data.pass2 === 'a') {
+        return 'spravne';
+    }
+    return 'pip. pip.. pip... nic se nestalo :(';
+});
+
 exports.runInterval = intervals.runInterval;
 exports.resolveGameSituation = situations.resolveGameSituation;

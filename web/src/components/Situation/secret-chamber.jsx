@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Wrapper, Options, Option, Description, Input}  from '../index';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
 export default ({ role, onEnter, onSituationCancel }) => {
-    // const callEnterPassword = firebase.functions().httpsCallable('enterPassword');
+    const callEnterPassword = firebase.functions().httpsCallable('enterPassword');
 
     const [pass1, setPass1] = useState('');
     const [pass2, setPass2] = useState('');
@@ -15,9 +15,9 @@ export default ({ role, onEnter, onSituationCancel }) => {
         try {
             setPassResult('');
             setIsPending(true);
-            // const result = await callEnterPassword({ pass1, pass2 })
-            // console.log('result', result);
-            // setPassResult(result)
+            const result = await callEnterPassword({ pass1, pass2 })
+            console.log('result', result);
+            setPassResult(result)
         } catch (err) {
             setPassResult('error, nepovedlo se odeslat heslo')
         } finally {
