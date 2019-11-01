@@ -1,13 +1,13 @@
 import React from 'react';
 import Map from 'google-map-react';
-import { Wrapper, SectionDropwdown } from '..';
+import { Wrapper } from '..';
 import * as CONF from '../../config';
 
 const Point = () => {
         return (
             <div style={{ color: 'red' }}>
                 <div style={{ fontSize: '4em'}}>
-                😋
+                {'😋'}
                 </div>
             </div>
         )
