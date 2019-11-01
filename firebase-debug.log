@@ -1,0 +1,16 @@
+[debug] [2019-11-01T20:07:26.045Z] ----------------------------------------------------------------------
+[debug] [2019-11-01T20:07:26.046Z] Command:       /home/martinvarmuza/.nvm/versions/node/v10.13.0/bin/node /home/martinvarmuza/repos/operace-hell/node_modules/.bin/firebase deploy --only hosting
+[debug] [2019-11-01T20:07:26.046Z] CLI Version:   7.6.1
+[debug] [2019-11-01T20:07:26.046Z] Platform:      linux
+[debug] [2019-11-01T20:07:26.046Z] Node Version:  v10.13.0
+[debug] [2019-11-01T20:07:26.046Z] Time:          Fri Nov 01 2019 21:07:26 GMT+0100 (Central European Standard Time)
+[debug] [2019-11-01T20:07:26.046Z] ----------------------------------------------------------------------
+[debug] [2019-11-01T20:07:26.046Z] 
+[debug] [2019-11-01T20:07:26.051Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-01T20:07:26.051Z] > authorizing via signed-in user
+[debug] [2019-11-01T20:07:26.051Z] [iam] checking project operacexxx for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-11-01T20:07:26.052Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/operacexxx:testIamPermissions  
+
+[debug] [2019-11-01T20:07:35.353Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-01T20:07:35.361Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/operacexxx  
+ 

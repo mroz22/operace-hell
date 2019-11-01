@@ -5,10 +5,17 @@ script:
   - cd web
   - yarn
   - yarn build
-  - cd ../
+  - cd build 
+  - mkdir admin
+  - cd ../../
   - cd functions
   - yarn
   - cd ../
+  - cd admin-web
+  - yarn
+  - yarn build
+  - cp -R build/static/. ../web/build/static
+  - cp build/index.html ../web/build/admin 
 deploy:
   skip_cleanup: true
   provider: firebase
