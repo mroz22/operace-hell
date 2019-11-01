@@ -14,8 +14,8 @@ script:
   - cd admin-web
   - yarn
   - yarn build
-  - cp -R build/static/. ../web/build/static
-  - cp build/index.html ../web/build/admin 
+  - cp -a ./build/static/. ../web/build/static
+  - cp ./build/index.html ../web/build/admin 
 deploy:
   skip_cleanup: true
   provider: firebase
