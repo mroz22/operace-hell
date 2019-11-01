@@ -17,7 +17,7 @@ export default ({ role, onEnter, onSituationCancel }) => {
             setIsPending(true);
             const result = await callEnterPassword({ pass1, pass2 })
             console.log('result', result);
-            setPassResult(result)
+            setPassResult(result.data)
         } catch (err) {
             setPassResult('error, nepovedlo se odeslat heslo')
         } finally {

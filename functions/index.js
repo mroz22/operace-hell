@@ -51,9 +51,17 @@ exports.eatPill = functions.https.onCall(async (data, context) => {
 });
 
 exports.enterPassword = functions.https.onCall(async (data, context) => {
-    // const uid = context.auth.uid;
-    // const userRef = await admin.firestore().collection('users').doc(uid);
+    const uid = context.auth.uid;
+    const userRef = await admin.firestore().collection('users').doc(uid);
+    const user = await userRef.get();
+
     if (data.pass1 === 'a' && data.pass2 === 'a') {
+        userRef.set(
+            ...user.data(),
+            { 
+                enteredCorrectPassword: true,
+            }
+        )
         return 'spravne';
     }
     return 'pip. pip.. pip... nic se nestalo :(';

@@ -21,8 +21,13 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     const userRef = db.collection('users').doc(doc.id);
                     return userRef.update({
                         'BunkerId': '',
+                        // todo remove status
                         'status.radiation': 0,
                         'status.protectiveSuiteOn': false,
+                        'enteredCorrectPassword': false,
+                        'hasEnteredSecredChamber': false,
+                        'protectiveSuiteOn': false,
+                        'radiation': 0,
                     });
                 });
             }).catch((err) => console.error(err));
@@ -79,13 +84,13 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
-                const currentUserRadiation = doc.data().status.radiation;
+                const currentUserRadiation = doc.data().radiation;
                 
                 if (!doc.data().BunkerId || (doc.data().BunkerId && !bunkers.find(b => b.id === doc.data().BunkerId).isDestroyed)) {
                     // only 5% of regular radiation affects player in protectiveSuite;
-                    doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
+                    doseModifier = doc.data().protectiveSuiteOn ? 0.05 : 1;
                     return userRef.update({
-                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
+                        'radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
                     });
                 }
             });
