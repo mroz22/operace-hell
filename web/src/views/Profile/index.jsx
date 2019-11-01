@@ -5,6 +5,7 @@ import Signup from '../../components/Signup';
 import Signin from '../../components/Signin';
 import Dozimeter from '../../components/Dozimeter';
 import ControlPanel from '../../components/ControlPanel';
+import HuntingPanel from '../../components/HuntingPanel';
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
@@ -45,6 +46,14 @@ export default (props) => {
                 role={props.role}
                 bunkers={props.bunkers}
                 user={props.user}
+                />
+        )
+    }
+
+    if (roleParam === 'divoky') {
+        return (
+            <HuntingPanel
+                roles={props.roles}
                 />
         )
     }
