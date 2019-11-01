@@ -13,7 +13,7 @@ import Bunker from '../Zone/bunker';
 const Dozimeter = (props) => {
     const { game, role, bunkers, user } = props;
     const db = firebase.firestore();
-    
+
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
 
@@ -47,7 +47,7 @@ const Dozimeter = (props) => {
         return 'loading...'
     }
 
-    const currentBunker = bunkers.find(b => b.id === role.status && role.status.BunkerId);
+    const currentBunker = bunkers.find(b => b.id === role.status.BunkerId);
 
     const updateUser = (data) => {
         return db.collection("users")
@@ -105,6 +105,15 @@ const Dozimeter = (props) => {
         onSituationCancel();
     }
     
+    if (role.status.enteredCorrectPassword) {
+        return (
+            <Wrapper>
+                <Description>
+                    Podarilo se ti splnit cil hry, vstoupil jsi do uzamceneho bunkru X!
+                </Description>
+            </Wrapper>
+        )
+    }
     if (game.endEpoch - game.epoch <= 0) {
         return (
             <Wrapper>
@@ -115,7 +124,6 @@ const Dozimeter = (props) => {
             </Wrapper>
 
         )
-
     }
     console.log(qr);
     switch (qr.type) {

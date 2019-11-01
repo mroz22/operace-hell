@@ -7,6 +7,7 @@ const intervals = require('./src/interval');
 const situations = require('./src/gameSituation');
 
 admin.initializeApp();
+const MAX_CORRECT_PASSWORDS = 8;
 
 exports.addUserRole = functions.auth.user().onCreate(async (user) => {
     const snapshot = await admin.firestore().collection("users").doc(user.uid).set({
@@ -51,16 +52,31 @@ exports.eatPill = functions.https.onCall(async (data, context) => {
 });
 
 exports.enterPassword = functions.https.onCall(async (data, context) => {
-    const uid = context.auth.uid;
-    const userRef = await admin.firestore().collection('users').doc(uid);
-
+    
+   
     if (data.pass1 === 'a' && data.pass2 === 'a') {
-        userRef.update(
-            { 
-                enteredCorrectPassword: true,
-            }
-        )
-        return 'spravne';
+        const uid = context.auth.uid;
+        const userRef = await admin.firestore().collection('users').doc(uid);
+        let numberOfUsersWithCorrectPass = 0;
+        await admin.firestore().collection('users').get().then((querySnapshot) => {
+            return querySnapshot.forEach((doc) => {
+                const userRef = db.collection('users').doc(doc.id);
+                if (doc.data().status.enteredCorrectPassword) {
+                    numberOfUsersWithCorrectPass++;
+                }
+            });
+        })
+
+        if (numberOfUsersWithCorrectPass < MAX_CORRECT_PASSWORDS) {
+            await userRef.update(
+                { 
+                    'status.enteredCorrectPassword': true,
+                }
+            )
+            return `spravne! vstoupil jsi. jeste zbyva ${MAX_CORRECT_PASSWORDS - numberOfUsersWithCorrectPass} mist`;
+        } else {
+            return 'heslo je spravne ale tajny bunkr je uz bohuzel plny. pozde! ted uz ti zbyba jen pokusit se prezit do nulte epochy.'
+        }
     }
     return 'pip. pip.. pip... nic se nestalo :(';
 });
