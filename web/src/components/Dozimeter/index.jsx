@@ -207,7 +207,7 @@ const Dozimeter = (props) => {
                         { !role.status.mutations && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
-                        { role.status.mutations.map(m => (
+                        { role.status.mutations && role.status.mutations.map(m => (
                             <>
                             <div>{m.name}</div>
                             <div>{m.descrition}</div>
