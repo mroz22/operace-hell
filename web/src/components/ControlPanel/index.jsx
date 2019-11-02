@@ -60,7 +60,10 @@ const ControlPanel = (props) => {
 
     return (
         <Wrapper>
-                    <SectionDropwdown title="mapa">
+                    
+                    <SectionDropwdown title="Zivi hraci">
+                        obsah section
+                    </SectionDropwdown>
                     <Map
                         bootstrapURLKeys={{ key: CONF.MAP_API_KEY }}
                         defaultCenter={{
@@ -87,10 +90,6 @@ const ControlPanel = (props) => {
                             )
                         }
                     </Map>
-                    </SectionDropwdown>
-                    <SectionDropwdown title="Zivi hraci">
-                        obsah section
-                    </SectionDropwdown>
                     <SectionDropwdown title="Reset hry">
                         <Input type="checkbox" label="Opravdu?" onChange={() => setReallyReset(!reallyReset)}></Input>
                         <Options>
