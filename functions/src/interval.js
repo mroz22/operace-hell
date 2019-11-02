@@ -9,7 +9,7 @@ const initialStatus = {
     radiation: 0,
     protectiveSuiteOn: false,
     enteredCorrectPassword: false,
-    hasEnteredSecredChamber: false,
+    hasEnteredSecretChamber: false,
     protectiveSuiteOn: false,
 };
 
@@ -28,7 +28,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             await db.collection('users').get().then((querySnapshot) => {
                 return querySnapshot.forEach((doc) => {
                     const userRef = db.collection('users').doc(doc.id);
-                    return userRef.update({ status: initialStatus});
+                    return userRef.set({ status: initialStatus});
                 });
             }).catch((err) => console.error(err));
 
