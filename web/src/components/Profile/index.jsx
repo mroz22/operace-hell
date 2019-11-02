@@ -244,7 +244,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 type="select"
                                 options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id }))}
                                 value={getTeam()? getTeam().id : 'Nezvolen'}
-                                isOptionDisabled={option => roles.filter(r => r.TeamId === option.id).length > CONF.TEAM_MAX_COUNT}
+                                isOptionDisabled={option => roles.filter(r => r.TeamId && r.TeamId === option.id).length > CONF.TEAM_MAX_COUNT}
                                 onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
                             />
                             </>
