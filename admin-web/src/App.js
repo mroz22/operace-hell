@@ -19,8 +19,8 @@ const A4 = styled.div`
 const SIZE=400;
 
 const App = () => {
-    // const [roles, setRoles] = useState([]);
-    // const [teams, setTeams] = useState([]);
+    const [roles, setRoles] = useState([]);
+    const [teams, setTeams] = useState([]);
     // const [game, setGame] = useState(null);
     const [bunkers, setBunkers] = useState([]); 
     // const [characters, setCharacters] = useState([]);
@@ -40,17 +40,17 @@ const App = () => {
         //         // mehh...
         //     }
         // }
-        // const getRoles = () => {
-        //     db.collection('users').onSnapshot(function(querySnapshot) {
-        //         const updatedRoles = [];
-        //         querySnapshot.forEach(function(doc) {
-        //             updatedRoles.push({ id: doc.id, ...doc.data()});
-        //         });
-        //         setRoles(updatedRoles);
-        //     }, (error) => {
-        //         console.log('getRolesError', error)
-        //     });
-        // }
+        const getRoles = () => {
+            db.collection('users').onSnapshot(function(querySnapshot) {
+                const updatedRoles = [];
+                querySnapshot.forEach(function(doc) {
+                    updatedRoles.push({ id: doc.id, ...doc.data()});
+                });
+                setRoles(updatedRoles);
+            }, (error) => {
+                console.log('getRolesError', error)
+            });
+        }
         // const getGame = () => {
         //     db
         //     .collection("game")
@@ -71,16 +71,27 @@ const App = () => {
                 setBunkers(newBunkers);
             });
         }
+        const getTeams = () => {
+            const newTeams = [];
+            firebase.firestore().collection("teams").get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    newTeams.push({ id: doc.id,...doc.data()});
+                });
+                setTeams(newTeams);
+            });
+        };
+
+        getTeams();
         // getGame();
         getBunkers();
-        // getRoles();   
+        getRoles();   
         // getCharacters();
     }, [])
 
     return (
     <>
         <A4>
-        <h1>Bunkry</h1>
+        <h1>QR kody</h1>
     </A4>
 
     {bunkers.map(b => {
@@ -102,6 +113,33 @@ const App = () => {
         <A4>
             <h2>Prazdna mistnost</h2>
             <QRCode size={SIZE} value="trap" />
+        </A4>
+
+        <A4>
+        <h1>Teamy</h1>
+        {teams.length && roles.length && teams.reduce((data, team) => {
+            const teamWithRoles = team;
+            teamWithRoles.roles = [];
+            roles.forEach(role => {
+                if (role.TeamId === team.id) {
+                    teamWithRoles.roles.push(role);
+                }
+            });
+            return [ ...data, teamWithRoles ];
+        },[]).map(t => (
+            <>
+            <h2>{t.name}</h2>
+            {
+                t.roles.map(r => (
+                    <>
+                        <div>{r.name} - {r.characterId}</div>
+                    </>
+                ))
+            }
+            </>
+
+        ))
+        }
         </A4>
     </>
     )

@@ -1,5 +1,3 @@
-const { radiation } = require('../config/radiation');
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
