@@ -14,10 +14,18 @@ const Point = () => {
 }
 
 const HuntingPanel = (props) => {
-    const { roles } = props;
+    const { roles, game } = props;
 
     if (!roles) {
         return 'loading...'
+    }
+
+    const filterGame = (role) => {
+        if (!role.status) return false;
+        if (!role.geo) return false;
+        if (role.status.hasEnteredSecretChamber && !role.status.enteredCorrectPassword) return true;
+        if (role.status.trappedUntilEpoch - game.epoch > 0) return true;
+        return false;
     }
 
     return (
@@ -36,7 +44,7 @@ const HuntingPanel = (props) => {
                         }}
                     >
                         {
-                            roles.filter(r => !!r.geo && r.status && r.status.hasEnteredSecretChamber && !r.status.enteredCorrectPassword).map(r => (
+                            roles.filter(filterGame).map(r => (
                                 <Point
                                     key={r.name}
                                     lat={r.geo.lat}

@@ -25,7 +25,7 @@ const App = () => {
     // const [game, setGame] = useState(null);
     const [bunkers, setBunkers] = useState([]); 
     // const [characters, setCharacters] = useState([]);
-  
+
     useEffect(() => {
         const db = firebase.firestore();
         // const getCharacters = async () => {

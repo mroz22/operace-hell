@@ -54,6 +54,7 @@ export default (props) => {
     if (roleParam === 'divoky') {
         return (
             <HuntingPanel
+                game={props.game}
                 roles={props.roles}
                 />
         )

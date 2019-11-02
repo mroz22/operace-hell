@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrapper, Options, Option, Description}  from '../index';
 
 export default ({ role, game, onEnter, onSituationCancel }) => {
-    const explored = !role.status.trappedUntilEpoch || (role.status.trappedUntilEpoch - game.epoch) < 0;
+    const explored = role.status.trappedUntilEpoch;
     const diff = role.status.trappedUntilEpoch - game.epoch;
     return (
         <Wrapper>
@@ -30,6 +30,9 @@ export default ({ role, game, onEnter, onSituationCancel }) => {
                     <Description>
                         Vymotas se za: { diff }
                     </Description>    
+                    <Options>
+                        <Option onClick={() => onSituationCancel()}>Zpet do apky</Option>
+                    </Options>
                     </>
                 )
             }
