@@ -9,6 +9,7 @@ const initialStatus = {
     enteredCorrectPassword: false,
     hasEnteredSecretChamber: false,
     protectiveSuiteOn: false,
+    mutations: [],
 };
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
