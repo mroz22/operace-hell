@@ -11,7 +11,7 @@ const getRadiationForEpoch = (game) => {
 
 const getNextMutation = (game, role) => {
     const { mutations, radiation } = role.status;
-    if (radiation < mutations.length * game.RADIATION_PER_MUTATION) {
+    if (radiation < (mutations.length * game.RADIATION_PER_MUTATION)) {
         return null;
     }
     

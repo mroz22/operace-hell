@@ -181,6 +181,12 @@ const Dozimeter = (props) => {
         return icons;
     }
 
+    const getHealthIcons = () => {
+        if (role.status.injury === 'light') return [' 💊 '];
+        if (role.status.injury === 'heavy') return [' 💉 '];
+        if (role.status.injury === 'lethal') return [' 💀 ']
+    }
+
     return (
         <Wrapper>
             <Options>
@@ -211,8 +217,8 @@ const Dozimeter = (props) => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
-                    <SectionDropwdown title="Mutace a trvale nasledky" icons={' 🐙 '.repeat(role.status.mutations.length)}>
-                        { !role.status.mutations && (
+                    <SectionDropwdown title="Mutace" icons={' 🐙 '.repeat(role.status.mutations.length)}>
+                        { !role.status.mutations.length && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
                         { role.status.mutations && role.status.mutations.map(m => (
@@ -223,7 +229,7 @@ const Dozimeter = (props) => {
                         ))}
                     </SectionDropwdown>
 
-                    <SectionDropwdown title="Zdravotni stav">
+                    <SectionDropwdown title="Zdravotni stav" icons={getHealthIcons()}>
                         <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                             <div style={{ display: 'flex', flexDirection: 'column'}}>
                                 <Input
@@ -252,6 +258,12 @@ const Dozimeter = (props) => {
                             </div>
                             { role.uid && <div style={{ backgroundColor: 'white', padding: '15px'}}><QRCode value={`role:${role.uid}`} /></div> }
                         </div>
+                        { role.status.permanentInjuries && role.status.permanentInjuries.map(m => (
+                            <div key={m.id}>
+                            <div style={{ textDecoration: 'underline' }}>{m.name}</div>
+                            <div>{m.description}</div>
+                            </div>
+                        ))}
                     </SectionDropwdown>
 
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
