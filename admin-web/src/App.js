@@ -4,12 +4,16 @@ import QRCode from 'qrcode.react';
 import styled from 'styled-components';
 
 const A4 = styled.div`
-    width: 210mm;
-    height: 297mm;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media print {
+        width: 210mm;
+        height: 297mm;
+    }
 `;
 
 const SIZE=400;
@@ -91,6 +95,13 @@ const App = () => {
         <A4>
             <h2>Tajna svatyne divokych</h2>
             <QRCode size={SIZE} value="secret-chamber" />
+        </A4>
+        <A4>
+            <h2>Prazdna mistnost (past divokych)</h2>
+        </A4>
+        <A4>
+            <h2>Prazdna mistnost</h2>
+            <QRCode size={SIZE} value="trap" />
         </A4>
     </>
     )

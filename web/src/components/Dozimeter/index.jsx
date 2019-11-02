@@ -7,6 +7,7 @@ import QrReader from 'react-qr-reader'
 import { 
     Bunker as BunkerSituation,
     SecretChamber,
+    Trap
 } from '../Situation';
 import Bunker from '../Zone/bunker';
 
@@ -137,6 +138,15 @@ const Dozimeter = (props) => {
                     survivorsLeft={survivorsLeft}
                 />
             );
+        case 'trap':
+            return (
+                <Trap
+                    game={game}
+                    role={role}
+                    onSituationCancel={onSituationCancel}
+                    onEnter={onEnterSecretChamber}
+                />
+            );
             // no default
     }
 
@@ -167,7 +177,9 @@ const Dozimeter = (props) => {
                 { currentBunker && <Option onClick={()=>enterBunker("")}>Odejit z bunkru</Option> }
             </Options>
 
-            <SectionDropwdown title={`Nachazis se ${currentBunker ? 'v bunkru' : 'pod sirym nebem'} ${game.radiation > 0 ? ' ☢': ''}`}>
+            <SectionDropwdown
+                title={
+                    `Nachazis se ${currentBunker ? 'v bunkru' : 'pod sirym nebem'} ${game.radiation > 0 ? ' ☢': ''}`}>
                         {
                             currentBunker && <Bunker role={role} bunker={currentBunker} />
                         }
@@ -176,6 +188,9 @@ const Dozimeter = (props) => {
                                 <div style={{ fontSize: '3em', textAlign: 'center' }}>☢{' '}{game.radiation.toFixed(2)} mSv/H</div>
                             )
                         }
+                        { role.status.trappedUntilEpoch > game.epoch && (
+                            <div>Jsi v pasti. Vysvobodis se za {role.status.trappedUntilEpoch - game.epoch} epoch</div>
+                        )}
                     </SectionDropwdown>
 
                     <SectionDropwdown title="Vybaveni">
