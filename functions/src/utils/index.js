@@ -16,11 +16,19 @@ const getNextMutation = (game, role) => {
     }
     
     const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
+    if (unusedMutations.length === 0) return null;
     return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
 };
+
+const getRandomUniqueFromArray = (currentArr, possibleArr) => {
+    const unusedElements = possibleArr.filter(am => !currentArr.find(m => m.id === am.id));
+    if (unusedElements.length === 0) return null;
+    return unusedElements[getRandomInt(0, unusedElements.length -1)];
+}
 
 module.exports = {
     getRandomInt,
     getRadiationForEpoch,
     getNextMutation,
+    getRandomUniqueFromArray,
 }

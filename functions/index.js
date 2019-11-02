@@ -5,6 +5,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const intervals = require('./src/interval');
 const situations = require('./src/gameSituation');
+const { getRandomInt, getRandomUniqueFromArray } = require('./src/utils');
 
 admin.initializeApp();
 
@@ -52,6 +53,43 @@ exports.enterPassword = functions.https.onCall(async (data, context) => {
         }
     }
     return 'pip. pip.. pip... nic se nestalo :(';
+});
+
+
+exports.surgery = functions.https.onCall(async (data, context) => {
+    if (!data.targetRoleId) return 'missing targetRoleId';
+
+    const uid = context.auth.uid;
+    const userRef = db.collection('users').doc(data.targetRoleId);
+    const gameRef = db.collection('game').doc('operacexxx');
+    let nextStatus = {};
+    const random = getRandomInt(1,10);
+
+    if (random === 10) {
+        nextStatus['status.injury'] = 'lethal';
+        await userRef.update(nextStatus);
+        return 'Operace se nezdarila, pacient zemrel';
+    
+    } else if (random < 10 && random > 3) {
+        const role = await userRef.get().then((doc) => {
+            return doc.data();
+        });
+        const game = await gameRef.get().then((doc) => {
+            return doc.data();
+        });
+        const nextInjury = getRandomUniqueFromArray(role.status.permanentInjuries, game.PERMANENT_INJURIES);
+        nextStatus['status.injury'] = 'none';
+        if (nextInjury) {
+            nextStatus['status.permanentInjuries'] = [...role.status.permanentInjuries, nextInjury] 
+        }
+        await userRef.update(nextStatus);
+        return 'Operace se zdarila s trvalymi nasledky';
+
+    } else {
+        nextStatus['status.injury'] = 'none';
+        await userRef.update(nextStatus);
+        return 'Operace se zdarila bez nasledku';
+    }
 });
 
 exports.resetGame = functions.https.onCall(async (data, context) => {
@@ -125,9 +163,38 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
             "id": "turret", 
             "name": "turretuv syndrom",
             "description": "turettuv syndrom spociva v tom ze beznou komunikaci prokladas nadavkama. Ale to tim zpusobem, ze nadavku vystekavas tak nejak zniceno nic a dosti nahlas."
+        }],
+        PERMANENT_INJURIES: [{
+            "id": "slepota-leve",
+            "name": "slepota leveho oka",
+            "description": "Pod sklicko brylo leveho oka si pripevni gazu (lepici paska)"
+        }, {
+            "id": "slepota-prave",
+            "name": "slepota praveho oka",
+            "description": "Pod sklicko brylo praveho oka si pripevni gazu (lepici paska)"
+        }, {
+            "id": "amputace-horni-leva",
+            "name": "amputace leve ruky",
+            "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
+        }, {
+            "id": "amputace-horni-prava",
+            "name": "amputace prave ruky",
+            "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
+        }, {
+            "id": "ustrelene-prsty-horni-leva",
+            "name": "ustrelene prsty horni leve ruky",
+            "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
+        }, {
+            "id": "ustrelene-prsty-horni-prava",
+            "name": "ustrelene prsty horni prave ruky",
+            "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
+        }, {
+            "id": "mrtvicka",
+            "name": "mrtvicka",
+            "description": "Spatne chodis. Svaz si nohy obvazem na vzdalenost cca 30 cm."
         }]
     }
-        
+
     await db.collection('users').get().then((querySnapshot) => {
         return querySnapshot.forEach((doc) => {
             const userRef = db.collection('users').doc(doc.id);

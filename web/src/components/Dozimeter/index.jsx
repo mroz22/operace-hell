@@ -151,9 +151,8 @@ const Dozimeter = (props) => {
                 return (
                     <Role
                         role={role}
-                        targetRole={role}
+                        targetRole={roles.find(r => r.uid === qr.value)}
                         onSituationCancel={onSituationCancel}
-                        onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + 4 })}
                     />
                 );   
             // no default
