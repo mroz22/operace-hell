@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as firebase from 'firebase';
 import Map from 'google-map-react';
-import { Link, Wrapper, SectionDropwdown, Option, Options } from '../../components';
+import { Wrapper, SectionDropwdown, Option, Options } from '../../components';
 import * as CONF from '../../config';
 
 const Point = ({ role, team }) => {
