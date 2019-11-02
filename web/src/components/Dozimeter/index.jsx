@@ -218,7 +218,7 @@ const Dozimeter = (props) => {
                         )} 
                         { role.status.mutations && role.status.mutations.map(m => (
                             <div key={m.id}>
-                            <div>{m.name}</div>
+                            <div style={{ textDecoration: 'underline' }}>{m.name}</div>
                             <div>{m.description}</div>
                             </div>
                         ))}
