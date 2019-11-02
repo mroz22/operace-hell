@@ -130,13 +130,21 @@ const App = () => {
         },[]).map(t => (
             <>
             <h2>{t.name}</h2>
+            <table>
             {
+
                 t.roles.map(r => (
                     <>
-                        <div>{r.name} - {r.characterId}</div>
+                        <tr>
+                        <td>{r.name}</td>
+                        <td>{r.characterId}</td>
+                        <td>{r.tel}</td>
+                        </tr>
                     </>
                 ))
             }
+            </table>
+
             </>
 
         ))

@@ -57,7 +57,9 @@ exports.enterPassword = functions.https.onCall(async (data, context) => {
    
     if (data.pass1 === 'a' && data.pass2 === 'a') {
         const uid = context.auth.uid;
-        const userRef = await db.collection('users').doc(uid);
+        const userRef = db.collection('users').doc(uid);
+        const gameRef = db.collection('game').doc('operacexxx');
+
         let numberOfUsersWithCorrectPass = 0;
         await db.collection('users').get().then((querySnapshot) => {
             return querySnapshot.forEach((doc) => {
