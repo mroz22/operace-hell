@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Wrapper, Options, Option, Description, Input}  from '../index';
 import * as firebase from 'firebase';
 
-export default ({ role, onEnter, onSituationCancel }) => {
+export default ({ role, survivorsLeft, onEnter, onSituationCancel }) => {
     const callEnterPassword = firebase.functions().httpsCallable('enterPassword');
 
     const [pass1, setPass1] = useState('');
@@ -44,11 +44,14 @@ export default ({ role, onEnter, onSituationCancel }) => {
                 role.status.hasEnteredSecretChamber && (
                     <>
                     <Description>
-                    Vesel jsi dovnitr. Naproti tobe se nachazi dvere. Na dverich jsou dve klavesnice. Jedna s pismeny, druha s cisly. Neco ti rika, ze aby ses dostal dovnitr, budes muset na obou zadat spravne heslo.
+                    Vesel jsi dovnitr. Naproti tobe se nachazi dvere a na nich sviti velke cislice. Co asi znamena?
                     </Description>
-                    { pass1 }
-                    { pass2 }
-
+                    <div style={{ fontSize: '8em', textAlign: 'center'}}>
+                        {survivorsLeft}
+                    </div>
+                    <Description>
+                    Na dverich jsou dve klavesnice. Jedna s pismeny, druha s cisly. Neco ti rika, ze aby ses dostal dovnitr, budes muset na obou zadat spravne heslo.
+                    </Description>
                     <Input disabled={isPending} label="cisla" type="test" onChange={(event) => setPass1(event.target.value)} />
                     <Input disabled={isPending} label="pismena" type="test" onChange={(event) => setPass2(event.target.value)} />
                     { isPending && 'Probiha odesilani hesla'}

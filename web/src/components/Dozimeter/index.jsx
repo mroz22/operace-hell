@@ -11,7 +11,7 @@ import {
 import Bunker from '../Zone/bunker';
 
 const Dozimeter = (props) => {
-    const { game, role, bunkers, user } = props;
+    const { game, role, bunkers, user, roles } = props;
     const db = firebase.firestore();
 
     const [qr, setQr] = useState({ type: undefined, value: undefined });
@@ -43,7 +43,7 @@ const Dozimeter = (props) => {
         return () => {}
     }, [db, role.uid])
 
-    if (!game || !role || !role.status || !bunkers || !user) {
+    if (!game || !role || !role.status || !bunkers || !user || !roles) {
         return 'loading...'
     }
 
@@ -82,15 +82,7 @@ const Dozimeter = (props) => {
         setQrReaderOpened(false);
         setQr(parseQr(value));
     }
-
-    // const getServerTimestampFormatted = () => {
-    //     const date = new Date(game.timestamp*1000);
-    //     const hours = date.getHours();
-    //     const minutes = "0" + date.getMinutes();
-    //     const seconds = "0" + date.getSeconds();
-    //     return  hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    // }
-
+    
     const onSituationCancel = () => {
         setQr({ type: undefined, value: undefined})
     }
@@ -102,19 +94,20 @@ const Dozimeter = (props) => {
 
     const onEnterSecretChamber = async () => {
         await enterSecretChamber();
-        onSituationCancel();
     }
     
+    const survivorsLeft = game.MAX_SURVIVORS - roles.filter(r => r.status && r.status.enteredCorrectPassword ).length
     if (role.status.enteredCorrectPassword) {
         return (
             <Wrapper>
                 <Description>
-                    Podarilo se ti splnit cil hry, vstoupil jsi do uzamceneho bunkru X!
+                    Podarilo se ti splnit cil hry, vstoupil jsi do uzamceneho bunkru X! Jeste v nem stale zbyva
+                    {' '}{survivorsLeft}{' '}mist.
                 </Description>
             </Wrapper>
         )
     }
-    if (game.endEpoch - game.epoch <= 0) {
+    if (game.END_EPOCH - game.epoch <= 0) {
         return (
             <Wrapper>
                 <Description>
@@ -141,6 +134,7 @@ const Dozimeter = (props) => {
                     role={role}
                     onSituationCancel={onSituationCancel}
                     onEnter={onEnterSecretChamber}
+                    survivorsLeft={survivorsLeft}
                 />
             );
             // no default
@@ -198,7 +192,7 @@ const Dozimeter = (props) => {
                     </SectionDropwdown>
 
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
-                        Epoch do preziti: {game.endEpoch - game.epoch}
+                        Epoch do preziti: {game.END_EPOCH - game.epoch}
                     </Description>
         </Wrapper>
     )    

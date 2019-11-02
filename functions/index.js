@@ -7,7 +7,6 @@ const intervals = require('./src/interval');
 const situations = require('./src/gameSituation');
 
 admin.initializeApp();
-const MAX_CORRECT_PASSWORDS = 8;
 
 const db = admin.firestore();
 
@@ -69,13 +68,17 @@ exports.enterPassword = functions.https.onCall(async (data, context) => {
             });
         })
 
-        if (numberOfUsersWithCorrectPass < MAX_CORRECT_PASSWORDS) {
+        const game = await gameRef.get().then((doc) => {
+            return doc.data();
+        });
+
+        if (numberOfUsersWithCorrectPass < game.MAX_SURVIVORS) {
             await userRef.update(
                 { 
                     'status.enteredCorrectPassword': true,
                 }
             )
-            return `spravne! vstoupil jsi. jeste zbyva ${MAX_CORRECT_PASSWORDS - numberOfUsersWithCorrectPass} mist`;
+            return `spravne! vstoupil jsi. jeste zbyva ${game.MAX_SURVIVORS - numberOfUsersWithCorrectPass} mist`;
         } else {
             return 'heslo je spravne ale tajny bunkr je uz bohuzel plny. pozde! ted uz ti zbyba jen pokusit se prezit do nulte epochy.'
         }

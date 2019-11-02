@@ -36,7 +36,7 @@ const HuntingPanel = (props) => {
                         }}
                     >
                         {
-                            roles.filter(r => !!r.geo && r.status && r.status.hasEnteredSecretChamber).map(r => (
+                            roles.filter(r => !!r.geo && r.status && r.status.hasEnteredSecretChamber && !r.status.enteredCorrectPassword).map(r => (
                                 <Point
                                     key={r.name}
                                     lat={r.geo.lat}

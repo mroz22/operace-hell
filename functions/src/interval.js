@@ -18,7 +18,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         const db = admin.firestore();
         const gameRef = db.collection('game').doc('operacexxx');
         const game = await gameRef.get().then((doc) => {
-            return doc.data(initialStatus);
+            return doc.data();
         });
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
@@ -44,13 +44,13 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
 
             return gameRef.update({
                 epoch: 1,
-                endEpoch: 840,
+                END_EPOCH: 840,
             });
         }
 
         // update GAME
         await gameRef.update({
-            radiation: getRadiationForEpoch(game.epoch),
+            radiation: getRadiationForEpoch(game),
             epoch: game.epoch + 1,
         });
     

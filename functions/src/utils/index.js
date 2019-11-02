@@ -6,9 +6,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const getRadiationForEpoch = (epoch) => {
-    const key = Object.keys(radiation).reverse().find(k => Number(k) <= epoch);
-    return radiation[key];
+const getRadiationForEpoch = (game) => {
+    const key = Object.keys(game.RADIATION).reverse().find(k => Number(k) <= game.epoch);
+    return game.RADIATION[key];
 };
 
 module.exports = {

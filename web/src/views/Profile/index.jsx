@@ -46,6 +46,7 @@ export default (props) => {
                 role={props.role}
                 bunkers={props.bunkers}
                 user={props.user}
+                roles={props.roles}
                 />
         )
     }
