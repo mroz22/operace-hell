@@ -106,6 +106,7 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
         hasEnteredSecretChamber: false,
         mutations: [],
         injury: 'none',
+        permanentInjuries: [],
     };
 
     const initalGame = {

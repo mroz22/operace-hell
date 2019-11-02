@@ -47,6 +47,7 @@ export default ({ role, targetRole, onSituationCancel }) => {
     //         </Wrapper>
     //     )
     // }
+    
     if (isPending) {
         return (
             <Wrapper>

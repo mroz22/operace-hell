@@ -151,7 +151,7 @@ const Dozimeter = (props) => {
                 return (
                     <Role
                         role={role}
-                        targetRole={roles.find(r => r.uid === qr.value)}
+                        targetRole={roles.find(r => r.uid === qr.id)}
                         onSituationCancel={onSituationCancel}
                     />
                 );   
