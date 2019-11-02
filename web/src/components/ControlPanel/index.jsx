@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as firebase from 'firebase';
 import Map from 'google-map-react';
-import { Wrapper, SectionDropwdown, Option, Options } from '../../components';
+import { Wrapper, SectionDropwdown, Option, Options, Input } from '../../components';
 import * as CONF from '../../config';
 
 const Point = ({ role, team }) => {
@@ -34,7 +34,7 @@ const ControlPanel = (props) => {
     const callReset = firebase.functions().httpsCallable('resetGame');
     const [isPending, setIsPending ] = useState(false);
     const [result, setResult] = useState('');
-
+    const [reallyReset, setReallyReset] = useState(false);
 
     if (!game || !role || !bunkers || !user || !teams) {
         return 'loading...'
@@ -48,7 +48,7 @@ const ControlPanel = (props) => {
             const result = await callReset()
             setResult(result.data)
         } catch (err) {
-            setResult('error, nepovedlo se odeslat heslo')
+            setResult('error')
         } finally {
             setIsPending(false);
         }
@@ -92,8 +92,12 @@ const ControlPanel = (props) => {
                         obsah section
                     </SectionDropwdown>
                     <SectionDropwdown title="Reset hry">
+                        <Input type="checkbox" label="Opravdu?" onChange={() => setReallyReset(!reallyReset)}></Input>
                         <Options>
-                            <Option onClick={resetGame}>Resetovat hru</Option>
+                            {
+                                reallyReset && <Option onClick={resetGame}>Resetovat hru</Option> 
+                            }
+                            
                         </Options>
                         { result }
                     </SectionDropwdown>

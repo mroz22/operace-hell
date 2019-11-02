@@ -76,6 +76,7 @@ const Option = styled.div`
     margin-top: 4px;
     margin-bottom: 4px;
     padding: 10px;
+    cursor: pointer;
 `
 
 const Heading = styled.div`

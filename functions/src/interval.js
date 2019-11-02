@@ -59,10 +59,10 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     const next = {
                         'status.radiation': nextRadiation,
                     }
-                    // const nextMutation = getNextMutation(game, doc.data());
-                    // if (nextMutation) {
-                    //     next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
-                    // }
+                    const nextMutation = getNextMutation(game, doc.data());
+                    if (nextMutation) {
+                        next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
+                    }
                     return userRef.update(next);
                 }
             });

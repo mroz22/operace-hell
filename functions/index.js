@@ -176,6 +176,7 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
         });
     }).catch((err) => console.error(err));
 
+    const gameRef = db.collection('game').doc('operacexxx');
     await gameRef.update(initalGame);
     
     return 'hra resetovana';
