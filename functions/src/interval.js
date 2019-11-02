@@ -28,7 +28,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             await db.collection('users').get().then((querySnapshot) => {
                 return querySnapshot.forEach((doc) => {
                     const userRef = db.collection('users').doc(doc.id);
-                    return userRef.set({ status: initialStatus});
+                    return userRef.update({ status: initialStatus});
                 });
             }).catch((err) => console.error(err));
 
