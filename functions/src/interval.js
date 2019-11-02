@@ -2,15 +2,6 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { getRadiationForEpoch, getNextMutation } = require('./utils');
 
-const initialStatus = {
-    BunkerId: '',
-    radiation: 0,
-    protectiveSuiteOn: false,
-    enteredCorrectPassword: false,
-    hasEnteredSecretChamber: false,
-    protectiveSuiteOn: false,
-    mutations: [],
-};
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
@@ -22,30 +13,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
 
-        if (game.epoch === 0) {
-            console.log('epoch is 0, restarting game data');
-            await db.collection('users').get().then((querySnapshot) => {
-                return querySnapshot.forEach((doc) => {
-                    const userRef = db.collection('users').doc(doc.id);
-                    return userRef.update({ status: initialStatus});
-                });
-            }).catch((err) => console.error(err));
-
-            await db.collection('bunkers').get().then((querySnapshot) => {
-                return querySnapshot.forEach((doc) => {
-                    const bunkerRef = db.collection('bunkers').doc(doc.id);
-                    return bunkerRef.update({
-                        'isDestroyed': false,
-                        'oxygen': doc.data().oxygenCap,
-                    });
-                });
-            }).catch((err) => console.error(err));
-
-            return gameRef.update({
-                epoch: 1,
-            });
-        }
-
+        
         // update GAME
         await gameRef.update({
             radiation: getRadiationForEpoch(game),

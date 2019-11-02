@@ -112,8 +112,7 @@ const Dozimeter = (props) => {
         return (
             <Wrapper>
                 <Description>
-                Prezil jsi. Dosahl jsi uspechu ve hre. Neni to grandiozni uspech, nepovedlo se ti odpojit 
-                ze simulace, ale porad je to ok. Stroncnetu se jevis jako vhodny kandidat pro dalsi testovani a proto tvuj image zatim nesmaze.
+                Nastal konec zony. Je po tobe. Tvuj myslenkovy otisk byl vyhodnocen jako nevhodny pro dalsi testovani a bude zkartovany. '/bin/bash rm -rf /roles/{role.name}'
                 </Description>
             </Wrapper>
 
@@ -220,7 +219,7 @@ const Dozimeter = (props) => {
                     </SectionDropwdown>
 
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
-                        Epoch do preziti: {game.END_EPOCH - game.epoch}
+                        Epoch do kolapsu zony: {game.END_EPOCH - game.epoch}
                     </Description>
         </Wrapper>
     )    
