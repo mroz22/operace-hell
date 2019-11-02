@@ -204,7 +204,15 @@ const Dozimeter = (props) => {
                         }} />
                     </SectionDropwdown>
                     <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀 💉 ❕">
-                        Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.
+                        { !role.status.mutations && (
+                            'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
+                        )} 
+                        { role.status.mutations.map(m => (
+                            <>
+                            <div>{m.name}</div>
+                            <div>{m.descrition}</div>
+                            </>
+                        ))}
                     </SectionDropwdown>
 
                     <SectionDropwdown title="Osobni ID">
