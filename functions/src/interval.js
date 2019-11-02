@@ -57,6 +57,9 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
                     const nextRadiation = currentUserRadiation + ((game.radiation / 60 ) * doseModifier);
                     const next = {
+                        'name': '',
+                        'description': null,
+                        'id': null,
                         'status.radiation': nextRadiation,
                     }
                     // const nextMutation = getNextMutation(game, doc.data());
