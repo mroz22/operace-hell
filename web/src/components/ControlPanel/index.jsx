@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 import Map from 'google-map-react';
-import { Link, Wrapper, SectionDropwdown } from '../../components';
+import { Link, Wrapper, SectionDropwdown, Option, Options } from '../../components';
 import * as CONF from '../../config';
 
 const Point = ({ role, team }) => {
@@ -31,10 +31,27 @@ const Point = ({ role, team }) => {
 const ControlPanel = (props) => {
     const { game, role, bunkers, user, roles, teams } = props;
     // const db = firebase.firestore();
-    const [view, setView] = useState('world');
+    const callReset = firebase.functions().httpsCallable('resetGame');
+    const [isPending, setIsPending ] = useState(false);
+    const [result, setResult] = useState('');
+
 
     if (!game || !role || !bunkers || !user || !teams) {
         return 'loading...'
+    }
+
+    const resetGame = async () => {
+        if (isPending) return;
+        try {
+            setResult('');
+            setIsPending(true);
+            const result = await callReset()
+            setResult(result.data)
+        } catch (err) {
+            setResult('error, nepovedlo se odeslat heslo')
+        } finally {
+            setIsPending(false);
+        }
     }
 
     const getTeam = (r) => {
@@ -43,13 +60,7 @@ const ControlPanel = (props) => {
 
     return (
         <Wrapper>
-            <div style={{ display: 'flex', flexDirection: 'row', 'justifyContent': 'space-between', marginBottom: '30px'}}>
-                <Link onClick={() => setView('world')}>Svet</Link>
-                <Link onClick={() => setView('stats')}>Statistiky</Link>
-            </div>
-            {
-                view === 'world' && (
-                    <>
+                    <SectionDropwdown title="mapa">
                     <Map
                         bootstrapURLKeys={{ key: CONF.MAP_API_KEY }}
                         defaultCenter={{
@@ -76,19 +87,16 @@ const ControlPanel = (props) => {
                             )
                         }
                     </Map>
-                    </>
-                )
-            }
-
-            {
-                view === 'stats' && (
-                    <>
+                    </SectionDropwdown>
                     <SectionDropwdown title="Zivi hraci">
                         obsah section
                     </SectionDropwdown>
-                    </>
-                )
-            }
+                    <SectionDropwdown title="Reset hry">
+                        <Options>
+                            <Option onClick={resetGame}>Resetovat hru</Option>
+                        </Options>
+                        { result }
+                    </SectionDropwdown>
         </Wrapper>
     )    
 }
