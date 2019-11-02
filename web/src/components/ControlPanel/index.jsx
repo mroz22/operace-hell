@@ -5,10 +5,22 @@ import { Wrapper, SectionDropwdown, Option, Options, Input } from '../../compone
 import * as CONF from '../../config';
 
 const Point = ({ role, team }) => {
+    const [open, setOpened] = useState(false);
+    if (open) {
+        return (
+            <div style={{ border: `4px solid ${team.color}`, backgroundColor: 'white', color: 'black', padding: '5px', minWidth: '200px', display: 'flex', flexDirection: 'column' }} onClick={() => setOpened(false)}>
+                <div>Jmeno: {role.name}</div>
+                <div>Mutace: {role.status.mutations.map(m => (`${m.name}, `))}</div>
+                <div>Radiace {role.status.radiation.toFixed(2)}</div>
+                <div>Vstoupil do bunkru: {role.status.hasEnteredSecretChamber ? 'Ano': 'Ne'}</div>
+            </div>
+        )
+    }
+    
     if (role.roleType === 'pruzkumnik') {
         const color = (team && team.color) || CONF.GREEN;
         return (
-            <div style={{ color }}>
+            <div style={{ color }} onClick={() => setOpened(true)}>
                 <div>{role.name}</div>
                 <div style={{ fontSize: '4em'}}>
                 { role.roleType === 'pruzkumnik' && '😋'}
@@ -18,7 +30,7 @@ const Point = ({ role, team }) => {
     }
 
     return (
-        <div style={{ color: 'violet' }}>
+        <div style={{ color: 'violet' }} onClick={() => setOpened(true)}>
             <div>{role.name}</div>
             <div style={{ fontSize: '4em'}}>
             { role.roleType === 'divoky' && '🎃'}
@@ -60,7 +72,6 @@ const ControlPanel = (props) => {
 
     return (
         <Wrapper>
-                    
                     <SectionDropwdown title="Zivi hraci">
                         obsah section
                     </SectionDropwdown>

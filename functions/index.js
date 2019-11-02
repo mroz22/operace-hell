@@ -20,38 +20,6 @@ exports.addUserRole = functions.auth.user().onCreate(async (user) => {
     });
 });
 
-exports.eatPill = functions.https.onCall(async (data, context) => {
-    const pill = data.pill;
-    // Authentication / user information is automatically added to the request.
-    const uid = context.auth.uid;
-
-    const userRef = await admin.firestore().collection('users').doc(uid);
-    const user = await userRef.get();
-
-    if (data.color === 'blue') {
-        userRef.set({
-            name: user.data().name,
-            status: {
-                health: user.data().status.health,
-                radiation: user.data().status.radiation - 10 > 0 ? user.data().status.radiation - 10 : 0,
-            }
-        })
-    }
-    if (data.color === 'red') {
-        userRef.set({
-            name: user.data().name,
-            status: {
-                health: user.data().status.health - 10 > 0 ? user.data().status.health - 10 : 0,
-                radiation: user.data().status.radiation - 5 > 0 ? user.data().status.radiation - 5 : 0,
-            }
-        })
-    }
-    if (data.color === 'green') {
-        // do nothing. placebo
-    }
-    
-});
-
 exports.enterPassword = functions.https.onCall(async (data, context) => {
     if (data.pass1 === 'a' && data.pass2 === 'a') {
         const uid = context.auth.uid;
@@ -99,6 +67,7 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
         enteredCorrectPassword: false,
         hasEnteredSecretChamber: false,
         mutations: [],
+        injury: 'none',
     };
 
     const initalGame = {

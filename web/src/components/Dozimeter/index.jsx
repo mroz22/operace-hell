@@ -7,7 +7,8 @@ import QrReader from 'react-qr-reader'
 import { 
     Bunker as BunkerSituation,
     SecretChamber,
-    Trap
+    Trap,
+    Role,
 } from '../Situation';
 import Bunker from '../Zone/bunker';
 
@@ -146,6 +147,15 @@ const Dozimeter = (props) => {
                     onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + 4 })}
                 />
             );
+        case 'role':
+                return (
+                    <Role
+                        role={role}
+                        targetRole={role}
+                        onSituationCancel={onSituationCancel}
+                        onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + 4 })}
+                    />
+                );   
             // no default
     }
 
@@ -202,7 +212,7 @@ const Dozimeter = (props) => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
-                    <SectionDropwdown title="Mutace" icons={' 🐙 '.repeat(role.status.mutations.length)}>
+                    <SectionDropwdown title="Mutace a trvale nasledky" icons={' 🐙 '.repeat(role.status.mutations.length)}>
                         { !role.status.mutations && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
@@ -214,8 +224,35 @@ const Dozimeter = (props) => {
                         ))}
                     </SectionDropwdown>
 
-                    <SectionDropwdown title="Osobni ID">
-                        { role.uid && <QRCode value={role.uid} /> }
+                    <SectionDropwdown title="Zdravotni stav">
+                        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                            <div style={{ display: 'flex', flexDirection: 'column'}}>
+                                <Input
+                                    type="checkbox"
+                                    value={role.status.injury === 'none'}
+                                    onChange={() => updateUser({'status.injury': 'none'})}
+                                    label="Nezranen" />
+                                <Input
+                                    type="checkbox"
+                                    value={role.status.injury === 'light'}
+                                    label="Lehce zranen"
+                                    onChange={() => updateUser({'status.injury': 'light'})}
+                                    />
+                                <Input
+                                    type="checkbox"
+                                    value={role.status.injury === 'heavy'}
+                                    label="Tezce zranen"
+                                    onChange={() => updateUser({'status.injury': 'heavy'})}
+                                />
+                                <Input 
+                                    type="checkbox"
+                                    value={role.status.injury === 'lethal'}
+                                    label="Mrtev"
+                                    onChange={() => updateUser({'status.injury': 'lethal'})}
+                                />
+                            </div>
+                            { role.uid && <div style={{ backgroundColor: 'white', padding: '15px'}}><QRCode value={`role:${role.uid}`} /></div> }
+                        </div>
                     </SectionDropwdown>
 
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
