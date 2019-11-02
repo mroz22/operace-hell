@@ -66,7 +66,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     // if (nextMutation) {
                     //     next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
                     // }
-                    return userRef.update(nextMutation);
+                    return userRef.update(next);
                 }
             });
         }).catch((err) => console.error(err)),
