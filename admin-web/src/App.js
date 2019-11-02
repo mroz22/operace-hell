@@ -9,7 +9,8 @@ const A4 = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    padding-left: 4%;
+    padding-right: 4%;
     @media print {
         width: 210mm;
         height: 297mm;
