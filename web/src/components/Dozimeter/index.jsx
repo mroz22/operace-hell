@@ -173,15 +173,8 @@ const Dozimeter = (props) => {
         return icons;
     }
 
-
-
     return (
         <Wrapper>
-            <div style={{ display: 'flex', flexDirection: 'row', 'justifyContent': 'space-between', marginBottom: '30px'}}>
-            {/* <Link onClick={() => setView('world')}>Svet</Link> */}
-            {/* <Link onClick={() => setView('me')}>Ja</Link> */}
-            </div>
-
             <Options>
                 <Option onClick={() => setQrReaderOpened(!qrReaderOpened)}>Precist QR</Option>
                 { currentBunker && <Option onClick={()=>enterBunker("")}>Odejit z bunkru</Option> }

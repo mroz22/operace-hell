@@ -5,11 +5,11 @@ import Select from 'react-select';
 const Wrapper = styled.div`
     margin-top: 5px;
     margin-bottom: 15px;
-`
+`;
 
 export const Label = styled.div`
     font-weight: bold;
-`
+`;
 
 const Input = (props) => {
     if (props.type === 'select' || props.type === 'checkbox') {
@@ -27,10 +27,10 @@ const Input = (props) => {
                     </>
                 )}
                 { props.type === 'checkbox' && (
-                    <>
-                    <Label>{props.label}</Label>
-                    <input type={props.type} checked={props.value} onChange={(event => props.onChange(event))} />
-                    </>
+                    <div style={{ display: 'flex'}}>
+                        <input type={props.type} checked={props.value} onChange={(event => props.onChange(event))} />
+                        <Label>{props.label}</Label>
+                    </div>
                 )}
             </Wrapper>
         )

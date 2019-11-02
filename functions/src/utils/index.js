@@ -9,7 +9,17 @@ const getRadiationForEpoch = (game) => {
     return game.RADIATION[key];
 };
 
+const getNextMutation = (allMutations, mutations, radiation, radiationPerMutation) => {
+    if (radiation < mutations.length * radiationPerMutation) {
+        return null;
+    }
+    
+    const unusedMutations = allMutations.filter(am => !mutations.find(m => m.name === am.name));
+    return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
+};
+
 module.exports = {
     getRandomInt,
     getRadiationForEpoch,
+    getNextMutation,
 }

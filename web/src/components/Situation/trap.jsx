@@ -37,8 +37,11 @@ export default ({ role, game, onEnter, onSituationCancel }) => {
                 explored && diff < 0 && (
                     <>
                     <Description>
-                        Uz to znas. Nastrazena sit kolem tebe neskodne prosvistela a tentokrat te nechytla.
+                        Uz to znas. Nastrazena sit kolem tebe neskodne prosvistela a tentokrat te nechytla. Taky tu ale uz nic zajimaveho neni.
                     </Description>
+                    <Options>
+                        <Option onClick={() => onSituationCancel()}>Odejit</Option>
+                    </Options>
                     </>
                 )
             }

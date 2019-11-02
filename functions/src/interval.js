@@ -1,8 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const { getRadiationForEpoch } = require('./utils');
-
-const { mutations } = require('./data/mutations')
+const { getRadiationForEpoch, getNextMutation } = require('./utils');
 
 const initialStatus = {
     BunkerId: '',
@@ -44,7 +42,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
 
             return gameRef.update({
                 epoch: 1,
-                END_EPOCH: 840,
             });
         }
 
@@ -89,9 +86,15 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 if (!doc.data().BunkerId || (doc.data().BunkerId && !bunkers.find(b => b.id === doc.data().BunkerId).isDestroyed)) {
                     // only 5% of regular radiation affects player in protectiveSuite;
                     doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
-                    return userRef.update({
-                        'status.radiation': currentUserRadiation + ((game.radiation / 60 ) * doseModifier)
-                    });
+                    cons nextRadiation = currentUserRadiation + ((game.radiation / 60 ) * doseModifier);
+                    const next = {
+                        'status.radiation': nextRadiation,
+                    }
+                    const nextMutation = getNextMutation(game.MUTATIONS, game.status.mutations, game.radiation, game.RADIATION_PER_MUTATION);
+                    if (nextMutation) {
+                        next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
+                    }
+                    return userRef.update(nextMutation);
                 }
             });
         }).catch((err) => console.error(err)),
