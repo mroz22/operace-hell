@@ -95,7 +95,10 @@ const ControlPanel = (props) => {
                         <Input type="checkbox" label="Opravdu?" onChange={() => setReallyReset(!reallyReset)}></Input>
                         <Options>
                             {
-                                reallyReset && <Option onClick={resetGame}>Resetovat hru</Option> 
+                                reallyReset && !isPending && <Option onClick={resetGame}>Resetovat hru</Option> 
+                            }
+                            {
+                                isPending && 'Resetuje se...'
                             }
                             
                         </Options>

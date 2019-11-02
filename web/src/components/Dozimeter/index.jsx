@@ -202,15 +202,15 @@ const Dozimeter = (props) => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
-                    <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀 💉 ❕">
+                    <SectionDropwdown title="Mutace" icons={' 🐙 '.repeat(role.status.mutations.length)}>
                         { !role.status.mutations && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
                         { role.status.mutations && role.status.mutations.map(m => (
-                            <>
+                            <div key={m.id}>
                             <div>{m.name}</div>
-                            <div>{m.descrition}</div>
-                            </>
+                            <div>{m.description}</div>
+                            </div>
                         ))}
                     </SectionDropwdown>
 
