@@ -91,7 +91,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                     const next = {
                         'status.radiation': nextRadiation,
                     }
-                    const nextMutation = getNextMutation(game.MUTATIONS, game.status.mutations, game.radiation, game.RADIATION_PER_MUTATION);
+                    const nextMutation = getNextMutation(game.MUTATIONS, role.status.mutations, game.radiation, game.RADIATION_PER_MUTATION);
                     if (nextMutation) {
                         next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
                     }
