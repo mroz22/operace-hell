@@ -144,7 +144,7 @@ const Dozimeter = (props) => {
                     game={game}
                     role={role}
                     onSituationCancel={onSituationCancel}
-                    onEnter={onEnterSecretChamber}
+                    onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + 4 })}
                 />
             );
             // no default
@@ -163,8 +163,18 @@ const Dozimeter = (props) => {
                     style={{ width: '100%' }}
                 />
             </Wrapper>
-    )
+        )
     } 
+
+    const getStatusIcons = () => {
+        const icons = [];
+        if (game.radiation > 0) icons.push(' ☢ ');
+        if (role.status.trappedUntilEpoch > game.epoch) icons.push(' ❕ ')
+        return icons;
+    }
+
+
+
     return (
         <Wrapper>
             <div style={{ display: 'flex', flexDirection: 'row', 'justifyContent': 'space-between', marginBottom: '30px'}}>
@@ -178,8 +188,10 @@ const Dozimeter = (props) => {
             </Options>
 
             <SectionDropwdown
+                icons={getStatusIcons()}
                 title={
-                    `Nachazis se ${currentBunker ? 'v bunkru' : 'pod sirym nebem'} ${game.radiation > 0 ? ' ☢': ''}`}>
+                    `Nachazis se ${currentBunker ? 'v bunkru' : 'pod sirym nebem'}`
+                }>
                         {
                             currentBunker && <Bunker role={role} bunker={currentBunker} />
                         }
@@ -198,7 +210,7 @@ const Dozimeter = (props) => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
-                    <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀">
+                    <SectionDropwdown title="Mutace 🐙 ☣ ☠ 💀 💉 ❕">
                         Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.
                     </SectionDropwdown>
 

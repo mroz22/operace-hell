@@ -14,3 +14,300 @@
 [debug] [2019-11-01T20:07:35.353Z] <<< HTTP RESPONSE 200
 [debug] [2019-11-01T20:07:35.361Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/operacexxx  
  
+[debug] [2019-11-02T09:46:04.525Z] ----------------------------------------------------------------------
+[debug] [2019-11-02T09:46:04.526Z] Command:       /home/martinvarmuza/.nvm/versions/node/v10.0.0/bin/node /home/martinvarmuza/.nvm/versions/node/v10.0.0/bin/firebase auth:export save_file.csv --format=csv --project operacexxx
+[debug] [2019-11-02T09:46:04.526Z] CLI Version:   7.0.0
+[debug] [2019-11-02T09:46:04.526Z] Platform:      linux
+[debug] [2019-11-02T09:46:04.526Z] Node Version:  v10.0.0
+[debug] [2019-11-02T09:46:04.526Z] Time:          Sat Nov 02 2019 10:46:04 GMT+0100 (CET)
+[debug] [2019-11-02T09:46:04.526Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-11-02T09:46:04.532Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-02T09:46:04.532Z] > authorizing via signed-in user
+[debug] [2019-11-02T09:46:04.533Z] [iam] checking project operacexxx for permissions ["firebase.projects.get","firebaseauth.users.get"]
+[debug] [2019-11-02T09:46:04.534Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-11-02T09:46:04.534Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-11-02T09:46:12.838Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-02T09:46:12.848Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/operacexxx:testIamPermissions  
+
+[debug] [2019-11-02T09:46:21.775Z] <<< HTTP RESPONSE 200
+[info] Exporting accounts to save_file.csv
+[debug] [2019-11-02T09:46:21.778Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:46:30.358Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:46:30.361Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:46:38.827Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:46:38.830Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:46:47.335Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:46:47.337Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:46:57.701Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:46:57.704Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:06.174Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:06.177Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:14.570Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:14.574Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:23.001Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:23.002Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:31.486Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:31.490Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:39.948Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:39.953Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:48.486Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:48.488Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:47:57.044Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:47:57.045Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:05.575Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:05.576Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:14.059Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:14.062Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:22.578Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:22.579Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:30.959Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:30.960Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:39.350Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:39.351Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:47.770Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:47.771Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:48:57.298Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:48:57.300Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:05.782Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:05.783Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:14.117Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:14.118Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:22.441Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:22.442Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:30.875Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:30.876Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:39.353Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:39.353Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:47.888Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:47.889Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:49:56.239Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:49:56.241Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:04.607Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:04.608Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:13.160Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:13.161Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:21.557Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:21.559Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:29.944Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:29.945Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:38.473Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:38.474Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:46.941Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:46.942Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:50:56.990Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:50:56.991Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:05.698Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:05.698Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:15.119Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:15.120Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:23.514Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:23.515Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:32.042Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:32.043Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:40.638Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:40.639Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:48.984Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:48.985Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:51:57.509Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:51:57.510Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:05.914Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:05.916Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:14.343Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:14.343Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:22.921Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:22.922Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:31.446Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:31.447Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:39.955Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:39.956Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:48.393Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:48.394Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:52:57.873Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:52:57.874Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:06.303Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:06.304Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:14.758Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:14.759Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:23.152Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:23.153Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:31.632Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:31.633Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:40.140Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:40.141Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:48.556Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:48.557Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:53:56.994Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:53:56.995Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:05.384Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:05.385Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:13.927Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:13.929Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:22.383Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:22.384Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:30.810Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:30.811Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:39.273Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:39.276Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:47.672Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:47.673Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:54:57.240Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:54:57.241Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:05.701Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:05.702Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:14.222Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:14.223Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:22.694Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:22.697Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:31.075Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:31.076Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:39.513Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:39.515Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:47.848Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:47.849Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:55:56.271Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:55:56.272Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:56:04.713Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:56:04.714Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-02T09:56:13.195Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 36 account(s) successfully.
+[debug] [2019-11-02T09:56:13.196Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+

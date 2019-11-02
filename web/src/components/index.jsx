@@ -84,14 +84,17 @@ const Heading = styled.div`
     text-align: center;
 `;
 
-const SectionDropwdown = ({ title, children }) => {
+const SectionDropwdown = ({ title, icons, children }) => {
     const [open, setOpen] = useState(false);
 
     return (
         <>
         <Option onClick={() => setOpen(!open)}>
+        <span>
         { open ? "▲":"▼"} {' '}
         {title}
+        </span>
+        <span>{icons}</span>
         </Option>
         {
             open && (
