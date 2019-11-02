@@ -9,12 +9,13 @@ const getRadiationForEpoch = (game) => {
     return game.RADIATION[key];
 };
 
-const getNextMutation = (allMutations, mutations, radiation, radiationPerMutation) => {
-    if (radiation < mutations.length * radiationPerMutation) {
+const getNextMutation = (game, role) => {
+    const { mutations, radiation } = role.status;
+    if (radiation < mutations.length * game.RADIATION_PER_MUTATION) {
         return null;
     }
     
-    const unusedMutations = allMutations.filter(am => !mutations.find(m => m.name === am.name));
+    const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
     return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
 };
 
