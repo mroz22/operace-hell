@@ -42,6 +42,7 @@ export default (props) => {
     if (roleParam === 'pruzkumnik') {
         return (
             <Dozimeter
+                characters={props.characters}
                 game={props.game}
                 role={props.role}
                 bunkers={props.bunkers}

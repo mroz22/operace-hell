@@ -3,13 +3,20 @@ import * as firebase from 'firebase';
 
 import { Wrapper, Options, Option, Description}  from '../index';
 
-export default ({ role, targetRole, onSituationCancel }) => {
+export default ({ role, character, targetRole, onSituationCancel }) => {
     const callSurgery = firebase.functions().httpsCallable('surgery');
 
     const [isPending, setIsPending ] = useState(false);
     const [result, setResult] = useState('');
     
     console.log(targetRole);
+    console.log('role', role);
+    console.log('character', character);
+    const canDoSurgery = character.skills.some((s) => s.id === 'operace-heavy');
+    const canDoHeal = character.skills.some((s) => s.id === 'operace-light'); 
+    console.log('canDoSurgery', canDoSurgery);
+    console.log('canDoHeal', canDoHeal);
+
     if (!targetRole) {
         return (
         <Wrapper>
@@ -22,12 +29,12 @@ export default ({ role, targetRole, onSituationCancel }) => {
         </Wrapper>)
     }
 
-    const startSurgery = async () => {
+    const startSurgery = async (level) => {
         if (isPending) return;
         try {
             setResult('');
             setIsPending(true);
-            const result = await callSurgery({ targetRoleId: targetRole.uid })
+            const result = await callSurgery({ targetRoleId: targetRole.uid,  level })
             setResult(result.data)
         } catch (err) {
             setResult('error, nepovedlo se odeslat, zkus to znovu nekde na signalu')
@@ -47,7 +54,7 @@ export default ({ role, targetRole, onSituationCancel }) => {
     //         </Wrapper>
     //     )
     // }
-    
+
     if (isPending) {
         return (
             <Wrapper>
@@ -81,7 +88,21 @@ export default ({ role, targetRole, onSituationCancel }) => {
                 { targetRole.status.mutations.length > 0 && 'Co se mutaci tyce, vypada ze uz zacina trochu mutovat. ' }
             </Description>
             <Options>
-                <Option onClick={() => startSurgery()}>Operovat</Option>
+                {
+                    targetRole.status.injury === 'light' && (canDoHeal || canDoSurgery) && (
+                        <Option onClick={() => startSurgery('light')}>Osetrit</Option>
+                    )
+                }
+                {
+                    targetRole.status.injury === 'heavy' && canDoSurgery && (
+                        <Option onClick={() => startSurgery('heavy')}>Operovat</Option>
+                    )
+                }
+                {
+                    targetRole.status.injury === 'lethal' && (
+                        <Option onClick={() => onSituationCancel()}>Dat posledni pomazani</Option>
+                    )
+                }
                 <Option onClick={() => onSituationCancel()}>Odejit</Option>
             </Options>
         </Wrapper>

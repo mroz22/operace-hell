@@ -58,38 +58,64 @@ exports.enterPassword = functions.https.onCall(async (data, context) => {
 
 exports.surgery = functions.https.onCall(async (data, context) => {
     if (!data.targetRoleId) return 'missing targetRoleId';
-
+    if (!data.level) return 'missing level param';
+    
     const uid = context.auth.uid;
     const userRef = db.collection('users').doc(data.targetRoleId);
     const gameRef = db.collection('game').doc('operacexxx');
     let nextStatus = {};
     const random = getRandomInt(1,10);
 
-    if (random === 10) {
-        nextStatus['status.injury'] = 'lethal';
-        await userRef.update(nextStatus);
-        return 'Operace se nezdarila, pacient zemrel';
+    if (data.level === 'heavy') {
+        if (random === 10) {
+            nextStatus['status.injury'] = 'lethal';
+            await userRef.update(nextStatus);
+            return 'Operace se nezdarila, pacient zemrel';
+        
+        } else if (random < 10 && random > 3) {
+            const role = await userRef.get().then((doc) => {
+                return doc.data();
+            });
+            const game = await gameRef.get().then((doc) => {
+                return doc.data();
+            });
+            const nextInjury = getRandomUniqueFromArray(role.status.permanentInjuries, game.PERMANENT_INJURIES);
+            nextStatus['status.injury'] = 'none';
+            if (nextInjury) {
+                nextStatus['status.permanentInjuries'] = [...role.status.permanentInjuries, nextInjury] 
+            }
+            await userRef.update(nextStatus);
+            return 'Operace se zdarila s trvalymi nasledky';
     
-    } else if (random < 10 && random > 3) {
-        const role = await userRef.get().then((doc) => {
-            return doc.data();
-        });
-        const game = await gameRef.get().then((doc) => {
-            return doc.data();
-        });
-        const nextInjury = getRandomUniqueFromArray(role.status.permanentInjuries, game.PERMANENT_INJURIES);
-        nextStatus['status.injury'] = 'none';
-        if (nextInjury) {
-            nextStatus['status.permanentInjuries'] = [...role.status.permanentInjuries, nextInjury] 
+        } else {
+            nextStatus['status.injury'] = 'none';
+            await userRef.update(nextStatus);
+            return 'Operace se zdarila bez nasledku';
         }
-        await userRef.update(nextStatus);
-        return 'Operace se zdarila s trvalymi nasledky';
-
-    } else {
-        nextStatus['status.injury'] = 'none';
-        await userRef.update(nextStatus);
-        return 'Operace se zdarila bez nasledku';
     }
+
+    if (data.level === 'light') {
+        if (random <= 10 && random > 2) {
+            nextStatus['status.injury'] = 'none';
+            await userRef.update(nextStatus);
+            return 'Osetreni se zdarilo bez nasledku';
+        } else {
+            const role = await userRef.get().then((doc) => {
+                return doc.data();
+            });
+            const game = await gameRef.get().then((doc) => {
+                return doc.data();
+            });
+            const nextInjury = getRandomUniqueFromArray(role.status.permanentInjuries, game.PERMANENT_INJURIES);
+            nextStatus['status.injury'] = 'none';
+            if (nextInjury) {
+                nextStatus['status.permanentInjuries'] = [...role.status.permanentInjuries, nextInjury] 
+            }
+            await userRef.update(nextStatus);
+            return 'Osetreni se zdarilo s trvalymi nasledky';
+        }
+    }
+    
 });
 
 exports.resetGame = functions.https.onCall(async (data, context) => {

@@ -15,8 +15,8 @@
     "ammo": "low",
     "trivia": "Luxor: Velel četě, která dostala za úkol obsadit a vytěžit vybombardovanou základnu BO. Měl to být primitivní úkol. Jenom blázen by tomu věřil, když poslali Jašina osobně. Po urputném nahánění se s TZ , mjr.Jašin přežil v protiradiačním obleku v rohu perimetru s četařem Oharkem.",
     "skills": [{
-        "name": "brain power",
-        "description": "v pripade, ze je vuci nemu uplatnovana herni mechanika, u niz se haze kostkou, muze se rozhodnout, ze vysledek prvniho hodu neprijma a nechat hodit jeste jednou"
+        "name": "operace-light",
+        "description": "muze provadet osetreni lehkych zraneni."
     }],
     "img": "jasin.png"
 }, {
@@ -72,8 +72,8 @@
         "name": "bolehlav",
         "description": "Kuratko zacne mluvit podivne smesice slov a vet na jednu osobu. Po zhruba jedne minute zacne tuto osobu bolet hlava a neni schopna po dobu asi 10 minut bojovat ani vykonavat zadne cinnosti."
     }, {
-        "name": "operace v nouzovych podminkach",
-        "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3,2,1 zdarila s trvalymi nasledky"
+        "name": "operace-light",
+        "description": "muze provadet osetreni lehkych zraneni."
     }],
     "img": "kuratko.png"
 }, {
@@ -85,11 +85,12 @@
         "Bila paska s cervenym krizem na rameni",
         "sestistena hraci kostka"
     ],
+    "isMedic": true,
     "ammo": "medium",
     "trivia": "Jeho oblibenou pisni je Beskyde Beskyde a rad si ji casto pobrukuje.",
     "skills": [{
-        "name": "operace",
-        "description": "Prvni hod operace je u nej modifikovan nasledovne: 6,5,4,3 zdarila bez nasledku; 2 zdarila s trvalymi nasledky, 1 smrt."
+        "name": "operace-heavy",
+        "description": "muze provadet operace tezkych a lehkych zraneni."
     }],
     "img": "fifinka.png"
 }, {

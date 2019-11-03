@@ -13,7 +13,7 @@ import {
 import Bunker from '../Zone/bunker';
 
 const Dozimeter = (props) => {
-    const { game, role, bunkers, user, roles } = props;
+    const { game, role, bunkers, user, roles, characters } = props;
     const db = firebase.firestore();
 
     const [qr, setQr] = useState({ type: undefined, value: undefined });
@@ -45,7 +45,7 @@ const Dozimeter = (props) => {
         return () => {}
     }, [db, role.uid])
 
-    if (!game || !role || !role.status || !bunkers || !user || !roles) {
+    if (!game || !role || !role.status || !bunkers || !user || !roles || !characters) {
         return 'loading...'
     }
 
@@ -150,6 +150,7 @@ const Dozimeter = (props) => {
         case 'role':
                 return (
                     <Role
+                        character={characters.find(c => c.id === role.characterId )}
                         role={role}
                         targetRole={roles.find(r => r.uid === qr.id)}
                         onSituationCancel={onSituationCancel}
