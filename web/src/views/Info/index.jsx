@@ -35,7 +35,7 @@ const styles = {
         },
         background: {
             width: '100%',
-            minHeight: '55%',
+            height: '35vh',
         }
     }
 }
