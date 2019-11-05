@@ -114,7 +114,7 @@
     "trivia": "až to zkončí zbytek života stráví chováním oveček a koní na farmě",
     "skills": [{
         "name": "domácí pyrotechnik",
-        "description": "v případě zranění výbuchem, nenastává zranění. namisto toho není schopen 15 minut bojovat a komunikovat - neslyší a je malátný"
+        "description": "v případě zranění výbuchem, nastává lehké zranění místo těžkého."
     }],
     "img": "cooper.png"
 }, {
@@ -139,11 +139,12 @@
     "name": "Miss listopad",
     "description": "Modelka, casto se pohybuje ve vysokych kruzich ChLDr",
     "equipment": [
-        "nevojenske, zenske obleceni, neco fancy, klouboucek nebo baretik",
+        "nevojensk ze, zenske obleceni, neco fancy, klouboucek nebo baretik",
         "muze a nemusi mit pistoli, idealne deringer do podvazku",
         "zapalky nebo zapalovac",
         "svitilna",
-        "zapisnik a tuzka"
+        "zapisnik a tuzka",
+        "volitelne vysilacka"
     ],
     "ammo": "low",
     "trivia": "pri golfu na jeleni loucce ji major jasin eskortoval do bezpeci",
