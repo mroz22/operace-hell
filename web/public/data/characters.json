@@ -10,7 +10,8 @@
         "vysílačka",
         "zápisník, tužka",
         "útočná puška ( AK74S ) nebo PDW ( MP5PDW ) + pistole ( Glock )",
-        "mačeta"
+        "mačeta",
+        "svitilna"
     ],
     "ammo": "low",
     "trivia": "Luxor: Velel četě, která dostala za úkol obsadit a vytěžit vybombardovanou základnu BO. Měl to být primitivní úkol. Jenom blázen by tomu věřil, když poslali Jašina osobně. Po urputném nahánění se s TZ , mjr.Jašin přežil v protiradiačním obleku v rohu perimetru s četařem Oharkem.",
@@ -64,7 +65,9 @@
         "bily laboratorni plast",
         "svicky",
         "zapalky nebo zapalovac",
-        "buzola"
+        "buzola",
+        "lekarnicka, obvazy, gazy, elektrikarska paska",
+        "zapisnik, tuzka",
     ],
     "ammo": "no",
     "trivia": "Proslycha se, ze na operaci Luxor byl vyslan po jistem nezdarem experimentu na svem puvodnim pracovisti.",
@@ -81,9 +84,9 @@
     "name": "doktor Fifinka",
     "description": "Vrchni chirurg jednotek ChLDR. Neni vsak prilis loayalni oficialni ideologii",
     "equipment": [
-        "Lekarnicka, obvazy",
+        "lekarnicka, obvazy, gazy, elektrikarska paska",
         "Bila paska s cervenym krizem na rameni",
-        "sestistena hraci kostka"
+        "svitilna"
     ],
     "isMedic": true,
     "ammo": "medium",
@@ -104,7 +107,8 @@
         "Mačeta",
         "půl MRE",
         "Grabpack! Krabička poslední záchrany",
-        "Svíčka, izofolie, provázek, prostředky signalizace, pár cigaret"
+        "Svíčka, izofolie, provázek, prostředky signalizace, pár cigaret",
+        "svitilna"
     ],
     "ammo": "low",
     "trivia": "až to zkončí zbytek života stráví chováním oveček a koní na farmě",
@@ -138,7 +142,8 @@
         "nevojenske, zenske obleceni, neco fancy, klouboucek nebo baretik",
         "muze a nemusi mit pistoli, idealne deringer do podvazku",
         "zapalky nebo zapalovac",
-        "svitilna"
+        "svitilna",
+        "zapisnik a tuzka"
     ],
     "ammo": "low",
     "trivia": "pri golfu na jeleni loucce ji major jasin eskortoval do bezpeci",
@@ -147,4 +152,23 @@
         "description": "miss listopad muze 1x za hru zavolat organizatorum a nechat si vysvetlit princip 1 sifry"
     }],
     "img": "listopad.png"
+}, {
+    "id": "kpt-brozov",
+    "name": "Kapitan Brozov",
+    "description": "Duchovni guru beskydskeho odboje. Ackoliv jeho skill se zbranemi neni na nejvyssi urovni, zle jazyky tvrdi, ze dokonce nevi, jak se zatrkuje zasobnik do utocne pusky typu AK, byl vzdy v prvni linii v boji proti chribskym okupantum.",
+    "equipment": [
+        "partyzanske obleceni",
+        "libovolna zbran.",
+        "plynova maska, atombordel (napr plastenka)",
+        "svitilna",
+        "zapisnik a tuzka",
+        "nuz"
+    ],
+    "ammo": "medium",
+    "trivia": "",
+    "skills": [{
+        "name": "krysa",
+        "description": "je-li zajat divokymi, dokaze se z toho vykecat a ti ho musi pustit."
+    }],
+    "img": "brozov.png"
 }]
