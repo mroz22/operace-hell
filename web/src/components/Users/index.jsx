@@ -86,8 +86,6 @@ const Users = ({ roles, characters, teams }) => {
         })
         return Object.entries(result).sort((n1,n2) =>  n2[1] - n1[1]);
     }
-    
-    
 
     return (
         <div>
