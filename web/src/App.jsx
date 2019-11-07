@@ -43,7 +43,7 @@ const App = () => {
                 const json = await response.json();
                 setCharacters(json);
             } catch (err) {
-                // mehh...
+                console.error('err', err);
             }
         }
 

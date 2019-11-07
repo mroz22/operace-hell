@@ -58,7 +58,6 @@ const Character = ({ character, isSelected, showName, teams }) => {
  // eslint-disable-next-line
 const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     const { characterId } = roleDraft;
-
     const next = () => {
         const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
         if (currentIndex < characters.length -1) {
@@ -91,7 +90,6 @@ const CharacterPicker = ({ characters, onChange, roleDraft }) => {
 }
 
 const Profile = ({ user, characters, role, roles, teams }) => {
-    
     const [editMode, setEditMode] = useState(false);
     const [roleDraft, setRoleDraft] = useState({});
     const [error, setError] = useState(null);
