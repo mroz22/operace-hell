@@ -10,6 +10,11 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         const game = await gameRef.get().then((doc) => {
             return doc.data();
         });
+
+        if (game.isPaused) {
+            console.log(`game paused`);
+            return;
+        }
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
         

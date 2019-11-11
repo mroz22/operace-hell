@@ -249,6 +249,14 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
 
 });
 
+exports.togglePause = functions.https.onCall(async (data, context) => {
+    const gameRef = db.collection('game').doc('operacexxx');
+    const game = await gameRef.get().then((doc) => {
+        return doc.data();
+    });
+    await gameRef.update({ isPaused: !game.isPaused });
+    return 'hotovo';
+});
 
 exports.runInterval = intervals.runInterval;
 exports.resolveGameSituation = situations.resolveGameSituation;

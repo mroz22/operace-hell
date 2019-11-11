@@ -44,6 +44,8 @@ const ControlPanel = (props) => {
     const { game, role, bunkers, user, roles, teams } = props;
     // const db = firebase.firestore();
     const callReset = firebase.functions().httpsCallable('resetGame');
+    const callTogglePause = firebase.functions().httpsCallable('togglePause');
+
     const [isPending, setIsPending ] = useState(false);
     const [result, setResult] = useState('');
     const [reallyReset, setReallyReset] = useState(false);
@@ -59,6 +61,18 @@ const ControlPanel = (props) => {
             setIsPending(true);
             const result = await callReset()
             setResult(result.data)
+        } catch (err) {
+            setResult('error')
+        } finally {
+            setIsPending(false);
+        }
+    }
+
+    const togglePause = async () => {
+        if (isPending) return;
+        try {
+            setIsPending(true);
+            await callTogglePause()
         } catch (err) {
             setResult('error')
         } finally {
@@ -89,9 +103,9 @@ const ControlPanel = (props) => {
                         }}
                     >
                         {
-                            roles.filter(r => !!r.geo).map(r => (
+                            roles.filter(r => !!r.geo).map((r, index) => (
                                 <Point
-                                    key={r.name}
+                                    key={`${r.name}-${index}`}
                                     lat={r.geo.lat}
                                     lng={r.geo.lng}
                                     role={r}
@@ -101,6 +115,20 @@ const ControlPanel = (props) => {
                             )
                         }
                     </Map>
+                    <SectionDropwdown title="Pauza">
+                        <Options>
+                            {
+                                !isPending && game.isPaused && <Option onClick={togglePause}>Odpauzovat</Option> 
+                            }
+                            {
+                                !isPending && !game.isPaused && <Option onClick={togglePause}>Zapauzovat</Option> 
+                            }
+                            {
+                                isPending && 'Maka se na tom...'
+                            }
+                            
+                        </Options>
+                    </SectionDropwdown>
                     <SectionDropwdown title="Reset hry">
                         <Input type="checkbox" label="Opravdu?" onChange={() => setReallyReset(!reallyReset)}></Input>
                         <Options>
