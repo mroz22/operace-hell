@@ -10,6 +10,8 @@ const game = {
         0: 10,
         10: 20,
         20: 0,
+        30: 0,
+        40: 10,
     },
     RADIATION_PER_MUTATION: 10,
     MUTATIONS: [{
@@ -40,6 +42,7 @@ describe('utils', () => {
             expect(getRadiationForEpochAdvanced({ ...game, epoch: 5})).toEqual(15);
             expect(getRadiationForEpochAdvanced({ ...game, epoch: 10})).toEqual(20);
             expect(getRadiationForEpochAdvanced({ ...game, epoch: 15})).toEqual(10);
+            expect(getRadiationForEpochAdvanced({ ...game, epoch: 25})).toEqual(0);
             expect(getRadiationForEpochAdvanced({ ...game, epoch: 150})).toEqual(0);
         });
     });

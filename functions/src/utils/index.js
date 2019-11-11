@@ -17,7 +17,7 @@ const getRadiationForEpochAdvanced = game => {
     }
     const remainingChanges = Object.keys(game.RADIATION)
         .map(key => ({ epoch: Number(key), radiation: game.RADIATION[key]}))
-        .filter(o => o.epoch >= game.epoch && start.radiation !== o.radiation);
+        .filter(o => o.epoch >= game.epoch);
     if (remainingChanges.length === 0) {
         return 0;
     }
