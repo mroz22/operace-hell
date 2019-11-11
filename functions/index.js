@@ -115,6 +115,8 @@ exports.surgery = functions.https.onCall(async (data, context) => {
             return 'Osetreni se zdarilo s trvalymi nasledky';
         }
     }
+
+    return 'wrong data.level param, nic se nestalo';
     
 });
 

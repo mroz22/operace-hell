@@ -9,17 +9,31 @@ const getRadiationForEpoch = (game) => {
     return game.RADIATION[key];
 };
 
-const getNextMutation = (game, role) => {
+const getRadiationForEpochAdvanced = game => {
+    const fromKey = Object.keys(game.RADIATION).reverse().find(k => Number(k) <= game.epoch);
+    const start  = {epoch: Number(fromKey), radiation: game.RADIATION[fromKey]};
+    if (game.epoch <= fromKey) {
+        return start.radiation;
+    }
+    const remainingChanges = Object.keys(game.RADIATION)
+        .map(key => ({ epoch: Number(key), radiation: game.RADIATION[key]}))
+        .filter(o => o.epoch >= game.epoch && start.radiation !== o.radiation);
+    if (remainingChanges.length === 0) {
+        return 0;
+    }
+    const end = remainingChanges[0];
+    const epochDiff = end.epoch - start.epoch;
+    return start.radiation + ((end.radiation - start.radiation) / epochDiff) * (game.epoch - start.epoch);
+}
 
+const getNextMutation = (game, role) => {
+    if (!game.RADIATION_PER_MUTATION) {
+        throw new Error('game.RADIATION_PER_MUTATION is not set');
+    }
     const { mutations, radiation } = role.status;
-    console.log('user.mutations.length', mutations.length);
-    console.log('game.RADIATION_PER_MUTATION', game.RADIATION_PER_MUTATION);
-    console.log('userRad', radiation);
-    
-    if (radiation < (mutations.length * game.RADIATION_PER_MUTATION)) {
+    if (radiation <= (mutations.length * game.RADIATION_PER_MUTATION)) {
         return null;
     }
-    
     const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
     if (unusedMutations.length === 0) return null;
     return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
@@ -34,6 +48,7 @@ const getRandomUniqueFromArray = (currentArr, possibleArr) => {
 module.exports = {
     getRandomInt,
     getRadiationForEpoch,
+    getRadiationForEpochAdvanced,
     getNextMutation,
     getRandomUniqueFromArray,
 }

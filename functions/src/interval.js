@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const { getRadiationForEpoch, getNextMutation } = require('./utils');
+const { getRadiationForEpochAdvanced, getNextMutation } = require('./utils');
 
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
@@ -15,7 +15,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         
         // update GAME
         await gameRef.update({
-            radiation: getRadiationForEpoch(game),
+            radiation: getRadiationForEpochAdvanced(game),
             epoch: game.epoch + 1,
         });
     

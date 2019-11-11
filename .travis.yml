@@ -4,12 +4,14 @@ node_js:
 script:
   - cd web
   - yarn
+  - yarn lint
   - yarn build
   - cd build 
   - mkdir admin
   - cd ../../
   - cd functions
   - yarn
+  - yarn test
   - cd ../
   - cd admin-web
   - yarn

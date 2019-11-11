@@ -33,6 +33,7 @@ export const getRadiationInfo = (value) => {
         return {text: 'vysoké ozáření', color: 'red'}
       case CRITICAL:  
         return { text: 'extrémní ozáření', color: 'red'}
+      // no default
     }
   } 
 
@@ -49,6 +50,7 @@ export const getDoseInfo = (value) => {
         return {text: 'vysoké záření', color: 'red'}
       case CRITICAL:  
         return { text: 'extrémní záření', color: 'red'}
+      // no default
     }
   }
 

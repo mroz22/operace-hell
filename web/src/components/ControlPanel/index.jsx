@@ -8,7 +8,7 @@ const Point = ({ role, team }) => {
     const [open, setOpened] = useState(false);
     if (open) {
         return (
-            <div style={{ border: `4px solid ${team.color}`, backgroundColor: 'white', color: 'black', padding: '5px', minWidth: '200px', display: 'flex', flexDirection: 'column' }} onClick={() => setOpened(false)}>
+            <div style={{ border: `4px solid ${team && team.color ? team.color : CONF.GREEN}`, backgroundColor: 'white', color: 'black', padding: '5px', minWidth: '200px', display: 'flex', flexDirection: 'column' }} onClick={() => setOpened(false)}>
                 <div>Jmeno: {role.name}</div>
                 <div>Mutace: {role.status.mutations.map(m => (`${m.name}, `))}</div>
                 <div>Radiace {role.status.radiation.toFixed(2)}</div>
