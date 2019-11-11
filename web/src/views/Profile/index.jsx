@@ -38,22 +38,20 @@ export default (props) => {
             </>
         ) 
     }
-
+    let component = null;
     if (roleParam === 'pruzkumnik') {
-        return (
-            <Dozimeter
-                characters={props.characters}
-                game={props.game}
-                role={props.role}
-                bunkers={props.bunkers}
-                user={props.user}
-                roles={props.roles}
-                />
-        )
+        component = (<Dozimeter
+            characters={props.characters}
+            game={props.game}
+            role={props.role}
+            bunkers={props.bunkers}
+            user={props.user}
+            roles={props.roles}
+            />);
     }
 
     if (roleParam === 'divoky') {
-        return (
+        component = (
             <HuntingPanel
                 game={props.game}
                 roles={props.roles}
@@ -62,7 +60,7 @@ export default (props) => {
     }
 
     if (roleParam === 'org') {
-        return (
+        component = (
             <ControlPanel
                 game={props.game}
                 role={props.role}
@@ -71,6 +69,15 @@ export default (props) => {
                 user={props.user}
                 teams={props.teams}
                 />
+        )
+    }
+
+    if (component) {
+        return (
+            <>
+            {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra nebezi</div>}
+            {component}
+            </>
         )
     }
 

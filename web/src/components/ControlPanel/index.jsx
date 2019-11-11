@@ -86,9 +86,9 @@ const ControlPanel = (props) => {
 
     return (
         <Wrapper>
-                    <SectionDropwdown title="Zivi hraci">
+                    {/* <SectionDropwdown title="Zivi hraci">
                         obsah section
-                    </SectionDropwdown>
+                    </SectionDropwdown> */}
                     <Map
                         bootstrapURLKeys={{ key: CONF.MAP_API_KEY }}
                         defaultCenter={{

@@ -190,6 +190,7 @@ const Dozimeter = (props) => {
 
     return (
         <Wrapper>
+            
             <Options>
                 <Option onClick={() => setQrReaderOpened(!qrReaderOpened)}>Precist QR</Option>
                 { currentBunker && <Option onClick={()=>enterBunker("")}>Odejit z bunkru</Option> }
