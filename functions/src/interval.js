@@ -12,7 +12,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         });
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
-
         
         // update GAME
         await gameRef.update({

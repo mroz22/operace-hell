@@ -120,9 +120,10 @@ exports.surgery = functions.https.onCall(async (data, context) => {
 
 exports.resetGame = functions.https.onCall(async (data, context) => {
     console.log('restarting game data');
-    if (context.auth.uid !== '3u4h1Fl5zzbiD3Fc2KahEEvKVx82') {
-        return 'nemas pravo'
-    }
+    // only meee
+    // if (context.auth.uid !== '3u4h1Fl5zzbiD3Fc2KahEEvKVx82') {
+    //     return 'nemas pravo'
+    // }
         
     const initialStatus = {
         BunkerId: '',
