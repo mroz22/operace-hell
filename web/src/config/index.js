@@ -7,7 +7,7 @@ export const LOW_AMMO = '30';
 export const MEDIUM_AMMO = '60';
 export const HIGH_AMMO = '120';
 
-export const GREEN = "#20C20E" 
+export const GREEN = '#20C20E';
 
 export const MAP_API_KEY = 'AIzaSyAQJ_kFcCJMKmPBgD7tcmAygCFwllEpg5A';
 // export const MAP_DEFAULT_LAT = 49.7789214;

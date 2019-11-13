@@ -11,6 +11,7 @@ import {
     Role,
 } from '../Situation';
 import Bunker from '../Zone/bunker';
+import * as CONF from '../../config'
 
 const Dozimeter = (props) => {
     const { game, role, bunkers, user, roles, characters } = props;
@@ -19,8 +20,9 @@ const Dozimeter = (props) => {
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
 
+    const character = characters.find(c => c.id === role.characterId);
+
     useEffect(() => {
-        console.log('useeffect called madafaka')
         const updateGeo = (uid, lat, lng) => {
             if (!uid || !lat || !lng) return;
             db.collection('users').doc(uid).update({
@@ -119,7 +121,6 @@ const Dozimeter = (props) => {
 
         )
     }
-    console.log(qr);
     switch (qr.type) {
         case 'bunker':
             return (
@@ -212,8 +213,35 @@ const Dozimeter = (props) => {
                         { role.status.trappedUntilEpoch > game.epoch && (
                             <div>Jsi v pasti. Vysvobodis se za {role.status.trappedUntilEpoch - game.epoch} epoch</div>
                         )}
-                    </SectionDropwdown>
+            </SectionDropwdown>
 
+            <SectionDropwdown title="Postava">
+                {
+                    character && (
+                        <>
+                        <div style={{ textAlign: 'left', flex: '2 1 220px' }}>
+                        <div style={{ fontWeight: 'bold' }}>{character.name} </div>
+                        <div>{character.description}</div>
+                        <div>Nezbytne vybaveni:</div> 
+                        <ul>
+                            {character.equipment.map((eq) => (<li key={eq}>{eq}{', '} </li>))}
+                        </ul>
+                        <div>Zvlastni dovednosti:</div>
+                        <ul>
+                        {character.skills.map((sk) => (<li key={sk.name}>{sk.name}: {sk.description}{', '} </li>))}
+                        </ul>
+                        <div>
+                        Munice: 
+                        { character.ammo === 'no' && '0' }
+                        { character.ammo === 'low' && CONF.LOW_AMMO }
+                        { character.ammo === 'medium' && CONF.MEDIUM_AMMO }
+                        { character.ammo === 'high' && CONF.HIGH_AMMO }
+                        </div>
+                        </div>
+                        </>
+                    )
+                }
+            </SectionDropwdown>
                     <SectionDropwdown title="Vybaveni">
                         <Input type="checkbox" label="radiacni oblek" value={role.status.protectiveSuiteOn} onChange={() => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })

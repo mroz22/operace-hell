@@ -20,7 +20,7 @@ export default (props) => {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-    
+
     const roleParam = getParameterByName('role');
 
     if (!props.user) {
