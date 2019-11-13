@@ -31,7 +31,7 @@
         "rucnik zaveseny na batohu",
         "svitilna"
     ],
-    "ammo": "medium",
+    "ammo": "low",
     "trivia": "Pri operaci vysadek na nej uz ve vystrojnim skladu nezbyla zbran - nafasoval pouze plnou tasku granatu.",
     "skills": [{
         "name": "metodicky pristup",
@@ -89,7 +89,7 @@
         "svitilna"
     ],
     "isMedic": true,
-    "ammo": "medium",
+    "ammo": "low",
     "trivia": "Jeho oblibenou pisni je Beskyde Beskyde a rad si ji casto pobrukuje.",
     "skills": [{
         "name": "operace-heavy",
