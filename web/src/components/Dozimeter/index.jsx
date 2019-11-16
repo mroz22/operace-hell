@@ -149,12 +149,13 @@ const Dozimeter = (props) => {
                 />
             );
         case 'role':
+                const targetRole = roles.find(r => r.uid === qr.id)
                 return (
                     <Role
                         character={characters.find(c => c.id === role.characterId )}
                         role={role}
-                        targetRole={roles.find(r => r.uid === qr.id)}
-                        targetCharacter={characters.find(c => c.id === roles.find(r => r.uid === qr.id))}
+                        targetRole={targetRole}
+                        targetCharacter={characters.find(c => c.id === targetRole.characterId )}
                         onSituationCancel={onSituationCancel}
                     />
                 );   
