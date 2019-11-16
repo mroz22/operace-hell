@@ -63,5 +63,5 @@ const initialGameBeta = {
 
 module.exports = {
     initialUserStatusBeta,
-    initalGameBeta,
+    initialGameBeta,
 }
