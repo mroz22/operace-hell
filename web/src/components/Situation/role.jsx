@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 
 import { Wrapper, Options, Option, Description}  from '../index';
 
-export default ({ role, character, targetRole, onSituationCancel }) => {
+export default ({ role, character, targetRole, targetCharacter, onSituationCancel }) => {
     const callSurgery = firebase.functions().httpsCallable('surgery');
 
     const [isPending, setIsPending ] = useState(false);
@@ -17,7 +17,7 @@ export default ({ role, character, targetRole, onSituationCancel }) => {
     console.log('canDoSurgery', canDoSurgery);
     console.log('canDoHeal', canDoHeal);
 
-    if (!targetRole) {
+    if (!targetRole || !targetCharacter) {
         return (
         <Wrapper>
             <Description>

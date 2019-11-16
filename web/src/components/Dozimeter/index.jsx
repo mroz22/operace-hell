@@ -154,6 +154,7 @@ const Dozimeter = (props) => {
                         character={characters.find(c => c.id === role.characterId )}
                         role={role}
                         targetRole={roles.find(r => r.uid === qr.id)}
+                        targetCharacter={characters.find(c => c.id === roles.find(r => r.uid === qr.id))}
                         onSituationCancel={onSituationCancel}
                     />
                 );   

@@ -49,6 +49,7 @@ const ControlPanel = (props) => {
     const [isPending, setIsPending ] = useState(false);
     const [result, setResult] = useState('');
     const [reallyReset, setReallyReset] = useState(false);
+    const [beta, setBeta] = useState(false);
 
     if (!game || !role || !bunkers || !user || !teams) {
         return 'loading...'
@@ -59,7 +60,7 @@ const ControlPanel = (props) => {
         try {
             setResult('');
             setIsPending(true);
-            const result = await callReset()
+            const result = await callReset({ type: beta ? 'beta': 'production'})
             setResult(result.data)
         } catch (err) {
             setResult('error')
@@ -131,9 +132,15 @@ const ControlPanel = (props) => {
                     </SectionDropwdown>
                     <SectionDropwdown title="Reset hry">
                         <Input type="checkbox" label="Opravdu?" onChange={() => setReallyReset(!reallyReset)}></Input>
+                        
                         <Options>
                             {
-                                reallyReset && !isPending && <Option onClick={resetGame}>Resetovat hru</Option> 
+                                reallyReset && !isPending && (
+                                    <>
+                                    <Input type="checkbox" label="Beta?" onChange={() => setBeta(!beta)}></Input>
+                                    <Option onClick={resetGame}>Resetovat hru</Option>
+                                    </>
+                                ) 
                             }
                             {
                                 isPending && 'Resetuje se...'

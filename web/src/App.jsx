@@ -5,7 +5,6 @@ import Preloader from './components/Preloader';
 import Info from './views/Info'
 import Profile from './views/Profile';
 
-
 const App = () => {
     const [ user, setUser ] = useState(null);
 

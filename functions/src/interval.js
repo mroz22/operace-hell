@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { getRadiationForEpochAdvanced, getNextMutation } = require('./utils');
+const { resetGame } = require('../index');
 
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
@@ -17,6 +18,13 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         }
         
         console.log(`======evaulate epoch ${game.epoch} ======`);
+
+        if (game.epoch >= game.END_EPOCH && game.isBeta) {
+            console.log('game is beta, reached final epoch, restarting');
+            await resetGame({ type: 'beta' });
+            console.log('reset finished');
+            return;
+        }
         
         // update GAME
         await gameRef.update({

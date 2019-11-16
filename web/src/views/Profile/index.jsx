@@ -9,19 +9,13 @@ import HuntingPanel from '../../components/HuntingPanel';
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
+    const [isGameView, setIsGameView] = useState(false);
 
-    const getParameterByName = (name, url) => {
-        if (!url) url = window.location.href;
-        // eslint-ignore-next-line
-        name = name.replace(/[[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    // mock
+    // todo: remove after backend deploy;
+    if (props.game) {
+        props.game.isBeta = true;
     }
-
-    const roleParam = getParameterByName('role');
 
     if (!props.user) {
         return (
@@ -38,8 +32,13 @@ export default (props) => {
             </>
         ) 
     }
+    
+    if (!props.role) {
+        return;
+    }
+
     let component = null;
-    if (roleParam === 'pruzkumnik') {
+    if (props.role.roleType === 'pruzkumnik') {
         component = (<Dozimeter
             characters={props.characters}
             game={props.game}
@@ -50,7 +49,7 @@ export default (props) => {
             />);
     }
 
-    if (roleParam === 'divoky') {
+    if (props.role.roleType === 'divoky') {
         component = (
             <HuntingPanel
                 game={props.game}
@@ -59,7 +58,7 @@ export default (props) => {
         )
     }
 
-    if (roleParam === 'org') {
+    if (props.role.roleType === 'org') {
         component = (
             <ControlPanel
                 game={props.game}
@@ -72,10 +71,15 @@ export default (props) => {
         )
     }
 
-    if (component) {
+    if (isGameView) {
         return (
             <>
             {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra nebezi</div>}
+            {props.game && props.game.isBeta && <div style={{ backgroundColor: 'blue', color: 'white', display: 'flex', justifyContent: 'space-between' }}>
+                <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link>
+                Hra je nastavena na beta mod
+            </div>}
+
             {component}
             </>
         )
@@ -83,6 +87,10 @@ export default (props) => {
 
     return (
         <div>
+            {props.game && props.game.isBeta && <div style={{ backgroundColor: 'blue', color: 'white' }}>
+                <Link onClick={() => setIsGameView(!isGameView)}>Zapnout beta apku</Link>
+            </div>}
+            
             <div style={{
                 backgroundColor: 'white',
                 padding: '30px 15% 130px 15%',
