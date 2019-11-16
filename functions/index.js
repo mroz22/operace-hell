@@ -129,9 +129,13 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
     if (!data.type || (data.type !== 'beta' && data.type !== 'production')) {
         return 'you must specify either "production" or "beta" in params';
     }
-
     const config = data.type === 'production' ? production : beta;
     
+    console.log('data.type', data.type);
+    console.log('config');
+    
+    console.log(config);
+
     await db.collection('users').get().then((querySnapshot) => {
         return querySnapshot.forEach((doc) => {
             const userRef = db.collection('users').doc(doc.id);

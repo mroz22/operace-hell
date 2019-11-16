@@ -13,7 +13,7 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         });
 
         if (game.isPaused) {
-            console.log(`game paused`);
+            console.log(`game paused, skipping interval evaluation`);
             return;
         }
         
@@ -93,8 +93,15 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 if ((numberOfUsers === 0 && doc.data().oxygenGeneration === 0) || doc.data().isDestroyed) {
                     return;
                 }
-    
-                let updatedOxygen = doc.data().oxygen - (numberOfUsers * 1) + doc.data().oxygenGeneration;
+                
+                let updatedOxygen;
+                
+                if(game.radiation > 0) {
+                    // only if radiation > 0, oxygen is depleted.
+                    updatedOxygen = doc.data().oxygen - (numberOfUsers * 1) + doc.data().oxygenGeneration;
+                } else {
+                    updatedOxygen = doc.data().oxygen + doc.data().oxygenGeneration;
+                }
                 if (updatedOxygen < 0) {
                     bunkerRef.update({
                         isDestroyed: true,

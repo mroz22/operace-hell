@@ -11,12 +11,6 @@ export default (props) => {
     const [signup, setSignup] = useState(true);
     const [isGameView, setIsGameView] = useState(false);
 
-    // mock
-    // todo: remove after backend deploy;
-    if (props.game) {
-        props.game.isBeta = true;
-    }
-
     if (!props.user) {
         return (
             <>
