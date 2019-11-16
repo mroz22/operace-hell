@@ -87,9 +87,15 @@ const ControlPanel = (props) => {
 
     return (
         <Wrapper>
-                    {/* <SectionDropwdown title="Zivi hraci">
-                        obsah section
-                    </SectionDropwdown> */}
+                    <SectionDropwdown title="Hra">
+                        <pre>{JSON.stringify(game, null, 2)}</pre>
+                    </SectionDropwdown>
+                    <SectionDropwdown title="Hraci">
+                        <pre>{JSON.stringify(roles, null, 2)}</pre>
+                    </SectionDropwdown>
+                    <SectionDropwdown title="Bunkry">
+                        <pre>{JSON.stringify(bunkers, null, 2)}</pre>
+                    </SectionDropwdown>
                     <Map
                         bootstrapURLKeys={{ key: CONF.MAP_API_KEY }}
                         defaultCenter={{
