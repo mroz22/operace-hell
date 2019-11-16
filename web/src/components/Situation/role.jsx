@@ -79,7 +79,7 @@ export default ({ role, character, targetRole, targetCharacter, onSituationCance
     return (
         <Wrapper>
             <Description>
-                Prohlizis si { targetRole.name }.
+                Prohlizis si { targetCharacter.name }.
                 { targetRole.status.injury === 'none' && 'Vypada celkem zdrave.'}
                 { targetRole.status.injury === 'light' && 'Je lehce zranen. Jeden medkit a bude zase v pohode.'}
                 { targetRole.status.injury === 'heavy' && 'Ma tezke zraneni, jeden by rekl, ze je pekne rozmrdanej. Bez operace provedene odbornou osobou to nepujde.'}

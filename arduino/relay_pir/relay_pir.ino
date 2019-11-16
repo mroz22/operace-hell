@@ -37,16 +37,18 @@ void loop() {
    delay(1000);
    cooldownCounter++;
    if (triggerCounter == PIR_TRESHOLD) {
-      digitalWrite(RELAY_PIN, LOW);        
-   } 
-   if (cooldownCounter == COOLDOWN_TRESHOLD) {
-      if (triggerCounter > 0) {
-        triggerCounter--;
-      }
-      cooldownCounter = 0;
-   }
-
-   if (triggerCounter == 0) {
+      digitalWrite(RELAY_PIN, LOW);
+      digitalWrite(LED_1_PIN, LOW);
+      digitalWrite(LED_2_PIN, LOW);
+      digitalWrite(LED_3_PIN, LOW);        
+   } else {
+     if (cooldownCounter == COOLDOWN_TRESHOLD) {
+       if (triggerCounter > 0) {
+         triggerCounter--;
+       }
+       cooldownCounter = 0;
+     }
+     if (triggerCounter == 0) {
       digitalWrite(LED_1_PIN, LOW);
       digitalWrite(LED_2_PIN, LOW);
       digitalWrite(LED_3_PIN, LOW);
@@ -69,11 +71,12 @@ void loop() {
       digitalWrite(LED_2_PIN, HIGH);
       digitalWrite(LED_3_PIN, HIGH);       
    }
-   
+   }   
 }
 
 void onPirRead() {
   if (triggerCounter < PIR_TRESHOLD) {
     triggerCounter++;
+    cooldownCounter = 0;
   } 
 }
