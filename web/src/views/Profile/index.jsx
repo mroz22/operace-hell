@@ -32,8 +32,8 @@ export default (props) => {
     }
 
     const BetaPanel = (
-        <div style={{ backgroundColor: 'blue', color: 'white', display: 'flex', justifyContent: 'space-between' }}>
-            <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link>
+        <div style={{ backgroundColor: 'blue', color: 'white' }}>
+            <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link> {' '}
             Hra je nastavena na beta mod. Kdyby vam neco nefungovalo, dejte vedet.
         </div>
     );
