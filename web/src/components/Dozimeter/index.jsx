@@ -205,7 +205,7 @@ const Dozimeter = (props) => {
                     `Nachazis se ${currentBunker ? 'v bunkru' : 'pod sirym nebem'}`
                 }>
                         {
-                            currentBunker && <Bunker role={role} bunker={currentBunker} />
+                            currentBunker && <Bunker game={game} role={role} bunker={currentBunker} />
                         }
                         {
                             !currentBunker && (

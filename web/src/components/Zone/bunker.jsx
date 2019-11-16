@@ -19,7 +19,7 @@ const BunkerCard = ({ children, style }) => {
     </div>)
 }
 
-const Bunker = ({ bunker, role, showQr }) => {
+const Bunker = ({ game, bunker, role, showQr }) => {
     if (bunker.isDestroyed) {
         return (
             <BunkerCard
@@ -46,11 +46,11 @@ const Bunker = ({ bunker, role, showQr }) => {
             <P>osoby v bunkru: {bunker.numberOfUsers}</P>
             <P>---</P>
             <P>energie: {bunker.oxygen.toFixed(2)}/{bunker.oxygenCap.toFixed(2)}</P>
-            <P>spotreba energie: { countConsumption(bunker).toFixed(2) } / minuta</P>
+            <P>spotreba energie: { game.radiation > 0 ? `${countConsumption(bunker).toFixed(2)}/minuta`: '0 (podpora zivota neni nutna)' }</P>
             <P>generator energie: { bunker.oxygenGeneration.toFixed(2) } / minuta</P>
             <P>
                 {
-                    countConsumption(bunker) > bunker.oxygenGeneration ?
+                    game.radiation > 0 && countConsumption(bunker) > bunker.oxygenGeneration ?
                         `zbyvajici cas ${getTimeToZero(bunker).toFixed(0)} minut`
                         :
                         `cas do plneho doplneni ${getTimeToFull(bunker).toFixed(0)} minut` 
