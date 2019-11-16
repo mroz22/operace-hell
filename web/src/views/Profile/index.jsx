@@ -31,6 +31,14 @@ export default (props) => {
         return;
     }
 
+    const BetaPanel = (
+        <div style={{ backgroundColor: 'blue', color: 'white', display: 'flex', justifyContent: 'space-between' }}>
+            <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link>
+            Hra je nastavena na beta mod. Kdyby vam neco nefungovalo, dejte vedet.
+        </div>
+    );
+
+
     let component = null;
     if (props.role.roleType === 'pruzkumnik') {
         component = (<Dozimeter
@@ -68,12 +76,8 @@ export default (props) => {
     if (isGameView) {
         return (
             <>
-            {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra nebezi</div>}
-            {props.game && props.game.isBeta && <div style={{ backgroundColor: 'blue', color: 'white', display: 'flex', justifyContent: 'space-between' }}>
-                <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link>
-                Hra je nastavena na beta mod
-            </div>}
-
+            {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra je pauznuta</div>}
+            {BetaPanel}
             {component}
             </>
         )
@@ -81,9 +85,9 @@ export default (props) => {
 
     return (
         <div>
-            {props.game && props.game.isBeta && <div style={{ backgroundColor: 'blue', color: 'white' }}>
+            <div style={{ backgroundColor: 'blue', color: 'white' }}>
                 <Link onClick={() => setIsGameView(!isGameView)}>Zapnout beta apku</Link>
-            </div>}
+            </div>
             
             <div style={{
                 backgroundColor: 'white',
