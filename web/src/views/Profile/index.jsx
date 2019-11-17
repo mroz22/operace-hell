@@ -38,7 +38,7 @@ export default (props) => {
         </div>
     );
 
-    if (props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
+    if (isGameView && props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
         if (props.role && props.role.roleType === 'pruzkumnik') {
             if (props.role.status.enteredCorrectPassword) {
                 return (
