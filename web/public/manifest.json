@@ -1,6 +1,6 @@
 {
-  "short_name": "lair je suchta",
-  "name": "lair je suchta long",
+  "short_name": "Operace HELL",
+  "name": "Operace HELL",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,7 +9,7 @@
     }  
   ],
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
