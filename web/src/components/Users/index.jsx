@@ -27,7 +27,7 @@ const Team = ({name, color, roles = [], maxCount}) => {
             {color} ({roles.length})
         </div>
         { roles.map((role, index) => {
-            return (<P key={role.id}>{role.name}</P>)
+            return (<P key={`${role.id}-${index}`}>{role.name}</P>)
         })}
         { getEmpty(maxCount - roles.length).map((empty, index) => {
             return (<P key={index}>.........</P>)

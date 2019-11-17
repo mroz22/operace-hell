@@ -21,9 +21,6 @@ export const getRadiationLevel = (value) => {
 };
 
 export const getRadiationInfo = (value) => {
-  if (!value) {
-    throw new Error('cant be used without value');
-  }
   const level = getRadiationLevel(value);
   switch (level) {
     case UNDETECTABLE:
@@ -41,9 +38,6 @@ export const getRadiationInfo = (value) => {
 };
 
 export const getDoseInfo = (value) => {
-  if (!value) {
-    throw new Error('cant be used without value');
-  }
   const level = getRadiationLevel(value);
   switch (level) {
     case UNDETECTABLE:
