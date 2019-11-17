@@ -9,13 +9,13 @@ export default ({ role, character, targetRole, targetCharacter, onSituationCance
     const [isPending, setIsPending ] = useState(false);
     const [result, setResult] = useState('');
     
-    console.log(targetRole);
-    console.log('role', role);
-    console.log('character', character);
+    // console.log(targetRole);
+    // console.log('role', role);
+    // console.log('character', character);
     const canDoSurgery = character.skills.some((s) => s.name === 'operace-heavy');
     const canDoHeal = character.skills.some((s) => s.name === 'operace-light'); 
-    console.log('canDoSurgery', canDoSurgery);
-    console.log('canDoHeal', canDoHeal);
+    // console.log('canDoSurgery', canDoSurgery);
+    // console.log('canDoHeal', canDoHeal);
 
     if (!targetRole || !targetCharacter) {
         return (
