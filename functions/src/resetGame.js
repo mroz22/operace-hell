@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const { beta, production } = require('./src/config');
+const { beta, production } = require('./config');
 
 exports.resetGameFn = async (data, context) => {
     console.log('restarting game data');
