@@ -14,6 +14,7 @@ const game = {
         40: 10,
     },
     RADIATION_PER_MUTATION: 10,
+    MAX_SAFE_RADIATION: 100,
     MUTATIONS: [{
         id: 'a',
         name: 'aaa',
@@ -62,17 +63,32 @@ describe('utils', () => {
                 })
             ).toEqual(null);
         });
-        it('random mutation', () => {
+        it('null', () => {
+            expect(
+                getNextMutation(game, {
+                    status: { radiation: 1.6666, mutations: []}
+                })
+            ).toEqual(null);
+        });
+        it('null', () => {
             expect(
                 getNextMutation(game, {
                     status: { radiation: 10, mutations: []}
+                })
+            ).toEqual(null);
+        });
+        
+        it('random mutation', () => {
+            expect(
+                getNextMutation(game, {
+                    status: { radiation: 11, mutations: []}
                 })
             ).not.toEqual(null);
         });
         it('random different mutation', () => {
             expect(
                 getNextMutation(game, {
-                    status: { radiation: 20, mutations: [{ id: 'a', name: 'aaa'}]}
+                    status: { radiation: 21, mutations: [{ id: 'a', name: 'aaa'}]}
                 })
             ).toMatchObject({ id: 'b', name: 'bbb' });
         })

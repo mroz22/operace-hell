@@ -30,8 +30,9 @@ const Dozimeter = (props) => {
                 "geo.lng": lng,
             });
         }
+        let interval;
         if (navigator.geolocation) {
-            setInterval(() => {
+            interval = setInterval(() => {
                 const onSuccess = (pos) => {
                     console.log(pos);
                     updateGeo(role.uid, pos.coords.latitude, pos.coords.longitude)
@@ -44,7 +45,9 @@ const Dozimeter = (props) => {
             
         } 
 
-        return () => {}
+        return () => {
+            clearInterval(interval);
+        }
     }, [db, role.uid])
 
     if (!game || !role || !role.status || !bunkers || !user || !roles || !characters) {
@@ -111,16 +114,7 @@ const Dozimeter = (props) => {
             </Wrapper>
         )
     }
-    if (game.END_EPOCH - game.epoch <= 0) {
-        return (
-            <Wrapper>
-                <Description>
-                Nastal konec zony. Je po tobe. Tvuj myslenkovy otisk byl vyhodnocen jako nevhodny pro dalsi testovani a bude zkartovany. '/bin/bash rm -rf /roles/{role.name}'
-                </Description>
-            </Wrapper>
-
-        )
-    }
+    
     switch (qr.type) {
         case 'bunker':
             return (

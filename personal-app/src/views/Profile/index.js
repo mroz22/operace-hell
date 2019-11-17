@@ -76,33 +76,3 @@ const Profile = ({ user, game }) => {
 }
 
 export default Profile;
- 
-// const eatPill = (color) => { 
-//   setIsPending(true); 
-//   setError(''); 
-//   const fn = firebase.functions().httpsCallable('eatPill'); 
-//   fn({color}).catch(error => { 
-//     setError(error.message); 
-//   }).finally(() => { 
-//     setIsPending(false); 
-//   }); 
-// } 
-
-{/* <Button
-                onPress={() => eatPill('blue')}
-                title="Eat blue pill"
-                color="#33b"
-                accessibilityLabel="Learn more about this purple button"
-              />
-              <Button
-                onPress={() => eatPill('green')}
-                title="Eat green pill"
-                color="#344"
-                accessibilityLabel="Learn more about this purple button"
-              />
-              <Button
-                onPress={() => eatPill('red')}
-                title="Eat blue pill"
-                color="#ff0000"
-                accessibilityLabel="Learn more about this purple button"
-        /> */}

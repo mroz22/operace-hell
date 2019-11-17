@@ -16,6 +16,7 @@ const initialGameBeta = {
     END_EPOCH: 60,
     MAX_SURVIVORS: 8,
     RADIATION_PER_MUTATION: 10,
+    MAX_SAFE_RADIATION: 100,
     RADIATION: {
         0: 10,
         30: 30,

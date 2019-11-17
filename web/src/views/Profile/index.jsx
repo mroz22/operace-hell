@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Section, BigButton } from '../../components';
+import { Link, Section, BigButton, Wrapper, Description } from '../../components';
 import Profile from '../../components/Profile';
 import Signup from '../../components/Signup';
 import Signin from '../../components/Signin';
@@ -38,6 +38,40 @@ export default (props) => {
         </div>
     );
 
+    if (props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
+        if (props.role && props.role.roleType === 'pruzkumnik') {
+            if (props.role.status.enteredCorrectPassword) {
+                return (
+                    <Wrapper>
+                        <Description>
+                        Nastal konec zony. POVEDLO se ti vstoupit do uzamceneho bunkru X.
+                        Tvuj myslenkovy otisk se jevi jako vhodny pro dalsi testovani. 
+                        </Description>
+                    </Wrapper>
+                )
+            } else {
+                return (
+                    <Wrapper>
+                        <Description>
+                        Nastal konec zony. Nepovedlo se ti vstoupit do uzamceneho bunkru X.
+                        Tvuj myslenkovy otisk byl vyhodnocen jako nevhodny pro dalsi testovani a bude skartovany. 
+                        </Description>
+                        <pre>/bin/bash rm -rf /roles/{props.role.name}</pre>
+                        <pre>{JSON.stringify(props.role, null, 2)}</pre>
+                    </Wrapper>
+                )
+            }
+        }
+        if (props.role && props.role.roleType === 'divoky') {
+            return (
+                <Wrapper>
+                    <Description>
+                        Nastal konec zony. Vrat se do stanoviste orgu. 
+                    </Description>
+                </Wrapper>
+            )   
+        }
+    }
 
     let component = null;
     if (props.role.roleType === 'pruzkumnik') {

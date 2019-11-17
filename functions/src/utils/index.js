@@ -30,13 +30,23 @@ const getNextMutation = (game, role) => {
     if (!game.RADIATION_PER_MUTATION) {
         throw new Error('game.RADIATION_PER_MUTATION is not set');
     }
+    if (!game.MAX_SAFE_RADIATION) {
+        throw new Error('game.MAX_SAFE_RADIATION is not set');
+    }
     const { mutations, radiation } = role.status;
-    if (radiation <= (mutations.length * game.RADIATION_PER_MUTATION)) {
+    const maxSafeRadiation = 0;
+    if (radiation < maxSafeRadiation) {
         return null;
     }
-    const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
-    if (unusedMutations.length === 0) return null;
-    return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
+    const radiationUnsafe = radiation - ((mutations.length * game.RADIATION_PER_MUTATION) + maxSafeRadiation);
+
+    if (radiationUnsafe > game.RADIATION_PER_MUTATION) {
+        const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
+        if (unusedMutations.length === 0) return null;
+        return unusedMutations[getRandomInt(0, unusedMutations.length -1)];
+    }
+    return null;
+    
 };
 
 const getRandomUniqueFromArray = (currentArr, possibleArr) => {

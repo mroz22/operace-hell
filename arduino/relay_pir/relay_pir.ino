@@ -7,6 +7,7 @@ const int LED_3_PIN = 5;
 
 const int PIR_TRESHOLD = 3;
 const int COOLDOWN_TRESHOLD = 10;
+const int INITIAL_WAIT_MS = 1000 * 5;
 
 int triggerCounter = 0;
 int cooldownCounter = 0;
@@ -22,6 +23,17 @@ void setup() {
   pinMode(LED_1_PIN, OUTPUT);
   pinMode(LED_2_PIN, OUTPUT);
   pinMode(LED_3_PIN, OUTPUT);
+  
+  Serial.println("wait for some time");
+  delay(INITIAL_WAIT_MS);
+  
+  Serial.println("blink quickly to indicate we start");
+  for (int i = 0; i <= 60; i++) {
+    digitalWrite(LED_1_PIN, HIGH);
+    delay(250);
+    digitalWrite(LED_1_PIN, LOW);
+    delay(250);
+  }
 
   attachInterrupt(0, onPirRead, RISING);
 }
