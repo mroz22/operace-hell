@@ -172,4 +172,24 @@
         "description": "je-li zajat divokymi, dokaze se z toho vykecat a ti ho musi pustit."
     }],
     "img": "brozov.png"
+}, {
+    "id": "wesemyr-vykasin",
+    "name": "wesemyr vykasin",
+    "description": "Vysoky pohlavar jednotek Cholera. Vasnivy lovec trofeji (jak zvirecich, tak tech zenskeho pohlavi).",
+    "equipment": [
+        "Kabat",
+        "volitelne utocna puska",
+        "svitilna",
+        "zapisnik a tuzka"
+    ],
+    "ammo": "medium",
+    "trivia": "Pri Operaci vysadek se proslavil jako bodyguard model hrajicich terenni golf.",
+    "skills": [{
+        "name": "lovec zvere",
+        "description": "Pokud chce, muze si privezt zbran typu NERF. Tato ma specialni schopnost, ze jeji sipky po zasahu uspi obet na 30 minut."
+    }, {
+        "name": "lovec zen",
+        "description": "Svym sarmem dokaze 2x za hru presvedcit jakoukoliv zenskou postavu, aby mu vyzradila pravdive 1 herni informaci (napriklad vysledek sifry apod)."
+    }],
+    "img": "rambo.jpg"
 }]

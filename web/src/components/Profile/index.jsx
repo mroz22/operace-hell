@@ -277,14 +277,14 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 </div>
                                 <div style={{ flex: 2}}>
                                 <P>Clenove:</P>
-                                { roles.filter(r => r.TeamId === role.TeamId).map(r => (
-                                    <div key={r.id}>{r.name}</div>
+                                { roles.filter(r => r.TeamId === role.TeamId).map((r, index) => (
+                                    <div key={index}>{r.name}</div>
                                 ))}
                                 </div>
                                 <div style={{ flex: 2 }}>
                                 <P>Role:</P>
-                                    { roles.filter(r => r.TeamId === role.TeamId).map(r => (
-                                        <div key={`${r.id}-character`}>{getChar(r.characterId) ? getChar(r.characterId).name : '---'}</div>
+                                    { roles.filter(r => r.TeamId === role.TeamId).map((r, index) => (
+                                        <div key={`${r.id}-character-${index}`}>{getChar(r.characterId) ? getChar(r.characterId).name : '---'}</div>
                                     ))}
                                 </div>
                                 </Team>
@@ -314,7 +314,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                         {
                             role.roleType === 'pruzkumnik' && (
                                 <>
-                                <P>Propozice, kde budes zacinat se vazi k teamu, takze taky budou zverejneny pozdeji.</P>
+                                <P>Mrkni se do beta apky. V sekci 'ukol' najdes kde zacinas.</P>
                                 </>
                             )
                         }

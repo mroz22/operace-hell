@@ -91,6 +91,7 @@ export default (props) => {
             bunkers={props.bunkers}
             user={props.user}
             roles={props.roles}
+            teams={props.teams}
             />);
     }
 

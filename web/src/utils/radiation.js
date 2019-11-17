@@ -5,16 +5,16 @@ export const HIGH = 'high';
 export const CRITICAL = 'critical';
 
 export const getRadiationLevel = (value) => {
-  if (value < 2) {
+  if (value < 10) {
     return UNDETECTABLE;
   }
-  if (value < 10) {
+  if (value < 50) {
     return LOW;
   }
-  if (value < 30) {
+  if (value < 200) {
     return MEDIUM;
   }
-  if (value < 60) {
+  if (value < 300) {
     return HIGH;
   }
   return CRITICAL;

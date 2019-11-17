@@ -81,21 +81,28 @@ describe('utils', () => {
         it('random mutation', () => {
             expect(
                 getNextMutation(game, {
-                    status: { radiation: 11, mutations: []}
+                    status: { radiation: 111, mutations: []}
                 })
             ).not.toEqual(null);
+        });
+        it('no more mutation until next step', () => {
+            expect(
+                getNextMutation(game, {
+                    status: { radiation: 119, mutations: [{ id: 'a', name: 'aaa'}]}
+                })
+            ).toEqual(null);
         });
         it('random different mutation', () => {
             expect(
                 getNextMutation(game, {
-                    status: { radiation: 21, mutations: [{ id: 'a', name: 'aaa'}]}
+                    status: { radiation: 121, mutations: [{ id: 'a', name: 'aaa'}]}
                 })
             ).toMatchObject({ id: 'b', name: 'bbb' });
         })
         it('all mutations gone -> null', () => {
             expect(
                 getNextMutation(game, {
-                    status: { radiation: 10, mutations: [{ id: 'a', name: 'aaa'}, { id: 'b', name: 'bbb'}]}
+                    status: { radiation: 10000, mutations: [{ id: 'a', name: 'aaa'}, { id: 'b', name: 'bbb'}]}
                 })
             ).toEqual(null);
         })

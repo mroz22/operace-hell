@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase';
 
@@ -12,15 +13,17 @@ import {
 } from '../Situation';
 import Bunker from '../Zone/bunker';
 import * as CONF from '../../config'
+import { getDoseInfo } from '../../utils/radiation';
 
 const Dozimeter = (props) => {
-    const { game, role, bunkers, user, roles, characters } = props;
+    const { game, role, bunkers, user, roles, characters, teams } = props;
     const db = firebase.firestore();
 
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
 
     const character = characters.find(c => c.id === role.characterId);
+    const team = teams.find(t => t.id === role.TeamId);
 
     useEffect(() => {
         const updateGeo = (uid, lat, lng) => {
@@ -102,6 +105,11 @@ const Dozimeter = (props) => {
     const onEnterSecretChamber = async () => {
         await enterSecretChamber();
     }
+
+    if (!team) {
+        return <>nemas zvoleny team. to bysme nebyli kamaradi.</>
+    }
+    console.log(team);
     
     const survivorsLeft = game.MAX_SURVIVORS - roles.filter(r => r.status && r.status.enteredCorrectPassword ).length
     if (role.status.enteredCorrectPassword) {
@@ -203,7 +211,13 @@ const Dozimeter = (props) => {
                         }
                         {
                             !currentBunker && (
-                                <div style={{ fontSize: '3em', textAlign: 'center' }}>☢{' '}{game.radiation.toFixed(2)} mSv/H</div>
+                                <>
+                                <div
+                                    style={{ fontSize: '3em', textAlign: 'center', color: getDoseInfo(game.radiation).color }}>
+                                        ☢{' '}{game.radiation.toFixed(2)} mSv/H
+                                </div>
+                                <div style={{textAlign: 'center'}}>{getDoseInfo(game.radiation).text}</div>
+                                </>
                             )
                         }
                         { role.status.trappedUntilEpoch > game.epoch && (
@@ -291,7 +305,23 @@ const Dozimeter = (props) => {
                             </div>
                         ))}
                     </SectionDropwdown>
+                    
+                    <SectionDropwdown title="Ukol">
+                            <ul>
+                                <li>
+                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony.  
+                                </li>
+                                <li>
+                                Co nejdrive najdete bunkr s fungujici podporou zivota.
+                                Budete ho potrebovat v pripade, ze v Zone stoupne radiace.
+                                </li>
+                                <li>
+                                Zjistete co se nachazi v tajne svatyni Divokych uprostred Zony.
+                                </li>
+                            </ul>
 
+                            
+                    </SectionDropwdown>
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
                         Epoch do kolapsu zony: {game.END_EPOCH - game.epoch}
                     </Description>

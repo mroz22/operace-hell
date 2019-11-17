@@ -34,11 +34,10 @@ const getNextMutation = (game, role) => {
         throw new Error('game.MAX_SAFE_RADIATION is not set');
     }
     const { mutations, radiation } = role.status;
-    const maxSafeRadiation = 0;
-    if (radiation < maxSafeRadiation) {
+    if (radiation < game.MAX_SAFE_RADIATION) {
         return null;
     }
-    const radiationUnsafe = radiation - ((mutations.length * game.RADIATION_PER_MUTATION) + maxSafeRadiation);
+    const radiationUnsafe = radiation - ((mutations.length * game.RADIATION_PER_MUTATION) + game.MAX_SAFE_RADIATION);
 
     if (radiationUnsafe > game.RADIATION_PER_MUTATION) {
         const unusedMutations = game.MUTATIONS.filter(am => !mutations.find(m => m.name === am.name));
