@@ -118,7 +118,7 @@ exports.surgery = functions.https.onCall(async (data, context) => {
     
 });
 
-exports.resetGameFn = (data, context) => {
+exports.resetGameFn = async (data, context) => {
     console.log('restarting game data');
     
     // only meee
