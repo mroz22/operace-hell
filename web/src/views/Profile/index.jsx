@@ -42,15 +42,20 @@ export default (props) => {
         if (props.role && props.role.roleType === 'pruzkumnik') {
             if (props.role.status.enteredCorrectPassword) {
                 return (
+                    <>
+                        {BetaPanel}
                     <Wrapper>
                         <Description>
                         Nastal konec zony. POVEDLO se ti vstoupit do uzamceneho bunkru X.
                         Tvuj myslenkovy otisk se jevi jako vhodny pro dalsi testovani. 
                         </Description>
                     </Wrapper>
+                    </>
                 )
             } else {
                 return (
+                    <>
+                        {BetaPanel}
                     <Wrapper>
                         <Description>
                         Nastal konec zony. Nepovedlo se ti vstoupit do uzamceneho bunkru X.
@@ -59,16 +64,20 @@ export default (props) => {
                         <pre>/bin/bash rm -rf /roles/{props.role.name}</pre>
                         <pre>{JSON.stringify(props.role, null, 2)}</pre>
                     </Wrapper>
+                    </>
                 )
             }
         }
         if (props.role && props.role.roleType === 'divoky') {
             return (
+                <>
+                {BetaPanel}
                 <Wrapper>
                     <Description>
                         Nastal konec zony. Vrat se do stanoviste orgu. 
                     </Description>
                 </Wrapper>
+                </>
             )   
         }
     }
