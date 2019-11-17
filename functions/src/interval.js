@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { getRadiationForEpochAdvanced, getNextMutation } = require('./utils');
 
-const callReset = functions.httpsCallable('resetGame');
+const callReset = functions().httpsCallable('resetGame');
 
 exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
         // set game state in this tick
