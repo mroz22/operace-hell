@@ -118,7 +118,7 @@ exports.surgery = functions.https.onCall(async (data, context) => {
     
 });
 
-exports.resetGame = functions.https.onCall(async (data, context) => {
+exports.resetGameFn = (data, context) => {
     console.log('restarting game data');
     
     // only meee
@@ -157,7 +157,10 @@ exports.resetGame = functions.https.onCall(async (data, context) => {
     await gameRef.update(config.initialGame);
     
     return 'hra resetovana';
+}
 
+exports.resetGame = functions.https.onCall(async (data, context) => {
+    return resetGameFn(data, context);
 });
 
 exports.togglePause = functions.https.onCall(async (data, context) => {
