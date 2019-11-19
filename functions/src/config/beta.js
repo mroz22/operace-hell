@@ -69,7 +69,46 @@ const initialGameBeta = {
     }]
 }
 
+const initialBunkersBeta = [{
+    id: 'cerveny',
+    name: 'cerveny',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 1,
+}, {
+    id: 'modry',
+    name: 'modry',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 1,
+}, {
+    id: 'zeleny',
+    name: 'zeleny',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 1,
+}, {
+    id: 'cerny',
+    name: 'modry',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 1,
+}, {
+    id: 'zluty',
+    name: 'zluty',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 1,
+}];
+
 module.exports = {
     initialUserStatusBeta,
     initialGameBeta,
+    initialBunkersBeta
+
 }

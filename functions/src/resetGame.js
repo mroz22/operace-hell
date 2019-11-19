@@ -26,27 +26,11 @@ exports.resetGameFn = async (data, context) => {
         });
     }).catch((err) => console.error(err));
 
-    const bunkers = [{
-        id: 'modry',
-        name: 'modry',
-        isDestroyed: false,
-        oxygen: 100,
-        oxygenCap: 100,
-        oxygenGeneration: 1,
-    }, {
-        id: 'zluty',
-        name: 'zluty',
-        isDestroyed: false,
-        oxygen: 100,
-        oxygenCap: 100,
-        oxygenGeneration: 1,
-    }];
-    
     const bunkersRef = db.collection('bunkers')
-    bunkers.forEach(bunker => {
+    config.initialBunkers.forEach(bunker => {
         bunkersRef.doc(bunker.id).set(bunker);
     })
-    
+
     // await db.collection('bunkers').get().then((querySnapshot) => {
     //     return querySnapshot.forEach((doc) => {
     //         const bunkerRef = db.collection('bunkers').doc(doc.id);
