@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Wrapper, Options, Option, Description, Input}  from '../index';
-import * as firebase from 'firebase';
+import {firebase} from '../../firebase';
 
 export default ({ role, survivorsLeft, onEnter, onSituationCancel }) => {
     const callEnterPassword = firebase.functions().httpsCallable('enterPassword');

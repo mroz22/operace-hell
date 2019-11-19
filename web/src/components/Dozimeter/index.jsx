@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
+import { db } from '../../firebase';
 
 import { Wrapper, Option, Options, SectionDropwdown, Description, Input } from '../../components';
 import QRCode from 'qrcode.react';
@@ -17,7 +17,6 @@ import { getDoseInfo } from '../../utils/radiation';
 
 const Dozimeter = (props) => {
     const { game, role, bunkers, user, roles, characters, teams } = props;
-    const db = firebase.firestore();
 
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
@@ -51,7 +50,7 @@ const Dozimeter = (props) => {
         return () => {
             clearInterval(interval);
         }
-    }, [db, role.uid])
+    }, [role.uid])
 
     if (!game || !role || !role.status || !bunkers || !user || !roles || !characters) {
         return 'loading...'

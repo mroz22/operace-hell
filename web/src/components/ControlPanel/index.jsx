@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import * as firebase from 'firebase';
+import { firebase } from '../../firebase';
+
 import Map from 'google-map-react';
 import { Wrapper, SectionDropwdown, Option, Options, Input } from '../../components';
 import * as CONF from '../../config';

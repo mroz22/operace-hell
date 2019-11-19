@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import firebase from 'firebase';
 import styled from 'styled-components';
+
+import { db, firebase } from '../../firebase';
 
 import { H, P, Link, Input, SectionDivider } from '..';
 import * as CONF from '../../config';
@@ -99,7 +100,7 @@ const Profile = ({ user, characters, role, roles, teams }) => {
     }, [role])
 
     const updateRole = (override) => {
-        return firebase.firestore().collection("users")
+        return db.collection("users")
             .doc(user.uid)
             .set(override ? override : roleDraft)
         .catch(function(error) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+import { firebase, db } from './firebase';
 
 import Preloader from './components/Preloader';
 import Info from './views/Info'
@@ -17,7 +18,6 @@ const App = () => {
     const [isProfileView, setIsProfileView] = useState(false);
 
     useEffect(() => {
-        const db = firebase.firestore();
 
         // set auth;
         firebase.auth().onAuthStateChanged(function(user) {
