@@ -308,11 +308,17 @@ const Dozimeter = (props) => {
                     <SectionDropwdown title="Ukol">
                             <ul>
                                 <li>
-                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony.  
+                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. 
+                                </li>
+                                <li>
+                                ***bezpecnostni upozorneni*** do Zony se da dostat jak branou, tak i pres zed. Pri prelezani zdi si dejte extremni pozor, at na vas nespadne uvolneny betonovy dil. Nestoji to za to, nejste-li si jisti, radsi bezte branou. Dejte taky pozor, at nekam nespadnete. Jde to, a z docela velke vysky. A samozrjme OCHRANNE BRYLE PO CELOU DOBU HRY!!!
                                 </li>
                                 <li>
                                 Co nejdrive najdete bunkr s fungujici podporou zivota.
                                 Budete ho potrebovat v pripade, ze v Zone stoupne radiace.
+                                </li>
+                                <li>
+                                V zone se mohou objevovat jine teamy. Spolupracujte do te doby, dokud to bude vyhodne.
                                 </li>
                                 <li>
                                 Zjistete co se nachazi v tajne svatyni Divokych uprostred Zony.
@@ -322,7 +328,7 @@ const Dozimeter = (props) => {
                             
                     </SectionDropwdown>
                     <Description style={{ alignSelf: 'center', marginTop: 'auto', textAlign: 'center' }}>
-                        Epoch do kolapsu zony: {game.END_EPOCH - game.epoch}
+                        Epoch do preziti: {game.END_EPOCH - game.epoch}
                     </Description>
         </Wrapper>
     )    
