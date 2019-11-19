@@ -308,7 +308,7 @@ const Dozimeter = (props) => {
                     <SectionDropwdown title="Ukol">
                             <ul>
                                 <li>
-                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. 
+                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. (Bonus: Udelejte fotku teamu.) 
                                 </li>
                                 <li>
                                 ***bezpecnostni upozorneni*** do Zony se da dostat jak branou, tak i pres zed. Pri prelezani zdi si dejte extremni pozor, at na vas nespadne uvolneny betonovy dil. Nestoji to za to, nejste-li si jisti, radsi bezte branou. Dejte taky pozor, at nekam nespadnete. Jde to, a z docela velke vysky. A samozrjme OCHRANNE BRYLE PO CELOU DOBU HRY!!!
