@@ -38,7 +38,7 @@ export default ({ role, user, game, survivorsLeft, onSituationCancel }) => {
                 v kazde z nich lezi clovek a vypada, ze spi. Strhnes ze sebe pripojovaci hadicky a odejdes otevrenymi dvermi.
                 Za tebou zustavaji jenom mokre slapoty na zemi...</Description>
                 <Description>
-                Uspesne jsi ukoncil hru, vrat se na stanoviste organizatoru.
+                Uspesne jsi ukoncil hru, vrat se na stanoviste organizatoru. Hracum okolo rekni ze jsi zmizel.
                 </Description>
             </Wrapper>
         )
@@ -92,19 +92,39 @@ export default ({ role, user, game, survivorsLeft, onSituationCancel }) => {
                     <div style={{ fontSize: '8em', textAlign: 'center'}}>
                         {survivorsLeft}
                     </div>
-                    <Description>
-                    Na dverich je klavesnice. Cele to vypada jako anomalie. Jako segment pameti, ktera je ovsem stale
-                    zasifrovana. Dokazes zadat spravne heslo a rozsifrovat ji?.
-                    </Description>
-                    <Input label="Klavesnice" type="text" onChange={(event) => {
-                        setTouched(false);
-                        setPassword(event.target.value)}
-                    }/>
-                    {touched && !success && 'Spatne'}
-                    <Options>
-                    <Option onClick={() => onPasswordEnter()}>Zadat</Option>
-                    <Option onClick={() => onSituationCancel()}>Odejit</Option>
-                    </Options>
+                    {
+                        survivorsLeft > 0 && (
+                            <>
+                            <Description>
+                            Na dverich je klavesnice. Cele to vypada jako anomalie. Jako segment pameti, ktera je ovsem stale
+                            zasifrovana. Dokazes zadat spravne heslo a rozsifrovat ji?.
+                            </Description>
+                            <Input label="Klavesnice" type="text" onChange={(event) => {
+                                setTouched(false);
+                                setPassword(event.target.value)}
+                            }/>
+                            {touched && !success && 'Spatne'}
+                            <Options>
+                            <Option onClick={() => onPasswordEnter()}>Zadat</Option>
+                            <Option onClick={() => onSituationCancel()}>Odejit</Option>
+                            </Options>
+                            </>
+                        )
+                    }
+                    {
+                        survivorsLeft <== 0 && (
+                            <>
+                            <Description>
+                            Ta klavesnice co byla na dverich zmizela! Jeste pred chvili tady byla. Je ti to jasne. Pozmrdili te. Od teto 
+                            chvili kazdy sam za sebe. Budes muset prezit do posledni epochy...
+                            </Description>
+                            <Options>
+                                <Option onClick={() => onSituationCancel()}>Odejit</Option>
+                            </Options>
+                            </>
+                        )
+                    }
+                    
                     </>
                 )
             }

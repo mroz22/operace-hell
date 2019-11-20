@@ -62,10 +62,6 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
                 const currentUserRadiation = doc.data().status.radiation;
-
-                console.log('doc.data().status.BunkerId', doc.data().status.BunkerId);
-                console.log('bunkers', bunkers);
-                console.log('bunkers.find(b => b.id === doc.data().status.BunkerId)', bunkers.find(b => b.id === doc.data().status.BunkerId));
             
                 if (doc.data().status.BunkerId && !bunkers.find(b => b.id === doc.data().status.BunkerId).isDestroyed) {
                     return;
