@@ -43,11 +43,11 @@ export default (props) => {
             if (props.role.status.enteredCorrectPassword) {
                 return (
                     <>
-                        {BetaPanel}
+                    {BetaPanel}
                     <Wrapper>
                         <Description>
-                        Nastal konec zony. POVEDLO se ti vstoupit do uzamceneho bunkru X.
-                        Tvuj myslenkovy otisk se jevi jako vhodny pro dalsi testovani. 
+                        Nastal konec zony. POVEDLO se ti vstoupit do uzamceneho bunkru X. Toto je grandiozni uspech.
+                        Ostatni tolik stesti nemeli, cest jejich pamatce.
                         </Description>
                     </Wrapper>
                     </>
@@ -58,11 +58,9 @@ export default (props) => {
                         {BetaPanel}
                     <Wrapper>
                         <Description>
-                        Nastal konec zony. Nepovedlo se ti vstoupit do uzamceneho bunkru X.
-                        Tvuj myslenkovy otisk byl vyhodnocen jako nevhodny pro dalsi testovani a bude skartovany. 
+                        Nastal konec zony. Nepovedlo se ti vstoupit do uzamceneho bunkru X ale prezil jsi. To 
+                        je dulezite. Scan tveho JA bude zjevne podroben dalsimu testovani.
                         </Description>
-                        <pre>/bin/bash rm -rf /roles/{props.role.name}</pre>
-                        <pre>{JSON.stringify(props.role, null, 2)}</pre>
                     </Wrapper>
                     </>
                 )
