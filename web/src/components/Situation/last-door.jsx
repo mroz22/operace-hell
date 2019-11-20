@@ -25,11 +25,23 @@ export default ({ role, user, game, survivorsLeft, onSituationCancel }) => {
     }
 
     const onAccept = () => {
-        updateUser({ 'status.hasAccepted': true });
+        updateUser({ 'status.finalOfferDecision': 'accept' });
     }
 
     const onReject = () => {
-        updateUser({ 'status.hasAccepted': false });
+        updateUser({ 'status.finalOfferDecision': 'reject' });
+    }
+    if (role.status.finalOfferDecision) {
+        return (
+            <Wrapper>
+                <Description>Probudil jsi se v podivne vane plne podivne kapaliny. Okolo tebe jsou jich desitky takovych, 
+                v kazde z nich lezi clovek a vypada, ze spi. Strhnes ze sebe pripojovaci hadicky a odejdes otevrenymi dvermi.
+                Za tebou zustavaji jenom mokre slapoty na zemi...</Description>
+                <Description>
+                Uspesne jsi ukoncil hru, vrat se na stanoviste organizatoru.
+                </Description>
+            </Wrapper>
+        )
     }
 
     if (success) {
@@ -84,7 +96,10 @@ export default ({ role, user, game, survivorsLeft, onSituationCancel }) => {
                     Na dverich je klavesnice. Cele to vypada jako anomalie. Jako segment pameti, ktera je ovsem stale
                     zasifrovana. Dokazes zadat spravne heslo a rozsifrovat ji?.
                     </Description>
-                    <Input label="Klavesnice" type="text" onChange={(event) => setPassword(event.target.value)} />
+                    <Input label="Klavesnice" type="text" onChange={(event) => {
+                        setTouched(false);
+                        setPassword(event.target.value)}
+                    }/>
                     {touched && !success && 'Spatne'}
                     <Options>
                     <Option onClick={() => onPasswordEnter()}>Zadat</Option>

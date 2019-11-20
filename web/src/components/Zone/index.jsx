@@ -27,7 +27,7 @@ const Zone = ({ user, role, roles, game, bunkers }) => {
         </P>
         
         <div className="grid" style={{ flexWrap: 'wrap' }}>
-        { bunkers.map(bunker => {
+        { bunkers.filter(b => b.name !== 'bily').map(bunker => {
             return <Bunker key={bunker.name} game={game} bunker={bunker} role={role} showQr/>
         })}
         </div>

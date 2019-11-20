@@ -134,6 +134,7 @@ const Dozimeter = (props) => {
         case 'last-door':
                 return (<LastDoor
                     role={role}
+                    game={game}
                     user={user}
                     survivorsLeft={survivorsLeft}
                     onSituationCancel={onSituationCancel}
