@@ -112,7 +112,7 @@ export default ({ role, user, game, survivorsLeft, onSituationCancel }) => {
                         )
                     }
                     {
-                        survivorsLeft <== 0 && (
+                        survivorsLeft <= 0 && (
                             <>
                             <Description>
                             Ta klavesnice co byla na dverich zmizela! Jeste pred chvili tady byla. Je ti to jasne. Pozmrdili te. Od teto 
