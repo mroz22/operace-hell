@@ -92,7 +92,7 @@ const initialBunkersBeta = [{
     oxygenGeneration: 1,
 }, {
     id: 'cerny',
-    name: 'modry',
+    name: 'cerny',
     isDestroyed: false,
     oxygen: 100,
     oxygenCap: 100,
@@ -104,6 +104,13 @@ const initialBunkersBeta = [{
     oxygen: 100,
     oxygenCap: 100,
     oxygenGeneration: 1,
+}, {
+    id: 'bily',
+    name: 'bily',
+    isDestroyed: false,
+    oxygen: 100,
+    oxygenCap: 100,
+    oxygenGeneration: 3.1,
 }];
 
 module.exports = {

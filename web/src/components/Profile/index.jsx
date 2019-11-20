@@ -59,30 +59,30 @@ const Character = ({ character, isSelected, showName, teams }) => {
  // eslint-disable-next-line
 const CharacterPicker = ({ characters, onChange, roleDraft }) => {
     const { characterId } = roleDraft;
-    const next = () => {
-        const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
-        if (currentIndex < characters.length -1) {
-            return onChange(characters[currentIndex + 1].id)
-        }
-        return onChange(characters[0].id)
-    }
+    // const next = () => {
+    //     const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
+    //     if (currentIndex < characters.length -1) {
+    //         return onChange(characters[currentIndex + 1].id)
+    //     }
+    //     return onChange(characters[0].id)
+    // }
 
-    const prev = () => {
-        const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
-        if (currentIndex > 0) {
-            return onChange(characters[currentIndex - 1].id)
-        }
-        return onChange(characters[characters.length -1].id)
-    }
+    // const prev = () => {
+    //     const currentIndex = characters.findIndex(c => c.id === characterId) || 0;
+    //     if (currentIndex > 0) {
+    //         return onChange(characters[currentIndex - 1].id)
+    //     }
+    //     return onChange(characters[characters.length -1].id)
+    // }
 
     const char = characters.find(c => c.id === characterId) || characters[0] 
 
     return (
         <div style={{ textAlign: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Link onClick={next}>predchozi</Link>
+                {/* <Link onClick={next}>predchozi</Link> */}
                 <div>{char.name}</div>
-                <Link onClick={prev}>dalsi</Link>
+                {/* <Link onClick={prev}>dalsi</Link> */}
             </div>
             
             <Character character={char} showName={false} />    
@@ -149,12 +149,9 @@ const Profile = ({ user, characters, role, roles, teams }) => {
         }
     }
 
-    const isRoleTypeOptionDisabled = (roleType) => {
-        return getRoleTypeCount('divoky') > CONF.DIVOCI_MAX_COUNT && roleType === 'divoky'
-    }
-
-
-
+    // const isRoleTypeOptionDisabled = (roleType) => {
+    //     return getRoleTypeCount('divoky') > CONF.DIVOCI_MAX_COUNT && roleType === 'divoky'
+    // }
     
     if (error) {
         return <P>Error: {error}</P>
@@ -208,7 +205,9 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                             {value: 'org', label: `org (zbyva ${getRemainingRoleTypeCount('org')})`}
 
                         ]}
-                        isOptionDisabled={option => isRoleTypeOptionDisabled(option.value)}
+                        // isOptionDisabled={option => isRoleTypeOptionDisabled(option.value)}
+                        isOptionDisabled={() => true}
+
                         onChange={(selected) => {
                             updateRole({
                                 ...roleDraft,
@@ -243,7 +242,8 @@ const Profile = ({ user, characters, role, roles, teams }) => {
                                 type="select"
                                 options={teams.map(t => ({ label: getTeamOptionLabel(t) , value: t.id }))}
                                 value={getTeam()? getTeam().id : 'Nezvolen'}
-                                isOptionDisabled={option => roles.filter(r => r.TeamId && r.TeamId === option.id).length > CONF.TEAM_MAX_COUNT}
+                                // isOptionDisabled={option => roles.filter(r => r.TeamId && r.TeamId === option.id).length > CONF.TEAM_MAX_COUNT}
+                                isOptionDisabled={() => true}
                                 onChange={(selected) => setRoleDraft({...roleDraft, TeamId: selected.value})}
                             />
                             </>
