@@ -69,6 +69,7 @@ exports.surgery = functions.https.onCall(async (data, context) => {
     if (data.level === 'heavy') {
         if (random === 10) {
             nextStatus['status.injury'] = 'lethal';
+            // nextStatus['status.deathCause'] = 'zpackana operace';
             await userRef.update(nextStatus);
             return 'Operace se nezdarila, pacient zemrel';
         

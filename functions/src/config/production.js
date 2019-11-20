@@ -87,19 +87,19 @@ const initialGameProduction = {
     }, {
         "id": "amputace-horni-leva",
         "name": "amputace leve ruky",
-        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
+        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudes ji dale pouzivat."
     }, {
         "id": "amputace-horni-prava",
         "name": "amputace prave ruky",
-        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
+        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudes ji dale pouzivat."
     }, {
         "id": "ustrelene-prsty-horni-leva",
-        "name": "ustrelene prsty horni leve ruky",
-        "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
+        "name": "ustrelene prsty horni leve koncetiny",
+        "description": "Zafixuji se (ukazovacek az malicek) elektrikarskou paskou."
     }, {
         "id": "ustrelene-prsty-horni-prava",
-        "name": "ustrelene prsty horni prave ruky",
-        "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
+        "name": "ustrelene prsty horni prave koncetiny",
+        "description": "Zafixuji se (ukazovacek az malicek) elektrikarskou paskou."
     }, {
         "id": "mrtvicka",
         "name": "mrtvicka",

@@ -58,11 +58,11 @@ const initialGameBeta = {
         "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
     }, {
         "id": "ustrelene-prsty-horni-leva",
-        "name": "ustrelene prsty horni leve ruky",
+        "name": "ustrelene prsty horni leve koncetiny",
         "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
     }, {
         "id": "ustrelene-prsty-horni-prava",
-        "name": "ustrelene prsty horni prave ruky",
+        "name": "ustrelene prsty horni prave koncetiny",
         "description": "Zafixuji se (ukzovacek az malicek) elektrikarskou paskou."
     }, {
         "id": "mrtvicka",

@@ -23,6 +23,7 @@ const HuntingPanel = (props) => {
     const filterGame = (role) => {
         if (!role.status) return false;
         if (!role.geo) return false;
+        if (role.status.injury === 'lethal') return false;
         if (role.status.hasEnteredSecretChamber && !role.status.enteredCorrectPassword) return true;
         if (role.status.trappedUntilEpoch - game.epoch > 0) return true;
         return false;
