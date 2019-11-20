@@ -132,7 +132,7 @@ const Dozimeter = (props) => {
         return <>nemas zvoleny team. to bysme nebyli kamaradi.</>
     }
     
-    const survivorsLeft = game.MAX_SURVIVORS - roles.filter(r => r.status && r.status.status.finalOfferDecision).length
+    const survivorsLeft = game.MAX_SURVIVORS - roles.filter(r => r.status && r.statuss.finalOfferDecision).length
     
     switch (qr.type) {
         case 'bunker':

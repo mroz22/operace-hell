@@ -14,7 +14,7 @@ export const getRadiationLevel = (value) => {
   if (value < 200) {
     return MEDIUM;
   }
-  if (value < 300) {
+  if (value < 500) {
     return HIGH;
   }
   return CRITICAL;
@@ -41,7 +41,7 @@ export const getDoseInfo = (value) => {
   const level = getRadiationLevel(value);
   switch (level) {
     case UNDETECTABLE:
-      return { text: 'nedetekovatelná míra záření', color: 'green' };
+      return { text: 'podprahova míra záření', color: 'green' };
     case LOW:
       return { text: 'mírné záření', color: 'green' };
     case MEDIUM:
