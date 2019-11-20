@@ -62,9 +62,10 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
             return querySnapshot.forEach((doc) => {
                 const userRef = db.collection('users').doc(doc.id);
                 const currentUserRadiation = doc.data().status.radiation;
+
+                console.log('doc.data().status.BunkerId', doc.data().status.BunkerId);
                 
-                console.log('doc.data().BunkerId', doc.data().BunkerId);
-                if (!doc.data().BunkerId || (doc.data().BunkerId && !bunkers.find(b => b.id === doc.data().BunkerId).isDestroyed)){
+                if (!doc.data().status.BunkerId || (doc.data().status.BunkerId && !bunkers.find(b => b.id === doc.data().status.BunkerId).isDestroyed)){
                     // only 5% of regular radiation affects player in protectiveSuite;
                     doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
                     const nextRadiation = currentUserRadiation + ((game.radiation / 60 ) * doseModifier);

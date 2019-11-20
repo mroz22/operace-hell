@@ -54,7 +54,7 @@ const App = () => {
                     updatedRoles.push({ id: doc.id, ...doc.data()});
                 });
                 setRoles(updatedRoles);
-                console.log('updatedRoles', updatedRoles);
+                // console.log('updatedRoles', updatedRoles);
             }, (error) => {
                 console.log('getRolesError', error)
             });
