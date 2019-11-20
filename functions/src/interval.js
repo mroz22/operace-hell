@@ -64,22 +64,23 @@ exports.runInterval = functions.pubsub.topic('interval').onPublish(async () => {
                 const currentUserRadiation = doc.data().status.radiation;
 
                 console.log('doc.data().status.BunkerId', doc.data().status.BunkerId);
+                console.log('bunkers', bunkers);
                 console.log('bunkers.find(b => b.id === doc.data().status.BunkerId)', bunkers.find(b => b.id === doc.data().status.BunkerId));
             
                 if (doc.data().status.BunkerId && !bunkers.find(b => b.id === doc.data().status.BunkerId).isDestroyed) {
                     return;
                 }
-                    // only 5% of regular radiation affects player in protectiveSuite;
-                    doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
-                    const nextRadiation = currentUserRadiation + ((game.radiation / 60 ) * doseModifier);
-                    const next = {
-                        'status.radiation': nextRadiation,
-                    }
-                    const nextMutation = getNextMutation(game, doc.data());
-                    if (nextMutation) {
-                        next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
-                    }
-                    return userRef.update(next);
+                // only 5% of regular radiation affects player in protectiveSuite;
+                doseModifier = doc.data().status.protectiveSuiteOn ? 0.05 : 1;
+                const nextRadiation = currentUserRadiation + ((game.radiation / 60 ) * doseModifier);
+                const next = {
+                    'status.radiation': nextRadiation,
+                }
+                const nextMutation = getNextMutation(game, doc.data());
+                if (nextMutation) {
+                    next['status.mutations'] =  [...doc.data().status.mutations, nextMutation ] 
+                }
+                return userRef.update(next);
             });
         }).catch((err) => console.error(err)),
     
