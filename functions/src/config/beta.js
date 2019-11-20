@@ -49,10 +49,6 @@ const initialGameBeta = {
         "name": "slepota praveho oka",
         "description": "Pod sklicko brylo praveho oka si pripevni gazu (lepici paska)"
     }, {
-        "id": "amputace-horni-leva",
-        "name": "amputace leve ruky",
-        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."
-    }, {
         "id": "amputace-horni-prava",
         "name": "amputace prave ruky",
         "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudesj i dale pouzivat."

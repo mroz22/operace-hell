@@ -28,7 +28,7 @@ export default ({ role, game, onEnter, onSituationCancel }) => {
                     </Description>
                     <Description>Vypada to, ze nemas nic zlomeneho a za nejakou dobu se ti povede ze site vymotat (kamaradi, pokud nejake mas, ti nepomuzou, sit je prilis zasmodrchana, to musis zvladnout sam)</Description>
                     <Description>
-                        Vymotas se za: { diff }
+                        Vymotas se za: { diff } epoch
                     </Description>    
                     <Options>
                         <Option onClick={() => onSituationCancel()}>Zpet do apky</Option>

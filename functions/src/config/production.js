@@ -89,9 +89,9 @@ const initialGameProduction = {
         "name": "amputace leve ruky",
         "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudes ji dale pouzivat."
     }, {
-        "id": "amputace-horni-prava",
-        "name": "amputace prave ruky",
-        "description": "Ruku si vytahnes z rukavu a strcis dovnitr k telu. Nebudes ji dale pouzivat."
+        "id": "prostrelene-level-koleno",
+        "name": "prostrelene leve koleno",
+        "description": "Nohu neohnes v koleni."
     }, {
         "id": "ustrelene-prsty-horni-leva",
         "name": "ustrelene prsty horni leve koncetiny",
