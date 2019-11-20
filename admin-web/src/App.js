@@ -105,9 +105,10 @@ const App = () => {
         })}
 
         <A4>
-            <h2>Tajna svatyne divokych</h2>
-            <QRCode size={SIZE} value="secret-chamber" />
+            <h2>Posledni mistnost ve svatyni</h2>
+            <QRCode size={SIZE} value="last-door" />
         </A4>
+
         <A4>
             <h2>Prazdna mistnost (past divokych)</h2>
         </A4>

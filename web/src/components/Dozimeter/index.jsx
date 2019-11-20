@@ -10,6 +10,7 @@ import {
     SecretChamber,
     Trap,
     Role,
+    LastDoor,
 } from '../Situation';
 import Bunker from '../Zone/bunker';
 import * as CONF from '../../config'
@@ -101,29 +102,28 @@ const Dozimeter = (props) => {
         onSituationCancel();
     }
 
-    const onEnterSecretChamber = async () => {
+    const onEnterSecretChamber = async (BunkerId) => {
         await enterSecretChamber();
+        onEnterBunker(BunkerId);
     }
 
     if (!team) {
         return <>nemas zvoleny team. to bysme nebyli kamaradi.</>
     }
-    console.log(team);
     
     const survivorsLeft = game.MAX_SURVIVORS - roles.filter(r => r.status && r.status.enteredCorrectPassword ).length
-    if (role.status.enteredCorrectPassword) {
-        return (
-            <Wrapper>
-                <Description>
-                    Podarilo se ti splnit cil hry, vstoupil jsi do uzamceneho bunkru X! Jeste v nem stale zbyva
-                    {' '}{survivorsLeft}{' '}mist.
-                </Description>
-            </Wrapper>
-        )
-    }
     
     switch (qr.type) {
         case 'bunker':
+            if (qr.id === 'bily') {
+                return (
+                    <SecretChamber
+                        role={role}
+                        bunker={bunkers.find(b => b.id === qr.id)}
+                        onEnterBunker={onEnterSecretChamber}
+                        onSituationCancel={onSituationCancel} />
+                );
+            }
             return (
                 <BunkerSituation
                     role={role}
@@ -131,22 +131,20 @@ const Dozimeter = (props) => {
                     onEnterBunker={onEnterBunker}
                     onSituationCancel={onSituationCancel} />
             );
-        case 'secret-chamber':
-            return (
-                <SecretChamber
+        case 'last-door':
+                return (<LastDoor
                     role={role}
-                    onSituationCancel={onSituationCancel}
-                    onEnter={onEnterSecretChamber}
+                    user={user}
                     survivorsLeft={survivorsLeft}
-                />
-            );
+                    onSituationCancel={onSituationCancel}
+                />)
         case 'trap':
             return (
                 <Trap
                     game={game}
                     role={role}
                     onSituationCancel={onSituationCancel}
-                    onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + 4 })}
+                    onEnter={() => updateUser({ 'status.trappedUntilEpoch': game.epoch + game.TRAP_EPOCHS })}
                 />
             );
         case 'role':

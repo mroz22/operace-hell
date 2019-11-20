@@ -17,6 +17,8 @@ const initialGameProduction = {
     MAX_SURVIVORS: 8,
     RADIATION_PER_MUTATION: 100,
     MAX_SAFE_RADIATION: 1000,
+    TRAP_EPOCHS: 20,
+    PASSWORD: 'foo',
     RADIATION: {
         0: 0,
         5: 0,

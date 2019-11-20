@@ -40,31 +40,16 @@ export default (props) => {
 
     if (isGameView && props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
         if (props.role && props.role.roleType === 'pruzkumnik') {
-            if (props.role.status.enteredCorrectPassword) {
-                return (
-                    <>
-                    {BetaPanel}
-                    <Wrapper>
-                        <Description>
-                        Nastal konec zony. POVEDLO se ti vstoupit do uzamceneho bunkru X. Toto je grandiozni uspech.
-                        Ostatni tolik stesti nemeli, cest jejich pamatce.
-                        </Description>
-                    </Wrapper>
-                    </>
-                )
-            } else {
                 return (
                     <>
                         {BetaPanel}
-                    <Wrapper>
-                        <Description>
-                        Nastal konec zony. Nepovedlo se ti vstoupit do uzamceneho bunkru X ale prezil jsi. To 
-                        je dulezite. Scan tveho JA bude zjevne podroben dalsimu testovani.
-                        </Description>
-                    </Wrapper>
+                        <Wrapper>
+                            <Description>
+                            Nastal konec zony. Prezil jsi. To je uspech.
+                            </Description>
+                        </Wrapper>
                     </>
                 )
-            }
         }
         if (props.role && props.role.roleType === 'divoky') {
             return (

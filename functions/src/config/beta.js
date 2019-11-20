@@ -17,6 +17,8 @@ const initialGameBeta = {
     MAX_SURVIVORS: 8,
     RADIATION_PER_MUTATION: 100,
     MAX_SAFE_RADIATION: 1000,
+    TRAP_EPOCHS: 2,
+    PASSWORD: 'foo',
     RADIATION: {
         0: 0,
         5: 0,
@@ -104,13 +106,6 @@ const initialBunkersBeta = [{
     oxygen: 100,
     oxygenCap: 100,
     oxygenGeneration: 1,
-}, {
-    id: 'bily',
-    name: 'bily',
-    isDestroyed: false,
-    oxygen: 100,
-    oxygenCap: 100,
-    oxygenGeneration: 3.1,
 }];
 
 module.exports = {
