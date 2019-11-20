@@ -45,7 +45,7 @@ export default (props) => {
                         {BetaPanel}
                         <Wrapper>
                             <Description>
-                            Nastal konec zony. Prezil jsi. To je uspech.
+                            Nastal konec zony. Pokud jsi prezil, je to uspech.
                             </Description>
                         </Wrapper>
                     </>
