@@ -21,6 +21,7 @@ const Dozimeter = (props) => {
 
     const [qr, setQr] = useState({ type: undefined, value: undefined });
     const [qrReaderOpened, setQrReaderOpened] = useState(false);
+    // const [deathCause, setDeathCause] = useState(role.status && role.status.deathCause ? role.status.deathCause : '');
 
     const character = characters.find(c => c.id === role.characterId);
     const team = teams.find(t => t.id === role.TeamId);
@@ -51,7 +52,23 @@ const Dozimeter = (props) => {
         return () => {
             clearInterval(interval);
         }
-    }, [role.uid])
+    }, [role.uid]);
+
+    // useState(() => {
+    //     const interval = setTimeout(() => {
+    //         console.log('updating death cause');
+    //         updateDeathCause(deathCause);
+    //     }, 5000);
+    //     return () => {
+    //         clearInterval(interval);
+    //     }
+    // }, [deathCause])
+
+    // useEffect(() => {
+    //     if (deathCause !== role.status.deathCause) {
+    //         setDeathCause(role.status.deathCause);
+    //     }
+    // }, [role.status.deathCause]);
 
     if (!game || !role || !role.status || !bunkers || !user || !roles || !characters) {
         return 'loading...'
@@ -73,6 +90,10 @@ const Dozimeter = (props) => {
     const enterSecretChamber = () => {
         return updateUser({ 'status.hasEnteredSecretChamber': true })
     }
+
+    // const updateDeathCause = () => {
+    //     return updateUser({ 'status.deathCause': deathCause })
+    // }
 
     const parseQr = (value) => {
         const delimiterIndex = value.indexOf(':');
@@ -293,6 +314,15 @@ const Dozimeter = (props) => {
                                     label="Mrtev"
                                     onChange={() => updateUser({'status.injury': 'lethal'})}
                                 />
+                                {/* { role.status.injury === 'lethal' && (
+                                    <Input 
+                                        type="text"
+                                        value={deathCause}
+                                        label="Popis jak si umrel"
+                                        onChange={(event) => setDeathCause(event.target.value)}
+                                />
+                                )} */}
+                                
                             </div>
                             { role.uid && <div style={{ backgroundColor: 'white', padding: '15px'}}><QRCode value={`role:${role.uid}`} /></div> }
                         </div>
@@ -307,7 +337,7 @@ const Dozimeter = (props) => {
                     <SectionDropwdown title="Ukol">
                             <ul>
                                 <li>
-                                22.10 ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. (Bonus: Udelejte fotku teamu.) 
+                                22.11. ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. (Bonus: Udelejte fotku teamu.) 
                                 </li>
                                 <li>
                                 ***bezpecnostni upozorneni*** do Zony se da dostat jak branou, tak i pres zed. Pri prelezani zdi si dejte extremni pozor, at na vas nespadne uvolneny betonovy dil. Nestoji to za to, nejste-li si jisti, radsi bezte branou. Dejte taky pozor, at nekam nespadnete. Jde to, a z docela velke vysky. A samozrjme OCHRANNE BRYLE PO CELOU DOBU HRY!!!
@@ -318,6 +348,9 @@ const Dozimeter = (props) => {
                                 </li>
                                 <li>
                                 V zone se mohou objevovat jine teamy. Spolupracujte do te doby, dokud to bude vyhodne.
+                                </li>
+                                <li>
+                                Prozkoumejte zakladnu a zjistete co nejvic o anomaliich, ktere se tam nachazi.
                                 </li>
                                 <li>
                                 Zjistete co se nachazi v tajne svatyni Divokych uprostred Zony.

@@ -11,9 +11,12 @@ const A4 = styled.div`
     align-items: center;
     padding-left: 4%;
     padding-right: 4%;
+    margin: 0;
     @media print {
         width: 210mm;
+        max-width: 210mm;
         height: 297mm;
+        max-height: 297mm;
     }
 `;
 

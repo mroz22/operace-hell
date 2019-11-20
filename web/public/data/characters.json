@@ -36,6 +36,9 @@
     "skills": [{
         "name": "metodicky pristup",
         "description": "2x za hru muze zatelefonovat organizatorum a pozadat o napovedu k sifre"
+    }, {
+        "name": "analyza-ozareni",
+        "description": "dokaze zjistit aktualni miru ozareni jineho hrace."
     }],
     "img": "rambo.jpg"
 }, {
@@ -51,10 +54,10 @@
     "trivia": "Na operaci vysadek jej pri jednom z ukolu postrelil vlastni spatne vycviceny partyzan do zad.",
     "skills": [{
         "name": "Tajne dokumenty",
-        "description": "Zna toho nejvic z pozadi technologickeho vyvoje tajnych zbrani BO. V pripade volby teto postavy se hraci pred hrou v jeho profilu MOZNA odemknou tajne informace."
+        "description": "Znas toho nejvic z pozadi technologickeho vyvoje tajnych zbrani BO. Vis ze: 1] kritickou hranici pro vznik mutaci zpusobenych stronciovym zarenim je hodnota 1000 mSv. 2] bunkr v centralni casti zakladny ma nejvykonejsi stronciovy reaktor, utahne podporu zivota pro nekolik lidi. Ostatni bunkry takto vykonne nejsou a ani nemaji tak vysokou kapacitu baterii. 3] Divoci jsou nepodareny experiment. Fungovaly dobre az na to, ze potrebuji prisun krve kazdou hodinu, coz neni pro jisty typ (zejmena civilnich) operaci prilis vyhodne. 4] Kuratko a Kadankov spolupracovali na projektu detekce naakumulovane miry ozareni v polnich podminkach. 5] standartni atombordel prodluzuje pripustnou expozici asi 20x. 6] Pokud se vytavi jadro reaktoru v bunkru, v polnich podminkach se uz neda opravit."
     }, {
         "name": "At zije revoluce",
-        "description": "Dokazal mnoho prostych vesnicanu nadchnout k myslence aktivniho odboje proti CHLDR. Jednou za hru muze presvedcit skupinu max 4 divokych, aby se pridali na jeho stranu."
+        "description": "Dokazal mnoho prostych vesnicanu nadchnout k myslence aktivniho odboje proti CHLDR. Jednou za hru muze povolat na svou stranu partyzansky oddil vesnicanu. Udela to tak, ze zavola organizatorum (napr. 721 301 738) a nekolik vesnicanu se mu vyda na pomoc."
     }],
     "img": "glabazna.png"
 }, {
@@ -77,6 +80,9 @@
     }, {
         "name": "operace-light",
         "description": "muze provadet osetreni lehkych zraneni."
+    }, {
+        "name": "analyza-ozareni",
+        "description": "dokaze zjistit aktualni miru ozareni jineho hrace."
     }],
     "img": "kuratko.png"
 }, {

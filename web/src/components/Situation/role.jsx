@@ -14,6 +14,7 @@ export default ({ role, character, targetRole, targetCharacter, onSituationCance
     // console.log('character', character);
     const canDoSurgery = character.skills.some((s) => s.name === 'operace-heavy');
     const canDoHeal = character.skills.some((s) => s.name === 'operace-light'); 
+    const canTestDosage = character.skills.some((s) => s.name === 'analyza-ozareni');
     // console.log('canDoSurgery', canDoSurgery);
     // console.log('canDoHeal', canDoHeal);
 
@@ -81,11 +82,12 @@ export default ({ role, character, targetRole, targetCharacter, onSituationCance
             <Description>
                 Prohlizis si { targetCharacter.name }.
                 { targetRole.status.injury === 'none' && 'Vypada celkem zdrave.'}
-                { targetRole.status.injury === 'light' && 'Je lehce zranen. Jeden medkit a bude zase v pohode.'}
+                { targetRole.status.injury === 'light' && 'Je lehce zranen.'}
                 { targetRole.status.injury === 'heavy' && 'Ma tezke zraneni, jeden by rekl, ze je pekne rozmrdanej. Bez operace provedene odbornou osobou to nepujde.'}
                 { targetRole.status.injury === 'lethal' && 'Je mrtvy. Tuhy jak veka.'}
                 { targetRole.status.mutations.length === 0 && 'Co se mutaci tyce, vypada to, ze nema zadne. ' }
-                { targetRole.status.mutations.length > 0 && 'Co se mutaci tyce, vypada ze uz zacina trochu mutovat. ' }
+                { targetRole.status.mutations.length > 0 && `Co se mutaci tyce, je to vazne, ma ${targetRole.status.mutations.length}. ` }
+                { canTestDosage && `Jeste ho zanalyzujes na ozareni. Celkove nachytal ${targetRole.status.radiation.toFixed(2)} mSv`}
             </Description>
             <Options>
                 {
