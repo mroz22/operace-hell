@@ -23,7 +23,7 @@ const Point = ({ role, team }) => {
         return (
             <div style={{ color }} onClick={() => setOpened(true)}>
                 <div>{role.name}</div>
-                <div style={{ fontSize: '4em'}}>
+                <div style={{ fontSize: '2em'}}>
                 { role.roleType === 'pruzkumnik' && '😋'}
                 </div>
             </div>
@@ -33,7 +33,7 @@ const Point = ({ role, team }) => {
     return (
         <div style={{ color: 'violet' }} onClick={() => setOpened(true)}>
             <div>{role.name}</div>
-            <div style={{ fontSize: '4em'}}>
+            <div style={{ fontSize: '2em'}}>
             { role.roleType === 'divoky' && '🎃'}
             { role.roleType === 'org' && '🎬'}
             </div>
@@ -144,7 +144,7 @@ const ControlPanel = (props) => {
                             {
                                 reallyReset && !isPending && (
                                     <>
-                                    <Input type="checkbox" label="Beta?" onChange={() => setBeta(!beta)}></Input>
+                                    <Input type="checkbox" value={beta} label="Beta?" onChange={() => setBeta(!beta)}></Input>
                                     <Option onClick={resetGame}>Resetovat hru</Option>
                                     </>
                                 ) 
