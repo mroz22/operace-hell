@@ -17,7 +17,7 @@ exports.resetGameFn = async (data, context) => {
     
     console.log('type of game', data.type);
     
-    console.log(config);
+    // console.log(config);
 
     await db.collection('users').get().then((querySnapshot) => {
         return querySnapshot.forEach((doc) => {
