@@ -65,6 +65,7 @@ const App = () => {
             .collection("game")
             .doc("operacexxx")
             .onSnapshot(function(doc) {
+                console.log(doc.data());
                 setGame(doc.data());
             });
         }
