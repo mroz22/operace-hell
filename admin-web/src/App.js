@@ -3,6 +3,8 @@ import * as firebase from 'firebase';
 import QRCode from 'qrcode.react';
 import styled from 'styled-components';
 
+const PAGE_HEIGHT = '327mm';
+
 const A4 = styled.div`
     
     display: flex;
@@ -15,8 +17,8 @@ const A4 = styled.div`
     @media print {
         width: 210mm;
         max-width: 210mm;
-        height: 297mm;
-        max-height: 297mm;
+        height: ${PAGE_HEIGHT};
+        max-height: ${PAGE_HEIGHT};
     }
 `;
 
@@ -101,7 +103,27 @@ const App = () => {
     {bunkers.map(b => {
         return (
             <A4>
-                <h2>{b.name}</h2>
+                {
+                    b.name !== 'bily' && (
+                        <>
+                        <h1>Bunkr "{b.name}"</h1>
+                        <h3>Pokud vstupujes do Bunkru, nascanuj QR kod a dej vstoupit. Pokud vstoupis bez nascanovani, bunkr nebude poskytovat ochranu pred readiaci.</h3>
+                        <h3>Dokud je bunkr v provozu generie odpudive pole, ktere pusobi spolehlive proti Divokym. Na hrace nema vliv</h3>
+                        <h3>Pokud dojde energie, bunkr neposkytuje zadnou ochrane ale je mozne v nem byt.</h3>
+                        <h3>V bunkru asi nebudes mit signal, takze udaje ktere uvidis v apce nebudou vzdy aktualni. Doporucujeme
+                        se obcas syncnout tak ze vystrcis z bunkru nos.</h3>
+                        </>
+                    )
+                }
+                
+                {
+                    b.name === 'bily' && (
+                        <>
+                        <h1>Tajna svatyne divokych</h1>
+                        <h3>Svatyne divokych funguje stejne jako bunkr s tim rozdilem, ze neemituje odpudive pole proti divokym.</h3>
+                        </>
+                    )
+                }
                 <QRCode size={SIZE} value={`bunker:${b.id}`} />
             </A4>
         )
@@ -109,14 +131,13 @@ const App = () => {
 
         <A4>
             <h2>Posledni mistnost ve svatyni</h2>
+            <h3>Tady asi taky nebude signal. QR kod by mel jit resit offline. Pokud se ti povede jej vyresit, nezavirej ani nerefreshuj stranku
+            a bez se co nejdriv syncnout ven. Sync by mel probehnout na pozadi pote, co chytis internet. </h3>
             <QRCode size={SIZE} value="last-door" />
         </A4>
 
         <A4>
-            <h2>Prazdna mistnost (past divokych)</h2>
-        </A4>
-        <A4>
-            <h2>Prazdna mistnost</h2>
+            <h2>Vyrabovany sklad</h2>
             <QRCode size={SIZE} value="trap" />
         </A4>
 
@@ -131,7 +152,7 @@ const App = () => {
                 }
             });
             return [ ...data, teamWithRoles ];
-        },[]).map(t => (
+        },[]).filter((t) => t.name !== 'bily').map(t => (
             <>
             <h2>{t.name}</h2>
             <table>
