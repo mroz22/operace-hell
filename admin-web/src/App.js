@@ -108,8 +108,8 @@ const App = () => {
                         <>
                         <h1>Bunkr "{b.name}"</h1>
                         <h3>Pokud vstupujes do Bunkru, nascanuj QR kod a dej vstoupit. Pokud vstoupis bez nascanovani, bunkr nebude poskytovat ochranu pred readiaci.</h3>
-                        <h3>Dokud je bunkr v provozu generie odpudive pole, ktere pusobi spolehlive proti Divokym. Na hrace nema vliv</h3>
-                        <h3>Pokud dojde energie, bunkr neposkytuje zadnou ochrane ale je mozne v nem byt.</h3>
+                        <h3>Dokud je bunkr v provozu generuje odpudive pole, ktere pusobi spolehlive proti Divokym. Ti do takoveho bunkru nelezou. Na hrace nema vliv</h3>
+                        <h3>Pokud dojde energie, bunkr neposkytuje zadnou ochranu ale je mozne v nem byt.</h3>
                         <h3>V bunkru asi nebudes mit signal, takze udaje ktere uvidis v apce nebudou vzdy aktualni. Doporucujeme
                         se obcas syncnout tak ze vystrcis z bunkru nos.</h3>
                         </>
@@ -132,7 +132,7 @@ const App = () => {
         <A4>
             <h2>Posledni mistnost ve svatyni</h2>
             <h3>Tady asi taky nebude signal. QR kod by mel jit resit offline. Pokud se ti povede jej vyresit, nezavirej ani nerefreshuj stranku
-            a bez se co nejdriv syncnout ven. Sync by mel probehnout na pozadi pote, co chytis internet. </h3>
+            a bez se co nejdriv syncnout ven. Sync by mel probehnout na pozadi pote, co chytis internet. Ostatni hraci, kteri jsou zde, by si meli taky syncnout pote, co jiny hrac QR kod vyresi. Sorry za mirnou neprakticnost.</h3>
             <QRCode size={SIZE} value="last-door" />
         </A4>
 
