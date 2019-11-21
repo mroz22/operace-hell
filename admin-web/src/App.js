@@ -142,6 +142,19 @@ const App = () => {
         </A4>
 
         <A4>
+            <h2>Automaticky turret</h2>
+            <h3>Narazili jste na automaticky turret z pokrocilych zbranovych systemu Beskydskeho odboje. Nechte jej na miste.
+            Muzete jej deaktivovat odpojenim baterie napajejici procesor. </h3>
+            <h3>Munici ze zasobniku nebrat, ale muzete si vzit loot v podobe pytlicku s munici, pokud se v krabici nachazi.</h3>
+        </A4>
+
+        <A4>
+            <h2>Automaticke odpalovaci zarizeni</h2>
+            <h3>Narazili jste na automaticke odpalovaci zarizeni z pokrocilych zbranovych systemu Beskydskeho odboje. Nechte jej na miste.
+            Muzete jej deaktivovat odpojenim baterie napajejici procesor. </h3>
+        </A4>
+
+        <A4>
         <h1>Teamy</h1>
         {teams.length && roles.length && teams.reduce((data, team) => {
             const teamWithRoles = team;
@@ -175,6 +188,7 @@ const App = () => {
         ))
         }
         </A4>
+        
     </>
     )
 }

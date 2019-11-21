@@ -42,7 +42,7 @@ export default (props) => {
         if (props.role && props.role.roleType === 'pruzkumnik') {
                 return (
                     <>
-                        {BetaPanel}
+                        {props.game.isBeta && <BetaPanel />}
                         <Wrapper>
                             <Description>
                             Nastal konec zony. Pokud jsi prezil, je to uspech.
@@ -54,7 +54,7 @@ export default (props) => {
         if (props.role && props.role.roleType === 'divoky') {
             return (
                 <>
-                {BetaPanel}
+                {props.game.isBeta && <BetaPanel />}
                 <Wrapper>
                     <Description>
                         Nastal konec zony. Vrat se do stanoviste orgu. 
@@ -104,7 +104,7 @@ export default (props) => {
         return (
             <>
             {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra je pauznuta</div>}
-            {BetaPanel}
+            {props.game && props.game.isBeta && <BetaPanel />}
             {component}
             </>
         )
