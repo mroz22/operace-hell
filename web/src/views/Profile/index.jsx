@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Section, BigButton, Wrapper, Description } from '../../components';
-import Profile from '../../components/Profile';
+// import Profile from '../../components/Profile';
 import Signup from '../../components/Signup';
 import Signin from '../../components/Signin';
 import Dozimeter from '../../components/Dozimeter';
@@ -9,7 +9,7 @@ import HuntingPanel from '../../components/HuntingPanel';
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
-    const [isGameView, setIsGameView] = useState(false);
+    // const [isGameView, setIsGameView] = useState(false);
 
     if (!props.user) {
         return (
@@ -38,7 +38,7 @@ export default (props) => {
         </div>
     );
 
-    if (isGameView && props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
+    if (props.game && props.game.END_EPOCH - props.game.epoch <= 0) {
         if (props.role && props.role.roleType === 'pruzkumnik') {
                 return (
                     <>
