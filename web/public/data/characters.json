@@ -54,7 +54,7 @@
     "trivia": "Na operaci vysadek jej pri jednom z ukolu postrelil vlastni spatne vycviceny partyzan do zad.",
     "skills": [{
         "name": "Tajne dokumenty",
-        "description": "Znas toho nejvic z pozadi technologickeho vyvoje tajnych zbrani BO. Vis ze: 1] kritickou hranici pro vznik mutaci zpusobenych stronciovym zarenim je hodnota 1000 mSv. 2] bunkr v centralni casti zakladny ma nejvykonejsi stronciovy reaktor, utahne podporu zivota pro nekolik lidi. Ostatni bunkry takto vykonne nejsou a ani nemaji tak vysokou kapacitu baterii. 3] Divoci jsou nepodareny experiment. Fungovaly dobre az na to, ze potrebuji prisun krve kazdou hodinu, coz neni pro jisty typ (zejmena civilnich) operaci prilis vyhodne. 4] Kuratko a Kadankov spolupracovali na projektu detekce naakumulovane miry ozareni v polnich podminkach. 5] standartni atombordel prodluzuje pripustnou expozici asi 20x. 6] Pokud se vytavi jadro reaktoru v bunkru, v polnich podminkach se uz neda opravit."
+        "description": "Znas toho nejvic z pozadi technologickeho vyvoje tajnych zbrani BO. Vis ze: 1] kritickou hranici pro vznik mutaci zpusobenych stronciovym zarenim je hodnota 1000 mSv. 2] bunkr v centralni casti zakladny ma nejvykonejsi stronciovy reaktor, utahne podporu zivota pro nekolik lidi. Ostatni bunkry takto vykonne nejsou a ani nemaji tak vysokou kapacitu baterii. 3] Divoci jsou nepodareny experiment. Fungovaly dobre az na to, ze potrebuji prisun krve kazdou hodinu, coz neni pro jisty typ (zejmena civilnich) operaci prilis vyhodne. 4] Kuratko a Kadankov spolupracovali na projektu detekce naakumulovane miry ozareni v polnich podminkach. 5] standartni atombordel prodluzuje pripustnou expozici asi 20x. 6] Pokud se vytavi jadro reaktoru v bunkru, v polnich podminkach se uz neda opravit. 7] Vyzkum BO pracoval taky na autonomnich zbranovych systemech. Vyzkum probihal i na teto zakladne."
     }, {
         "name": "At zije revoluce",
         "description": "Dokazal mnoho prostych vesnicanu nadchnout k myslence aktivniho odboje proti CHLDR. Jednou za hru muze povolat na svou stranu partyzansky oddil vesnicanu. Udela to tak, ze zavola organizatorum (napr. 721 301 738) a nekolik vesnicanu se mu vyda na pomoc."
@@ -188,7 +188,8 @@
         "volitelne utocna puska",
         "svitilna",
         "zapisnik a tuzka",
-        "toaletni papir"
+        "toaletni papir",
+        "volitelne slovacky first-aid-kit (pleskacka nebo lahvinka)"
     ],
     "ammo": "medium",
     "trivia": "Pri Operaci vysadek se proslavil jako bodyguard model hrajicich terenni golf.",
