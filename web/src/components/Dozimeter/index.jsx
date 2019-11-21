@@ -280,7 +280,7 @@ const Dozimeter = (props) => {
                         { !role.status.mutations.length && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
-                        { role.status.mutations.length && (
+                        { role.status.mutations.length > 0 && (
                             'Uz mas nejakou mutaci. Driv, nez je zacnes hrat, zkus si sehnat v jednom z bunkru nebo u orgu nejakou rekvizitu, ktera dava okoli na jevo, ze mutaci mas.'
                         )}
                         { role.status.mutations && role.status.mutations.map(m => (
@@ -292,6 +292,8 @@ const Dozimeter = (props) => {
                     </SectionDropwdown>
 
                     <SectionDropwdown title="Zdravotni stav" icons={getHealthIcons()}>
+                        <div>Pokud budes zranen, zmen si stav v prepinatku. Pokud te nekdo bude chtit prohledat, nech mu nascanovat
+                        QR kod. Pokud chces nekoho lecit, musis mit schopnost a nascanovata jeho QR kod.</div>
                         <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                             <div style={{ display: 'flex', flexDirection: 'column'}}>
                                 <Input
