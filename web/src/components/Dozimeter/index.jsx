@@ -272,7 +272,7 @@ const Dozimeter = (props) => {
                 }
             </SectionDropwdown>
                     <SectionDropwdown title="Vybaveni">
-                        <Input type="checkbox" label="radiacni oblek" value={role.status.protectiveSuiteOn} onChange={() => {
+                        <Input type="checkbox" label="radiacni oblek oblecen" value={role.status.protectiveSuiteOn} onChange={() => {
                             updateUser({ 'status.protectiveSuiteOn': !role.status.protectiveSuiteOn })
                         }} />
                     </SectionDropwdown>
@@ -280,6 +280,9 @@ const Dozimeter = (props) => {
                         { !role.status.mutations.length && (
                             'Zatim nemas zadnou mutaci. Ale pozor, cim vice se budes vystavovat radiaci bez ochrany, roste sance, ze tvuj organismus zmutuje. To bude mit za nasledek zmenu tvych telesnych nebo dusevnich vlastnosti.'
                         )} 
+                        { role.status.mutations.length && (
+                            'Uz mas nejakou mutaci. Driv, nez je zacnes hrat, zkus si sehnat v jednom z bunkru nebo u orgu nejakou rekvizitu, ktera dava okoli na jevo, ze mutaci mas.'
+                        )}
                         { role.status.mutations && role.status.mutations.map(m => (
                             <div key={m.id}>
                             <div style={{ textDecoration: 'underline' }}>{m.name}</div>

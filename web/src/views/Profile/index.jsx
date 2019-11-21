@@ -33,7 +33,7 @@ export default (props) => {
 
     const BetaPanel = (
         <div style={{ backgroundColor: 'blue', color: 'white' }}>
-            <Link onClick={() => setIsGameView(!isGameView)}> zpet do profilu</Link> {' '}
+            <Link onClick={() => props.setIsProfileView(false)}> zpet na web</Link> {' '}
             Hra je nastavena na beta mod. Kdyby vam neco nefungovalo, dejte vedet.
         </div>
     );
@@ -100,7 +100,7 @@ export default (props) => {
         )
     }
 
-    if (isGameView) {
+    // if (isGameView) {
         return (
             <>
             {props.game && props.game.isPaused && <div style={{ backgroundColor: 'red', color: 'white' }}>Hra je pauznuta</div>}
@@ -108,30 +108,30 @@ export default (props) => {
             {component}
             </>
         )
-    }
+    // }
 
-    return (
-        <div>
-            <div style={{ backgroundColor: 'blue', color: 'white' }}>
-                <Link onClick={() => setIsGameView(!isGameView)}>Zapnout beta apku</Link>
-            </div>
+    // return (
+    //     <div>
+    //         <div style={{ backgroundColor: 'blue', color: 'white' }}>
+    //             <Link onClick={() => setIsGameView(!isGameView)}>Zapnout beta apku</Link>
+    //         </div>
             
-            <div style={{
-                backgroundColor: 'white',
-                padding: '30px 15% 130px 15%',
-            }}>
-                <Profile
-                    user={props.user}
-                    characters={props.characters}
-                    roles={props.roles}
-                    role={props.role}
-                    teams={props.teams}
-                />
-            </div>
-            <Section>
-                <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
-            </Section>
-        </div>
-    );
+    //         <div style={{
+    //             backgroundColor: 'white',
+    //             padding: '30px 15% 130px 15%',
+    //         }}>
+    //             <Profile
+    //                 user={props.user}
+    //                 characters={props.characters}
+    //                 roles={props.roles}
+    //                 role={props.role}
+    //                 teams={props.teams}
+    //             />
+    //         </div> 
+    //         <Section>
+    //             <BigButton text="LEAVE" onClick={() => props.setIsProfileView(false)} />
+    //         </Section>
+    //     </div>
+    // );
 }
 

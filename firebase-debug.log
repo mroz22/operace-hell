@@ -1,0 +1,40 @@
+[debug] [2019-11-20T23:34:47.071Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T23:34:47.073Z] Command:       /home/martinvarmuza/.nvm/versions/node/v12.13.0/bin/node /home/martinvarmuza/repos/operace-hell/node_modules/.bin/firebase auth:export save_file.csv --format=csv --project operacexxx
+[debug] [2019-11-20T23:34:47.073Z] CLI Version:   7.6.1
+[debug] [2019-11-20T23:34:47.074Z] Platform:      linux
+[debug] [2019-11-20T23:34:47.074Z] Node Version:  v12.13.0
+[debug] [2019-11-20T23:34:47.076Z] Time:          Thu Nov 21 2019 00:34:47 GMT+0100 (Central European Standard Time)
+[debug] [2019-11-20T23:34:47.076Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T23:34:47.076Z] 
+[debug] [2019-11-20T23:34:47.083Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-20T23:34:47.083Z] > authorizing via signed-in user
+[debug] [2019-11-20T23:34:47.083Z] [iam] checking project operacexxx for permissions ["firebase.projects.get","firebaseauth.users.get"]
+[debug] [2019-11-20T23:34:47.084Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-11-20T23:34:47.085Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-11-20T23:34:55.300Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-20T23:34:55.312Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/operacexxx:testIamPermissions  
+
+[debug] [2019-11-20T23:35:04.295Z] <<< HTTP RESPONSE 200
+[info] Exporting accounts to save_file.csv
+[debug] [2019-11-20T23:35:04.302Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-20T23:35:48.438Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T23:35:48.440Z] Command:       /home/martinvarmuza/.nvm/versions/node/v12.13.0/bin/node /home/martinvarmuza/repos/operace-hell/node_modules/.bin/firebase auth:export save_file.csv --format=csv --project operacexxx
+[debug] [2019-11-20T23:35:48.440Z] CLI Version:   7.6.1
+[debug] [2019-11-20T23:35:48.441Z] Platform:      linux
+[debug] [2019-11-20T23:35:48.441Z] Node Version:  v12.13.0
+[debug] [2019-11-20T23:35:48.441Z] Time:          Thu Nov 21 2019 00:35:48 GMT+0100 (Central European Standard Time)
+[debug] [2019-11-20T23:35:48.441Z] ----------------------------------------------------------------------
+[debug] [2019-11-20T23:35:48.441Z] 
+[debug] [2019-11-20T23:35:48.447Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-20T23:35:48.447Z] > authorizing via signed-in user
+[debug] [2019-11-20T23:35:48.447Z] [iam] checking project operacexxx for permissions ["firebase.projects.get","firebaseauth.users.get"]
+[debug] [2019-11-20T23:35:48.449Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/operacexxx:testIamPermissions  
+
+[debug] [2019-11-20T23:35:57.486Z] <<< HTTP RESPONSE 200
+[info] Exporting accounts to save_file.csv
+[debug] [2019-11-20T23:35:57.496Z] >>> HTTP REQUEST POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount  
+
+[debug] [2019-11-20T23:36:05.916Z] <<< HTTP RESPONSE 200
+[info] ✔  Exported 51 account(s) successfully.

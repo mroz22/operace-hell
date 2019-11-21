@@ -7,4 +7,4 @@ export const countConsumption = (bunker) => {
 
 export const getTimeToZero = (bunker) => bunker.oxygen / countConsumption(bunker);
 
-export const getTimeToFull = (bunker) => (bunker.oxygenCap - bunker.oxygen) / (bunker.oxygenGeneration - countConsumption(bunker));
+export const getTimeToFull = (bunker) => (bunker.oxygenCap - bunker.oxygen) / (bunker.oxygenGeneration - countConsumption(bunker)) || 0;
