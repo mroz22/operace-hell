@@ -85,22 +85,22 @@ const initialBunkersBeta = [{
     id: 'zeleny',
     name: 'zeleny',
     isDestroyed: false,
-    oxygen: 100,
-    oxygenCap: 100,
+    oxygen: 60,
+    oxygenCap: 80,
     oxygenGeneration: 1,
 }, {
     id: 'cerny',
     name: 'cerny',
     isDestroyed: false,
-    oxygen: 100,
-    oxygenCap: 100,
+    oxygen: 180,
+    oxygenCap: 180,
     oxygenGeneration: 1,
 }, {
     id: 'zluty',
     name: 'zluty',
     isDestroyed: false,
-    oxygen: 100,
-    oxygenCap: 100,
+    oxygen: 360,
+    oxygenCap: 360,
     oxygenGeneration: 1,
 }];
 
