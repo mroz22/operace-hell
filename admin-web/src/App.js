@@ -154,6 +154,18 @@ const App = () => {
             Muzete jej deaktivovat odpojenim baterie napajejici procesor. </h3>
         </A4>
 
+        { new Array(5).fill(1).map(a => {
+            return (
+                <A4>
+                    <h2>Taska s vybavenim</h2>
+                    <h3>V teto tasce je jen par veci, ktere vam tu orgove nachystali. </h3>
+                    <h3>Je tu nekolik rekvizit znazornujicich mutace. Pokud nejakou mutaci dostanete, vyberte si jednu a zacnete ji 
+                    nosit, aby byl vas stav rozpoznatelny.</h3>
+                </A4>
+            )
+        })}
+        
+
         <A4>
         <h1>Teamy</h1>
         {teams.length && roles.length && teams.reduce((data, team) => {
@@ -167,7 +179,7 @@ const App = () => {
             return [ ...data, teamWithRoles ];
         },[]).filter((t) => t.name !== 'bily').map(t => (
             <>
-            <h2>{t.name}</h2>
+            <div>{t.name}</div>
             <table>
             {
 

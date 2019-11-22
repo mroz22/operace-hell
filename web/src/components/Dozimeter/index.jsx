@@ -342,6 +342,9 @@ const Dozimeter = (props) => {
                     <SectionDropwdown title="Ukol">
                             <ul>
                                 <li>
+                                Zkontrolujte si, ze mate v apce povolenou polohu idealne se zapnutou GPS. Je to pro vase dobro :]. Samozrjeme.
+                                </li>
+                                <li>
                                 22.11. ve 22.00 bud na <a href={team.start} target="_blank">tomto miste</a> i s celym svym teamem. Odtud zahajte postup smerem do Zony. (Bonus: Udelejte fotku teamu.) 
                                 </li>
                                 <li>
