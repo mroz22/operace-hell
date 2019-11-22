@@ -23,17 +23,14 @@ void setup() {
   pinMode(LED_1_PIN, OUTPUT);
   pinMode(LED_2_PIN, OUTPUT);
   pinMode(LED_3_PIN, OUTPUT);
-  
-  Serial.println("wait for some time");
-  delay(INITIAL_WAIT_MS);
-  
+    
   Serial.println("blink quickly to indicate we start");
-  for (int i = 0; i <= 60; i++) {
-    digitalWrite(LED_1_PIN, HIGH);
-    delay(250);
-    digitalWrite(LED_1_PIN, LOW);
-    delay(250);
-  }
+//  for (int i = 0; i <= 60; i++) {             
+//    digitalWrite(LED_1_PIN, HIGH);
+//    delay(250);
+//    digitalWrite(LED_1_PIN, LOW);
+//    delay(250);
+//  }
 
   attachInterrupt(0, onPirRead, RISING);
 }
@@ -64,25 +61,14 @@ void loop() {
       digitalWrite(LED_1_PIN, LOW);
       digitalWrite(LED_2_PIN, LOW);
       digitalWrite(LED_3_PIN, LOW);
-   }
+    }
+    digitalWrite(LED_1_PIN, HIGH);
+    delay(2000/triggerCounter * 2);
+    digitalWrite(LED_1_PIN, LOW);
+    
    
-   if (triggerCounter == 1) {
-      digitalWrite(LED_1_PIN, HIGH);
-      digitalWrite(LED_2_PIN, LOW);
-      digitalWrite(LED_3_PIN, LOW);      
-   }
 
-   if (triggerCounter == 2) {
-      digitalWrite(LED_1_PIN, HIGH);
-      digitalWrite(LED_2_PIN, HIGH);
-      digitalWrite(LED_3_PIN, LOW);      
-   }
    
-   if (triggerCounter == 3) {
-      digitalWrite(LED_1_PIN, HIGH);
-      digitalWrite(LED_2_PIN, HIGH);
-      digitalWrite(LED_3_PIN, HIGH);       
-   }
    }   
 }
 

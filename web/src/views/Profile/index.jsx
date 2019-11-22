@@ -6,10 +6,15 @@ import Signin from '../../components/Signin';
 import Dozimeter from '../../components/Dozimeter';
 import ControlPanel from '../../components/ControlPanel';
 import HuntingPanel from '../../components/HuntingPanel';
+import { firebase } from '../../firebase';
 
 export default (props) => {
     const [signup, setSignup] = useState(true);
     // const [isGameView, setIsGameView] = useState(false);
+
+    const signOut = () => {
+        firebase.auth().signOut();
+    }
 
     if (!props.user) {
         return (
@@ -34,6 +39,7 @@ export default (props) => {
     const BetaPanel = (
         <div style={{ backgroundColor: 'blue', color: 'white' }}>
             <Link onClick={() => props.setIsProfileView(false)}> zpet na web</Link> {' '}
+            <Link onClick={() => signOut()}>Odhlasit</Link> {' '}
             Hra je nastavena na beta mod. Kdyby vam neco nefungovalo, dejte vedet.
         </div>
     );
