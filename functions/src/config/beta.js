@@ -29,7 +29,7 @@ const initialGameBeta = {
         // 30: 300,
         // 35: 0,
         // 40: 0,
-        60: 4000,
+        60: 8000,
     },
     MUTATIONS: [{
         "id": "test-1",

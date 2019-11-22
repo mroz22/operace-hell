@@ -61,27 +61,27 @@ const initialGameProduction = {
     }, {
         "id": "regenerace",
         "name": "regenerace",
-        "description": ""
+        "description": "Jakekoliv zraneni se ti po 30 minutach, kdy musis vklidu lezet vyleci o 1 stupen. Tzn tezke na lehke, lehke na nezranen. Asi je z tebe wolverin."
     }, {
         "id": "agresivita-na-cislovky",
         "name": "agresivita na cislovky", 
-        "description": "Prestavas se kontrolovat a reagujes vztekle na obycejne veci. Pokud nekdo vyslovi libovolnou cislovku, rozcilis se a zacnes ho mlatit."
+        "description": "Neco ti preplo v mozku. Prestavas se kontrolovat a reagujes vztekle na obycejne veci. Pokud nekdo vyslovi libovolnou cislovku, rozcilis se a zacnes ho mlatit."
     }, {
         "id": "agresivita-zadost" ,
         "name": "agresivita na prosbu",
-        "description": "kdykoliv te nekdo o neco poprosi, vytocis se do bela a zacnes ho mlatit."
+        "description": "Neco ti preplo v mozku. Kdykoliv te nekdo o neco poprosi, vytocis se do bela a zacnes ho mlatit."
     }, {
         "id": "opozitor",
         "name": "opozitor",
-        "description": "vzdy a za kazdych okolnosti s kazdym nesouhlasis."
+        "description": "Neco ti preplo v mozku. Vzdy a za kazdych okolnosti s kazdym nesouhlasis."
     }, {
         "id": "pacifista",
-        "name": "opozitor",
-        "description": "vzdy a za kazdych okolnosti s kazdym nesouhlasis."
+        "name": "pacifista",
+        "description": "Neco ti preplo v mozku. Hnusi se ti jakekoliv nasili."
     }, {
         "id": "homo-buzna",
-        "name": "homo buzna",
-        "description": "Nakazil ses gay mutaci. Od tedo chvile mas potrebu pervezne obtezovat osoby stejneho pohlavi"
+        "name": "Homo mutace",
+        "description": "Nakazil ses homo mutaci. Od tedo chvile mas potrebu pervezne obtezovat osoby stejneho pohlavi"
     }, {
         "id": "gender-mutace",
         "name": "zmena genderu",
@@ -98,6 +98,30 @@ const initialGameProduction = {
         "id": "turret", 
         "name": "turretuv syndrom",
         "description": "turettuv syndrom spociva v tom ze beznou komunikaci prokladas nadavkama. Ale to tim zpusobem, ze nadavku vystekavas tak nejak zniceno nic a dosti nahlas."
+    }, {
+        "id": "kleptoman", 
+        "name": "Kleptomanie",
+        "description": "Mas neutesitelnou touhu krast co neni tvoje. Ukradni toho co nejvic!"
+    }, {
+        "id": "azbest", 
+        "name": "Azbestova kuze",
+        "description": "Kuze ti zmutovala do povrchu ne nepodobneho azbestu. Nyni ti zadny vybuch nezpusobi zraneni."
+    }, {
+        "id": "kevlar-nohy", 
+        "name": "Kevlarove nohy",
+        "description": "Nohy ti pokrylo neco jako kevlar. Od teto doby jsou neprustrelne. Zasah do nich ti nezpusobi zraneni."
+    }, {
+        "id": "kevlar-ruce", 
+        "name": "Kevlarove ruce",
+        "description": "Ruce ti pokrylo neco jako kevlar. Od teto doby jsou neprustrelne. Zasah do nich ti nezpusobi zraneni."
+    }, {
+        "id": "kevlar-trup", 
+        "name": "Kevlarovy trup",
+        "description": "Trup ti pokrylo neco jako kevlar. Od teto doby je neprustrelny. Zasah do nej ti nezpusobi zraneni."
+    }, {
+        "id": "bojova-rychlost", 
+        "name": "Bojova rychlost",
+        "description": "Dokazes vnimat nanosekundy. Tve telo dokaze nepredstavitelne zjistit a uhnout jednomu zasahu (chladnou nebo strelnou zbrani za souboj, cca 1x za 30 minut). Neplati na vybuchy."
     }],
     PERMANENT_INJURIES: [{
         "id": "slepota-leve",

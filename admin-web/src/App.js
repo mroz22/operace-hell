@@ -97,7 +97,7 @@ const App = () => {
     return (
     <>
         <A4>
-        <h1>QR kody</h1>
+        <h1>Operace HELL - Starter pack</h1>
     </A4>
 
     {bunkers.map(b => {
